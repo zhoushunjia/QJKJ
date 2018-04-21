@@ -1,0 +1,749 @@
+/*! nanoScrollerJS - v0.8.1 - 2014
+* http://jamesflorentino.github.com/nanoScrollerJS/
+* Copyright (c) 2014 James Florentino; Licensed MIT */
+(function($, window, document) {
+  "use strict";
+  var BROWSER_IS_IE7, BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, ENTER, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEENTER, MOUSEMOVE, MOUSEUP, MOUSEWHEEL, NanoScroll, PANEDOWN, RESIZE, SCROLL, SCROLLBAR, TOUCHMOVE, UP, WHEEL, cAF, defaults, getBrowserScrollbarWidth, hasTransform, isFFWithBuggyScrollbar, rAF, transform, _elementStyle, _prefixStyle, _vendor;
+  defaults = {
+
+    /**
+      a classname for the pane element.
+      @property paneClass
+      @type String
+      @default 'nano-pane'
+     */
+    paneClass: 'nano-pane',
+
+    /**
+      a classname for the slider element.
+      @property sliderClass
+      @type String
+      @default 'nano-slider'
+     */
+    sliderClass: 'nano-slider',
+
+    /**
+      a classname for the content element.
+      @property contentClass
+      @type String
+      @default 'nano-content'
+     */
+    contentClass: 'nano-content',
+
+    /**
+      a setting to enable native scrolling in iOS devices.
+      @property iOSNativeScrolling
+      @type Boolean
+      @default false
+     */
+    iOSNativeScrolling: false,
+
+    /**
+      a setting to prevent the rest of the page being
+      scrolled when user scrolls the `.content` element.
+      @property preventPageScrolling
+      @type Boolean
+      @default false
+     */
+    preventPageScrolling: false,
+
+    /**
+      a setting to disable binding to the resize event.
+      @property disableResize
+      @type Boolean
+      @default false
+     */
+    disableResize: false,
+
+    /**
+      a setting to make the scrollbar always visible.
+      @property alwaysVisible
+      @type Boolean
+      @default false
+     */
+    alwaysVisible: false,
+
+    /**
+      a default timeout for the `flash()` method.
+      @property flashDelay
+      @type Number
+      @default 1500
+     */
+    flashDelay: 1500,
+
+    /**
+      a minimum height for the `.slider` element.
+      @property sliderMinHeight
+      @type Number
+      @default 20
+     */
+    sliderMinHeight: 20,
+
+    /**
+      a maximum height for the `.slider` element.
+      @property sliderMaxHeight
+      @type Number
+      @default null
+     */
+    sliderMaxHeight: null,
+
+    /**
+      an alternate document context.
+      @property documentContext
+      @type Document
+      @default null
+     */
+    documentContext: null,
+
+    /**
+      an alternate window context.
+      @property windowContext
+      @type Window
+      @default null
+     */
+    windowContext: null
+  };
+
+  /**
+    @property SCROLLBAR
+    @type String
+    @static
+    @final
+    @private
+   */
+  SCROLLBAR = 'scrollbar';
+
+  /**
+    @property SCROLL
+    @type String
+    @static
+    @final
+    @private
+   */
+  SCROLL = 'scroll';
+
+  /**
+    @property MOUSEDOWN
+    @type String
+    @final
+    @private
+   */
+  MOUSEDOWN = 'mousedown';
+
+  /**
+    @property MOUSEENTER
+    @type String
+    @final
+    @private
+   */
+  MOUSEENTER = 'mouseenter';
+
+  /**
+    @property MOUSEMOVE
+    @type String
+    @static
+    @final
+    @private
+   */
+  MOUSEMOVE = 'mousemove';
+
+  /**
+    @property MOUSEWHEEL
+    @type String
+    @final
+    @private
+   */
+  MOUSEWHEEL = 'mousewheel';
+
+  /**
+    @property MOUSEUP
+    @type String
+    @static
+    @final
+    @private
+   */
+  MOUSEUP = 'mouseup';
+
+  /**
+    @property RESIZE
+    @type String
+    @final
+    @private
+   */
+  RESIZE = 'resize';
+
+  /**
+    @property DRAG
+    @type String
+    @static
+    @final
+    @private
+   */
+  DRAG = 'drag';
+
+  /**
+    @property ENTER
+    @type String
+    @static
+    @final
+    @private
+   */
+  ENTER = 'enter';
+
+  /**
+    @property UP
+    @type String
+    @static
+    @final
+    @private
+   */
+  UP = 'up';
+
+  /**
+    @property PANEDOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  PANEDOWN = 'panedown';
+
+  /**
+    @property DOMSCROLL
+    @type String
+    @static
+    @final
+    @private
+   */
+  DOMSCROLL = 'DOMMouseScroll';
+
+  /**
+    @property DOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  DOWN = 'down';
+
+  /**
+    @property WHEEL
+    @type String
+    @static
+    @final
+    @private
+   */
+  WHEEL = 'wheel';
+
+  /**
+    @property KEYDOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  KEYDOWN = 'keydown';
+
+  /**
+    @property KEYUP
+    @type String
+    @static
+    @final
+    @private
+   */
+  KEYUP = 'keyup';
+
+  /**
+    @property TOUCHMOVE
+    @type String
+    @static
+    @final
+    @private
+   */
+  TOUCHMOVE = 'touchmove';
+
+  /**
+    @property BROWSER_IS_IE7
+    @type Boolean
+    @static
+    @final
+    @private
+   */
+  BROWSER_IS_IE7 = window.navigator.appName === 'Microsoft Internet Explorer' && /msie 7./i.test(window.navigator.appVersion) && window.ActiveXObject;
+
+  /**
+    @property BROWSER_SCROLLBAR_WIDTH
+    @type Number
+    @static
+    @default null
+    @private
+   */
+  BROWSER_SCROLLBAR_WIDTH = null;
+  rAF = window.requestAnimationFrame;
+  cAF = window.cancelAnimationFrame;
+  _elementStyle = document.createElement('div').style;
+  _vendor = (function() {
+    var i, transform, vendor, vendors, _i, _len;
+    vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'];
+    for (i = _i = 0, _len = vendors.length; _i < _len; i = ++_i) {
+      vendor = vendors[i];
+      transform = vendors[i] + 'ransform';
+      if (transform in _elementStyle) {
+        return vendors[i].substr(0, vendors[i].length - 1);
+      }
+    }
+    return false;
+  })();
+  _prefixStyle = function(style) {
+    if (_vendor === false) {
+      return false;
+    }
+    if (_vendor === '') {
+      return style;
+    }
+    return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
+  };
+  transform = _prefixStyle('transform');
+  hasTransform = transform !== false;
+
+  /**
+    Returns browser's native scrollbar width
+    @method getBrowserScrollbarWidth
+    @return {Number} the scrollbar width in pixels
+    @static
+    @private
+   */
+  getBrowserScrollbarWidth = function() {
+    var outer, outerStyle, scrollbarWidth;
+    outer = document.createElement('div');
+    outerStyle = outer.style;
+    outerStyle.position = 'absolute';
+    outerStyle.width = '100px';
+    outerStyle.height = '100px';
+    outerStyle.overflow = SCROLL;
+    outerStyle.top = '-9999px';
+    document.body.appendChild(outer);
+    scrollbarWidth = outer.offsetWidth - outer.clientWidth;
+    document.body.removeChild(outer);
+    return scrollbarWidth;
+  };
+  isFFWithBuggyScrollbar = function() {
+    var isOSXFF, ua, version;
+    ua = window.navigator.userAgent;
+    isOSXFF = /(?=.+Mac OS X)(?=.+Firefox)/.test(ua);
+    if (!isOSXFF) {
+      return false;
+    }
+    version = /Firefox\/\d{2}\./.exec(ua);
+    if (version) {
+      version = version[0].replace(/\D+/g, '');
+    }
+    return isOSXFF && +version > 23;
+  };
+
+  /**
+    @class NanoScroll
+    @param element {HTMLElement|Node} the main element
+    @param options {Object} nanoScroller's options
+    @constructor
+   */
+  NanoScroll = (function() {
+    function NanoScroll(el, options) {
+      this.el = el;
+      this.options = options;
+      BROWSER_SCROLLBAR_WIDTH || (BROWSER_SCROLLBAR_WIDTH = getBrowserScrollbarWidth() || 17);
+      this.$el = $(this.el);
+      this.doc = $(this.options.documentContext || document);
+      this.win = $(this.options.windowContext || window);
+      this.body = this.doc.find('body');
+      this.$content = this.$el.children("." + options.contentClass);
+      this.$content.attr('tabindex', this.options.tabIndex || 0);
+      this.content = this.$content[0];
+      this.previousPosition = 0;
+      if (this.options.iOSNativeScrolling && (this.el.style.WebkitOverflowScrolling != null)) {
+        this.nativeScrolling();
+      } else {
+        this.generate();
+      }
+      this.createEvents();
+      this.addEvents();
+      this.reset();
+    }
+
+
+    /**
+      Prevents the rest of the page being scrolled
+      when user scrolls the `.nano-content` element.
+      @method preventScrolling
+      @param event {Event}
+      @param direction {String} Scroll direction (up or down)
+      @private
+     */
+
+    NanoScroll.prototype.preventScrolling = function(e, direction) {
+      if (!this.isActive) {
+        return viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="6"
++													style="width: 30px; height: 30px; left: 710.083px; top: 358px; z-index: 6;"
++													id="elementId1451468035264"
++													elementid="elementId1451468035264" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="7"
++													style="width: 30px; height: 30px; left: 684.083px; top: 358px; z-index: 7;"
++													id="elementId1451468040350"
++													elementid="elementId1451468040350" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="8"
++													style="width: 30px; height: 30px; left: 658.2px; top: 358px; z-index: 8;"
++													id="elementId1451468046575"
++													elementid="elementId1451468046575" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="9"
++													style="width: 30px; height: 30px; left: 606.317px; top: 358px; z-index: 9;"
++													id="elementId1451468050727"
++													elementid="elementId1451468050727" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div data-zindex="10"
++													style="width: 174px; height: 26px; left: 608.817px; top: 401.467px; z-index: 10;"
++													id="elementId1451468152783"
++													elementid="elementId1451468152783" class="wqdelementEdit"
++													data-elementtype="text" data-elemandgroup="true">
++													<div style="visibility: visible;"
++														data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++														class="wqdelementEditBox">
++														<span style="font-size: 14px;">木冰心<span
++															style="color: rgb(128, 128, 128);">(某公司IT部门主管)</span></span>
++													</div>
++												</div>
++											</div>
++										</div>
++										<div class="item mengban0">
++											<div bg="0"
++												url="url(&quot;http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg&quot;)"
++												curbgcolor="rgba(34,85,85,0)" wqdback_position="1"
++												data-maxzindex="10" class="bannerContainer"
++												style="background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(34, 85, 85, 0);">
++												<div data-animation-iteration-count="1"
++													data-animation-delay="0" data-animation-duration="1"
++													data-animate="fadeInLeft" data-zindex="1"
++													id="elementId1451467807130"
++													elementid="elementId1451467807130" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 533px; height: 557.533px; left: 0px; top: 109px; z-index: 1;">
++													<div style="" class="wqdelementEditBox wqdAnimatedos">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KXFaDo_qALmKjAAIzML838nY839.png"
++															ondragstart="return false;">
++													</div>
++												</div>
++												<div data-zindex="2"
++													style="width: 106px; height: 25px; left: 609.317px; top: 119.967px; z-index: 2;"
++													id="elementId1451467884332"
++													elementid="elementId1451467884332" class="wqdelementEdit"
++													data-elementtype="text" data-elemandgroup="true">
++													<div style="visibility: visible;"
++														data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++														class="wqdelementEditBox">
++														<p class="wqd-text-article3">本公司软件开发</p>
++													</div>
++												</div>
++												<div data-zindex="3"
++													style="width: 385px; height: 35px; left: 608.817px; top: 153.967px; z-index: 3;"
++													id="elementId1451467914514"
++													elementid="elementId1451467914514" class="wqdelementEdit"
++													data-elementtype="text" data-elemandgroup="true">
++													<div style="visibility: visible;"
++														data-emptytexttemplate="
++								&lt;h4 class=&quot;wqd-text-title4 wqdCkEmptyTextos&quot;&gt;H4 标题文字&lt;/h4&gt;
++							"
++														class="wqdelementEditBox">
++														<h4 class="wqd-text-title4">本公司 为创业者而生的智能H5建站平台</h4>
++													</div>
++												</div>
++												<div data-zindex="4"
++													style="width: 482px; height: 81px; left: 609.317px; top: 246.967px; z-index: 4;"
++													id="elementId1451467955709"
++													elementid="elementId1451467955709" class="wqdelementEdit"
++													data-elementtype="text" data-elemandgroup="true">
++													<div style="visibility: visible;"
++														data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++														class="wqdelementEditBox">
++														<p class="wqd-text-article3">
++															<span style="color: #808080;">我是营销主管,移动时代企业营销要的是“唯快不破”的速度,内容更新速度一定要快而有效,本公司制作出的H5网站能一次更新到多平台展示.</span>
++														</p>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="5"
++													style="width: 30px; height: 30px; left: 632.317px; top: 358.467px; z-index: 5;"
++													id="elementId1451468028958"
++													elementid="elementId1451468028958" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="6"
++													style="width: 30px; height: 30px; left: 710.083px; top: 358px; z-index: 6;"
++													id="elementId1451468035264"
++													elementid="elementId1451468035264" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="7"
++													style="width: 30px; height: 30px; left: 684.083px; top: 358px; z-index: 7;"
++													id="elementId1451468040350"
++													elementid="elementId1451468040350" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="8"
++													style="width: 30px; height: 30px; left: 658.2px; top: 358px; z-index: 8;"
++													id="elementId1451468046575"
++													elementid="elementId1451468046575" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1201 1004l306-297-422-62-189-382-189 382-422 62 306 297-73 421 378-199 377 199zm527-357q0 22-26 48l-363 354 86 500q1 7 1 20 0 50-41 50-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#3a3a3a" wqdhref="0" data-zindex="9"
++													style="width: 30px; height: 30px; left: 606.317px; top: 358px; z-index: 9;"
++													id="elementId1451468050727"
++													elementid="elementId1451468050727" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z"></path></svg>
++													</div>
++												</div>
++												<div data-zindex="10"
++													style="width: 199px; height: 26px; left: 608.817px; top: 401.467px; z-index: 10;"
++													id="elementId1451468152783"
++													elementid="elementId1451468152783" class="wqdelementEdit"
++													data-elementtype="text" data-elemandgroup="true">
++													<div style="visibility: visible;"
++														data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++														class="wqdelementEditBox">
++														<span style="font-size: 14px;">黄晓健<span
++															style="color: rgb(128, 128, 128);">(某公司营销部门主管)</span></span>
++													</div>
++												</div>
++											</div>
++										</div>
++									</div>
++									<ol class="carousel-indicators indicator_3 center">
++										<li style="display: inline-block;" data-target=".wqdCarousel"
++											data-wqdslide-to="0" class=""></li>
++
++
++										<li style="display: inline-block;" data-target=".wqdCarousel"
++											data-wqdslide-to="1" class="active"></li>
++										<li style="display: inline-block;" data-target=".wqdCarousel"
++											data-wqdslide-to="2" class=""></li>
++									</ol>
++								</div>
++							</div>
++						</div>
++					</section>
++				</div>
++			</div>
++			<div class="yzmoveContent">
++				<div wqdbgset="0" wqdback_position="1"
++					style="background-attachment: scroll; background-size: cover; background-position: center center; background-repeat: no-repeat;"
++					class="wqdSectiondiv" data-type="wqdSectiondiv" sortid="10"
++					partid="wqd1451459234464serial" commonpartid="10542"
++					id="wqd1451459234464serial" sectionname="空白栏目-PC/手机均可"
++					partcategoryid="2">
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469090310">
++#elementId1451469090310 .wqd-line {
++	border-top-color: #d3d3d3 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451468734579">
++#elementId1451468734579 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451468775197">
++#elementId1451468775197 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451468779362">
++#elementId1451468779362 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451468629706">
++#elementId1451468629706 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementId1451468629706 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="wqd1451459234464serial">
++#wqd1451459234464serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #ffffff;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514684713411">
++#elementid14514684713411 .wqd-line {
++	border-top-color: #212121 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689778951">
++#elementid14514689778951 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689778952">
++#elementid14514689778952 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689778953">
++#elementid14514689778953 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689778955">
++#elementid14514689778955 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514689778955 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858161">
++#elementid14514689858161 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858162">
++#elementid14514689858162 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858163">
++#elementid14514689858163 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858165">
++#elementid14514689858165 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514689858165 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514690417610">
++#elementid14514690417610 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514690417610 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514690704560">
++#elementid14514690704560 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514690704560 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid

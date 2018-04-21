@@ -1,0 +1,333 @@
+// 此文件设计器中已无使用，发布后是否有使用待验证
+$(function(){
+	$.fn.colorSetting = function(boole,element,category) {
+		$(".wqdBkEditos").each(function(){
+			var hover_color = $(this).attr("wqdHoverColoros") || "",
+				HoverTextcoloros =  $(this).attr("wqdhovertextcoloros") || "";
+			if(hover_color || HoverTextcoloros){
+				$(this).find(".wqdElHoveros").off("mouseenter").off("mouseleave");
+				$(this).find(".wqdElHoveros").on("mouseenter",function(){
+					var that = $(this);
+					if(hover_color){
+						if(that.hasClass("wqdChangeBgcoloros")) that.css("background-color",hover_color);
+						if(that.hasClass("wqdChangeColoros")) that.css("color",hover_color);
+						if(that.find(".wqdChildBgcoloros").length!=0) that.find(".wqdChildBgcoloros").css("background-color",hover_color);
+						if(that.find(".wqdChildColoros").length!=0) that.find(".wqdChildColoros").css("color",hover_color);
+					}
+					if(HoverTextcoloros){
+						if(that.hasClass("wqdChangeTextcoloros")) that.css("color",HoverTextcoloros);
+					}
+
+				}).on("mouseleave",function(){
+					var that = $(this);
+					if(hover_color){
+						if(that.hasClass("wqdChangeBgcoloros")) that.css("background-color",that.attr("wqdBeforeBgcoloros"));
+						if(that.hasClass("wqdChangeColoros")) that.css("color",that.attr("wqdBeforeColoros"));
+						if(that.find(".wqdChildBgcoloros").length!=0) that.find(".wqdChildBgcoloros").css("background-color",that.find(".wqdChildBgcoloros").attr("wqdChildBgcoloros"));
+						if(that.find(".wqdChildColoros").length!=0) that.find(".wqdChildColoros").css("color",that.find(".wqdChildColoros").attr("wqdChildColoros"));
+					}
+					if(HoverTextcoloros){
+						if(that.hasClass("wqdChangeTextcoloros")) that.css("color",that.attr("wqdBeforeTextcoloros"));
+					}
+
+				});
+			}
+		});
+		return this;
+	};
+	$(document).on("domInit",function(){
+		$.fn.colorSetting(false);
+	});
+	$.fn.colorSetting(false);
+	//定义出现在可是区域的函数
+	$.fn.unveil = function(callback1,callback2) {
+        var $w = $(window), elements = this;
+        elements.one("unveil", function(e,boole) {
+            if (typeof callback1 === "function") {
+                callback1.call(this);
+            }
+            /*
+            else if(typeof callback2 === "function" && $(this).attr("status")=="on" && !boole){
+            	callback2.call(this);
+            }*/
+        });
+        function unveil() {
+            var inview = elements.filter(function() {
+                var $e = $(this), wt = $w.scrollTop(), wb = wt + $w.height(), et = $e.offset().top, eb = et + $e.height();
+                return eb >= wt && et <= wb
+            });
+            inview.trigger("unveil",true);
+            //var outview = elements.not(inview);
+        	//outview.trigger("unveil",false);
+        }
+        $w.bind("scroll", function() {
+            unveil();
+        });
+        $w.bind("resize", function() {
+            unveil();
+        });
+        $(document).ready(function(){
+        	 unveil();
+        });
+        return this;
+    };
+});
+
+$(function(){
+
+	//设置cookie
+	function setCookie(keyOfCookie, value, expireDays){
+		var date=new Date();
+		if (!expireDays) {
+			//expireDays = 24*60*60*1000;
+			expireDays = 5*60*1000;
+			//expireDays = 5*1000;
+		}
+		date.setTime(date.getTime()+expireDays);
+		document.cookie = keyOfCookie + "=" + escape(value)+";expires="+date.toGMTString()+";path=/";
+	}
+
+	//获取cookie
+	function getCookie(name){
+		var strCookie=document.cookie;
+		var arrCookie=strCookie.split("; ");
+		for(var i=0;i<arrCookie.length;i++){
+			var arr=arrCookie[i].split("=");
+			if(arr[0]==name) {
+				return arr[1];
+			}
+		}
+		return "";
+	}
+
+
+
+	if( !$('HTMLDATA').length ){
+
+		//预览发布以后 表单内的 select切换
+		$('.wqdDropDownMenuos li').click(function(){
+			var node = $(this).parents('div.dropdown').find('button').find('span').eq(0);
+			var beforevalue = node.text();
+			node.attr('beforevalue',beforevalue).text( $(this).find('a').text() );
+		});
+
+
+		// 非编辑模式下的表单提交
+		$('.wqdFromSubmitos').click(function(){
+			var that = $(this);
+			if( window.location.host.match(/p.wqdian/gi) ){
+				return false;
+			}
+			if($(this).find('span').text()=='提交成功'){
+				return false;
+			}
+
+			$(this).parents('.yzmoveContent').find('.checkbox_radio[from_submited]').removeAttr('from_submited');
+
+			$(this).parent().find('div.wqdfromnullos').remove();
+
+			var obj = $(this).parents('div.yzmoveContent').find('.wqdFormAreaos');
+			var name =  $(this).parents('div.yzmoveContent').find('.wqdFromTitleos').text().substr(0,32) || '表单';
+			var sectionId = $(this).parents('div.yzmoveContent').find('div').eq(0).attr('partid');
+
+			var a = name.split('') ,b=0;
+			for(var i=0;i<a.length;i++){
+			  (a[i].charCodeAt() > 255) ? (b = b+2) : ++b;
+			}
+
+
+		var bigMap = {} ,notnull = [];
+
+			obj.find('.wqdAppFromos').each(function(index){
+				var map = {};
+				if($(this).get(0).tagName.toLowerCase()=='input' || $(this).get(0).tagName.toLowerCase()=='textarea'){
+					var key =  $(this).attr('placeholder').replace(/\*\s+/g,'');
+					var val = $(this).val() || '';
+
+					if(val=='' && $(this).attr('fsubmit')=='need'){
+						notnull.push($(this));
+					}
+
+						map[key] = val.replace(/\n/g,'<br/>');
+						bigMap['form'+index] = map;
+				}
+
+				if( $(this).attr('type')=='select' ){
+					var selectnode = $(this).find('button.dropdown-toggle').find('span:not(.caret)');
+					var key = selectnode.attr('beforevalue') || selectnode.text();
+					var val = selectnode.text() || '';
+					key = key.replace(/\*\s+/g,'');
+
+					if($(this).attr('fsubmit')=='need'){
+						if(key == val.replace(/\*\s+/g,'') ){
+							notnull.push($(this));
+						}
+					}
+
+					if(key==val){
+						val = '';
+					}
+					map[key] = val.replace(/\n/g,'<br/>');
+					bigMap['form'+index] = map;
+				}
+
+
+				if( $(this).find('div.checkbox').length || $(this).find('div.radio').length ){
+					var cr = $(this).parents('.checkbox_radio');
+
+					if( cr.attr('from_submited')== void 0 ){
+						cr.attr('from_submited','from_submited');
+						var key = cr.find('div.wqdCheckboxRadioDetailos').text();
+						var val = [];
+						cr.find('input:checked').each(function(){
+							val.push( ($(this).next('span').text() || '').replace(/\n/g,'<br/>') );
+						});
+
+						if(!val.length && $(this).parents('.checkbox_radio').attr('fsubmit')=='need'){
+							notnull.push($(this));
+						}
+
+						map[key] = val;
+						bigMap['form'+index] = map;
+					}
+				}
+
+			})
+
+			var parames =  JSON.stringify(bigMap);
+
+			if(notnull.length){
+				$(this).after($('<div class="wqdfromnullos">请确认填写完整后提交</div>'));
+				return false;
+			}
+
+			if(getCookie(sectionId) == 'yes'){
+				$(this).after($('<div class="wqdfromnullos">您的操作太频繁了，请5分钟之后再提交</div>'));
+				return false;
+			}
+
+			$('.checkbox_radio').removeAttr('from_submited');
+
+			$.ajax({
+				url: '/pcdesign/fixed/form/submitForm',
+				dateType:'json',
+				type:'post',
+				data : {'name':name,'sectionId':sectionId,'value':parames},
+				success:function(data, status) {
+					if(data.status==200){
+						var text = that.text();
+						that.text('提交成功');
+						setCookie(sectionId,'yes');
+						setTimeout(function(){   that.text(text)  },1000);
+					}
+					bigMap = {};
+				},
+				error : function(){
+					bigMap = {};
+				}
+			});
+		})
+	}
+});
+
+$(function(){
+	if(!$('#HTMLDATA').length){
+		$('.wqdtableTouchos').each(function(){
+			$(this).width($(window).width());
+		});
+	}
+
+	//导航编辑手机适配
+	var devicesWidth = $(".wqdIphoneView").length ? true : false;
+	if(devicesWidth){
+		if($('#HTMLDATA').length){
+			$(document).on("domInit",function(){
+				navAutoFit();
+			});
+		}else{
+			navAutoFit();
+		}
+	}
+	function navAutoFit(){
+		$(".wqdLogoBoxos").each(function(){
+			var obj = $(this).parents(".wqdBkEditos");
+			if(obj.find(".wqdLogoLeftos").length) return true;
+			obj.find(".navbar").removeClass("wqdNavCenteros wqdNottom:-1px;z-index:1}
++.wqdArtPluginLx_2 .cont-nav span {border-bottom:1px solid #ccc;}
++.wqdArtPluginLx_2 .nav span {display:inline-block;position: relative;z-index:2;font-size:18px;line-height:2;text-align:center;border-bottom:3px solid transparent;}
++.wqdArtPluginLx_2 .nav span.on,
++.wqdArtPluginLx_2 .nav span:hover {border-bottom:3px solid #ff9900;font-weight:700;cursor:pointer;}
++.wqdArtPluginLx_2 .nav .cont-nav {white-space:nowrap}
++.wqdArtPluginLx_2 .nav .nav-more {display:none;position:absolute;top:37px;padding:9px 0;width:100%;background:#fff;box-shadow: 0 6px 6px 0 rgba(199, 199, 199, .7);border-radius:3px;z-index: 1;}
++
++.wqdArtPluginLx_2 .newsList {line-height:1;padding:10px 19px}
++.wqdArtPluginLx_2 .newsList .list-cell {margin-top:20px;width: 100%;}
++.wqdArtPluginLx_2 .newsList .list-cell .title {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;font-size:20px}
++.wqdArtPluginLx_2 .newsList .list-cell .imgGroup {width:102%;margin:20px 0;}
++.wqdArtPluginLx_2 .newsList .list-cell .imgGroup img {display:inline-block;width:33.3%;padding-right:2%}
++.wqdArtPluginLx_2 .newsList .list-cell .footer {height:24px;margin-bottom:20px;color:#666;font-size:14px;line-height:24px}
++.wqdArtPluginLx_2 .newsList .list-cell .fl {float:left;width:60%;height:27px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
++.wqdArtPluginLx_2 .newsList .list-cell .fl span {display:inline-block}
++.wqdArtPluginLx_2 .newsList .list-cell .fl .tag {color:#fff;background:#dcdcdc;text-align:center;padding:0 8px;border-radius:3px;margin-left: 14px;margin-top:2px;margin-bottom:2px;}
++/* .wqdArtPluginLx_2 .newsList .list-cell .fl .midSpan {margin:0 14px 0 28px} */
++.wqdArtPluginLx_2 .newsList .list-cell .fr {float:right;width:40%;text-align:right;}
++.wqdArtPluginLx_2 .newsList .list-cell .fr span {display:inline-block;margin-left:28px;}
++.wqdArtPluginLx_2 .newsList .list-cell .fr .fav {margin-left:0px;}
++.wqdArtPluginLx_2 .newsList .list-cell .fr span i {display:inline-block}
++.wqdArtPluginLx_2 .newsList .list-cell .fr .fav i {margin-right:7px;width:20px;height:20px;cursor:pointer}
++.wqdArtPluginLx_2 .newsList .list-cell .fr .view i {margin-right:7px;width:20px;height:20px;}
++.wqdArtPluginLx_2 .newsList .list-cell .fr .fav i svg,
++.wqdArtPluginLx_2 .newsList .list-cell .fr .view i svg {margin-bottom:-4px;fill: #000;}
++.wqdArtPluginLx_2 .newsList .list-cell .line {width:100%;height:0px;border-top:0px solid #eee;}
++.wqdArtPluginLx_2 .newsList .load-more {text-align:center;margin-top:30px;}
++.wqdArtPluginLx_2 .newsList .load-more p {display:inline-block;width:160px;height:47px;line-height:47px;background:#ff9900;color:#fff;font-size:16px;border-radius:47px;cursor:pointer;}
++
++ /* 无数据样式 */
++.wqdArtPluginLx_2 .newsList .list-cell.artPlugin-no-data .title {text-align:center;font-weight:900;font-size:18px;line-height:2;}
++.wqdArtPluginLx_1 .newsList .list-cell.artPlugin-no-data .newsTitle {text-align:center;font-weight:900;font-size:18px;line-height:2;width:85%}
++
++/* svg 样式 */
++.wqdArtPluginLx_1 svg,
++.wqdArtPluginLx_2 svg {stroke: none}
++/* a标签 样式 */
++.wqdArtPluginLx_1 a:link, 
++.wqdArtPluginLx_1 a:visited, 
++.wqdArtPluginLx_1 a:hover, 
++.wqdArtPluginLx_1 a:active, 
++.wqdArtPluginLx_1 a:focus,
++.wqdArtPluginLx_2 a:link,
++.wqdArtPluginLx_2 a:visited,
++.wqdArtPluginLx_2 a:hover,
++.wqdArtPluginLx_2 a:active,
++.wqdArtPluginLx_2 a:focus {color:inherit !important;}
++
++
++
++.wqdArtPluginLx_1.no-title .newsTitle,
++.wqdArtPluginLx_1.no-nav .nav,
++.wqdArtPluginLx_1.no-loadmore .load-more,
++.wqdArtPluginLx_1.no-view .view,
++.wqdArtPluginLx_2.no-title .title,
++.wqdArtPluginLx_2.no-nav .nav,
++.wqdArtPluginLx_2.no-view .view,
++.wqdArtPluginLx_2.no-tag .tag,
++.wqdArtPluginLx_2.no-time .show-time,
++.wqdArtPluginLx_2.no-goods .fav,
++.wqdArtPluginLx_2.no-loadmore .load-more {display: none!important}
++
++.wqdArtPluginLx_1.no-line .list-cell,
++.wqdArtPluginLx_2.no-line .list-cell {border-bottom:none!important}
++
++.wqdArtPluginLx_1.no-border,
++.wqdArtPluginLx_2.no-border {border:0!important}
++
++.wqdArtPluginLx_1.no-bg,
++.wqdArtPluginLx_2.no-bg {background:rgba(0,0,0,0) !important}
+\ No newline at end of file
+diff --git a/qj-official-web/src/main/webapp/WEB-INF/official_view/system/home/base.css b/qj-official-web/src/main/webapp/WEB-INF/official_view/system/home/base.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..04bd719061b959b916670e2604b0658e26541be7
+--- /dev/null
++++ b/qj-official-web/src/main/webapp/WEB-INF/official_view/system/home/base.css
+@@ -0,0 +1,3 @@
++body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;word-break:normal}address,cite,dfn,em,var{font-style:normal}code,kbd,pre,samp{font-family:courier new, courier, monospace}h1,h2,h3,h4,h5,h6,p,a,span{text-transform:none !important;word-wrap:break-word;word-break:break-all}small{font-size:12px}ul,ol{list-style:none outside none}sup{vertical-align:text-top}sub{vertical-align:text-bottom}legend{color:#000000}fieldset,img{border:0 none}button,input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{display:block;margin:0;padding:0}mark{background:none repeat scroll 0 0 #FFFF00}body{font-family:"微软雅黑", Verdana, Arial, Helvetica, sans-serif}img{border:medium none}body a{text-decoration:none}a:acitve{color:inherit}a:link,a:visited,a:hover,a:active,a:focus{outline:none;text-decoration:none}h1 em,h2 em,h3 em,h4 em,h5 em,h6 em,p em{font-style:italic}s,b{font-weight:normal;text-decoration:none}input:focus,input:active{outline:none}button{outline:none}button:active,button:visited{outline:none}::-ms-clear,::-ms-reveal{display:none}.clearfix{zoom:1}.clearfix:before{content:"\200B";display:block;height:0;visibility:hidden}.clearfix:after{clear:both;content:"\200B";display:block;height:0;visibility:hidden}.wqdtableTouchos{overflow-x:auto;zoom:1}#HTMLDATA .wqdtableTouchos{overflow:hidden;zoom:1}.wqdAreaView .wqdBkEditos{margin:0 auto;width:1200px}.wqdAreaView footer.wqdBkEditos{overflow:hidden}.wqdAreaView .wqdSectiondiv{min-width:1200px}#HTMLDATACENTER .yzmoveContent,.wqd-carouseOverlay{overflow:hidden}.hiwqd.pc .yzmoveContent{min-width:1200px}.hiwqd.phone .yzmoveContent{min-width:inherit !important}.wqdPhoneContainer .yzmoveContent{min-width:inherit !important}.sectionCenter.yzmoveContent{overflow:hidden !important}.sectionCenter.yzmoveContent.onDraging{overflow:visible !important}.wqdSectiondiv section.overShow{overflow:visible}.fullscreen [data-elementtype='carouse']{width:100%;height:100% !important}.fullscreen .fullMode{left:50% !important;-webkit-transform:translateX(-50%);transform:translateX(-50%)}section.sectionV2{position:relative;margin:0 auto}#wqdIphonePage .fullscreen{width:320px !important}.wqdIphoneView .fullscreen .bannerContainer{width:100% !important}.fullscreen_item{width:100%;background-size:cover}.wqdCarousel .carousel-inner .item{background-size:cover}#HTMLDATA .onDraging .wqdGroup:after,#HTMLDATA .onGrouping:after{width:100%;height:100%;content:'';position:absolute;top:0px;left:0px;border:1px solid #60c1ff !important}#HTMLDATA .onDraging .wqdelementEdit .wqdGroup:after{display:none}.wqdGroup{position:absolute}#HTMLDATA .wqdGroupmove:after,.wqd-carouseOverlay .wqdGroupmove:after{width:100%;height:100%;content:'';position:absolute;top:0px;left:0px;border:1px solid #60c1ff !important}.wqdAppFromos .radio,.wqdAppFromos .checkbox{display:inline-block;padding-right:25px}textarea.form-control{min-height:200px}.wqdfromemptyos{background:none !important;border:0 !important;box-shadow:none !important}.wqdfromemptyos:hover{border:0 !important}@media (max-width: 991px){.wqdfromemptyos{display:none}}#HTMLDATA{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.wqdversionos{display:none}#HTMLDATA .wqdversionos{display:block}.wqdBtnMask{position:relative;visibility:hidden}.wqdBtnMask:before{content:"显示按钮";position:absolute;top:-2px;left:-1px;bottom:-2px;right:-1px;background:rgba(0,0,0,0.2);border:1px dotted #9c9c9c;padding:inherit}#HTMLDATA .wqdBtnMask{visibility:visible;border-color:transparent !important;background-color:transparent !important}#HTMLDATA .wqdBtnMask *{opacity:0}.wqdelementEdit{position:absolute}.wqdelementEdit .wqdelementEditBox,.wqdelementEdit .wqdelementContent{width:100%;height:100%;overflow:hidden;position:absolute;z-index:1}.wqdelementEdit .wqdelementEditBox.wqdshadowBox,.wqdelementEdit .wqdelementEditBox.wqdelementArrow,.wqdelementEdit .wqdelementContent.wqdshadowBox,.wqdelementEdit .wqdelementContent.wqdelementArrow{overflow:visible}.wqdelementEdit.onEditing{border:#48beef}#HTMLDATA .wqdelementEdit.wqdselected:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid #7dafff !important}.elementsContainer>.wqdelementEditBox{overflow:visible !important}.wqdelementEditBox.wqdfreeRect1,.wqdelementEditBox.wqdfreeRect2,.wqd-freeRect.wqdfreeRect1,.wqd-freeRect.wqdfreeRect2{position:relative}.wqdelementEditBox.wqdfreeRect1 .wqd-arrow1,.wqd-freeRect.wqdfreeRect1 .wqd-arrow1{position:absolute;left:-10px;top:50%;margin-top:-10px;border:solid transparent;border-width:10px 10px 10px 0;border-right-color:#2b6ca3}.wqd-freeRect.wqdfreeRect2 .wqd-arrow2,.wqdelementEditBox.wqdfreeRect2 .wqd-arrow2{position:absolute;bottom:-16px;right:0;border-top-width:16px;border-left-width:16px;border-style:solid;border-top-color:#002e5d;border-right-color:#002e5d;border-bottom-color:transparent;border-left-color:transparent}.wqdelementEditBox.wqdfreeRect1.wqdfreeRect3 .wqd-arrow3,.wqd-freeRect.wqdfreeRect1.wqdfreeRect3 .wqd-arrow3{position:absolute;left:-10px;top:50%;margin-top:-10px;border:solid transparent;border-width:10px 10px 10px 0;border-right-color:#01b1af}html{font-size:62.5%}body{font-size:14px;font-size:1.4rem}.wqd-text-title1{font-size:56px !important;font-size:5.6rem !important;line-height:1.75}.wqd-text-title2{font-size:46px !important;font-size:4.6rem !important;line-height:1.75}.wqd-text-title3{font-size:28px !important;font-size:2.8rem !important;line-height:1.75}.wqd-text-title4{font-size:20px !important;font-size:2rem !important;line-height:1.75}.wqd-text-article1{font-size:18px !important;font-size:1.8rem !important;line-height:1.75}.wqd-text-article2{font-size:16px !important;font-size:1.6rem !important;line-height:1.75}.wqd-text-article3{font-size:14px !important;font-size:1.4rem !important;line-height:1.75}.wqd-text-article4{font-size:12px !important;font-size:1.2rem !important;line-height:1.75}body.phone .wqd-text-title1,.wqdPhoneContainer .wqd-text-title1{font-size:3.2rem !important;font-size:32px !important;line-height:1.75}body.phone .wqd-text-title2,.wqdPhoneContainer .wqd-text-title2{font-size:3rem !important;font-size:30px !important;line-height:1.75}body.phone .wqd-text-title3,.wqdPhoneContainer .wqd-text-title3{font-size:2.4rem !important;font-size:24px !important;line-height:1.75}body.phone .wqd-text-title4,.wqdPhoneContainer .wqd-text-title4{font-size:1.8rem !important;font-size:18px !important;line-height:1.75}body.phone .wqd-text-article1,.wqdPhoneContainer .wqd-text-article1{font-size:1.6rem !important;font-size:16px !important;line-height:1.75}body.phone .wqd-text-article2,.wqdPhoneContainer .wqd-text-article2{font-size:1.4rem !important;font-size:14px !important;line-height:1.75}body.phone .wqd-text-article3,.wqdPhoneContainer .wqd-text-article3{font-size:1.2rem !important;font-size:12px !important;line-height:1.75}body.phone .wqd-text-article4,.wqdPhoneContainer .wqd-text-article4{font-size:1.2rem !important;font-size:12px !important;line-height:1.75}@media (min-width: 320px) and (max-width: 767px){.wqd-text-title1{font-size:32px !important;font-size:3.2rem !important;line-height:1.75}.wqd-text-title2{font-size:30px !important;font-size:3rem !important;line-height:1.75}.wqd-text-title3{font-size:24px !important;font-size:2.4rem !important;line-height:1.75}.wqd-text-title4{font-size:18px !important;font-size:1.8rem !important;line-height:1.75}.wqd-text-article1{font-size:16px !important;font-size:1.6rem !important;line-height:1.75}.wqd-text-article2,.wqd-text-article3{font-size:14px !important;font-size:1.4rem !important;line-height:1.75}.wqd-text-article4{font-size:12px !important;font-size:1.2rem !important;line-height:1.75}}.wqdelementEdit[data-elementtype=formSelect] .wqdelementEditBox{overflow:visible}.wqdelementEdit [data-elementtype=formDate] .wqdelementEditBox{overflow:visible !important}.wqd-form.wqdControlFor

@@ -1,0 +1,1495 @@
+				</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="zoomIn"
++							data-zindex="13" id="elementid14514718581360"
++							elementid="elementid14514718581360"
++							class="wqdelementEdit aniTriOther" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 93px; height: 91px; left: 908.5px; top: 236.883px; z-index: 13;">
++							<div style="" class="wqdelementEditBox wqdAnimatedos">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/serviceContent/yq0KZVaDsmWATSVWAABzpvw4IXw446.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="zoomIn"
++							data-zindex="14" id="elementid14514718589620"
++							elementid="elementid14514718589620"
++							class="wqdelementEdit aniTriOther" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 93px; height: 91px; left: 1008px; top: 235.883px; z-index: 14;">
++							<div style="" class="wqdelementEditBox wqdAnimatedos">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/serviceContent/yq0KZFaDsnKALqLlAAGU4a7MNw0726.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="zoomIn"
++							data-zindex="15" id="elementid14514718594410"
++							elementid="elementid14514718594410"
++							class="wqdelementEdit aniTriOther" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 93px; height: 91px; left: 1107px; top: 235.883px; z-index: 15;">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/serviceContent/yq0KZFaDsneAeUT9AAEF9KMTs_s038.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="zoomIn"
++							data-zindex="16" id="elementid14514718599120"
++							elementid="elementid14514718599120"
++							class="wqdelementEdit aniTriOther" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 93px; height: 91px; left: 1107px; top: 136.883px; z-index: 16;">
++							<div style="" class="wqdelementEditBox wqdAnimatedos">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/serviceContent/yq0KZVaDsmCAWNnBAACK4hjYEzk397.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div wqdpathfill="#ffffff" wqdhref="0" data-zindex="17"
++							style="width: 40px; height: 40px; left: 0px; top: 147px; z-index: 17;"
++							id="elementId1451471914110" elementid="elementId1451471914110"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1151 960h316q-1-3-2.5-8t-2.5-8l-212-496h-708l-212 496q-1 2-2.5 8t-2.5 8h316l95 192h320zm513 30v482q0 26-19 45t-45 19h-1408q-26 0-45-19t-19-45v-482q0-62 25-123l238-552q10-25 36.5-42t52.5-17h832q26 0 52.5 17t36.5 42l238 552q25 61 25 123z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#ffffff" wqdhref="0" data-zindex="18"
++							style="width: 40px; height: 40px; left: 0px; top: 189px; z-index: 18;"
++							id="elementId1451471932022" elementid="elementId1451471932022"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M888 1184l116-116-152-152-116 116v56h96v96h56zm440-720q-16-16-33 1l-350 350q-17 17-1 33t33-1l350-350q17-17 1-33zm80 594v190q0 119-84.5 203.5t-203.5 84.5h-832q-119 0-203.5-84.5t-84.5-203.5v-832q0-119 84.5-203.5t203.5-84.5h832q63 0 117 25 15 7 18 23 3 17-9 29l-49 49q-14 14-32 8-23-6-45-6h-832q-66 0-113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113-47t47-113v-126q0-13 9-22l64-64q15-15 35-7t20 29zm-96-738l288 288-672 672h-288v-288zm444 132l-92 92-288-288 92-92q28-28 68-28t68 28l152 152q28 28 28 68t-28 68z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#ffffff" wqdhref="0" data-zindex="19"
++							style="width: 40px; height: 40px; left: 0px; top: 229px; z-index: 19;"
++							id="elementId1451471941509" elementid="elementId1451471941509"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1344 1024q133 0 226.5 93.5t93.5 226.5-93.5 226.5-226.5 93.5-226.5-93.5-93.5-226.5q0-12 2-34l-360-180q-92 86-218 86-133 0-226.5-93.5t-93.5-226.5 93.5-226.5 226.5-93.5q126 0 218 86l360-180q-2-22-2-34 0-133 93.5-226.5t226.5-93.5 226.5 93.5 93.5 226.5-93.5 226.5-226.5 93.5q-126 0-218-86l-360 180q2 22 2 34t-2 34l360 180q92-86 218-86z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#ffffff" wqdhref="0" data-zindex="20"
++							style="width: 40px; height: 40px; left: 0px; top: 271.883px; z-index: 20;"
++							id="elementId1451471950315" elementid="elementId1451471950315"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M480 1408v128h-352v-128h352zm352-128q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm160-384v128h-864v-128h864zm-640-512v128h-224v-128h224zm1312 1024v128h-736v-128h736zm-960-1152q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm640 512q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm320 128v128h-224v-128h224zm0-512v128h-864v-128h864z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInLeft"
++							data-zindex="20"
++							style="width: 98px; height: 32px; left: 601px; top: 59px; z-index: 20;"
++							id="elementid14514714642260" elementid="elementid14514714642260"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article1">
++									<strong><span style="font-size: 14px;"><span
++											style="color: rgb(255, 255, 255);">本公司建网站</span></span></strong>
++								</p>
++							</div>
++						</div>
++						<div wqdpathfill="#ffffff" wqdhref="0" data-zindex="21"
++							style="width: 50px; height: 30px; left: 601px; top: 85px; z-index: 21;"
++							id="elementid14514714642261" elementid="elementid14514714642261"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++					</section>
++				</div>
++			</div>
++			<div class="yzmoveContent">
++				<div wqdback_position="1"
++					style="background-attachment: scroll; background-image: url(&quot;http://img.wqdian.com/group1/M00/46/FA/yq0KXVaDgouAT33fAACpWRwVw1s846.jpg&quot;); backgrou++`v8g1@+bN&frUV
+zVU_|0oMngkj=vNW^y@^%ntPoDaPyG(cBoJW>Sqc)&Pg$m8Q&^<MID;K;3bj<sZ7kR
+z7!&_ZRslYAUx;0;PMlFcXA(FqwsL7-fXFFA6#$qzG{q{$lG?|UsCJYvy3goVq}^wT
+zlU(SCw^JYdKdWQnF7v4`U;*|%g}er*?T6C4JP*zkR)N|QC8OxrTU-qY6=PU)n$%!p
+zrvc!pR&4%Qlu3nnNuJ5W@<q74w-u=zt@aG}$uS!^GDEpU)1*Y>OyeFJLh>Kr(64w_
+zT@jlk|LS;ChP9@nK7$lagk%ASXw7S3tbrh{Q=^7Ivt&Bvz%h4e8<+!!Mgk7&c+Pe6
+zn)+P5(VQtwqiD%f^G379G?Vf<8EbdgHbc96M-ABqwRcIPcz`ae=Nc#L5-VBD%Jbb8
+zR|5&?Nk$-BP6lAWPnKOr4BaGivi=0znrNwetO|oem!OX`m-v|Bymmt_F<hI?egU!*
+z9x4h108)TYD+vUgKAi<A79=c>GQgN)sokHh5994?>fe#J)JBJ>DVVP<azZ%ceLxwL
+zis|7#@r1h-7?I6jKgS)Gxc#5+ejv`3W1;mXmTW)7W%ayMdiNkqgCuqi*SC-~Z%;E$
+zRHU|PA}5SS#U7%p;$b5(ibPVbjwO4DquZwYQj9zL2>3%IqO?bxGXZ`UO}UUwfezO`
+ztJ4ck%sseu?ju|09@;wh(TQ)r^pel?<STf)KQ`@(4;*ha+o2I}q1sDXI6wl-Nz1O<
+zuS1ML19(V>Ts7))-&LQnyrDDoB1T^$uXM7Gw;|#!qM07dZc0wci2U<prFp~Z12cb(
+z?57ZTD;T(eP-L}rXm+;R+=)aPZXs83E#<~}-_HQYHR!AlGKX+`d#x?uI!ObdUQ*8h
+zsJ0wKt8}@W6!~umBjBx-x(<hL@R4hL8@f&@k55L{XZTcIQ$?POG5u1|klR0p*Xz;k
+z)2h|QzGMK?zMlOF9&dqj5!`!*q-MX_|Ke^bUj1lluLLC5F95UcmH4@4fQX5!a$HoM
+z?Ymr2e}zXPdFTgeO?AZg&sxv0hFIaRAiv3P+nI4nNdA5Y;pN;DPd%>=NWmM`ni^x*
+z-%Q7?v-K_Z1B5YhSLAkH*-^&2!92tQX-=??YO|ebuB;0YH`S{KkP)9XVrchV8~Gg7
+z3hb3fnx&bU(x?MYeMv-|*%6CP?Hkm}HiXToP-wcT69@4ktLmf+eZiolw;RpevQvxu
+zi+nYZh=b_D_q*7E8Z{veo8!lWLUW6nm~PaMG4%fataL9T{t;^J?%8@MPAS_D+hZlH
+zDN@3dzvE!bYCC(C1hTlGwY%k$0TN=Hcpy;}NrM~M&*t5(pFAlT<<|f9SupA(<tw@E
+z;Lr^P0<zStr5w2S27Ewrg1QNu;U1EAD8}qT^yVFr4`sM5P+AX+&Y0;rD7^eoQPC*R
+z6;9BMCee>%@fr8XKhz}U^ol?k81Pwqw~v3f#Jw6(Rq}VHs?YjqgTNLXCiNC%E3e{q
+z_Q*jSXuy=X>&w^FQ$T$QzXf+s4%GwsC!dXSG8fgP^S>9oR&O<5Q|ToRJ8S+BIGG1U
+zJP$IGAfQcLUyMZYv=uc8q#vHgF&(i?q>0OT;CIz@SjA3HJoX;`A#Zp~5nmk3tV69w
+z@2DNyRV~-xMjg`TmZz90wT~ZhYenJsuKI6IHcPWkH4hNgeO%-WG4%}0I?Z@S{p|Fa
+zUBx&y!VlS1zm>-DQrN~?F7{V=(60L5Sc8%oazBt>H3)K@8sxkijx|CT$#6cBrX2Wi
+z7m%Q#yBhDoU_CUss5bXDYGd`9JOaLbqSlZBbMCD6IeMChPVw!kzYRKsZ-*lR6yGz>
+zH^du+*%)Wr07-mch8~mA>~~_~eVHz?H&qFk!_&lu%_fq~7-wk!StMY1X-3g618_()
+zsuIUso6HtEL&A@FCa=wL!B@5=U%~M%v0GQ0RBNTXltIH_<ED@<$XP0sQrV)G(VzQA
+zO;=A;{p9;goTy|bkd315`Fcgj(3jPt;?LLzBVkAm9A#5<(WMF6UAbIswGK88!Q5<4
+zp9;)0xW5}GC3Pl=zZOQMIgf;X?8P2edA2#FH-wom1FIj70%$ScXAM+?)m&;uQe{#7
+z2T&a<yvkMTPow8UgoagWwijN|Bl%RX7~qqE!y#3}acvOG-3ydHP6sZfych>AEG8<`
+zmeyl7am&}5i$n(OFDpphZ@>qZxv+sNm-XXNaAIGzeyq)D3y$HZ?^CoPToa=BFR4<k
+zMZ}(9nLui!LJB8Zqy#$CU+V5Va0+TR%-&XCz{8B85l)K38XF_eG~zG$opGob^|4x=
+zJM>YsXcA59i7X$hO{2>%3%L}=1*8@B<{;I4CVzE2v$hy6sDGm6ozr5Vn8m>Fd*c)~
+zq5C93r$`Pbe+RO^tqzyKY-igoauh>M5MF}c>bjnOblN~Z#7RFF)fdgIW^Fn_dmdlP
+zqZBG=1;>Mr{sb@eLQ=`|hJp>Wqk0rUr#<6pWw93+XRERS#l#6!B)&-mQUaXUtngj-
+zIplPk9KwqyjAzvhauj86C_6?+9-OWhssvqb=x#OP$ZO(Qr=y5odc7QdLG5KXpC5I1
+zt2vVDsd{VLTy~w}bhYWBdb0}Oxm4A=r3dEmjsY+69JjFRZm#Z^6=pB=dE~~|wWRkg
+z0Fsn_4pTxoHPwf>_X%Acwot9`Y)GiH&T+yNyIRDN?B^_YsSiEC9n~}>s(O!|JuVPJ
+zf(}B<M`xgqusy}0wcVJBy@3XuB1Hic&(4MXk`@hgJ<>fj-}N!MxB(Ig;-F3|fOrD6
+z=+?>K0fKi7d*IHVL+bMaeu6cx5^23%_3smrs4t%rA-^i8Hd!p6^sxgdBodD;!9FHv
+z1;%2s3Se~^W9~^4<t9>|l{J`2k{%!2R2QO{MV&ses;r`&bg&)!6qJ7eV)U4mohS?8
+zL)b4pA~HK7<?6sTA2TnLjKiKf{drr)=79S**+{2OJ5L`+S{`Y36k_n4Chl~@x7s<3
+z%cEI%txj5Fqr)!CF>E2CY+n6Z9t{MBZf;ulu&Cb?snHykkvg+;IrtRm(w1fS#fFIw
+zB&>#bg5Se##pR#xtIgCPg4e`rr@IHI;}R{u?{Oth^~o5M*mW9(p7FRA8U>LhiHb3(
+z>RFk~vsl_Ml0}~OjahD2`ktQQLZ<;?UR1x0qwSuXMOt080uBEMqJQIm(W#Sf--o7U
+zZpGN}iGx4oac^yJe9AAm;~?-S4jz2?Qx89Y|DLEFrPx2%Ih)XAHMuD`-%-B^%CkXL
+zHc>M@8ijg>cc4`Dv5QBVfc+egxa<b39wcJt0&__yAs@&%9XZxZk3A>@e*76FPXZs|
+z#c@4ZGK!S)WmTAcgI5#geL+#I-ZyKs&77mY^q39?PI$aAT`5h~rfcm}gd8^7h^Ron
+zeo!L8er<N=1%1G7c2Rv(OC;7t^*qy|Zj_>6XbGgkV5FI*hMFK}a(wzaQn){!d^3vi
+z3ttrFcVaqiZ2Xe^bW=uv8hKhn0Uc)<cGwYx2=(^UO^8R{Hf&m1*6&A*W9-#Bm`AzA
+z;Qv`3Zj$=@lXorVo<5({tSSlwtf*fE{mS1Wb~uzK5_qXnEM=9{F=p8p91){g@uZ(d
+zbgsgAbx$G>`xKpL42nLIA%ayM^{=vZL1ax^8S?H^GUb<oiIk${2ytg=dAH|x)T6Z)
+zUo--D-zI-j@wco#6E;l4Wt?YaFikReKYv2%0*ZFH`4$-k8G~5{dnj`5=8R$i4QS@P
+zs(w4s;K5Iv?Ji#RA{zI_O9nAKn_{T;=a5GIghWv*7J`vTPyP->ej9Um(7SUylT@hZ
+zw6=Y1qWhp;NnoCHm8~jj27I{Wj5otLEv*e*`$tqQrSXTiyY-0z=Cby4&-|Jq6#}{m
+z!<j2$$@;Z=87($7NM}z`A(qtX@sHq0@kLuJ0o?>;D=R2e&>k;f?g<R%2wgtu^$HN0
+zJbnrNFGZ8%O#`G+`)sF|9n#rJ9!ItZ1I9GEEc0lUEk!3?NKv7WShUdK`u*b&aVFi*
+ze{8oWeY(w)XwPO1L3Yfmf5~m4EOF3hnP<_)LUTNBnhY5|&pshdm+TI5ml<1plin&t
+zm400Zxfo0AJRe26>JYZwyKBeJ$4bvPn&TPgYq(HZJpB$<<Vef%=)L|@zL})Gbx6T_
+z72o2=VO`uR4M6n&s48IYf-GZ6vtTsW$QLC_E-F2|KyNpSn(uEDEBcS)U9<%Bx}1zC
+z13&8xc*9aT`Iz~SQGr0x#VvRc2r@@30uDUJTk4rO!h@}xQ1j3M3lwJD+1Ivu2-aU#
+zPcvw=4{_wR-FbNNS*<jiu{U7cIbbRfR#_HS@Ypd!drR%brC`|ExGvF({RhrC=!gy7
+zxFRu2gJ@g7+(nCeXO>2`R9F2%*%GAg`3=C0FAU#b=OJo0K$8`?CLm3~$i=oG{UT4S
+zVLT$1N8S;tNZWb>OQianM9P7a8iadu1+v@VVV=cu5EaT3>ouiug0=ew5cV&*$ASsv
+z0B6Yf%5|)qKHUewh0^?znyb|fO^~iU?nk8q`*mxP%i|4o?0Bh;D9r9T$|BJdZL`@)
+z0YwJ+(NFHPi_va=Uc|E6>sv8&IQCPfE`eNZ0%t_(m$u~ooQ=mYoCF{m;{(8S7Q-Nu
+zN65>D?gn0v>OFSPdG&7~4k=*QKz9j?uaH#Uw!*Is#txAB%eZRG>g_;=%)TZRNIK#P
+zjU(Ox+`ak5UHRdgYJUx5Ghs@ys^x|0zy_&czaRx8i~vp%YH>r+m(^#zislh{;ADNa
+zLyjX1V|zGZgva$hxlO|c=ehoVkv7s*&wKY8N*75rNBP7mj<IG!l1k5Gjrd=|!^G->
+zwH8*@mtEB)E)cT=UB;T9-V`wJEKf&ZyJ)43eZpllxST=1g9>~|t(<X|=M~Ki0~JXY
+z?GHrE>6t7Jmbh#Vv^!Hp&GdZ-lF!lpL{XJI#jQg(Uf+1_*{-xo<XWPSAlJHTPuR=L
+zaeS)`7NeWvhYK!n`b49JA?uBLwQ?w9!UD0Rf&49w!7On;T{I@m3+@l9%E5->NoijP
+ztOaKc>*NgXRJkdTeYq5(i6P|Z<7kwU6NJ2g{E{eqk-(+k9!7?zv5M)&F$r84cQeC|
+z>;%N;EWV62!}^I@%lAwcs9n7q^f)xS?9F-76PTgXnWvAng<KURus>L#bz96Ua<1+W
+z(Ksv#$My@x$~X%=s0~Z_P7m*oHZ^=}368(OuehjwV^$p0_G#%J&X60~JMOWl<opr8
+zO8yS!^|te>)X;=&yk3=06Zdt)TnZ4ccjYM?*lbi_Gz<=YiG$BD;HJjnM#;4o7ujk7
+zZEC}1?DY?nJNE?oW1MU>xd(2nRfw;@Iq~}G0)7)vQHEwgSV>MPt?K`w`t<}Y1C7if
+zXb&1lRkCM|5<^;9f^vPJB<vbuSgm%ciQ&3cG}#~{c_94_8oJ{mtBM>{Jn{yl=Y;d1
+zuI<SOTrXoF;0l*{xJubDV9>9Mk;2b_FD}FdZ`4&D^p|aJV^%@_K1$Txqw(NNs&1~<
+z;bOq8W272JRn2s4m`%tqLOqFW==7QMJo!+PO*jW=A3A@?k&*{3KyM>Xnbmsh(5@9$
+zFuV^**RsLMM~S+$WgJQn$B>JCAY{H8Sq)GxD4Lq_{SQ?9TN5XX=1qG7cX&IwpAJFZ
+zM!r3qBJjk-hkS3VHJ{#OQBzQhG$@thooz>!g5fXyK6E6y7Zm(+=tKe~yfl3Ptw{-e
+z218m}k^5xo1$@MOOdG@8Z9U+<{j!dv%|n;nex4J;PgK^KFpftUe@anPn9xU&;{Z2b
+z%E?lGm5nf<%ovO?S|ySo^bvDF%2Q66e80d<(KzJxUF7BZDRd-BMzCxMGiGc)p5vDn
+z)E@Y1rl(J_XPV@mVP5Xx`n4thOdaAT0^3nk5o+c!qv%&TcWtuYRMbBe=>Ufx<4U>V
+zrD_J?<s(ubWP|9%<wKUh9UMX~Go19*8a#Wmp;nrP6TU_t`PgMQMz}d3M4!dkBZ^;_
+zr|3Ayc^=Z^XK`39DI+^1|Ak%95^K8{ndREAsV}&^VE4>@($#n~gF%FNaO>e(tG)zN
+zcvxe$Xx%9%Owmt4jzcaY`B_huxXhz_$h2VZ9y-@?qA|Ur12oCnfgC+1q}@7syjtHq
+zcf8brR#qV=b%VRHX3FtF{Q0nPcR1#?6>N-iSrAB=f-nPV%)>Mb+nBCR1JnIFp)Lei
+zVsiB4m(EmJRMR4srKQ$TVmW1Kj-N?utx%!ts(*v1RpSLDnA@&WWYT*7JcL=Mxpr96
+zVTx7ZhyAR%^b=uYnf$Iz!z)Y8V?+Th`aj5B>A>l1n(c7R&9cGYQByAF=E*2cH~nT}
+zI}o`wIM(7s<3+XCc5DNMXeQ^rUhvFDLxE@Ct@nx|I?rf*Jg8lmK6um<c}4xtS=RQ5
+zLLuGOe{$j9=7IA}aiv*4{=O}t8&L9jHESI7TFl~I*C5B>(-Vzgz~o!%d5Wv`ZhSHl
+zA~?E#g<GGnjv55q5}4#tq12&ieS*Nvs;ayZO8{V1cIy-B;78u~{FySL@<swdPo;kK
+ztNC)h66C)C?L{uktNkZSt^Mc*6>`lCq|aSj$jCttgY-1l^txvUaO_iC$Z%W<1mT@4
+zj4bNHhPbX_s59s{%ykHMIUl_^S!GDP$=wt4WlehO_WcJYfAS$}=LJ1Dd_%&Ffm8+e
+zgiGqVz6p-_mdDqN&;(^QZjX!VIaoGUd!s2B2J6OnkA3Ci)$$8|r{Nskt%u9m<waal
+z{|iWT2ON^zDgqNDYDa7EVSTJvP3za4r8#xV&eKmOpYgo?mZl=}$bJs~jqW;-aZK%j
+zE@R-{uWKaZD4`Ow!oHoT1RQ)T@s|`~3z$@f0kW#zBBdWlhnNzXdE?KRPOq0aw=qc(
+z(T93?!ptMyN<*62kq-}ap1Z{3%-i$|c&c+s&t{i~18c;(P6Hj{Tx5v!k!^wu2y%nd
+zoSL3_b-dPk8pWnaP}|dB54E#+e3h<WB4Q2q6CXx(=`*gj)Uh6f6iCW~gdeZFSmi*-
+zxy5H?tLlqdYKMM@(dkM68EFjiA!!x)SqLlYi(1K~Ll~d`XhrlMw@Gdmah>GvK<RgQ
+zG&1a4;>L+c<O143pFotDRcR*EM6=W8DR6}!h*Xzf0O|R|A_59ez}G|3OzBNNDOQwL
+z6wNp()RM+{5Xw0~eP)z)w!%o^>OvtTlEjK!-YJ?V3ki&X^r}EPiDEBeVB;L9*J@U0
+z8YilTITB5o{|}@SgUEQ%2hB<hy466Iz5v;FosC<)iFr3PH-)yh&>1}bKz>8HgIfeb
+z)&|FP;&m`JG|&^QF3|%WozCp5>7k0yHC~~8Xj#d_ZPvys^gKJgNw69w=%?(iO*EYv
+zckgO+&?O+02MN>b1;<?>%of#glh5qzZ@QW^B&gRh@g8nHgM`I_Opj;CVk9idA>!oZ
+z74@sQ$=-UUw!40!)@;;gXg(TH!o&N({w$Esy;2gq;}~a!bg09PJKP&W<LSJDxlwD=
+zYg#l$kPH1IwiI`T%8P1-tB{+C`tahSF0uDrH4~r_=p9%zzMkOj#-2y&4RsV+MP`#q
+zdh_Az7^75^i^pkJkj|IXqu5Q_%>%Sf|LU9QGln};5Do%gdY_IxRpw>9Q;SJ#$bl4*
+zc;v1xb2HONS}2M|Buh)IOy!^4teHdGYjyO{;-m(6NHcW)oRNTdfir4=9?<=S8aQrc
+zP)q2Gl*UA+_tyjZvT1=fDLi0s3`t2mim^*gpEeu4z_n`yJ%kNubi_S@C%~QFQ9*&r
+z7@CIj0LUN@eN3RY%lOZ+MKckB%*TK!GV_(wo>Tujl}HeW`Tnt6ex5k1hd7O6@zC-C
+z22!}@wuKxd{2s7*Ui~tNKk<tNtR=z39`Z0nAZ?O3PnnC)LL(Fc#$i^t%#zNSh~SZX
+z-jY`3cO1Fka<(6-wjZICE94|d+b5u}L%fmvb4QUAr^gU)KZ?F5&Wb1JS)P0z01=%Q
+zFt5HObq)>>GIY;Dln%CMU44%ZO9<+@O@M4V$Rx<-{(=|%OLd^AQS_jOq`U2^8<HS#
+z*zMD`QVWLj7@d+jy_>_kW0#7DjceF;uNr4>sz=GCWm{zsMU7Zwrbk>pR-1!HwZ<bZ
+zDQ5?nG*csL<-&#>&xw_ED(T(<$RzVlN9T7@_Th?p158%bcSG}3WpUs*G}ubWllvji
+zKpy$w7i}SE5m7Ip$@j4%gu2qs-xk$Dn2vui?H{NYY^WFVgRYgM{Pv?2kqTr<gS7ot
+z=|pw50m19(-j~&*v8C*LCIlRGkYb&|SrFe-71vs#;0DD_(L4d@Y_^8PN*xQk#EB%N
+zrUlZrUq#;A#3+w`Q=zV!0nU-<5h>X-+#k@%w0`$6S<UnqcB#mRXg>$L?{eFW#1_IG
+zM;LQ(s~7HeS|D~?R&%7g$nD1l#1yVhS>Y@S*^h6FI#MvImgKq@pvzztI+Ua*coTBK
+zLHUyQ@30sjFi&np{W7>?LDnx&)^IXd*-qvUl#&Fh?rRLeJXdqjCR5a`X#9;tJ_m@q
+z)cg^lZir@(Qh*h%cCZB{L)cH5F}P>zh&WTo_5k-Z-Hr@+lxK`lMar1t%IXrVE>59F
+za@6>Cd(YK)CdUDcQ*a!pnAJ%(2^>=A2YMnPJapkaKUKx0a2z3)km1J!2OV}kuf8<6
+z&%85W_SIgf?rxP!vsFaY5Y-$X$T?kAvaJFkH7F}end$=vn60*Gh&^tzqCUy4J39KH
+zR)O`5zXYDunbj75Ym6p2`(teX5mBb%SO7n%b$&i8xizErq0iG_yBv|pa0CweG?R%#
+za0ObGHd^U93glXkYz!B*xYVP1d7vl9vf_VPRi|`4#>mYOQUsMxBHv>a7Nh70;)Bg*
+ziE|vBf|d9$dbmuqs3tti$~Ik8r(HUC0;>Xd{=|4wxmUR=#IayP51rEKsQ_D4mPeHx
+zX)~odM)g&^h#;;Udbq!#s8Jbdm19=vj1rrnzp^s-)0P1d#>X-E)2H(;h0EZ^n)2UK
+z&p`5_sE;~7jO_xUVvh(XjMi4wnn$!x0hNx?+<F>?@U+`NIOtob##DjkhxvHG1<zr-
+zs&?b$;i*N&R-`s~DNnh`B}gTlVZo$?k1!`Fk0lTu@v>2>b65Sd*^H|3SO*xUh%=Nm
+zaxgkZ!e)Tmy|aU#5vG~CSo$^#EpIfjm!Q}ZrYE^pa(Qxc>i(ExF)LnFze;Sw4W{(V
+z=onpxWK{R(BAiK3&ncmMO<`gY<_WZ$C33;o1da%`tyxoTb2HasR|RBWhNiz{a(NR+
+zevq%y@B8LqzSBh#Irtgt&IE5Nw~-!pXzcw@#J$ZeEFpKCu=V6ozUYZWj_zP;CnXBD
+z?xWu1rRlNu@gQl&q!uX9!#{<Nr4aekvXL~Sk64;ft2&EX<8Kl{9jl{E7ZTYtX$JSS
+zv3fiW_Z2KsQF!=k<i;~=0o_Tka-z^N+-M|ck1@>sfNQ>Q=N~7`9JJ(6ZR8dpy~aF|
+zo0CZ$FP&ND@wR&8c&T-KXQRRfpJ$yGbzSnzQ(s{IK8DRhsc2?Tr}MBimmA7zS`ESw
+zT)Y;EK4U@T<h~RwmrcyGSTr2ma)nw?aCnUd7}AE0H}rq<DYDhMmz%`5X_{oPl%=MT
+z81-es;_6A`JY&@@YjWO@aRBS$cYX8vb5)oF1>QU`7X*?s(j(%i__oZSgAx6)`bt7a
+zlnqY6_F7+ztP~mA9$qWjlUZRi9R9or?znThhU}!t`q4(@Pqco79%@gX6!zIy7}LT?
+zNMP3vL1e<LOgbp!#p$L=x>;9!j;@E;6{^gtO=$G!QyAS5$;?FXp4vX(uEiSWimIj+
+zZiG`gT&Ca6O|&LZXRol4Z+)}lv3_Pv$$^$|AeB}1Ya#_L)Yh;eO!gjR(PZ|6`C?hH
+zmY$j54C`1LDGZ6j*{KCbSgEn}5vw-#4*=Fh^^Z)BrIX2qXAb^EdCuHioFYhRn0Tq2
+z8?7H;l?5P)45|7f3xLE)CZ8N^%wLB7KQ9$StY!up|L~@kw(KHBe^LE2q-%Rt7JyHY
+zWYbWHm`?iFLL@O(6uJfFy@K`{9Z6R<`$ncXy0H=?L}7c#1qbzwW^lu(o74%gLLI9M
+zy3&ollef2KOL3bzO!mPo_3i<;A9QykJz2Eq-6G9cJ_Y5iV8WX2f=zpl&`!m>p>qp`
+zIa)_>L7k!<T+kEC{qlCR#V)>Bh4a2~ovzwZrVwtZ>p7m%(;U|t@3MNSj`>O_Xc8PN
+zb>NaCq(1~gJ_QuDm$e20eb-ILxUBvuUuajSdaz;JP}7m}cuxTYqfC=L0`-iFB<8if
+zULhrjDbyue%&UWVT8syGS(#bcFa^*Lj>c~)uD@@o&+85ocG8togRIyqWJy8eGJ`kr
+z2qd8_@<js5eh#!+P-WcjF=Hx#^OGpaL5SXA6l(~^MhLdLB*R0JhHBU|ant51^RV7v
+zZaLAyrFqi!4O^_Ly}qgG;29sM;Jtinb4fi5=)gn?*|P;;kJmBmN*?2A@(f3ruKy*r
+z(48@LtCq0mWP0`jLdZgilq}OvJa3J?U2@)5XS#i$N@36?CJWSA1%rDtm~8Gt2EBMa
+zvbdoB7T7jP^~dYeJpWDmLw#0P001YZr9Mfo<J8wzR6V~sba+_zs1aRKWNXp#o}M)p
+zUPrVL`rX3>;(2wr-at|LDWik1Uzeyn!?4Yd9!2j3@4Xf%=aJzmG!hhd4XM!?QV9*l
+zMfJ~3gF+7tu%D-CSwDJFosz>2$0ps1Ci}4Myz@uqN=FWF2T3$K&2lx=rnk<O%pZuK
+zXn1^G9W9*GFc@nmctBEH`A8@5V^IrAUG){U(T|icQ}I9fD1WjZ(Kr_T6CdG!--uW9
+zD@GrJ^YW_eH>&vakLu5Fpzn9u4L$$-BlvjT`aAA=NNocDa_%^MeD(TGoA0<w-GLuC
+z*ix&*120Y^KOVcUs+&pbcrB@cl=yr}ZNiVpI|eTy8nfb~ch${EUIX1AqG$7h(y!90
+z@2b17swLqd{fd8a6Bfs&dur9`iu7E>#|!EvDug`PfZBn9CWx5vzFl>Lj@c8Xl+fG?
+z-|ZSm%UDkS<XR~kq63^!`XBV&GwMd1CUBtvHt+o#Kk}mt;$W~X{Q<BvTN>}NY<W|O
+zGV%fT+3Bi`{lMzKtCElT0YCCL)pfWfIR(vw20#fs>{w?>U0-YMsWr(TiGOz0eI`Jn
+zVUE6Gwy6fG>*k?u#V)Q&K&voxk9D`)r#4m41-psPmfYA9>%OUOE|==%>NLPB0T)>Z
+z0QI}u<M&r>zE#~2xp?uh#;Fb1RXX(9>#cXWjriU*>je33BTT3sEkR;=B{ew7Iff63
+zbb{`px{Fq9qojh05s52W;~am!qCU{WjKr5-R<~n~1k)MOuP8c5%xotfq>JA3A$3iQ
+z07QU4ll?_H;{~+|o-5b2k$!vgkE@%p>7jb947a*=Z4sR>s$0Wcx}U8bJI*^Ssm*j%
+zo1IK&V5AE_Cc5U2*TWxrqSok`hgy$c@0o6tP_aoT0H@f9s{y#&pN(&{?!#(5vI^wc
+z=~m~}t?nJHOsBuBGOaqGx$+G@>;?5hvUp~^3%_4dchEhbnC`UpH|o@bWK#DX;y=F6
+zU@^j)XpB^?0BP*pYyQRtHa_TOCYY7oz2*J~)NPqv?eP71wOK3cx&$1bEhxsuHl_t1
+zvoN`xo*N#=nJQ@3snz)UqFRr?fn-pAD$L?W;~6rhF~RkgEh_$;;Qij)@4a9B5S}0}
+zm_@%;>llk*t$_H-dpdQl-!&9_!}IWlGaIRukjzc5a8Ygavq11kSKY+KXYU}tUNnr4
+zAgu++2J#K++70Y}_4>^>-THoYH_iy8NW{M|e*3PLr;x+R#4)k|5?@jmzG(ush(pwH
+zPHmC+Dm`7c8<i#2x*t;;YB5I#TWU8Oy11U-o#1^#_^}1|#u9pj&9+;_OzFigf;n>M
+zL0e<~WT$~ztf11I?{Ga{n&Mm<m#>iuWBln|b-%$($6wP-R9-}jaL6+hrQ(yWx&zC4
+z8jlG+(o3FI#E>K8kQ-{O5ZeM>4NlZBF%B*Few=r?w#BKow82?*FE-FX_xADXB?%MP
+zZ2*JEW^}<ixeJMYu3EQE-GX21mjeb&VpJ7_?VQ@^P1|GsLdfiY$h_#5Egxf+LJy1R
+z4&V74FY2)grdOQxq61`6tq)(3IAt_=icfqW6R`FV(*s`+cI7No@rL3rtLnzskxxqy
+zu|}U;?AavhgJzjnqst6H{>>n}eiN$*U`@C#_4P57N)kIC{-h{aETZNoR(zqUU9-_@
+zX$_6g0&G&NhH)5#50vvqQ5Xr^4j|N8J}#~W$=o%vWUA3@Hco2JMO%GO-2ymA?=KXq
+zF_|+W1e5(wWVemY>d|Jkb=>J+q&_{?Xja7@71%5=#Qaa`-4-Cl^?cm}ov9ZwI2>c?
+zChJh>^l5LxQoHA7Ik_CLMn@O?YDsOx4ai3T8s;xT8zEHDGbI>P3D|THQeRD{Zo2KN
+zy2)$_?BtQY0`KHwy6}>^p+w1-2O9!P#_eyb^{%A|VbjK2)dp;3{D|}sP{e&nUlm^w
+zkQ}JCeJzqj@P^H}6&cS{&m+A>Nb`q3tgge4cvKZ5{ymDsR7TG+KI-k}Vjc<_K)w&Z
+zi?tc;IAam`-utlG?VWmtwMM7^Iup17u+>1W2h^Ee3K4FUQcPm*{45Z(*p|7Z;aYdc
+zC8Wk@D5@2h|J~*mk2ldLX2+>RI1}t2{nAi-u_wnNj5c!vUCkSB#jvp7GFH$nwN@;Z
+z=-ua8kM#JIn>Huh@g7C?lOJovua@Hv>Hf=Vy~}FGbBU4VKBM*Mvk6v_B93oG0=+XB
+zKOw$WtxidZ7du>3cjp(oY6RJgA36m>$mK)0K|gIX>4aCWyYudQ?o}T!ufVUj6Fh^B
+zP-tur90sW@$vo0*bY^#)(nL!NC%D06#VS{%snQK0vSw!Or(}QHs3+mnx^?$_Xe(>G
+z?#t%=ZWVS&wI;hj_XrGQEDB%(y`!K68ef10h<$iQ8UylU{G$z^U`=X7=Vz4W`jYQ1
+zyzc!523Am|3InNzAUAX!A#8e=<xt!xg^oEdYHvoV3?JuCS*G41q132bmk2}U$F@EA
+zQ!Kc(TT}%1y6e|(+^np=?DNmva~Qc{9*L}Zk0FRt4!zZ|?`!JT40@-_e_gF-HG4ZX
+z1jWDKR2u$4(xreY>n|c2?x6>k+!IZEz8?b1o>Mm^E-rk0-l3oLwdDG~nQEm5J^-n!
+z@r=|Ky{^{D_z$bfJ{&{`L{ke8g;de}ME{rs29zD(sVKM$j`5@;)^MgJ^**4CV-!*7
+zoKOA13fvtyk*-YINu@F^5B7n4zpK$cUTxxB<h&rf_;jsRBhD#UeWyXbxcZ#WLOjpo
+zN%Rx&r0_#}w`G>?5s-wj-NKyDJDt-O=?iR1hKixgrpKyyHb5_EGB4<Kk2$nF+wOY1
+zd1_zvL{*xS^2td7wRVAFi4UpUGDAxE#k{()){+)|PoemxS?BkgSJ#<(1)TNTb?Y~5
+z+I;7ItaIW~-76U)(A2HD5|-_<+N}W-oQM4&p+>|PCuBdznxL%0P}G{>u4=2?tjTOw
+zmge`|2j7C$Y}oMheJ4xm{dlQ@B3A6QtZr|dtc#A5A_s|87<$y4h+g??itH9PiCHw?
+zvgLmF37_-sA9i3goeuHCd3Ce6&~|pf;Om|bjTjO`lFAGc;-USuH^+eCHY;B}8mGfy
+zkF=b?AlPOM7n@<X1Cceab^E<)BkWTUg>-Ah66e(|8NJZ)hu?u5)=-8=1&!=!L--<b
+zJZt2LVENG2ZSZUA?^-R46dFx$q%erZhO?2A#C~8T5aE1)h<x02f_2;5a3@T4+Ewur
+z5VD+Mbd3H$jPZ=R-n6Kv?=8505*00|o2RNrp+0+#L%P=Qy06hc7uAi#U3h-W9vFrO
+z)5&imx~kIx1S%WhPuV@q?lM-R&!`_U03rT*tXXTH+FgeWyv*N$JFPa2k2Fllg%P<8
+zjm{!)xP_U507#>l4<He?R@?h=K>6yc?;)ou;jUy-FyuEe*y6YvZVa`b?D|&g{s$j?
+zP;lk0ht!4&+X0|SK4{l5fBVY5t}V<}vjg4b9cy>ldjbCooxcT{wfjU(Byk5tHiWI~
+zK+?ou?Ry%HR`YR9;0YfmUz_y3GB4zRLhp}z;X77>(Pm`4Y=Y>5hnkxq^AXmqza1Yl
+z>51!#!3z!)e3P(Mz8QQ>@aAQ&tF<JFm2WNHRvARkLKZ$ihT}5hzZib_sUZmdz!1dE
+zWt%Vsg`E8Ud?GNPo2-Y)H)mjUCx5V3H`!`_RD&K$%sLc_TbBf^H+(OkLgu%iLL$#l
+zJJIJ({$S2edZEo?W%~n<3^VA1efGS@`qx5Re&0R!KBTVKuf^O1J{?{<?9<2xH9j4Q
+ziyWXAF2OaWiA*aca$S0{b@zOj)mP%}PV>IVPzcM^0j`TMIj34E45O?h1|M0AJ{M;#
+z*zDCb9(`j&bNrzxZq=*S-J?i-lk5pkOMq<U3D(3@z7C%wY*y%G#t+X>WIRj$!Y@sT
+zo&1H~gMULTm!%lv(JgnXyKw@ibF<S<+u_2}$gXfbL+Mvnt95sRQr};k=!mnQXYYW|
+z8dy-Q-$W<GwgDqEICj0pcy<HmSBL{M7mX>QOLO@lG{cdPL^&qQLH=#%n4OQi4jRTn
+z=;;BL*P-Z}_`U2%PJF&3-s3o9)~tK0Ve>YIU|12Ew%DTl0v_0!FdOAf*~TU?FEf9#
+zNxuLxc{gsOpK^N{r)@FTz07|~>V%B7PQOe3Xeg3AS8h2Qd8AXUGWYd*D45$3Q}#ZV
+zeKzqM2JAp6;+8PT0*A0B2TdxZHV~l&o^9f}+S^D+xu7<Oi3k9RRYA8{V5866ObM!!
+z^-cIuxJ?3NK>&d=@eH=MJy);T@AT@dbndGiMI@0DJ^9uDhS|%bPpieV-mR6J8-*OK
+z^d(rl$zEx>R>Df)e#D+W>o~w=S9;@{YOTGEvT!7f0;y_!f;}ajW~;#<<h>Wvt<#M%
+zvAC8<$eoQ@qf(G>>u^oD&sp^W+OSq<!Al+_VuGY$JXV{Yt^r|*Nsti!fZWBQNtPwH
+zS-b_Fg)dHcechO55n>B|AQbumplZR12m$#-^gL02H^A33DAV={{CtGD05M*cW7_hj
+zgooNJi4^HoF<BaAM2YHPdkj?u@)?P}Kt?<vIzz?s4H&mXu;AvK1>-bGXtS>=&&Wgz
+zk2umsk-Qw0kAA)i=R+7(aje=fn46M}3Y><mHRt&ya;rpPt0muV1&ln?lcbV+d=eLw
+zIG{(L(7E8!tDyyMbEeS(Bt^H`{bHv?DGUUQ^>?s~X-~Bc2RX;N>C;V{8N9LYh7`1U
+zW<4&Mgkk=5_TuGej22mmr4tfspVuZ<cKHLtzHY5q2SDW40+EprdiprDd)5f#a(4nN
+zJ$kpUBBJSUIPKTC><~e<o^?aLSRu#&qqD4IxoONkOT+;mr0|CGI%xMKJob8B_Q%+_
+zpl9Vjhy#vHE$L%G*EqvZfQJ?Rf**#J9g6B7<}y`z(ST*WCb4$o>orMt5)Zqr?UH}A
+z=_LEVqUctcWwJQQlG@-k1O*@v4yELndvK6k-xXoSIrTv-8-B%m7t4nkTh6hz0mklH
+z)AQcs4Y4jzdWLJ(-Gg}cHg&sk%st+5VQE%7RzU39j@?(AK|N^&U#T|tqH~#fi0mH|
+zQ(F-yk$ql%pso;G_;Q3!^Ugxd3RjuNlluAZ2>fHldCg~D<+z0~UoY{Kf4Hig$h4R`
+zS*Ir~HES(y@WZe|z6*0B2Iw*i_yCJpe`72r{SCO~(uD}+7WfQAdt~M(#xbF`%-hrP
+zRjrE)=OGS(Bnd+vW-wpq_qN`z$B?{IL(&fcO{`G!GS`(GGk7yGHlPeYq|7ITQfJkj
+zNEeZK2@FXQxi*>tEf3hDWrIgL_~AJ|8S%j>v~2+BE1h!N5+Gcc24l?0tZi%##)t@B
+z%Dd6qLvRyFqUfXHS|qv-bY`nfB5M<syY{G;j`YJ7oCb&0zR<~I@bn<!UiV1E>`iLF
+z$0Ro*S}z~u&%UB_u<X?$sK7&SS2s%LH8Z6ejC$Ph3}>@hSg<!pP=zghmovxwoNSl%
+zZ4(Hjk2b&qf5UCC%0KYItsJRyUWgw$0k0N7K;!$OcI>n>2m*J^{@WFG%`}&p;(N&I
+z0Hjg87)L<qfQ%^e0CeglW%WVraL|(@-76S~Zvv@qZysYsf+6uW6?{a<_%&u(^2mf0
+z=9RU1z@7lwcG)CX*f+>auDGU-LLSX=NVkaaHMD3ph`K`g1dMcW3wj^1mLGn^&l`S3
+zPLHeb(e2r@2yys}>T0AXG6+_|@-<)8WWA$$s!^{5itnAGCME_90j#U?{wnGud*)7I
+z>gG($e8^wvQjT!wtJiNNJJhE1ZJ!2*=jVR9);_)qF-qZ8n)7auQ#tIrLHidE=@tn%
+z-J;rTL<*bOY>wXzZ%6c9x(Qe%lPx=D9g;GbuEakOW|5*E`x;WzBg6$8?*z)g`Zg3D
+z>2i(j=hb>w3;<}XC-44kLS>{-v1MvF5xLUA42jidD8GcDlCg&G5HpJ!FyPNijOVyz
+ztK9_GgfE6b@H?WZk$;#d{i;o$P!!hG;X(R@T*TO$nT9YEdPeQWGlYg5N3G$|NnUp8
+zALe_M>`<xBrEo&jgH^                ctx.moveTo(axisx.p2c(x1) + xoffset, axisy.p2c(y1) + yoffset);
++
++                    prevx = x2;
++                    prevy = y2;
++                    ctx.lineTo(axisx.p2c(x2) + xoffset, axisy.p2c(y2) + yoffset);
++                }
++                ctx.stroke();
++            }
++
++            function plotLineArea(datapoints, axisx, axisy) {
++                var points = datapoints.points,
++                    ps = datapoints.pointsize,
++                    bottom = Math.min(Math.max(0, axisy.min), axisy.max),
++                    i = 0, top, areaOpen = false,
++                    ypos = 1, segmentStart = 0, segmentEnd = 0;
++
++                // we process each segment in two turns, first forward
++                // direction to sketch out top, then once we hit the
++                // end we go backwards to sketch the bottom
++                while (true) {
++                    if (ps > 0 && i > points.length + ps)
++                        break;
++
++                    i += ps; // ps is negative if going backwards
++
++                    var x1 = points[i - ps],
++                        y1 = points[i - ps + ypos],
++                        x2 = points[i], y2 = points[i + ypos];
++
++                    if (areaOpen) {
++                        if (ps > 0 && x1 != null && x2 == null) {
++                            // at turning point
++                            segmentEnd = i;
++                            ps = -ps;
++                            ypos = 2;
++                            continue;
++                        }
++
++                        if (ps < 0 && i == segmentStart + ps) {
++                            // done with the reverse sweep
++                            ctx.fill();
++                            areaOpen = false;
++                            ps = -ps;
++                            ypos = 1;
++                            i = segmentStart = segmentEnd + ps;
++                            continue;
++                        }
++                    }
++
++                    if (x1 == null || x2 == null)
++                        continue;
++
++                    // clip x values
++
++                    // clip with xmin
++                    if (x1 <= x2 && x1 < axisx.min) {
++                        if (x2 < axisx.min)
++                            continue;
++                        y1 = (axisx.min - x1) / (x2 - x1) * (y2 - y1) + y1;
++                        x1 = axisx.min;
++                    }
++                    else if (x2 <= x1 && x2 < axisx.min) {
++                        if (x1 < axisx.min)
++                            continue;
++                        y2 = (axisx.min - x1) / (x2 - x1) * (y2 - y1) + y1;
++                        x2 = axisx.min;
++                    }
++
++                    // clip with xmax
++                    if (x1 >= x2 && x1 > axisx.max) {
++                        if (x2 > axisx.max)
++                            continue;
++                        y1 = (axisx.max - x1) / (x2 - x1) * (y2 - y1) + y1;
++                        x1 = axisx.max;
++                    }
++                    else if (x2 >= x1 && x2 > axisx.max) {
++                        if (x1 > axisx.max)
++                            continue;
++                        y2 = (axisx.max - x1) / (x2 - x1) * (y2 - y1) + y1;
++                        x2 = axisx.max;
++                    }
++
++                    if (!areaOpen) {
++                        // open area
++                        ctx.beginPath();
++                        ctx.moveTo(axisx.p2c(x1), axisy.p2c(bottom));
++                        areaOpen = true;
++                    }
++
++                    // now first check the case where both is outside
++                    if (y1 >= axisy.max && y2 >= axisy.max) {
++                        ctx.lineTo(axisx.p2c(x1), axisy.p2c(axisy.max));
++                        ctx.lineTo(axisx.p2c(x2), axisy.p2c(axisy.max));
++                        continue;
++                    }
++                    else if (y1 <= axisy.min && y2 <= axisy.min) {
++                        ctx.lineTo(axisx.p2c(x1), axisy.p2c(axisy.min));
++                        ctx.lineTo(axisx.p2c(x2), axisy.p2c(axisy.min));
++                        continue;
++                    }
++
++                    // else it's a bit more complicated, there might
++                    // be a flat maxed out rectangle first, then a
++                    // triangular cutout or reverse; to find these
++                    // keep track of the current x values
++                    var x1old = x1, x2old = x2;
++
++                    // clip the y values, without shortcutting, we
++                    // go through all cases in turn
++
++                    // clip with ymin
++                    if (y1 <= y2 && y1 < axisy.min && y2 >= axisy.min) {
++                        x1 = (axisy.min - y1) / (y2 - y1) * (x2 - x1) + x1;
++                        y1 = axisy.min;
++                    }
++                    else if (y2 <= y1 && y2 < axisy.min && y1 >= axisy.min) {
++                        x2 = (axisy.min - y1) / (y2 - y1) * (x2 - x1) + x1;
++                        y2 = axisy.min;
++                    }
++
++                    // clip with ymax
++                    if (y1 >= y2 && y1 > axisy.max && y2 <= axisy.max) {
++                        x1 = (axisy.max - y1) / (y2 - y1) * (x2 - x1) + x1;
++                        y1 = axisy.max;
++                    }
++                    else if (y2 >= y1 && y2 > axisy.max && y1 <= axisy.max) {
++                        x2 = (axisy.max - y1) / (y2 - y1) * (x2 - x1) + x1;
++                        y2 = axisy.max;
++                    }
++
++                    // if the x value was changed we got a rectangle
++                    // to fill
++                    if (x1 != x1old) {
++                        ctx.lineTo(axisx.p2c(x1old), axisy.p2c(y1));
++                        // it goes to (x1, y1), but we fill that below
++                    }
++
++                    // fill triangular section, this sometimes result
++                    // in redundant points if (x1, y1) hasn't changed
++                    // from previous line to, but we just ignore that
++                    ctx.lineTo(axisx.p2c(x1), axisy.p2c(y1));
++                    ctx.lineTo(axisx.p2c(x2), axisy.p2c(y2));
++
++                    // fill the other rectangle if it's there
++                    if (x2 != x2old) {
++                        ctx.lineTo(axisx.p2c(x2), axisy.p2c(y2));
++                        ctx.lineTo(axisx.p2c(x2old), axisy.p2c(y2));
++                    }
++                }
++            }
++
++            ctx.save();
++            ctx.translate(plotOffset.left, plotOffset.top);
++            ctx.lineJoin = "round";
++
++            var lw = series.lines.lineWidth,
++                sw = series.shadowSize;
++            // FIXME: consider another form of shadow when filling is turned on
++            if (lw > 0 && sw > 0) {
++                // draw shadow as a thick and thin line with transparency
++                ctx.lineWidth = sw;
++                ctx.strokeStyle = "rgba(0,0,0,0.1)";
++                // position shadow at angle from the mid of line
++                var angle = Math.PI/18;
++                plotLine(series.datapoints, Math.sin(angle) * (lw/2 + sw/2), Math.cos(angle) * (lw/2 + sw/2), series.xaxis, series.yaxis);
++                ctx.lineWidth = sw/2;
++                plotLine(series.datapoints, Math.sin(angle) * (lw/2 + sw/4), Math.cos(angle) * (lw/2 + sw/4), series.xaxis, series.yaxis);
++            }
++
++            ctx.lineWidth = lw;
++            ctx.strokeStyle = series.color;
++            var fillStyle = getFillStyle(series.lines, series.color, 0, plotHeight);
++            if (fillStyle) {
++                ctx.fillStyle = fillStyle;
++                plotLineArea(series.datapoints, series.xaxis, series.yaxis);
++            }
++
++            if (lw > 0)
++                plotLine(series.datapoints, 0, 0, series.xaxis, series.yaxis);
++            ctx.restore();
++        }
++
++        function drawSeriesPoints(series) {
++            function plotPoints(datapoints, radius, fillStyle, offset, shadow, axisx, axisy, symbol) {
++                var points = datapoints.points, ps = datapoints.pointsize;
++
++                for (var i = 0; i < points.length; i += ps) {
++                    var x = points[i], y = points[i + 1];
++                    if (x == null || x < axisx.min || x > axisx.max || y < axisy.min || y > axisy.max)
++                        continue;
++
++                    ctx.beginPath();
++                    x = axisx.p2c(x);
++                    y = axisy.p2c(y) + offset;
++                    if (symbol == "circle")
++                        ctx.arc(x, y, radius, 0, shadow ? Math.PI : Math.PI * 2, false);
++                    else
++                        symbol(ctx, x, y, radius, shadow);
++                    ctx.closePath();
++
++                    if (fillStyle) {
++                        ctx.fillStyle = fillStyle;
++                        ctx.fill();
++                    }
++                    ctx.stroke();
++                }
++            }
++
++            ctx.save();
++            ctx.translate(plotOffset.left, plotOffset.top);
++
++            var lw = series.points.lineWidth,
++                sw = series.shadowSize,
++                radius = series.points.radius,
++                symbol = series.points.symbol;
++            if (lw > 0 && sw > 0) {
++                // draw shadow in two steps
++                var w = sw / 2;
++                ctx.lineWidth = w;
++                ctx.strokeStyle = "rgba(0,0,0,0.1)";
++                plotPoints(series.datapoints, radius, null, w + w/2, true,
++                           series.xaxis, series.yaxis, symbol);
++
++                ctx.strokeStyle = "rgba(0,0,0,0.2)";
++                plotPoints(series.datapoints, radius, null, w/2, true,
++                           series.xaxis, series.yaxis, symbol);
++            }
++
++            ctx.lineWidth = lw;
++            ctx.strokeStyle = series.color;
++            plotPoints(series.datapoints, radius,
++                       getFillStyle(series.points, series.color), 0, false,
++                       series.xaxis, series.yaxis, symbol);
++            ctx.restore();
++        }
++
++        function drawBar(x, y, b, barLeft, barRight, offset, fillStyleCallback, axisx, axisy, c, horizontal, lineWidth) {
++            var left, right, bottom, top,
++                drawLeft, drawRight, drawTop, drawBottom,
++                tmp;
++
++            // in horizontal mode, we start the bar from the left
++            // instead of from the bottom so it appears to be
++            // horizontal rather than vertical
++            if (horizontal) {
++                drawBottom = drawRight = drawTop = true;
++                drawLeft = false;
++                left = b;
++                right = x;
++                top = y + barLeft;
++                bottom = y + barRight;
++
++                // account for negative bars
++                if (right < left) {
++                    tmp = right;
++                    right = left;
++                    left = tmp;
++                    drawLeft = true;
++                    drawRight = false;
++                }
++            }
++            else {
++                drawLeft = drawRight = drawTop = true;
++                drawBottom = false;
++                left = x + barLeft;
++                right = x + barRight;
++                bottom = b;
++                top = y;
++
++                // account for negative bars
++                if (top < bottom) {
++                    tmp = top;
++                    top = bottom;
++                    bottom = tmp;
++                    drawBottom = true;
++                    drawTop = false;
++                }
++            }
++
++            // clip
++            if (right < axisx.min || left > axisx.max ||
++                top < axisy.min || bottom > axisy.max)
++                return;
++
++            if (left < axisx.min) {
++                left = axisx.min;
++                drawLeft = false;
++            }
++
++            if (right > axisx.max) {
++                right = axisx.max;
++                drawRight = false;
++            }
++
++            if (bottom < axisy.min) {
++                bottom = axisy.min;
++                drawBottom = false;
++            }
++
++            if (top > axisy.max) {
++                top = axisy.max;
++                drawTop = false;
++            }
++
++            left = axisx.p2c(left);
++            bottom = axisy.p2c(bottom);
++            right = axisx.p2c(right);
++            top = axisy.p2c(top);
++
++            // fill the bar
++            if (fillStyleCallback) {
++                c.beginPath();
++                c.moveTo(left, bottom);
++                c.lineTo(left, top);
++                c.lineTo(right, top);
++                c.lineTo(right, bottom);
++                c.fillStyle = fillStyleCallback(bottom, top);
++                c.fill();
++            }
++
++            // draw outline
++            if (lineWidth > 0 && (drawLeft || drawRight || drawTop || drawBottom)) {
++                c.beginPath();
++
++                // FIXME: inline moveTo is buggy with excanvas
++                c.moveTo(left, bottom + offset);
++                if (drawLeft)
++                    c.lineTo(left, top + offset);
++                else
++                    c.moveTo(left, top + offset);
++                if (drawTop)
++                    c.lineTo(right, top + offset);
++                else
++                    c.moveTo(right, top + offset);
++                if (drawRight)
++                    c.lineTo(right, bottom + offset);
++                else
++                    c.moveTo(right, bottom + offset);
++                if (drawBottom)
++                    c.lineTo(left, bottom + offset);
++                else
++                    c.moveTo(left, bottom + offset);
++                c.stroke();
++            }
++        }
++
++        function drawSeriesBars(series) {
++            function plotBars(datapoints, barLeft, barRight, offset, fillStyleCallback, axisx, axisy) {
++                var points = datapoints.points, ps = datapoints.pointsize;
++
++                for (var i = 0; i < points.length; i += ps) {
++                    if (points[i] == null)
++                        continue;
++                    drawBar(points[i], points[i + 1], points[i + 2], barLeft, barRight, offset, fillStyleCallback, axisx, axisy, ctx, series.bars.horizontal, series.bars.lineWidth);
++                }
++            }
++
++            ctx.save();
++            ctx.translate(plotOffset.left, plotOffset.top);
++
++            // FIXME: figure out a way to add shadows (for instance along the right edge)
++            ctx.lineWidth = series.bars.lineWidth;
++            ctx.strokeStyle = series.color;
++            var barLeft = series.bars.align == "left" ? 0 : -series.bars.barWidth/2;
++            var fillStyleCallback = series.bars.fill ? function (bottom, top) { return getFillStyle(series.bars, series.color, bottom, top); } : null;
++            plotBars(series.datapoints, barLeft, barLeft + series.bars.barWidth, 0, fillStyleCallback, series.xaxis, series.yaxis);
++            ctx.restore();
++        }
++
++        function getFillStyle(filloptions, seriesColor, bottom, top) {
++            var fill = filloptions.fill;
++            if (!fill)
++                return null;
++
++            if (filloptions.fillColor)
++                return getColorOrGradient(filloptions.fillColor, bottom, top, seriesColor);
++
++            var c = $.color.parse(seriesColor);
++            c.a = typeof fill == "number" ? fill : 0.4;
++            c.normalize();
++            return c.toString();
++        }
++
++        function insertLegend() {
++            placeholder.find(".legend").remove();
++
++            if (!options.legend.show)
++                return;
++
++            var fragments = [], rowStarted = false,
++                lf = options.legend.labelFormatter, s, label;
++            for (var i = 0; i < series.length; ++i) {
++                s = series[i];
++                label = s.label;
++                if (!label)
++                    continue;
++
++                if (i % options.legend.noColumns == 0) {
++                    if (rowStarted)
++                        fragments.push('</tr>');
++                    fragments.push('<tr>');
++                    rowStarted = true;
++                }
++
++                if (lf)
++                    label = lf(label, s);
++
++                fragments.push(
++                    '<td class="legendColorBox"><div style="border:1px solid ' + options.legend.labelBoxBorderColor + ';padding:1px"><div style="width:4px;height:0;border:5px solid ' + s.color + ';overflow:hidden"></div></div></td>' +
++                    '<td class="legendLabel">' + label + '</td>');
++            }
++            if (rowStarted)
++                fragments.push('</tr>');
++
++            if (fragments.length == 0)
++                return;
++
++            var table = '<table style="font-size:smaller;color:' + options.grid.color + '">' + fragments.join("") + '</table>';
++            if (options.legend.container != null)
++                $(options.legend.container).html(table);
++            else {
++                var pos = "",
++                    p = options.legend.position,
++                    m = options.legend.margin;
++                if (m[0] == null)
++                    m = [m, m];
++                if (p.charAt(0) == "n")
++                    pos += 'top:' + (m[1] + plotOffset.top) + 'px;';
++                else if (p.charAt(0) == "s")
++                    pos += 'bottom:' + (m[1] + plotOffset.bottom) + 'px;';
++                if (p.charAt(1) == "e")
++                    pos += 'right:' + (m[0] + plotOffset.right) + 'px;';
++                else if (p.charAt(1) == "w")
++                    pos += 'left:' + (m[0] + plotOffset.left) + 'px;';
++                var legend = $('<div class="legend">' + table.replace('style="', 'style="position:absolute;' + pos +';') + '</div>').appendTo(placeholder);
++                if (options.legend.backgroundOpacity != 0.0) {
++                    // put in the transparent background
++                    // separately to avoid blended labels and
++                    // label boxes
++                    var c = options.legend.backgroundColor;
++                    if (c == null) {
++                        c = options.grid.backgroundColor;
++                        if (c && typeof c == "string")
++                            c = $.color.parse(c);
++                        else
++                            c = $.color.extract(legend, 'background-color');
++                        c.a = 1;
++                        c = c.toString();
++                    }
++                    var div = legend.children();
++                    $('<div style="position:absolute;width:' + div.width() + 'px;height:' + div.height() + 'px;' + pos +'background-color:' + c + ';"> </div>').prependTo(legend).css('opacity', options.legend.backgroundOpacity);
++                }
++            }
++        }
++
++
++        // interactive features
++
++        var highlights = [],
++            redrawTimeout = null;
++
++        // returns the data item the mouse is over, or null if none is found
++        function findNearbyItem(mouseX, mouseY, seriesFilter) {
++            var maxDistance = options.grid.mouseActiveRadius,
++                smallestDistance = maxDistance * maxDistance + 1,
++                item = null, foundPoint = false, i, j;
++
++            for (i = series.length - 1; i >= 0; --i) {
++                if (!seriesFilter(series[i]))
++                    continue;
++
++                var s = series[i],
++                    axisx = s.xaxis,
++                    axisy = s.yaxis,
++                    points = s.datapoints.points,
++                    ps = s.datapoints.pointsize,
++                    mx = axisx.c2p(mouseX), // precompute some stuff to make the loop faster
++                    my = axisy.c2p(mouseY),
++                    maxx = maxDistance / axisx.scale,
++                    maxy = maxDistance / axisy.scale;
++
++                // with inverse transforms, we can't use the maxx/maxy
++                // optimization, sadly
++                if (axisx.options.inverseTransform)
++                    maxx = Number.MAX_VALUE;
++                if (axisy.options.inverseTransform)
++                    maxy = Number.MAX_VALUE;
++
++                if (s.lines.show || s.points.show) {
++                    for (j = 0; j < points.length; j += ps) {
++                        var x = points[j], y = points[j + 1];
++                        if (x == null)
++                            continue;
++
++                        // For points and lines, the cursor must be within a
++                        // certain distance to the data point
++                        if (x - mx > maxx || x - mx < -maxx ||
++                            y - my > maxy || y - my < -maxy)
++                            continue;
++
++                        // We have to calculate distances in pixels, not in
++                        // data units, because the scales of the axes may be different
++                        var dx = Math.abs(axisx.p2c(x) - mouseX),
++                            dy = Math.abs(axisy.p2c(y) - mouseY),
++                            dist = dx * dx + dy * dy; // we save the sqrt
++
++                        // use <= to ensure last point takes precedence
++                        // (last generally means on top of)
++                        if (dist < smallestDistance) {
++                            smallestDistance = dist;
++                            item = [i, j / ps];
++                        }
++                    }
++                }
++
++                if (s.bars.show && !item) { // no other point can be nearby
++                    var barLeft = s.bars.align == "left" ? 0 : -s.bars.barWidth/2,
++                        barRight = barLeft + s.bars.barWidth;
++
++                    for (j = 0; j < points.length; j += ps) {
++                        var x = points[j], y = points[j + 1], b = points[j + 2];
++                        if (x == null)
++                            continue;
++
++                        // for a bar graph, the cursor must be inside the bar
++                        if (series[i].bars.horizontal ?
++                            (mx <= Math.max(b, x) && mx >= Math.min(b, x) &&
++                             my >= y + barLeft && my <= y + barRight) :
++                            (mx >= x + barLeft && mx <= x + barRight &&
++                             my >= Math.min(b, y) && my <= Math.max(b, y)))
++                                item = [i, j / ps];
++                    }
++                }
++            }
++
++            if (item) {
++                i = item[0];
++                j = item[1];
++                ps = series[i].datapoints.pointsize;
++
++                return { datapoint: series[i].datapoints.points.slice(j * ps, (j + 1) * ps),
++                         dataIndex: j,
++                         series: series[i],
++                         seriesIndex: i };
++            }
++
++            return null;
++        }
++
++        function onMouseMove(e) {
++            if (options.grid.hoverable)
++                triggerClickHoverEvent("plothover", e,
++                                       function (s) { return s["hoverable"] != false; });
++        }
++
++        function onMouseLeave(e) {
++            if (options.grid.hoverable)
++                triggerClickHoverEvent("plothover", e,
++                                       function (s) { return false; });
++        }
++
++        function onClick(e) {
++            triggerClickHoverEvent("plotclick", e,
++                                   function (s) { return s["clickable"] != false; });
++        }
++
++        // trigger click or hover event (they send the same parameters
++        // so we share their code)
++        function triggerClickHoverEvent(eventname, event, seriesFilter) {
++            var offset = eventHolder.offset(),
++                canvasX = event.pageX - offset.left - plotOffset.left,
++                canvasY = event.pageY - offset.top - plotOffset.top,
++            pos = canvasToAxisCoords({ left: canvasX, top: canvasY });
++
++            pos.pageX = event.pageX;
++            pos.pageY = event.pageY;
++
++            var item = findNearbyItem(canvasX, canvasY, seriesFilter);
++
++            if (item) {
++                // fill in mouse pos for any listeners out there
++                item.pageX = parseInt(item.series.xaxis.p2c(item.datapoint[0]) + offset.left + plotOffset.left);
++                item.pageY = parseInt(item.series.yaxis.p2c(item.datapoint[1]) + offset.top + plotOffset.top);
++            }
++
++            if (options.grid.autoHighlight) {
++                // clear auto-highlights
++                for (var i = 0; i < highlights.length; ++i) {
++                    var h = highlights[i];
++                    if (h.auto == eventname &&
++                        !(item && h.series == item.series &&
++                          h.point[0] == item.datapoint[0] &&
++                          h.point[1] == item.datapoint[1]))
++                        unhighlight(h.series, h.point);
++                }
++
++                if (item)
++                    highlight(item.series, item.datapoint, eventname);
++            }
++
++            placeholder.trigger(eventname, [ pos, item ]);
++        }
++
++        function triggerRedrawOverlay() {
++            if (!redrawTimeout)
++                redrawTimeout = setTimeout(drawOverlay, 30);
++        }
++
++        function drawOverlay() {
++            redrawTimeout = null;
++
++            // draw highlights
++            octx.save();
++            octx.clearRect(0, 0, canvasWidth, canvasHeight);
++            octx.translate(plotOffset.left, plotOffset.top);
++
++            var i, hi;
++            for (i = 0; i < highlights.length; ++i) {
++                hi = highlights[i];
++
++                if (hi.series.bars.show)
++                    drawBarHighlight(hi.series, hi.point);
++                else
++                    drawPointHighlight(hi.series, hi.point);
++            }
++            octx.restore();
++
++            executeHooks(hooks.drawOverlay, [octx]);
++        }
++
++        function highlight(s, point, auto) {
++            if (typeof s == "number")
++                s = series[s];
++
++            if (typeof point == "number") {
++                var ps = s.datapoints.pointsize;
++                point = s.datapoints.points.slice(ps * point, ps * (point + 1));
++            }
++
++            var i = indexOfHighlight(s, point);
++            if (i == -1) {
++                highlights.push({ series: s, point: point, auto: auto });
++
++                triggerRedrawOverlay();
++            }
++            else if (!auto)
++                highlights[i].auto = false;
++        }
++
++        function unhighlight(s, point) {
++            if (s == null && point == null) {
++                highlights = [];
++                triggerRedrawOverlay();
++            }
++
++            if (typeof s == "number")
++                s = series[s];
++
++            if (typeof point == "number")
++                point = s.data[point];
++
++            var i = indexOfHighlight(s, point);
++            if (i != -1) {
++                highlights.splice(i, 1);
++
++                triggerRedrawOverlay();
++            }
++        }
++
++        function indexOfHighlight(s, p) {
++            for (var i = 0; i < highlights.length; ++i) {
++                var h = highlights[i];
++                if (h.series == s && h.point[0] == p[0]
++                    && h.point[1] == p[1])
++                    return i;
++            }
++            return -1;
++        }
++
++        function drawPointHighlight(series, point) {
++            var x = point[0], y = point[1],
++                axisx = series.xaxis, axisy = series.yaxis;
++
++            if (x < axisx.min || x > axisx.max || y < axisy.min || y > axisy.max)
++                return;
++
++            var pointRadius = series.points.radius + series.points.lineWidth / 2;
++            octx.lineWidth = pointRadius;
++            octx.strokeStyle = $.color.parse(series.color).scale('a', 0.5).toString();
++            var radius = 1.5 * pointRadius,
++                x = axisx.p2c(x),
++                y = axisy.p2c(y);
++
++            octx.beginPath();
++            if (series.points.symbol == "circle")
++                octx.arc(x, y, radius, 0, 2 * Math.PI, false);
++            else
++                series.points.symbol(octx, x, y, radius, false);
++            octx.closePath();
++            octx.stroke();
++        }
++
++        function drawBarHighlight(series, point) {
++            octx.lineWidth = series.bars.lineWidth;
++            octx.strokeStyle = $.color.parse(series.color).scale('a', 0.5).toString();
++            var fillStyle = $.color.parse(series.color).scale('a', 0.5).toString();
++            var barLeft = series.bars.align == "left" ? 0 : -series.bars.barWidth/2;
++            drawBar(point[0], point[1], point[2] || 0, barLeft, barLeft + series.bars.barWidth,
++                    0, function () { return fillStyle; }, series.xaxis, series.yaxis, octx, series.bars.horizontal, series.bars.lineWidth);
++        }
++
++        function getColorOrGradient(spec, bottom, top, defaultColor) {
++            if (typeof spec == "string")
++                return spec;
++            else {
++                // assume this is a gradient spec; IE currently only
++                // supports a simple vertical gradient properly, so that's
++                // what we support too
++                var gradient = ctx.createLinearGradient(0, top, 0, bottom);
++
++                for (var i = 0, l = spec.colors.length; i < l; ++i) {
++                    var c = spec.colors[i];
++                    if (typeof c != "string") {
++                        var co = $.color.parse(defaultColor);
++                        if (c.brightness != null)
++                            co = co.scale('rgb', c.brightness)
++                        if (c.opacity != null)
++                            co.a *= c.opacity;
++                        c = co.toString();
++                    }
++                    gradient.addColorStop(i / (l - 1), c);
++                }
++
++                return gradient;
++            }
++        }
++    }
++
++    $.plot = function(placeholder, data, options) {
++        //var t0 = new Date();
++        var plot = new Plot($(placeholder), data, options, $.plot.plugins);
++        //(window.console ? console.log : alert)("time used (msecs): " + ((new Date()).getTime() - t0.getTime()));
++        return plot;
++    };
++
++    $.plot.version = "0.7";
++
++    $.plot.plugins = [];
++
++    // returns a string with the date d formatted according to fmt
++    $.plot.formatDate = function(d, fmt, monthNames) {
++        var leftPad = function(n) {
++            n = "" + n;
++            return n.length == 1 ? "0" + n : n;
++        };
++
++        var r = [];
++        var escape = false, padNext = false;
++        var hours = d.getUTCHours();
++        var isAM = hours < 12;
++        if (monthNames == null)
++            monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
++
++        if (fmt.search(/%p|%P/) != -1) {
++            if (hours > 12) {
++                hours = hours - 12;
++            } else if (hours == 0) {
++                hours = 12;
++            }
++        }
++        for (var i = 0; i < fmt.length; ++i) {
++            var c = fmt.charAt(i);
++
++            if (escape) {
++                switch (c) {
++                case 'h': c = "" + hours; break;
++                case 'H': c = leftPad(hours); break;
++                case 'M': c = leftPad(d.getUTCMinutes()); break;
++                case 'S': c = leftPad(d.getUTCSeconds()); break;
++                case 'd': c = "" + d.getUTCDate(); break;
++                case 'm': c = "" + (d.getUTCMonth() + 1); break;
++                case 'y': c = "" + d.getUTCFullYear(); break;
++                case 'b': c = "" + monthNames[d.getUTCMonth()]; break;
++                case 'p': c = (isAM) ? ("" + "am") : ("" + "pm"); break;
++                case 'P': c = (isAM) ? ("" + "AM") : ("" + "PM"); break;
++                case '0': c = ""; padNext = true; break;
++                }
++                if (c && padNext) {
++                    c = leftPad(c);
++                    padNext = false;
++                }
++                r.push(c);
++                if (!padNext)
++                    escape = false;
++            }
++            else {
++                if (c == "%")
++                    escape = true;
++                else
++                    r.push(c);
++            }
++        }
++        return r.join("");
++    };
++
++    // round to nearby lower multiple of base
++    function floorInBase(n, base) {
++        return base * Math.floor(n / base);
++    }
++
++})(jQuery);
+diff --git a/qj-official-web/src/main/webapp/static/js/plugins/flot/jquery.flot.pie.js b/qj-official-web/src/main/webapp/static/js/plugins/flot/jquery.flot.pie.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..d7b603dde4cdfa39fce23cb62244e584c90e1d48
+--- /dev/null
++++ b/qj-official-web/src/main/webapp/static/js/plugins/flot/jquery.flot.pie.js
+@@ -0,0 +1,750 @@
++/*
++Flot plugin for rendering pie charts. The plugin assumes the data is
++coming is as a single data value for each series, and each of those
++values is a positive value or zero (negative numbers don't make
++any sense and will cause strange effects). The data values do
++NOT need to be passed in as percentage values because it
++internally calculates the total and percentages.
++
++* Created by Brian Medendorp, June 2009
++* Updated November 2009 with contributions from: btburnett3, Anthony Aragues and Xavi Ivars
++
++* Changes:
++	2009-10-22: lineJoin set to round
++	2009-10-23: IE full circle fix, donut
++	2009-11-11: Added basic hover from btburnett3 - does not work in IE, and center is off in Chrome and Opera
++	2009-11-17: Added IE hover capability submitted by Anthony Aragues
++	2009-11-18: Added bug fix submitted by Xavi Ivars (issues with arrays when other JS libraries are included as well)
++
++
++Available options are:
++series: {
++	pie: {
++		show: true/false
++		radius: 0-1 for percentage of fullsize, or a specified pixel length, or 'auto'
++		innerRadius: 0-1 for percentage of fullsize or a specified pixel length, for creating a donut effect
++		startAngle: 0-2 factor of PI used for starting angle (in radians) i.e 3/2 starts at the top, 0 and 2 have the same result
++		tilt: 0-1 for percentage to tilt the pie, where 1 is no tilt, and 0 is completely flat (nothing will show)
++		offset: {
++			top: integer value to move the pie up or down
++			left: integer value to move the pie left or right, or 'auto'
++		},
++		stroke: {
++			color: any hexidecimal color value (other formats may or may not work, so best to stick with something like '#FFF')
++			width: integer pixel width of the stroke
++		},
++		label: {
++			show: true/false, or 'auto'
++			formatter:  a user-defined function that modifies the text/style of the label text
++			radius: 0-1 for percentage of fullsize, or a specified pixel length
++			background: {
++				color: any hexidecimal color value (other formats may or may not work, so best to stick with something like '#000')
++				opacity: 0-1
++			},
++			threshold: 0-1 for the percentage value at which to hide labels (if they're too small)
++		},
++		combine: {
++			threshold: 0-1 for the percentage value at which to combine slices (if they're too small)
++			color: any hexidecimal color value (other formats may or may not work, so best to stick with something like '#CCC'), if null, the plugin will automatically use the color of the first slice to be combined
++			label: any text value of what the combined slice should be labeled
++		}
++		highlight: {
++			opacity: 0-1
++		}
++	}
++}
++
++More detail and specific examples can be found in the included HTML file.
++
++*/
++
++(function ($)
++{
++	function init(plot) // this is the "body" of the plugin
++	{
++		var canvas = null;
++		var target = null;
++		var maxRadius = null;
++		var centerLeft = null;
++		var centerTop = null;
++		var total = 0;
++		var redraw = true;
++		var redrawAttempts = 10;
++		var shrink = 0.95;
++		var legendWidth = 0;
++		var processed = false;
++		var raw = false;
++
++		// interactive variables
++		var highlights = [];
++
++		// add hook to determine if pie plugin in enabled, and then perform necessary operations
++		plot.hooks.processOptions.push(checkPieEnabled);
++		plot.hooks.bindEvents.push(bindEvents);
++
++		// check to see if the pie plugin is enabled
++		function checkPieEnabled(plot, options)
++		{
++			if (options.series.pie.show)
++			{
++				//disable grid
++				options.grid.show = false;
++
++				// set labels.show
++				if (options.series.pie.label.show=='auto')
++					if (options.legend.show)
++						options.series.pie.label.show = false;
++					else
++						options.series.pie.label.show = true;
++
++				// set radius
++				if (options.series.pie.radius=='auto')
++					if (options.series.pie.label.show)
++						options.series.pie.radius = 3/4;
++					else
++						options.series.pie.radius = 1;
++
++				// ensure sane tilt
++				if (options.series.pie.tilt>1)
++					options.series.pie.tilt=1;
++				if (options.series.pie.tilt<0)
++					options.series.pie.tilt=0;
++
++				// add processData hook to do transformations on the data
++				plot.hooks.processDatapoints.push(processDatapoints);
++				plot.hooks.drawOverlay.push(drawOverlay);
++
++				// add draw hook
++				plot.hooks.draw.push(draw);
++			}
++		}
++
++		// bind hoverable events
++		function bindEvents(plot, eventHolder)
++		{
++			var options = plot.getOptions();
++
++			if (options.series.pie.show && options.grid.hoverable)
++				eventHolder.unbind('mousemove').mousemove(onMouseMove);
++
++			if (options.series.pie.show && options.grid.clickable)
++				eventHolder.unbind('click').click(onClick);
++		}
++
++
++		// debugging function that prints out an object
++		function alertObject(obj)
++		{
++			var msg = '';
++			function traverse(obj, depth)
++			{
++				if (!depth)
++					depth = 0;
++				for (var i = 0; i < obj.length; ++i)
++				{
++					for (var j=0; j<depth; j++)
++						msg += '\t';
++
++					if( typeof obj[i] == "object")
++					{	// its an object
++						msg += ''+i+':\n';
++						traverse(obj[i], depth+1);
++					}
++					else
++					{	// its a value
++						msg += ''+i+': '+obj[i]+'\n';
++					}
++				}
++			}
++			traverse(obj);
++			alert(msg);
++		}
++
++		function calcTotal(data)
++		{
++			for (var i = 0; i < data.length; ++i)
++			{
++				var item = parseFloat(data[i].data[0][1]);
++				if (item)
++					total += item;
++			}
++		}
++
++		function processDatapoints(plot, series, data, datapoints)
++		{
++			if (!processed)
++			{
++				processed = true;
++
++				canvas = plot.getCanvas();
++				target = $(canvas).parent();
++				options = plot.getOptions();
++
++				plot.setData(combine(plot.getData()));
++			}
++		}
++
++		function setupPie()
++		{
++			legendWidth = target.children().filter('.legend').children().width();
++
++			// calculate maximum radius and center point
++			maxRadius =  Math.min(canvas.width,(canvas.height/options.series.pie.tilt))/2;
++			centerTop = (canvas.height/2)+options.series.pie.offset.top;
++			centerLeft = (canvas.width/2);
++
++			if (options.series.pie.offset.left=='auto')
++				if (options.legend.position.match('w'))
++					centerLeft += legendWidth/2;
++				else
++					centerLeft -= legendWidth/2;
++			else
++				centerLeft += options.series.pie.offset.left;
++
++			if (centerLeft<maxRadius)
++				centerLeft = maxRadius;
++			else if (centerLeft>canvas.width-maxRadius)
++				centerLeft = canvas.width-maxRadius;
++		}
++
++		function fixData(data)
++		{
++			for (var i = 0; i < data.length; ++i)
++			{
++				if (typeof(data[i].data)=='number')
++					data[i].data = [[1,data[i].data]];
++				else if (typeof(data[i].data)=='undefined' || typeof(data[i].data[0])=='undefined')
++				{
++					if (typeof(data[i].data)!='undefined' && typeof(data[i].data.label)!='undefined')
++						data[i].label = data[i].data.label; // fix weirdness coming from flot
++					data[i].data = [[1,0]];
++
++				}
++			}
++			return data;
++		}
++
++		function combine(data)
++		{
++			data = fixData(data);
++			calcTotal(data);
++			var combined = 0;
++			var numCombined = 0;
++			var color = options.series.pie.combine.color;
++
++			var newdata = [];
++			for (var i = 0; i < data.length; ++i)
++			{
++				// make sure its a number
++				data[i].data[0][1] = parseFloat(data[i].data[0][1]);
++				if (!data[i].data[0][1])
++					data[i].data[0][1] = 0;
++
++				if (data[i].data[0][1]/total<=options.series.pie.combine.threshold)
++				{
++					combined += data[i].data[0][1];
++					numCombined++;
++					if (!color)
++						color = data[i].color;
++				}
++				else
++				{
++					newdata.push({
++						data: [[1,data[i].data[0][1]]],
++						color: data[i].color,
++						label: data[i].label,
++						angle: (data[i].data[0][1]*(Math.PI*2))/total,
++						percent: (data[i].data[0][1]/total*100)
++					});
++				}
++			}
++			if (numCombined>0)
++				newdata.push({
++					data: [[1,combined]],
++					color: color,
++					label: options.series.pie.combine.label,
++					angle: (combined*(Math.PI*2))/total,
++					percent: (combined/total*100)
++				});
++			return newdata;
++		}
++
++		function draw(plot, newCtx)
++		{
++			if (!target) return; // if no series were passed
++			ctx = newCtx;
++
++			setupPie();
++			var slices = plot.getData();
++
++			var attempts = 0;
++			while (redraw && attempts<redrawAttempts)
++			{
++				redraw = false;
++				if (attempts>0)
++					maxRadius *= shrink;
++				attempts += 1;
++				clear();
++				if (options.series.pie.tilt<=0.8)
++					drawShadow();
++				drawPie();
++			}
++			if (attempts >= redrawAttempts) {
++				clear();
++				target.prepend('<div class="error">Could not draw pie with labels contained inside canva

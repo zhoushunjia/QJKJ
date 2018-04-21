@@ -1,0 +1,226 @@
+$(function() {
+    /**
+     * [简单模板，用来组装字符串 liumingren]
+     * @param {[string]} 模板
+     * @param {[object|array]} 替换的对象数据 格式为 (模板:值),多个放在数组里
+     * @return {[string]} [替换后的htmlString]
+     */
+    format = function(){
+        var args = [].slice.call(arguments),str = String(args.shift() || ""), ar = [], first = args[0];
+        args = $.isArray(first) ? first : typeof(first) == 'object' ? args : [args];
+        $.each(args, function(i, o){
+            ar.push(str.replace(/\{\{([\d\w\.]+)\}\}/g, function(m, n, v){
+                v = n === 'INDEX' ? i : o[n];
+                return v === undefined ? m : ($.isFunction(v) ? v.call(o, n) : v)
+            }));
+        });
+        return ar.join('');
+    };
+    var articleList = {
+        init:function () {
+            this.allLoadNews();
+            this.bindEvent();
+        },
+        bindEvent:function () {
+            var self = this;
+            $(document)
+                .on("click",".artlTagUl > .artlTagButton",function (e) {
+                    var tagId = $(this).addClass("on").siblings(".artlTagButton").removeClass("on").end().attr("data-tagid") || "",
+                        artlListId = $(this).parents(".wqdelementEdit.articleListsTag").attr("data-artllistid")||"",
+                        $elem      = $(".wqdelementEdit.articleLists").filter("[data-artllistid="+artlListId+"]").attr("data-ontagid",tagId);
+                    self.loadCurrentNews($elem,{
+                        tagIds:tagId
+                    });
+                })
+                .on("click",".articleLists .artListPaging li",function (e) {
+                    var $elem = $(this).parents(".articleLists");
+                    self.loadCurrentNews($elem,{
+                        tagIds:$elem.attr("data-ontagId")|| ($elem.attr("data-tagid")||"").split(",")[0] || "",
+                        pageNo:$(this).attr("data-index")
+                    });
+                });
+        },
+        /**
+         * 页面中的列表载入数据
+         */
+        allLoadNews:function () {
+            var self = this;
+            $(".wqdelementEdit.articleLists").each(function (i,_) {
+                self.loadNews($(_));
+            });
+        },
+        /**
+         * 某列表控件载入数据
+         * @param $this
+         */
+        loadNews:function ($this) {
+            var self = this,
+                data = {};
+            var dfd = this.showTagList($this);
+            $.when(dfd).done(function () {
+                data.tagIds = $this.attr("data-ontagId");
+                self.loadCurrentNews($this,data);
+            });
+        },
+        /**
+         * 载入文章列表数据
+         * @param  {[type]} $elem [description]
+         * @param data
+         * @return {[type]}       [description]
+         */
+        loadCurrentNews:function ($elem,data) {
+            var self = this,
+                temp = $elem.find(".artlitemp").text() || this.updateLiTemp($elem),
+                pageId = $elem.attr("data-pageid"),
+                lis = [],listModel,html;
+            data.tagIds = data.tagIds || $elem.attr("data-ontagId")|| ($elem.attr("data-tagid")||"").split(",")[0] || "";
+            data.pageNo = data.pageNo || 0;
+            data.pageSize = data.pageSize || $elem.attr("data-pagesize") || 3;
+            data.orderBy = data.orderBy || $elem.attr("data-orderby") || "PUBLISH_TIME";
+
+            $.get("/article/page",data,function (data) {
+                if(!$.isArray(data.data.data) || data.endRows == 0) {
+                    html = "";
+                } else {
+                    $.each(data.data.data,function(index, value) {
+                        listModel = {
+                            "title":value.title,
+                            "time":self.formatTime($elem,value.publishTime || ""),
+                            "viewCount":value.pv || 0,
+                            "follow":value.favourable||0,
+                            "summary":value.summary || value.descn,
+                            "image":value.icon ?CSSURLPATH + value.icon : value.otherIcons ? value.otherIcons.split(",")[0] : "http://img.wqdian.com/group2/M00/01/95/yq0KXlad6FmASHPDAAALAiR3NvE906.jpg",
+                            "url":pageId ? "page_" + pageId + "_" + value.id + ".html" : ""
+                        };
+                        lis.push(format(temp,listModel));
+                    });
+                    html = lis.join("").replace(/data-src/g,"src");
+                }
+                html = lis.join("").replace(/data-src/g,"src");
+                $elem.addClass("artlShow").find(".artlUl").html(html);
+                self.showPaging($elem,data.data);
+            });
+        },
+        /**
+         * 生成li的模版
+         * @param  {[type]} $elem [description]
+         * @return {[type]}       [description]
+         */
+        updateLiTemp:function ($elem) {
+            var $li        = $elem.find(".artlUl li").eq(0).clone(),
+                $artlitemp = $elem.find("script.artlitemp"),temp;
+
+            // 替换内容为模版
+            var formatTemp = function ($li) {
+                $li.find("[data-artltemp]").each(function (i,_) {
+                    $(_).html("{{"+$(_).attr("data-artltemp")+"}}");
+                }).end()
+                .find("[data-artlAttrTemp]").each(function(i, _) {
+                    var $this = $(_),
+                        artTemp = $this.attr("data-artlAttrTemp");
+                    var artTempArr = artTemp.split(".");
+                    if(artTempArr[0] == "src") {
+                        $this.attr("data-"+artTempArr[0],"{{"+artTempArr[1]+"}}").removeAttr(artTempArr[0]);
+                    }else {
+                        $this.attr(artTempArr[0],"{{"+artTempArr[1]+"}}");
+                    }
+                });
+                return $li[0].outerHTML.replace(/wqdselected/g,"");
+            };
+
+            temp = formatTemp($li);
+            $artlitemp.length ? $artlitemp.html(temp) : $elem.prepend("<script type='text/template' class='artlitemp'>"+temp+"</script>");
+            return temp;
+        },
+        /**
+         * 加载标签列表
+         * @return {[type]} [description]
+         */
+        showTagList:function ($elem, tagIds,isFirstLoad) {
+            var self = this,
+                tagDfd = $.Deferred();
+            tagIds = tagIds || $elem.attr("data-tagid")||"";
+            if(self.tagsData) {
+                tagDfd.resolve();
+            }else {
+                $.get("/article/tags",function (data) {
+                    self.tagsData = data;
+                    tagDfd.resolve();
+                });
+            }
+            $.when(tagDfd).done(function () {
+                var artllistId = $elem.attr("data-artllistid");
+                if(artllistId) {
+                    var temp = "<div class='wqdelementEdit artlTagButton {{on}}' style='width: {{width}}; height: {{height}};left:{{left}};top:{{top}};' data-tagid='{{tagId}}' data-elemandgroup='true' data-elementtype='artlTagButton' data-unused='bubble,set,del,copy,animate,help,rotate'>\
+                                    <div class='wqdelementEditBox'><p>{{text}}</p></div>\
+                               </div>", //标签列表html模版
+                        $tagUl = $(".articleListsTag[data-artllistid="+artllistId+"] .artlTagUl"),//根据新闻列表找到对应的标签列表
+                        top = -40,tags = [],
+                        onTagId = $elem.attr("data-ontagid") || "",
+                        tagModel = $.map(self.tagsData.data,function (v,i) {
+                            var $theLi = v.id ? $tagUl.find("[data-tagid="+v.id+"]") : $("");
+                            if(isFirstLoad || tagIds.indexOf(v.id) != -1) {
+                                if(i == 0 && !$elem.attr("data-ontagid")){//如果没有选中id设置当前选中id
+                                    $elem.attr("data-ontagid",v.id);
+                                    onTagId = v.id;
+                  >?f&bj~NoZmm^E4v@=eqRw=vo(k!R*CQh
+zMbL{=1y5j8kya%MW3FES=0&AN8-Q?X`O7xzrZCC3Oc1$#r~4!9?F@?c(wH=j+=p)1
+znI0r%y)GCH)Ke;svnY^psr4)gkY>K-(Twam&(Cwe50)?k?V7T-wPift1Em|-W8#}Q
+z8s1rOI<rXe13r2OpQZ59!Z?aIAU-y|Q%vy8KoQ@4pL>b!qb5L769UFR{MP+T#W+}b
+z-(aUu9gnZY^cYuPa%V(5JdPc@8tTM54imdYLw*)KHHbCo5n1h`TYlI*5eqDa&Ll39
+zz;t(6oWL(D0I8|nfi*;ab=yna`O!^;^L7O0W!olhY=Jl<pX=IT<3tFT{#6I#ifo@k
+zpha!=2k6iOZV(ZIyT0kp17T0CTjD2%-`CpMi$cLu>$`4z!RP(KHD2H`mZY_Q>}K~w
+zJj_XjS`0rP&bpCk@K>sRfK&$3b99K__Fdt6ekJs6V$$l)Mb8A+g-V7R^kl0OuT^v_
+zmXz2kw2ybsI#$}Ux>^bam^!X(Sh#!oMF=REIMy!Yupyk-YqPjiU9Z(PQsOcn5lLP9
+zf<Wx=`k;G#8w%x;I@WS~2(ZAkIRMFyKCd}4o!bU^1ZaerNqwv?fg8*2eVK?d&CiIw
+zu=}7j=Ff2|(1-vV@U_8c<ke2+t7FzR%23pxJWAD|d>(!3Ip@;N$P(P8alFRrJxJ|E
+z=1w6QWL);=TW5KNQM(`1*87gj9iHdS&m;96KO-Duc5`dd7LGHgE|;?6x1B2=<=%S^
+zx))J4(+4-ywh8bQd+R5NK!YD-#|D1Rw}<|JW%O0pr=*_xUC9Fi{H3mQZC4RMf0x^f
+zX^kuZ^W!N}Lh8^WSWIm>25j*h=;**J*)>kohdZ6y|JXf`PU%fl4X`F90YqSy7Uewz
+zfI%JN|A0GQ+~0_lV%5*Z(Mx}rj<=JGjs42&RMbj!38Yu9AS_u%tw;o=`&!7sKo#?F
+z#66oxVMZwU9B%3Q<Zvs$j;@@me#^}s<F=ZYQ*pc-%h=G()>5mn4?r#AZa(|$H~2L)
+zCX4f+6~$lh2Qc)v`w<R(+ZFEd(nP@ck8*pmKE_fsq219jCMOZt#u02!!d%|?3U^dI
+zU%6wTwLCC>I}E|o7gDM66D@2_Ym%R6UR7e*1)D9IYMibWhT2w9DQhypk4F8d>ChN=
+z6S19IR@5C{K-5xZA<We`QJe_fLjrXc3YcYeW>rnDzuWDG(4AQDU_3A_i_3)g^LB<0
+zwwl{pitA5&o3#p*&wOAVdg_v|3P8;jVJ%iX$wP)wz)=3e5P|%Sg6{TTbGrfu;Nn;W
+z2k4}KyazZ3&XNK=CO2Dj;n=c5kx@e#!Hw}mbpgHwgFL+N@UZ-k@HsDH94_*GuXS(6
+zWcr74kois?^6DBZ6FeuV7I{wrgyu1}!!uwgxjq!G%5ZZOvr!9i&y0(}j=nF2j3DK5
+z0gIRPy&0uKKc?Uuo-)Wh==d?Ej!QcY-zU5dI)wJKC1_}S!aTcKSzw8`UTIZCVPrQD
+z_JQ>tt}oYF{Mv*N58Ec>7xLVeX^G-*>siCU5jC+~Cld#j1dlH=1-RnqE_R-~4C^fg
+zF4)oxaM?d=x^RNia(3V4k~~$bi&wb61?C8Qg<O`?qi~tqLdywEe8}o9o%BEXs{MXn
+zgPiF$;<1KStf{hGJBIHJiZ~TqP^N5kHk6L{RdHXH0voAL{a>tul^E3LKH(5t07QOa
+zu?>}ZX>(rVl2>yVOJIKf9F&iPAPUnRfXa6<>!81W|NHKIq=>JwzK1vyYykH13#s9r
+zhk6n=PN1Q52H$jvJBr<#UN}jwBlk}=3z_|kd7|;qa0rz3fO|gC?sX0J7_v<mA%=4v
+zxkhvifA*y+&t|jNPA(wm3I0xSuNaCK2)UxlLnv0r!u0$%nNKDvJ(|$<s<1L|+H!EJ
+zFfyJzR#+5Y!yXKLG3=`bZMu-Hj<}CJG`wImdM6kG^|I<3Pead;C2PI!EVoZU09H|&
+z(WD9(#lEtpG)5Q=s|7WV2P9s~dc42qtL`=!n#j@Myhng|#ZtN`^PYH^nG#DWHDk|#
+zC-tt@g<k)l46Lqfp-Li{3{Lkx|Ia;-L(ot5SX6{Ac+A{^E+{v>OFDcutv$LovA*uP
+zRk}U{RZ;#Q_YG9cVMY5H^rTQx_z}1f+1?ZfZ>EM0)9uYbj^5HO)c^9}tb08rJK%+-
+z9e&5m@e)tolfHT;xO?CV58xq5<(^}V8r7*nW51W7$mY+xUlxY|<pW`Wf#b`UU@_Du
+zCoyQtrX9uqbmM{Vy4W347j9C?BzWcO=mJ(TNVp1}2fOynoPs2H2RQy30E&f1b<Y3e
+zlC9dt$vty3+<W}*0jKSg$K6(=wgRLaXwVX4Svie;qlldw15b_Z4Jl-->51eE|5?rN
+z!pc+b^j_C{!_$@gkxu9BKj&Vu)LK93eFnkM;{P=%l%MQ^Z5hwPG9xT};R+R1sx%1+
+zmquc6Mi}?8To4vuvfAR&L17u;{Gq~kcRF7@;GO}kp~b?^cnP~D@So=56H7`2eJcJF
+zh*4b0^C4iF`M6?05f-`c*WLcX4CtIBZ3?DyYCd%5uecK)s}cB!{hi$$I;77CAVqN?
+zi<RyPP=z#<p<?{VuPHe8!kPekzM^ERU%Xo=Fk{1qz!Bj7r4D1E-sylCaUC9&%Zs%H
+zCFtJv7pfB!oMuBS5c3pqmm$D-YGnnVB@oRj`eS({xp*Eb&twR4B6?kuwiCueqsM=C
+zu&)4N9#0K<#x2vVJ8sHG(v)s^nEOkFfLmE;d`QT(1E^6b?s>A^=^L^jT1aJ|E=Zx9
+z;`BMI_Aj*%&q%zzEZX1K>D>G(cVUh}o7V(7i)ppoXC4~q4%u22mh1aI;QptQOH^mx
+zvd_io&{~^;$U3N{bD^N0SgonTXi;^G$t`KG3q-b!XA5P{Dm?+Vlo;{);(!Q0A8T-M
+zb{LKj9NQcL#cv+E*)bVnF`x_^R{yzIxp|1Nkjq2@8*9SkTZ5+oHNS@r85}q7U9DN5
+zX|5dS&=msNnJHw8YA^ZPNjD5?1HCRCjed}R+6)lJAdGTtM#h^c5L(I$%pZX26}64j
+zh=K(^bBBO8!fdy*5}R!V>4w<q2k8tba!{`Oh}#oN*!qaknAF$~1@NPG2nlXMg1dJ8
+zY}kP}Pq+&$K6VO~<EJ(*tFI@thv&V%&am`gS{uz<jn^2V`O#M@5I?XqJQb6-Oq&is
+z$r0+3Xc|-rZ4%`bq>Sph!!x^zcd51g-~d@JcjMH+@q}7>&8{Q+LTVmUSfg9mb$PMP
+zP_qz~eP`_xe^U4lYL0x<Eg@eV#aHBAmc3*qU<e3KIss2;mr`Ba+AZyiACb%Qb@w8$
+z&H!+7-pVQ&MtOH1q_>FzPDo;=zHFGIM0m`UD6&e-<jm42)cEp>V{1q`sSX;L=_-;F
+z(LeI`!*0Ib21LAnmZ7wqm1kHF02|6QVEbt0!vfuku*Y3*c00Ft#F6wsqY>2y3ryeq
+zdm;&)wvYdud$9=RK=Wu5z1KM}CPtdhOW!8M;XpvUEQz*c_0>Vh$$SM13AHJBbK-vS
+zW<)3J&81lV=2P5z*A|Y}#>S?mhnAP=KjGB)r%`Dg0AR_Or4u81yF%Tz-rA_t>n#?e
+z<P>1RR7VgYI5fX|{@f~kT}-(yvbP5)*BGeEfvVX|3}Fv!tnYg(+3lUqckXlV_0fC2
+zrIIfkj9Bpy!npl(<vg}KTk1l%5Y)|+mGft+JueR+zJ&6{Fx(O0gpX7>pOg;%Q1L%>
+zI$yfc-LHUP=6zA!!9haX+*FdaP`Gj_QX=ZAH^(HvtVK534hFq)AnkY-S0yH#8AYeP
+zpDe)_@4(l=nH{z;n_@}Q{!NwaNuc<@sI*7)X#<n-f|RRp&_Z^Jl5We*G^8faBt*bh
+zd1S%6UVp~V)^U2(G64f47z>qf8DE2Vx|6~S=;bv$wA9cG?Sw?oH_!d>NL=JoQVrM@
+z^a`H~l&$nBAM#>G<sX8muy|?nT*aBgc9Vz*yRe<Pt6FIo6}c-v?Vb?pgd(DKYaRG?
+zURyI!?-dIh$b<#3

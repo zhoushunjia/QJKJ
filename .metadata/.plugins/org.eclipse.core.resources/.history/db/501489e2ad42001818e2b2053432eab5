@@ -1,0 +1,328 @@
+>
++					<style sectionwidth="1200" type="text/css"
++						class="wqd1451459099589serial">
++#wqd1451459099589serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #ffffff;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514672384701">
++#elementid14514672384701 .wqd-line {
++	border-top-color: #212121 !important;
++}
++</style>
++					<section wqdbgcolor="#ffffff" wqdwidthlimit="0" wqdbgattachment="0"
++						bac_position="5" wqdheight="900" sectionwidth="1200"
++						class="wqd1445504393013css wqdBkEditos sectionV2 moveMainArea elementsContainer"
++						style="height: 900px; margin: 0px auto; position: relative; z-index: 5;"
++						wqdimgurlos="http://img.wqdian.com/group1/M00/46/42/yq0KXFaDgfSAViGbAAUWEy2M5qI727.jpg"
++						wqdbgcoloros="#eee" data-maxzindex="4">
++						<div controlbghover="#8d8d8d" btnshape="0"
++							indicatoratcive="#656565" suffixshape="3" data-zindex="1"
++							id="elementId1451467321197" elementid="elementId1451467321197"
++							class="wqdelementEdit elementsContainer"
++							data-elementtype="carouse" data-elemandgroup="true"
++							style="width: 1200px; height: 603px; left: 0px; top: 275.5px; z-index: 1;">
++							<div class="wqdelementEditBox">
++								<div class="wqdCarousel slide" data-pause="false">
++									<a style="display: inline-block;" data-slide="prev"
++										href="/"
++										class="left carousel-control carousel-control_1"><svg
++											class="wqdDIcon" viewBox="0 0 1792 1792"
++											xmlns="http://www.w3.org/2000/svg"> <path fill="#fff"
++												d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"></path> </svg></a>
++									<a style="display: inline-block;" data-slide="next"
++										href="/"
++										class="right carousel-control carousel-control_1"><svg
++											class="wqdDIcon" viewBox="0 0 1792 1792"
++											xmlns="http://www.w3.org/2000/svg"> <path fill="#fff"
++												d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"></path> </svg></a>
++									<div class="carousel-inner">
++										<div class="item">
++											<div bg="0"
++												url="url(&quot;http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg&quot;)"
++												data-maxzindex="3" class="bannerContainer" style="">
++												<div data-zindex="1" id="elementId1451467432966"
++													elementid="elementId1451467432966" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 35px; top: 33.9667px; z-index: 1;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KX1aDoW-AEQgnAAEf-5Fkw3E759.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++												<div data-zindex="2" id="elementId1451467466338"
++													elementid="elementId1451467466338" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 423px; top: 33.9667px; z-index: 2;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KX1aDoXGAcFH5AACHtQjbalY341.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++												<div data-zindex="3" id="elementId1451467468121"
++													elementid="elementId1451467468121" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 811.317px; top: 33.9667px; z-index: 3;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KXlaDoaaAMd7dAACM-uD49mY775.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++											</div>
++										</div>
++
++
++										<div class="item active">
++											<div bg="0"
++												url="url(&quot;http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg&quot;)"
++												data-maxzindex="3" class="bannerContainer"
++												style="background-color: rgba(34, 85, 85, 0);">
++												<div data-zindex="1" id="elementId1451467432966"
++													elementid="elementId1451467432966" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 35px; top: 33.9667px; z-index: 1;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KX1aDoXGAcFH5AACHtQjbalY341.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++												<div data-zindex="2" id="elementId1451467466338"
++													elementid="elementId1451467466338" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 423px; top: 33.9667px; z-index: 2;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KXlaDoaaAMd7dAACM-uD49mY775.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++												<div data-zindex="3" id="elementId1451467468121"
++													elementid="elementId1451467468121" class="wqdelementEdit"
++													data-elementtype="img" data-elemandgroup="true"
++													style="width: 354px; height: 429px; left: 811.317px; top: 33.9667px; z-index: 3;">
++													<div class="wqdelementEditBox">
++														<img class="wqd-img"
++															src="${ctxPath}/static/modular/system/home/yq0KX1aDoXWAEKYhAAB-z-Sf8cs295.jpg"
++															ondragstart="return false;">
++													</div>
++												</div>
++											</div>
++										</div>
++									</div>
++									<ol class="carousel-indicators indicator_3">
++										<li style="display: inline-block;" data-target=".wqdCarousel"
++											data-wqdslide-to="0" class=""></li>
++
++
++										<li style="display: inline-block;" data-target=".wqdCarousel"
++											data-wqdslide-to="1" class="active"></li>
++									</ol>
++								</div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInDown"
++							data-zindex="2"
++							style="width: 437px; height: 38px; left: 381.5px; top: 106.5px; z-index: 2;"
++							id="elementid14514672384700" elementid="elementid14514672384700"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;h2 class=&quot;wqd-text-title2 wqdCkEmptyTextos&quot;&gt;H2 标题文字&lt;/h2&gt;
++							"
++								class="wqdelementEditBox">
++								<i
++									style="display: block; font-style: normal; text-align: center;"><strong><span
++										style="font-size: 24px;">匠心打造舔屏级炫酷站</span></strong></i>
++							</div>
++						</div>
++						<div wqdpathfill="#212121" wqdhref="0" data-zindex="3"
++							style="width: 100px; height: 30px; left: 544.884px; top: 147.5px; z-index: 3;"
++							id="elementid14514672384701" elementid="elementid14514672384701"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInUp"
++							data-zindex="4"
++							style="width: 796px; height: 30px; left: 203.117px; on(n){
+				for(var i=0;i<n;i++){
+					(function(m){
+						var a={};
+						var ele=form.find("[data-elementtype=formTextarea]").eq(m);
+						var titie=ele.attr("wqdformtitle").replace('"','“').replace("'","‘");
+						a[titie]=ele.find("textarea").val().replace('"','“').replace("'","‘");
+                        var id=ele.attr('id');
+                        //arr.push(a);
+						arr.push([a,id]);
+					})(i);
+				}
+			}
+		);
+		formclass(form.find("[data-elementtype=formSelect]"),//下拉框
+			function(n){
+				for(var i=0;i<n;i++){
+					(function(m){
+						var a={};
+						var ele=form.find("[data-elementtype=formSelect]").eq(m);
+						var titie=ele.attr("wqdformtitle").replace('"','“').replace("'","‘");
+						a[titie]=ele.find("ul").find("li.on span").html().replace('"','“').replace("'","‘");
+                        var id=ele.attr('id');
+                        //arr.push(a);
+						arr.push([a,id]);
+					})(i);
+				}
+			}
+		);
+		formclass(form.find("[data-elementtype=formDate]"),//日历
+			function(n){
+				for(var i=0;i<n;i++){
+					(function(m){
+						var a={};
+						var ele=form.find("[data-elementtype=formDate]").eq(m);
+						var titie=ele.attr("wqdformtitle").replace('"','“').replace("'","‘");
+						a[titie]=ele.find("input").val().replace('"','“').replace("'","‘");
+                        var id=ele.attr('id');
+                        //arr.push(a);
+						arr.push([a,id]);
+					})(i);
+				}
+			}
+		);
+		formclass(form.find("[data-elementtype=formRadio]"),//单选框
+			function(n){
+				for(var i=0;i<n;i++){
+					(function(m){
+						var radio=form.find("[data-elementtype=formRadio]").eq(m).find("i");
+						if(radio.hasClass("on")) {
+							var a={};
+							var ele=form.find("[data-elementtype=formRadio]").eq(m);
+							var titie=ele.attr("wqdformtitle").replace('"','“').replace("'","‘");
+							a[titie]=ele.find("label").html().replace('"','“').replace("'","‘");
+                           var id=ele.find('input').attr('name') || ele.attr("id");
+							//arr.push(a);
+                            arr.push([a,id]);
+						}
+					})(i);
+				}
+			}
+		);
+		/////////////////////////////////////////////////复选框
+		var formCheckbox=form.find("[data-elementtype=formCheckbox]");
+		var checkboxlength=formCheckbox.length;
+		var checkJson={};
+		var checkarr=[];
+		for(var i=0;i<checkboxlength;i++){
+			(function(n){
+				//checkJson[formCheckbox.eq(n).attr("id")]=1;
+               checkJson[formCheckbox.eq(n).find('input').attr("name")]=1;
+			})(i);
+		}
+        //console.log(checkboxlength);
+		function getJsonLength(json){
+			var n = 0;
+			for(var item in json){
+				checkarr.push(item);
+				n++;
+			}
+			return n;
+		}
+		getJsonLength(checkJson);
+		var checkArrLength=checkarr.length;
+        formclass(form.find("[data-elementtype=formCheckbox]"), 
+            function(n){
+                for(var i=0;i<checkarr.length;i++){
+                    (function(m){
+                        var html=[];
+                        form.find("[name="+checkarr[m]+"]").each(function(index,ele){
+                            if($(this).prev("i").hasClass("on")) html.push($(this).siblings("label").html().replace('"','“').replace("'","‘"));
+                        });
+                        var a={};
+                        var elea=form.find("[name="+checkarr[m]+"]").parents('[data-elementtype=formCheckbox]');
+                        var titie=elea.attr("wqdformtitle").replace('"','“').replace("'","‘");
+                        var id=elea.attr('id');
+                        a[titie]=html.join(",");
+                        //arr.push(a);
+                        arr.push([a,id]);
+                        //html="";
+                    })(i);    
+                }  
+            }
+        );
+		//数组排序
+        var newArrsort = [], newArrString = [];
+        form.children().each(function(){
+        	var elemId = $(this).attr("id");
+        	for(var k=0; k<arr.length; k++){
+        		if($(this).attr("data-elementtype")=="formRadio"||$(this).attr("data-elementtype")=="formCheckbox"){
+        			if($(this).find("input").attr("name") == form.find("#"+arr[k][1]).find("input").attr("name")){
+        				var exist = true;
+	        			for(var p=0; p<newArrsort.length; p++){
+	        				if(arr[k][1] == newArrsort[p][1]){
+	        					exist = false;
+	        					break;
+	        				}
+	        			}
+	        			exist && newArrsort.push(arr[k]);
+        			}
+        		}else{ 
+        			if(arr[k][1] == elemId){
+        				newArrsort.push(arr[k]);
+        			}
+        		}
+        	}
+        });
+        var sortId = [];
+		for(var i=0;i<newArrsort.length;i++){
+			var valString = '"'+newArrsort[i][1]+'":'+JSON.stringify(newArrsort[i][0]);
+			newArrString.push(valString);
+			sortId.push(newArrsort[i][1]);
+		}
+		var name = obj.parents('[data-elementtype=formButton]').parents("[data-elementtype=form]").attr("wqdFormName") || '表单',
+			//sectionId = $(this).parents("section").parent().attr("id"),
+			sectionId =$(this).parents(".wqdelementEdit.elementsContainer").attr("elementid"),
+			value = "{" + newArrString.join(",") + "}";
+		$.ajax({
+			url: '/fixed/form/submitForm',
+			dateType:'json',
+			type:'post', 
+			data : {'name':name,'sectionId':sectionId,'value':value,'fieldOrder':sortId.join(",")},
+			success:function(data, status) { 
+				if(data.status==200){ 
+					var text = obj.children().html();
+					obj.children().html('提交成功');
+					setTimeout(function(){
+						obj.children().html(text);
+                       window.location.reload();
+					},1000);
+					arr.length=0;
+				}
+			},
+			error : function(){
+			}
+		});
+	});
+	$("body").on("click",".date_selector .selectable_day",function(){
+		$(this).parents(".date_selector").hide();
+	});
+	$("body").on("click",".wqd-form-element.wqdControlFormEl1 input",function(e){
+		e.stopPropagation();
+	})
+});
+//})(jQuery);

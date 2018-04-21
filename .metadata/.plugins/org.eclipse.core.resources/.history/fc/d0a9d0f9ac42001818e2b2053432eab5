@@ -1,0 +1,253 @@
+ display:none!important;}
++#bdshare_weixin_qrcode_dialog{ height:270px!important;}
++#J_qr_code_share{width:260px;height:260px;left:50%!important;}
++@media (max-width: 991px){
++	#J_qr_code_share{width:260px;height:260px;top:30%!important;left:50%!important;}
++}
++/*日历插件、、刘瑞虎*/
++.date_picker{width:226px;background: #fefefe;border: 1px solid #bbb;font-size:14px;color: #333;padding:7px;border-radius:3px; }
++/*---------------------------------------demo css--------------------------------------------*/
++.date_selector, .date_selector *{width: auto;height: auto;border: none;background: none;margin: 0;padding: 0;text-align: left;text-decoration: none;font:12px/1.5 Arial;}
++.date_selector{background:#fbfbfb;border: 1px solid #ccc;padding:17px 10px 10px;margin:0;margin-top:-1px;position: absolute;z-index:100000;display:none;border-radius: 3px;box-shadow: 0 0 5px #aaa;box-shadow:0 2px 2px #ccc; width:240px; }
++.date_selector_ieframe{position: absolute;z-index: 99999;display: none;}
++.date_selector .nav p{clear: none;}
++.date_selector .month_nav, .date_selector .year_nav{margin: 0 0 3px 0;padding: 0;display: block;position: relative;text-align: center;}
++.date_selector .nav{width: 17.5em;}
++.date_selector .month_nav{float: left;width: 55%;}
++.date_selector .year_nav{float: right;width: 42%;margin-right: -8px;}
++.date_selector .month_name, .date_selector .year_name{font-weight: bold; background-image:none; position: relative; display:inline-block; width: auto; height:auto; top: 0; line-height: 0;  }
++.date_selector .button{display:inline-block; position: absolute;width:18px;height:18px;line-height:16px;font-weight:bold;color:#5985c7;text-align: center;font-size:12px;overflow:hidden;border: 1px solid #ccc;border-radius:2px;}
++.date_selector .button:hover, .date_selector .button.hover{background:#5985c7;color: #fff;cursor: pointer;border-color:#3a930d;}
++.date_selector .prev{left: 0;}
++.date_selector .next{right: 0;}
++.date_selector table{border-spacing: 0;border-collapse: collapse;clear: both;margin: 0; width:220px;}
++.date_selector th, .date_selector td{width: 2.5em;height: 2em;padding: 0 !important;text-align: center !important;color: #666;font-weight: normal;}
++.date_selector th{font-size: 12px;}
++.date_selector td{border:1px solid #f1f1f1;line-height: 2em;text-align: center;white-space: nowrap;color:#5985c7;background: #fff;}
++.date_selector td.today{background: #eee;}
++.date_selector td.unselected_month{color: #ccc;}
++.date_selector td.selectable_day{cursor: pointer;}
++.date_selector td.selected{background:#2b579a;color: #fff;font-weight: bold;}
++.date_selector td.selectable_day:hover, .date_selector td.selectable_day.hover{background:#5985c7;color: #fff;}
++/* 导航设置样式：黄剑剑*/
++.italic{font-style: italic;}
++#HTMLDATA .wqdSubnavShow{display:block !important;}
++.wqdLogoCenteros{margin:0 15px;}
++.wqdLogoLeftos{float: left !important;}
++.wqdLogoTopos{float: none !important; text-align: center !important;font-size: 0;margin-bottom: 10px;}
++.wqdLogoTopos .wqdLogoBoxos{display: inline-block !important; margin:15px 0;}
++.wqdNavTopos{position: absolute !important; top:50px;z-index: 9;width: 100%;}
++.wqdView .wqdAreaView .wqdNavTopos{left: 50%;-webkit-transform: translateX(-50%);-moz-transform: translateX(-50%);-o-transform: translateX(-50%);transform: translateX(-50%);}
++.wqdNavRightos{float: right !important;}
++.wqdNavCenteros, .wqdNavBottomos{float: none !important;text-align: center;}
++.wqdNavCenteros .navbar-nav, .wqdNavBottomos .navbar-nav{float: none !important;text-align: center !important;}
++
++.wqdPhoneNav .wqdNavList{background-color: #fff;}
++
++.wqdIphoneView .wqdNavTopos{position: relative !important;top:0;}
++.wqdIphoneView .wqdLogoLeftos, .wqdLogoTopos{position: relative !important;z-index: 10;float: left !important;margin-bottom: 0;}
++.wqdIphoneView .wqdLogoCenteros{position: absolute !important;top: 0 !important;left: 0 !important;}
++.wqdIphoneView .wqdNavRightos{float: none !important;}
++
++/* 侧栏导航：黄剑剑*/
++.sideNavFloat{position: fixed!important;}
++.sideNavFixed{position: fixed !important;}
++.wqdNavButton{display: none;position: fixed;z-index: 99;cursor: pointer;width: 48px;height: 44px;text-align: center;line-height: 44px;border-radius: 4px;font-size: 26px;margin: 32px 0 0 32px;}
++.wqdNowidth{width: 0px !important;overflow: hidden;}
++.wqdIphoneView .wqdNowidth{width: 100%!important;overflow: auto;}
++.wqdIphoneView .wqdNavButton{display: none !important;}
++.wqdIphoneView .sideNavFloat, .wqdIphoneView .sideNavFixed{position: relative!important;}
++/*导航控件-手机*/
++.wqdPhoneNav .wqdTopNavbox{top: 100% !important;}
++.wqdInlineMenu .wqdNavWrap .wqdNavList .wqdNavLi>a{display: inline-block;}
++.wqdPhoneNav .wqdNavList{background-color: #fff;}
++.wqdPhoneNav .wqdNavList .wqdNavLi{}
++.wqdPhoneNav .wqdNavList .wqdNavLi:first-child{margin-top: 0;}
++.wqdPhoneNav .wqdTopNavbox{z-index: 30 !important;}
++.wqdPhoneNav .wqdPhoneNavBtn{width: 100%;height: 100%;text-align: center;cursor: pointer;}
++.wqdPhoneNav .wqdPhoneNavBtn svg{fill:#333;}
++.wqdPhoneNav .wqdTopNavbox .resizeT, .wqdPhoneNav .wqdTopNavbox .resizeLT, .wqdPhoneNav .wqdTopNavbox .resizeTR{display: none;}
++/*导航控件：黄剑剑*/
++.wqdCommonNav .wqdTopNavbox > .wqdelementEditBox{overflow:hidden !important;}
++.wqdTopNavWrap, .wqdSideNavWrap, .wqdPhoneNav{z-index: 6;}
++.wqdNavWrap, .wqdNavWrap .wqdNavList{width: 100%;height: 100%;}
++.wqdNavWrap .wqdNavList{font-size: 0;}
++.wqdTopNavWrap .wqdNavList .wqdNavLi{display: inline-block;}
++.wqdNavWrap .wqdNavList .wqdNavLi>a{display: block;font-size: 14px;padding: 10px 15px;color: #333;cursor: pointer;border-color:#333;}
++.wqdNavWrap .wqdNavList .wqdNavLi>a:hover{border-color:#fff;}
++.wqdSideNavWrap .wqdNavWrap .wqdNavList .wqdNavLi>a{text-align: center;}
++.wqdAddsecondnav{position: absolute;z-index: 99;display: block;background-color: rgba(255,255,255,0.8); text-align: center;color: #1ec1fd;font-size: 20px;font-weight: 700;border:1px dashed #1ec1fd;border-radius: 3px;}
++.wqdAddsecondnav:hover{color: #1ec1fd;}
++.wqdSecondNav{position: relative;width: 100%;height: 100%;}
++.wqdSideNavWrap{position: fixed;height: 100%;background-color: #eee;}
++.wqdSecondNavbox{z-index: 30 !important;}
++.wqdSideNavButton{display: none;position: fixed;z-index: 99;background-color:#eee;color:#333;cursor: pointer;width: 48px;height: 44px;text-align: center;line-height: 44px;border-radius: 4px;border-color:#333;font-size: 26px;margin: 32px 0 0 32px;box-sizing: content-box;-webkit-box-sizing: content-box;}
++#HTMLDATA .wqdSecondNav:before, .wqd-carouseOverlay .wqdSecondNav:before{content: '';position: absolute;z-index: 0;width: 100%;height: 100%;left: 0;top: 0;border:1px dashed #1ec1fd;}
++
++.wqdTopNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeT,
++.wqdTopNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeLT,
++.wqdTopNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeTR{display: none;}
++.wqdSideNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeL,
++.wqdSideNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeLT,
++.wqdSideNavWrap .wqdSecondNavbox > .wqdelementEditBox > .resizeLB{display: none;}
++/*导航控件-编辑按钮*/
++.wqdNavMenuWrap{position: absolute;z-index: 9999;width: 120px;height:32px;font-size: 0;}
++.wqdNavMenuWrap ul li{display: inline-block;margin-left: 10px;width: 30px;height:30px;line-height: 30px;border-radius: 50%;font-size: 12px;background-color: #fff;text-align: center;box-shadow: 0px 0px 6px #ccc;cursor: pointer;overflow: hidden;}
++.wqdNavMenuWrap ul li:first-child{margin-left: 0;}
++.wqdNavMenuWrap ul li .navMenuText{display: none;color: #fff;}
++.wqdNavMenuWrap ul li .navMenuBtn{display:block; background: url(../../../images/v2/design/elementEdit/btn.png) no-repeat;width: 30px;height: 30px;}
++.wqdNavMenuWrap ul li .navBtn1{background-position: 5px 6px;}
++.wqdNavMenuWrap ul li .navBtn2{background-position: 5px -517px;}
++.wqdNavMenuWrap ul li .navBtn3{background-position: 5px -74px;}
++.wqdNavMenuWrap ul li:hover{background-color: #49a2d2;}
++.wqdNavMenuWrap ul li.wqdNavMenudelete:hover{background-color: #ff6a6a;}
++.wqdNavMenuWrap ul li:hover .navMenuBtn{display: none;}
++.wqdNavMenuWrap ul li:hover .navMenuText{display: block;}
++
++/* --导航动画-- */
++@keyframes wqdNavAnima {
++	0% {opacity: 0;margin-top:-50px;}
++	100% {opacity: 1;margin-top:0;}
++}
++@-webkit-keyframes wqdNavAnima {
++	0% {opacity: 0;margin-top:-50px;}
++	100% {opacity: 1;margin-top:0;}
++}
++@-moz-keyframes wqdNavAnima {
++	0% {opacity: 0;margin-top:-50px;}
++	100% {opacity: 1;margin-top:0;}
++}
++@-o-keyframes wqdNavAnima {
++	0% {opacity: 0;margin-top:-50px;}
++	100% {opacity: 1;margin-top:0;}
++}
++/*轮播图组件:黄剑剑*/
++.wqdCarousel{position: relative;width: 100%;height:100%;overflow: hidden;}
++.wqdCarousel .carousel-control{z-index: 99;}
++.wqdCarousel .carousel-inner, .wqdCarousel .carousel-inner .item{width: 100%;height: 100%;}
++.wqdCarousel .carousel-inner .item{position:absolute;}
++.wqdCarousel .carousel-inner .item .bannerContainer{position: relative;width: 100%;height: 100%;background:no-repeat center center / cover;}
++.wqdCarousel .carousel-control{display:none;position: absolute;z-index:50; opacity: 0.5; width: 50px;height: 50px;line-height: 50px;text-align: center;padding: 5px;top: 50%;margin-top: -25px;/* background-color: #ccc; */cursor: pointer;}
++.wqdCarousel:hover .carousel-control{display: block;}
++.wqdCarousel .carousel-control.left{left: 1%;}
++.wqdCarousel .carousel-control.right{right: 1%;}
++.wqdCarousel .carousel-indicators{position: absolute;z-index: 50;width: 90%;left: 50%;margin-left: -45%;text-align: center;font-size: 0;bottom: 8px;}
++/*数量下标*/
++.wqdCarousel .carousel-indicators.left{text-align: left}
++.wqdCarousel .carousel-indicators.center{text-align: center}
++.wqdCarousel .carousel-indicators.right{text-align: right}
++.wqdCarousel .carousel-indicators.del{display:none;}
++/*按钮切换*/
++/*.wqdCarousel .carousel-control.btn1{border-radius:200px;}
++.wqdCarousel .carousel-control.btn2{border-radius:0px;}
++.wqdCarousel .carousel-control.btn3{top:83%;border-radius:200px;}
++.wqdCarousel .carousel-control.btn4{top:83%;border-radius:0px;}
++.wqdCarousel .carousel-control.btn5{display:none!important;}*/
++
++.wqdCarousel .carousel-control.btn1{top:50%;}
++.wqdCarousel .carousel-control.btn2{top:83%;}
++.wqdCarousel .carousel-control.btn3{display:none!important;}
++.wqdCarousel .carousel-control path {fill: #fff; }
++.wqdCarousel .carousel-control:hover path {fill: #fff; }
++.wqdelementEditBox .carousel-indicators li{display: inline-block;width: 20px;height: 20px;background-color: rgba(0,0,0,0); border-radius: 100px;cursor: pointer;margin: 3px;}
++.wqdCarousel .carousel-indicators li.active{width: 20px;height: 20px;background-color: #9BDCFF;border:2px solid #9BDCFF;}
++.wqdCarousel .carousel-indicators li:first-child{margin-left: 0;}
++.wqdCarousel .indicator_7 li:first-child{margin-left: 3px;}
++
++.wqdCarousel .indicator_6 li,.wqdCarousel .indicator_7 li{border:1px solid #ccc;}
++.wqdCarousel .indicator_6 li.active,.wqdCarousel .indicator_7 li.active{border:1px solid #9bdcff;}
++/* 轮播图动画：黄剑剑*/
++.carousel-inner>.item{-moz-backface-visibility: hidden;-o-backface-visibility: hidden;backface-visibility: hidden;-webkit-transition: -webkit-transform .6s ease-in-out;-moz-transition: -moz-transform .6s ease-in-out;-o-transition: -o-transform .6s ease-in-out;transition: transform .6s ease-in-out;}
++.carousel-inner>.item.active, .carousel-inner>.item.next.left, .carousel-inner>.item.prev.right{left: 0;-webkit-transform: translate3d(0,0,0);-moz-transform: translate3d(0,0,0);-o-transform: translate3d(0,0,0);transform: translate3d(0,0,0);}
++.carousel-inner>.item.active.left, .carousel-inner>.item.prev{left: 0;-webkit-transform: translate3d(-100%,0,0);-o-transform: translate3d(-100%,0,0);-moz-transform: translate3d(-100%,0,0);transform: translate3d(-100%,0,0);}
++.carousel-inner>.item.active.right, .carousel-inner>.item.next{left: 0;-webkit-transform: translate3d(100%,0,0);-o-transform: translate3d(100%,0,0);-moz-transform: translate3d(100%,0,0);transform: translate3d(100%,0,0);}
++
++.wqdCarousel .wqdSwitch1, .wqdCarousel .wqdSwitch2, .wqdCarousel .wqdSwitch3, .wqdCarousel .wqdSwitch4, .wqdCarousel .wqdSwitch5{-web, e) {
+            var n = str.length,
+                o = "",
+                i = 1;
+            while (i < n) {
+                var a = Math.floor(n * Math.random());
+                o += str.charAt(a);
+                i++;
+            }
+
+            return o
+        }
+    };
+
+    window.Share = function() {
+        return Share();
+    }
+
+}(window.jQuery));
+
+//微信分享
+var wxShare = function() {
+    //引入
+    $("body").append("<script src='http:\/\/res.wx.qq.com/open/js/jweixin-1.0.0.js'><\/script>");
+    var js = document.createElement('script');
+    js.setAttribute('type', 'text/javascript');
+    js.setAttribute('src', 'http:\/\/res.wx.qq.com/open/js/jweixin-1.0.0.js');
+    $("head").append(js);
+    js.onload=function(){
+        var ramId=new Date().getTime();
+        //配置
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: 'gh_fc019f690550', // 必填，公众号的唯一标识
+            timestamp: ramId, // 必填，生成签名的时间戳
+            nonceStr: '"'+ramId+'"', // 必填，生成签名的随机串
+            signature: '', // 必填，签名，见附录1
+            jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function() {
+
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        });
+        //朋友圈
+        wx.onMenuShareTimeline({
+            title: /\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            link: '', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg', // 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        //朋友
+        wx.onMenuShareAppMessage({
+            title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            desc: 'desc111111111', // 分享描述
+            link: 'link222222', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //到QQ
+        wx.onMenuShareQQ({
+            title: /\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            desc: 'desc1111111111', // 分享描述
+            link: 'link22222222', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg',// 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    };
+    
+  
+
+}();

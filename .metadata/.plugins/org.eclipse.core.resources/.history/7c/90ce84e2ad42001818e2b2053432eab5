@@ -1,0 +1,136 @@
+"lightSpeedIn"
++							data-zindex="1"
++							style="width: 474px; height: 32px; left: 364.117px; top: 25.1167px; z-index: 1;"
++							id="elementid14514721706330" elementid="elementid14514721706330"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article1" style="text-align: center;">
++									<span style="color: #cbcdcc;"><strong><span
++											style="font-size: 14px;">本公司是为创业而生的智能好用的H5建站平台</span></strong></span>
++								</p>
++							</div>
++						</div>
++					</section>
++				</div>
++			</div>
++		</div>
++	</div>
++	<div class="wqdView wqdFooterView">
++		<div class="wqdAreaView"></div>
++	</div>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/bootstrap.min.js"></script>
++<!-- 	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery.qrcode.min.js"></script> -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdExtendNav.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/baseInit.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdHoverContainer.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/news.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdcarousel.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdContainer.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdAccordion.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdVideo.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdVideoBackground.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdMapInit.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/api"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdProgress.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdNumberprogress.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdAnimation.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdNavigate.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdattentionlink.js"></script>
++	<script src="${ctxPath}/static/modular/system/home/jweixin-1.0.0.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdForm.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/videoEditInit.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdColorbox.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdPicture.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdIscroll.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArticleDetails.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArticleLists.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArticleList.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/navTemplate1.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commodityList.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commodityDetail.js"></script>
++	<!-- 商品搜索结果页 PC -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commoditySearchResult.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdWechatlogin.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery.nanoscroller.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/editShopping.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/edit-curve.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdManageInfo.js"></script>
++	<!-- 新闻plugin 功能 -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArtPlugin.js"></script>
++
++	<!--  -->
++	<script type="text/javascript">
++$(function(){
++	if ('' == 'false') {
++		$('.formDate.wqdControlFormEl6 input').date_input();
++	}
++})
++</script>
++	<div style="display: none"></div>
++
++
++	<div id="J_qr_code_share"
++		style="top: 361px !important; box-shadow: 1px 1px 39px 1px; box-shadow: 1px 1px 39px 1px; padding-top: 35px; display: none; z-index: 999; position: fixed; margin-top: -130px; margin-left: -130px; text-align: center; background: #FFF; border-radius: 8px"></div>
++	<script src="${ctxPath}/static/modular/system/serviceContent/qzopensl.js.下载" charset="utf-8"> </script>
++	<script src="${ctxPath}/static/modular/system/serviceContent/loader.js.下载"
++		widget="IFRAME_SHARE_QQ" charset="utf-8"></script>
++	<div
++		style="width: 240px; height: 270px; position: fixed; display: none; top: 361px; left: 50%; box-shadow: 1px 1px 21px 2px; z-index: 99; border-radius: 8px; margin-top: -135px; margin-left: -120px;"
++		class="follow_box">
++		<span class="follow_txt" style="float: left; margin: 10px 0 0 10px"></span><span
++			class="follow_close" style="float: right; margin: 10px 10px 0 0"><i
++			class="fa fa-remove" style="font-size: 22px; cursor: pointer"></i></span>
++		<p
++			style="width: 100%; height: 200px; margin-top: 39px; width: 90%; margin: 39px auto 0; background-size: 100% 100%;"></p>
++	</div>
++	<div id="cboxOverlay" style="display: none;"></div>
++	<div id="colorbox" class="" role="dialog" tabindex="-1"
++		style="display: none;">
++		<div id="cboxWrapper">
++			<div>
++				<div id="cboxTopLeft" style="float: left;"></div>
++				<div id="cboxTopCenter" style="float: left;"></div>
++				<div id="cboxTopRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxMiddleLeft" style="float: left;"></div>
++				<div id="cboxContent" style="float: left;">
++					<div id="cboxTitle" style="float: left;"></div>
++					<div id="cboxCurrent" style="float: left;"></div>
++					<button type="button" id="cboxPrevious"></button>
++					<button type="button" id="cboxNext"></button>
++					<button id="cboxSlideshow"></button>
++					<div id="cboxLoadingOverlay" style="float: left;"></div>
++					<div id="cboxLoadingGraphic" style="float: left;"></div>
++				</div>
++				<div id="cboxMiddleRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxBottomLeft" style="float: left;"></div>
++				<div id="cboxBottomCenter" style="float: left;"></div>
++				<div id="cboxBottomRight" style="float: left;"></div>
++			</div>
++		</div>
++		<div
++			style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
++	</div>
++	<div class="mtucebg"
++		style="display: none; background-color: #000; position: fixed; top: 0; width: 100%; z-index: 999">
++		<div id="mWrapper" style="height: 722px">
++			<div id="mScrollerShow">
++				<ul style="white-space: nowrap"></ul>
++			</div>
++		</div>
++	</div>
++	<script src="${ctxPath}/static/modular/system/serviceContent/getscript"></script>
++</body>
++<script type="text/javascript"
++	src="${ctxPath}/static/modular/system/serviceContent/jquery.colorbox-min.js.下载"></script>
++</html>
+\ No newline at end of file
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/c1/20512f58dc3b001815f3afc29ba63f00 b/.metadata/.plugins/org.eclipse.core.resources/.history/c1/20512f58dc3b001815f3antView .wqd-button.temp-view-button-15:hover,.wqdElementView .wqd-button.temp-view-button-16:hover{background:#177438}.wqdElementView .wqd-button.temp-view-button-12:hover,.wqdElementView .wqd-button.temp-view-button-13:hover{background:#55903f}.wqdElementView .wqd-button.temp-view-button-17:hover,.wqdElementView .wqd-button.temp-view-button-18:hover,.wqdElementView .wqd-button.temp-view-button-19:hover{background:#009593}.wqdElementView .wqd-button.temp-view-button-21:hover{background:#3394e5}.wqdElementView .wqd-button.temp-view-button-22:hover{background:#3394e5}.wqdElementView .wqd-button.temp-view-button-23:hover,.wqdElementView .wqd-button.temp-view-button-24:hover,.wqdElementView .wqd-button.temp-view-button-25:hover{background:#2f6693}.wqdElementView .wqd-button.temp-view-button-24:hover{background:#2f6693}.wqdElementView .wqd-button.temp-view-button-25:hover{background:#2f6693}.wqdElementView .wqd-button.temp-view-button-26,.wqdElementView .wqd-button.temp-view-button-26:visited,.wqdElementView .wqd-button.temp-view-button-26:hover,.wqdElementView .wqd-button.temp-view-button-26:focus{-moz-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;-webkit-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;box-shadow:0 3px 0 rgba(0,0,0,0.3) inset}.wqdElementView .wqd-button.temp-view-button-26:hover{background:url(../../components/elementList/image/but26.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:-2px 0 0 0}.wqdElementView .wqd-button.temp-view-button-27,.wqdElementView .wqd-button.temp-view-button-27:visited,.wqdElementView .wqd-button.temp-view-button-27:hover,.wqdElementView .wqd-button.temp-view-button-27:focus{-moz-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;-webkit-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;box-shadow:0 3px 0 rgba(0,0,0,0.3) inset}.wqdElementView .wqd-button.temp-view-button-27:hover{background:url(../../components/elementList/image/but27.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:-2px 0 0 0}.wqdElementView .wqd-button.temp-view-button-28,.wqdElementView .wqd-button.temp-view-button-28:visited,.wqdElementView .wqd-button.temp-view-button-28:hover,.wqdElementView .wqd-button.temp-view-button-28:focus{-moz-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;-webkit-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;box-shadow:0 3px 0 rgba(0,0,0,0.3) inset}.wqdElementView .wqd-button.temp-view-button-28:hover{background:url(../../components/elementList/image/but28.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:-2px 0 0 0}.wqdElementView .wqd-button.temp-view-button-29,.wqdElementView .wqd-button.temp-view-button-29:visited,.wqdElementView .wqd-button.temp-view-button-29:hover,.wqdElementView .wqd-button.temp-view-button-29:focus{-moz-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;-webkit-box-shadow:0 3px 0 rgba(0,0,0,0.3) inset;box-shadow:0 3px 0 rgba(0,0,0,0.3) inset}.wqdElementView .wqd-button.temp-view-button-29:hover{background:url(../../components/elementList/image/but29.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:-2px 0 0 0}.wqdElementView .wqd-button.temp-view-button-30,.wqdElementView .wqd-button.temp-view-button-30:visited,.wqdElementView .wqd-button.temp-view-button-30:hover,.wqdElementView .wqd-button.temp-view-button-30:focus{box-shadow:1px 1px #770B32, 3px 3px #770B32, 5px 5px #770B32, 7px 7px #770B32, 7px 7px #770B32}.wqdElementView .wqd-button.temp-view-button-30:hover{background:url(../../components/elementList/image/but30.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:5px 0 0 5px}.wqdElementView .wqd-button.temp-view-button-31,.wqdElementView .wqd-button.temp-view-button-31:visited,.wqdElementView .wqd-button.temp-view-button-31:hover,.wqdElementView .wqd-button.temp-view-button-31:focus{box-shadow:1px 1px #770B32, 3px 3px #770B32, 5px 5px #770B32, 7px 7px #770B32, 7px 7px #770B32}.wqdElementView .wqd-button.temp-view-button-31:hover{background:url(../../components/elementList/image/but31.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:5px 0 0 5px}.wqdElementView .wqd-button.temp-view-button-32,.wqdElementView .wqd-button.temp-view-button-32:visited,.wqdElementView .wqd-button.temp-view-button-32:hover,.wqdElementView .wqd-button.temp-view-button-32:focus{box-shadow:1px 1px #770B32, 3px 3px #770B32, 5px 5px #770B32, 7px 7px #770B32, 7px 7px #770B32}.wqdElementView .wqd-button.temp-view-button-32:hover{background:url(../../components/elementList/image/but32.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:5px 0 0 5px}.wqdElementView .wqd-button.temp-view-button-33,.wqdElementView .wqd-button.temp-view-button-33:visited,.wqdElementView .wqd-button.temp-view-button-33:hover,.wqdElementView .wqd-button.temp-view-button-33:focus{box-shadow:1px 1px #770B32, 3px 3px #770B32, 5px 5px #770B32, 7px 7px #770B32, 7px 7px #770B32}.wqdElementView .wqd-button.temp-view-button-33:hover{background:url(../../components/elementList/image/but33.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:5px 0 0 5px}.wqdElementView .wqd-button.temp-view-button-34,.wqdElementView .wqd-button.temp-view-button-34:visited,.wqdElementView .wqd-button.temp-view-button-34:hover,.wqdElementView .wqd-button.temp-view-button-34:focus{box-shadow:1px 1px #5e601c, 3px 3px #5e601c, 5px 5px #5e601c, 7px 7px #5e601c, 7px 7px #5e601c}.wqdElementView .wqd-button.temp-view-button-34:hover{background:url(../../components/elementList/image/but34.png) no-repeat;background-size:100% 100%;border-radius:none;box-shadow:inherit;margin:5px 0 0 5px}.wqdElementView .wqd-button.temp-view-button-35,.wqdElementView .wqd-button.temp-view-button-35:visited,.wqdE

@@ -1,0 +1,338 @@
+$(function() {
+    if (!$('#HTMLDATA').length) {
+        //处理结构
+        var share_ele = ['sqq', 'weixin', 'tsina', 'qzone', 'tieba']
+        var followtop = $(window).height() * 0.5;
+        $(".wqd-share ").each(function() {
+            $(this).addClass("share-list").attr({
+                'data-url': window.location.href,
+                "data-text": $(this).closest("[sharetext]").attr("sharetext"),
+                "data-desc": $(this).closest("[sharetext]").attr("sharetext"),
+                'data-pic': $(this).closest("[qqerweima]").attr("qqerweima"),
+                'data-summary': $(this).closest("[sharetext]").attr("sharetext")
+            });
+            $(this).children().each(function() {
+                $(this).addClass("btn-share").attr({
+                    "data-type": share_ele[$(this).index()]
+                })
+            })
+        });
+        $("body").append($('<div id="J_qr_code_share" style="top:' + followtop + 'px!important;box-shadow: 1px 1px 39px 1px;box-shadow: 1px 1px 39px 1px;padding-top:35px;display:none;z-index:999;position:fixed;margin-top:-130px;margin-left:-130px;text-align:center;background:#FFF;border-radius:8px"></div>'));
+        $("body").click(function() {
+            $("#J_qr_code_share").hide(200);
+        })
+        $("head").prepend('<meta itemprop="image" content="' + $("[erweima]").attr("erweima") + '" /><meta property="qc:admins" content="1755101013252671411666547" />');
+        $('<script src = "http://qzonestyle.gtimg.cn/qzone/app/qzlike/qzopensl.js#jsdate=20111201" charset = "utf-8" > </script> <script src="http://connect.qq.com/widget/shareqq/loader/loader.js" widget="IFRAME_SHARE_QQ" charset="utf-8"></script>').appendTo("body");
+
+        //关注设置
+        // $('.wqd-follow li').on('click', function() {
+        //     window.open($(this).attr("url"))
+        // });
+
+        $("body").append("<div style='width:240px;height:270px;position:fixed;display:none;top:" + followtop + "px;left:50%;box-shadow: 1px 1px 21px 2px;z-index:99;border-radius: 8px;' class='follow_box'><span class='follow_txt' style='float:left;margin: 10px 0 0 10px'></span><span class='follow_close' style='float:right;margin:10px 10px 0 0'><i class='fa fa-remove' style='font-size: 22px;cursor:pointer'></i></span><p style='width:100%;height:200px;margin-top: 39px;width: 90%;margin: 39px auto 0;background-size: 100% 100%;'></p></div>")
+        $(".follow_box").css({
+            "margin-top": -135 + "px",
+            "margin-left": -120 + "px"
+        });
+        $('.wqd-follow li').each(function() {
+            var index = $(this).index();
+            var that = $(this);
+            $(this).click(function() {
+                if (index > 1) {
+                    window.open($(this).attr("url"));
+                }
+                if (index <= 1) {
+                    if (index == 0 && $("[qqerweima]")) {
+                        var qqbgurl = "url(" + that.parents(".wqdelementEdit").attr("qqerweima") + ")";
+                        $(".follow_box").show(200).css({
+                            background: "#fff"
+                        }).find("p").css({
+                            "background-image": qqbgurl
+                        }).end().find(".follow_txt").text("关注QQ帐号");
+                    }
+                    if (index == 1 && $("[wxerweima]")) {
+                        var wxbgurl = "url(" + that.parents(".wqdelementEdit").attr("wxerweima") + ")";
+                        $(".follow_box").show(200).css({
+                            background: "#fff"
+                        }).find("p").css({
+                            "background-image": wxbgurl
+                        }).end().find(".follow_txt").text("关注微信帐号");
+                    }
+                }
+
+            })
+
+        })
+        $(".follow_close").click(function() {
+            $(".follow_box").hide(200);
+        });
+
+    }
+})
+
+
+//分享组件
+;
+(function($) {
+    $(function() {
+        var uid = +new Date;
+        Share(uid);
+    });
+
+    function Share(uid, options) {
+
+        /**
+         * 初始化分享
+         * @param  {String} uid  用户的百度分享AK
+         * @return this;
+         *
+         */
+
+        if (!(this instanceof Share)) {
+            return new Share();
+        }
+
+
+        this.uid = uid;
+        this.url = 'http://s.share.baidu.com/';
+        this.title = document.title;
+        this.size = 'height=500,width=700,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no';
+        this.render = 'table';
+        this.options = $.extend({}, {
+            render: this.render,
+            width: 120,
+            height: 120,
+            background: "#fff",
+            foreground: "#000",
+            text: ''
+        }, options);
+        this.isLoad = false;
+
+        this.init();
+    }
+
+    Share.prototype = {
+        constructor: 'Share',
+        init: function() {
+            var that = this;
+
+            $('body').css("position", "relative").off('click.share', '.btn-share').on('click.share', '.btn-share', function(event) {
+                var _self = $(this),
+                    type = _self.data('type'),
+                    data = _self.parent('.share-list').data();
+                if ($(this).attr("data-type") == "weixin") {
+                    $("#J_qr_code_share").css({
+                        top: $(window).width() > 1200 ? ($(window).height() * 0.5) : ("280px!important"),
+                        left: $(window).width() * 0.5
+                    }).show();
+                }
+                that.fire(type, data, _self);
+                event.stopPropagation();
+            })
+        },
+        setwin: function(w, d) {
+            var iWidth = w; //弹出窗口的宽度;
+            var iHeight = d; //弹出窗口的高度;
+            var iTop = (window.screen.availHeight - 30 - iHeight) / 2; //获得窗口的垂直位置;
+            var iLeft = (window.screen.availWidth - 10 - iWidth) / 2; //获得窗口的水平位置;
+            return {
+                iTop: iTop,
+                iLeft: iLeft
+            }
+        },
+        fire: function(t, d, self) {
+            var that = this,
+                query = that.set(t, d);
+            this.load(query);
+
+            if (t === 'weixin') {
+                if (!that.isLoad) {
+                    var qrcode = document.createElement('script');
+                    qrcode.src = 'javascripts/jquery.qrcode.min.js';
+                    document.head.appendChild(qrcode);
+                    that.isLoad = true;
+                    qrcode.onload = function() {
+                        that.renderQrCode(self);
+                    };
+                }
+
+                that.renderQrCode(self);
+                return;
+            } else if (t === "qzone") {
+                (function() {
+                    var p = {
+                        url: location.href,
+                        showcount: '1',
+                        desc: d.desc,
+                        summary: d.summary,
+                        title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title,
+                        site: document.domain,
+                        pics: d.pic,
+                        style: '203',
+                        width: 98,
+                        height: 22
+                    };
+                    var s = [];
+                    for (var i in p) {
+                        s.push(i + '=' + encodeURIComponent(p[i] || ''));
+                    }
+                    window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'), "newwindow", "width=601,height=590, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(601, 590).iTop + ",left=" + that.setwin(601, 590).iLeft)
+                })();
+                return;
+            } else if (t === "sqq") {
+                var p = {
+                    url: d.url,
+                    desc: d.desc,
+    Textos&quot;&gt;正文文本2&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article2">
++									<strong>页面要炫酷,颜值要高</strong>
++								</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInRight"
++							data-zindex="5"
++							style="width: 323px; height: 28px; left: 136.817px; top: 556px; z-index: 5;"
++							id="elementid14514632685090" elementid="elementid14514632685090"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article2 wqdCkEmptyTextos&quot;&gt;正文文本2&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article2">
++									<strong>简单易用,随需而变,像编辑PPT一样制作网页</strong>
++								</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInRight"
++							data-zindex="6"
++							style="width: 218px; height: 28px; left: 136.817px; top: 728px; z-index: 6;"
++							id="elementid14514632724560" elementid="elementid14514632724560"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article2 wqdCkEmptyTextos&quot;&gt;正文文本2&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article2">
++									<strong>支持多终端跨屏展示</strong>
++								</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInRight"
++							data-zindex="7"
++							style="width: 478px; height: 76px; left: 138.317px; top: 450.5px; z-index: 7;"
++							id="elementId1451463315855" elementid="elementId1451463315855"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3">人靠衣装马靠鞍,一个炫酷的网站才配得上创业者的新潮创意.本公司采用HTML5最新技术,拥有大气舒适的界面和众多精美模板,用本公司制作一个高逼格.高颜值的炫酷网站,让您的创业项目脱颖而出,非同凡响.</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInRight"
++							data-zindex="8"
++							style="width: 478px; height: 76px; left: 136.817px; top: 625.5px; z-index: 8;"
++							id="elementid14514633372180" elementid="elementid14514633372180"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3">创业者的网站随业务发展,总是在不断的更新完善中,有起业,无终业.本公司采用编辑模式,随需而变,可以像编辑PPT一样快速修改网页,网页所见即所得,让创业者省时省力.</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInRight"
++							data-zindex="9"
++							style="width: 478px; height: 76px; left: 138.317px; top: 798.5px; z-index: 9;"
++							id="elementid14514633410210" elementid="elementid14514633410210"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3">网页界面随不同屏幕尺寸自动伸缩,本公司制作的网站在电脑.微信.手机网站都有很赞的体验.可以直接对接微信公号,成为微网站.</p>
++							</div>
++						</div>
++						<div wqdpathfill="#212121" wqdhref="0" data-zindex="10"
++							style="width: 100px; height: 30px; left: 136.817px; top: 403.767px; z-index: 10;"
++							id="elementId1451463385136" elementid="elementId1451463385136"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div wqdpathfill="#212121" wqdhref="0" data-zindex="11"
++							style="width: 100px; height: 30px; left: 136.817px; top: 578.767px; z-index: 11;"
++							id="elementid14514634476270" elementid="elementid14514634476270"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div wqdpathfill="#212121" wqdhref="0" data-zindex="12"
++							style="width: 100px; height: 30px; left: 138.317px; top: 752.767px; z-index: 12;"
++							id="elementid14514634527500" elementid="elementid14514634527500"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div wqdpath_width="0.5660377358490566" wqdpathstrok="#bfbfbf"
++							wqdpathfill="#ffffff" wqdhref="0" data-zindex="13"
++							style="width: 130px; height: 115px; left: 0px; top: 382px; z-index: 13;"
++							id="elementId1451463467137" elementid="elementId1451463467137"
++							class="wqdelementEdit" data-elementtype="svg"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svg" xmlns="http://www.w3.org/2000/svg"
++									xmlns:xlink="http://www.w3.org/1999/xlink"
++									viewBox="-40.14339622641509 -10.143396226415096 1812.2641509433963 1812.2641509433963"
++									enable-background="new 0 0 1792 1792" xml:space="preserve">
++									<circle stroke-linecap="square"
++										stroke-width="10.143396226415096" fill-rule="evenodd"
++										clip-rule="evenodd" fill="#74ACCA" cx="895.914" cy="896"
++										r="895"></circle></svg>
++							</div>
++						</div>
++						<div wqdpath_width="0.5660377358490566" wqdpathstrok="#bfbfbf"
++							wqdpathfill="#ffffff" wqdhref="0" data-zindex="14"
++							style="width: 130px; height: 115px; left: 0px; top: 556px; z-index: 14;"
++							id="elementid14514635083160" elementid="elementid14514635083160"
++							class="wqdelementEdit" data-elementtype="svg"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svg" xmlns="http://www.w3.org/2000/svg"
++									xmlns:xlink="http://www.w3.org/1999/xlink"
++									viewBox="-40.14339622641509 -10.143396226415096 1812.2641509433963 1812.2641509433963"
++									enable-background="new 0 0 1792 1792" xml:space="preserve">
++									<circle stroke-linecap="square"
++										stroke-width="10.143396226415096" fill-rule="evenodd"
++										clip-rule="evenodd" fill="#74ACCA" cx="895.914" cy="896"
++										r="895"></circle></svg>
++							</div>
++						</div>
++						<div wqdpath_width="0.5660377358490566" wqdpathstrok="#bfbfbf"
++							wqdpathfill="#ffffff" wqdhref="0" data

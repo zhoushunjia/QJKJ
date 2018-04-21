@@ -1,0 +1,138 @@
+					<p class="wqd-text-article3" style="text-align: center;">
++									<strong><span style="color: #36363e;">支持多终端跨屏展示</span></strong>
++								</p>
++							</div>
++						</div>
++						<div wqdpathstrok="#f0f0f0" wqdpathfill="#ffffff" wqdhref="0"
++							data-zindex="8"
++							style="width: 240px; height: 172px; left: 718px; top: 0px; z-index: 8;"
++							id="elementid14514708702140" elementid="elementid14514708702140"
++							class="wqdelementEdit" data-elementtype="freeRect"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-freeRect"
++									style="width: 100%; height: 100%; background: #3DC288;"></div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInUp"
++							data-zindex="9"
++							style="width: 117px; height: 30px; left: 782.617px; top: 72.1167px; z-index: 9;"
++							id="elementid14514708702141" elementid="elementid14514708702141"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3" style="text-align: center;">
++									<strong><span style="color: #36363e;">建站工具智能</span></strong>
++								</p>
++							</div>
++						</div>
++						<div wqdpathstrok="#f0f0f0" wqdpathfill="#ffffff" wqdhref="0"
++							data-zindex="9"
++							style="width: 240px; height: 172px; left: 957px; top: 0px; z-index: 9;"
++							id="elementid14514708740990" elementid="elementid14514708740990"
++							class="wqdelementEdit" data-elementtype="freeRect"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-freeRect"
++									style="width: 100%; height: 100%; background: #3DC288;"></div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInDown"
++							data-zindex="10"
++							style="width: 117px; height: 30px; left: 1019.62px; top: 72.1167px; z-index: 10;"
++							id="elementid14514708740991" elementid="elementid14514708740991"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3" style="text-align: center;">
++									<strong><span style="color: #36363e;">运营数据随时掌握</span></strong>
++								</p>
++							</div>
++						</div>
++					</section>
++				</div>
++			</div>
++			
++		<!--body htlmljs-->
++		    @include("/common/_body_bottom.html"){}  
++    
++		</div>
++	</div>
++	
++<!--body底部js-->
++    @include("/common/_body_js.html"){}   
++    
++</body>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery.colorbox-min.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/index.js"></script>
++</html>
+\ No newline at end of file
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/47/6038d8e5543d0018188f809bc87e41fe b/.metadata/.plugins/org.eclipse.core.resources/.history/47/6038d8e5543d0018188f809bc87e41fe
+new file mode 100644
+index 0000000000000000000000000000000000000000..705d7a2f006c0772f3133bd464a0811482270ef7
+--- /dev/null
++++ b/.metadata/.plugins/org.eclipse.core.resources/.history/47/6038d8e5543d0018188f809bc87e41fe
+@@ -0,0 +1,1674 @@
++<!DOCTYPE html>
++<!-- saved from url=(0069)http://template_10998.wqdian.cn/056531725c474454b03b94a8a815d988.html -->
++<html xmlns="http://www.w3.org/1999/xhtml">
++<!-- 页面head信息 -->
++<head>
++<!--meta文件 消息头-->
++	@include("/common/_meta.html"){}
++<!--css文件-->
++    @include("/common/_css.html"){}
++
++<title>启匠科技-团队介绍</title>
++				
++<!--头部js文件-->
++    @include("/common/_head_js.html"){}   
++</head>
++
++<body class="" style="position: relative;">
++	<!-- 页面主体内容  -->
++<!--body头部文件-->
++    @include("/common/_body_head.html"){}   
++	
++	<div class="wqdView wqdCenterView">
++		<div class="wqdAreaView">
++			<div class="yzmoveContent">
++				<div wqdback_position="1"
++					style="background-attachment: scroll; background-image: url(&quot;http://img.wqdian.com/group3/M00/B4/3E/yq0KZVaDx1WAPFibAAMesiJMCSk265.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;"
++					class="wqdSectiondiv" data-type="wqdSectiondiv" sortid="1"
++					partid="wqd14514864479680serial" commonpartid="10542"
++					id="wqd14514864479680serial" sectionname="空白栏目-PC/手机均可"
++					partcategoryid="2">
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451461577627">
++#elementId1451461577627 a {
++	background-color: rgba(255, 255, 255, 0);
++	border-color: #545454;
++}
++
++#elementId1451461577627 a em {
++	color: #373737;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451460844385">
++#elementId1451460844385 a {
++	background-color: rgba(255, 255, 255, 0);
++	border-color: #303030;
++}
++
++#elementId1451460844385 a em {
++	color: #282828;
++}
++</style>
++					<style sectionwidth="1200

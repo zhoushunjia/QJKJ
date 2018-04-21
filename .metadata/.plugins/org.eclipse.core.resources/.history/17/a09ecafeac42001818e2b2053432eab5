@@ -1,0 +1,731 @@
+$(function () {
+    /* 加载更多 flag */
+    var loadMoreFlag = 1;
+    /**
+     * 文章控件功能
+     * @author Lx;
+     */
+    var artListPluginLx = {
+        /* 初始化 */
+        init: function () {
+            var self = this;
+            /* 新闻控件数据加载 */
+            $.each($('.wqdelementEdit[data-elementtype="newArtList"]'), function (i, _) {
+                // 判定是否为默认模板
+                if($(_).attr('artnavtype')) {
+                //     self.bindEvent($(_));
+                // } else {
+                    self.loadNavAndNews($(_));
+                }
+            });
+        },
+        /**
+         * 绑定事件
+         * @augments $obj 传入当前操作对象
+         */
+        bindEvent: function ($obj) {
+            var _self= this;
+            /* 为导航栏添加移入移出事件 */
+            var $nav = $obj.find('.nav'),
+                H = $obj.height(),
+                NavMoreH = $nav.find('.nav-more').outerHeight(),
+                contNavH = $nav.find('.cont-nav').outerHeight(),
+                flag = false;                   // 保证只有在更多按钮上触发
+            $nav.find('.cont-nav .show-more').on('mouseenter.more-nav_1', function () {
+                $nav.find('.nav-more').show();
+                // 防止更多分类的盒子高度高出盒子的大小， 当盒子出现时改变父容器的高度
+                if(NavMoreH + contNavH + 20 > H) {
+                    resetObjH($obj, NavMoreH + contNavH + 20 -H);
+                    flag = true;
+                }
+            });
+            $nav.on('mouseleave.more-nav_3', function () {
+                $nav.find('.nav-more').hide();
+                if(NavMoreH + contNavH + 20 > H && flag) {
+                    resetObjH($obj, -(NavMoreH + contNavH + 20 -H));
+                    flag = false;						
+                }
+            });
+            $nav.find('.nav-more').length && $nav.find('.nav-more').on('mouseleave.more-nav_4', function () {
+                $nav.find('.nav-more').hide();	
+                if(NavMoreH + contNavH + 20 > H && flag) {
+                    resetObjH($obj, -(NavMoreH + contNavH + 20 -H));	
+                    flag = false;					
+                }	
+            });
+            /**
+             * 防止更多分类的盒子高度高出盒子的大小， 当盒子出现时改变父容器的高度
+             * @param {[Object]}  当前父容器对象
+             * @param {*} H  传入需要设置的高度
+             */
+            function resetObjH($obj, H) {
+                $obj.css({
+                    'height': $obj.height() + H + "px"
+                });
+            }
+            /**
+             *  导航栏点击事件
+             */
+            $nav.off('click.nav').on('click.nav', 'span', function () {
+                var that = $(this);
+                // 点击事件一样会触发mouseoleave 事件 所以要重置flag
+                flag = false;
+                // 清除所有span标签上的on
+                $nav.find('span').removeClass('on');
+                // 根据点击对应的容器内的span元素  执行对应的操作
+                if(that.parents('.nav-more').length) {
+                    // 加载数据
+                    _self.renderNewsList($obj, {
+                        id : that.data('categoryid'),
+                        pageSize : (-(-$obj.attr('col'))||1) * (-(-$obj.attr('row'))||1),
+                        sortType: $obj.attr('sorttype'),
+                        type: $obj.attr('artnavtype'),
+                    }); 
+                    // 如果点击的是更多弹出框内的分类，则执行与 始终显示的导航列表的最后一个有效元素 互换（即‘更多’的上一个分类）
+                    var arr = $nav.find('.cont-nav span'),
+                        rpVal = $(arr[arr.length-2]).text(),
+                        rpId = $(arr[arr.length-2]).data('id'),
+                        oVal = that.text(),
+                        oId = that.data('id');
+                    that.text(rpVal);
+                    that.data('id', rpId);
+                    $(arr[arr.length-2]).text(oVal).addClass('on');
+                    $(arr[arr.length-2]).data('id', oId);
+                    // 重置导航条样式
+                    (function reRow() {
+                        var oW = 0,maxWidth = $nav.width();
+                        var arr = $nav.find('.cont-nav span')
+                        $.each(arr, function (i, val) {
+                            oW += $(val).width();
+                        });
+                        $nav.find('.cont-nav span').css('padding','0');
+                        $nav.find('.cont-nav span').css('padding','0 ' + (maxWidth-4*arr.length-oW)/arr.length/2/maxWidth*100 + '%')
+                    })();
+                    that.parents('.nav-more').hide();
+                } else if(that.text()== '更多'){
+                    return false;
+                } else {
+                    that.addClass('on');
+                    // 为默认模板时 点击导航时加载导航
+                    if($.isEmptyObject(that.data())) {
+                        _self.loadNavAndNews($obj);
+                        return;
+                    }
+                    // 加载数据
+                    _self.renderNewsList($obj, {
+                        id : that.data('categoryid'),
+                        pageSize : (-(-$obj.attr('col'))||1) * (-(-$obj.attr('row'))||1),
+                        sortType: $obj.attr('sorttype'),
+                        type: $obj.attr('artnavtype'),
+                    }); 
+                }  
+                // 每次点击导航时，重置数据之后应当重置加载更多按钮的样式 和flag
+                loadMoreFlag = 1;
+                $obj.find('.load-more p').text('加载更多')
+                $obj.find('.load-more p').removeAttr('style');
+            });
+            /* 加载更多 */
+            $obj.off('click.load-more').on('click.load-more', '.load-more p', function () {
+                var id = $obj.find('.nav span.on').data('categoryid');
+                if(id) {
+                    _self.renderNewsList($obj,{
+                        id: id,
+                        pageSize : (-(-$obj.attr('col'))||1) * (-(-$obj.attr('row'))||1),
+                        pageNo: ++loadMoreFlag,
+                        sortType: $obj.attr('sorttype'),
+                        type: $obj.attr('artnavtype')
+                    });
+                } 
+            });
+        },
+        /**
+         * 初始化加载    加载导航栏信息以及新闻列表
+         * @param {[Object]} $obj 传入当前容器对象
+         */
+        loadNavAndNews: function ($obj) {
+            var self = this;
+            var navHtml = '';
+            // 假如没有传入strings   即没有选择任何栏目和分类  则显示默认字符串
+            if(!$obj.attr('navids')) {
+                return;
+            }
+            /* 如已存在 先清空  插入分类和更多分类的容器 */
+            $obj.find('.nav').empty().append('<div class="cont-nav"></div><div class="nav-more"></div>');
+            /* 获取用户分类数据 并存放到对应的分类中 */
+            $.ajax({
+                url:SAAS_NEWS+"/api/news/navigationbars/"+$obj.attr('userid')+"/"+($obj.attr('artnavtype') || "CATEGORY")+"?callback=?",
+                dataType:'jsonp',
+                jsonp:'callback',
+                type:'GET',
+                success: function (data) {
+                    if(data && data.length) {
+                        // $.each(data, function (i, v) {
+                        //     navHtml += '<span '+(i==0 ? 'class="on"':'')+' data-categoryid="'+v.id+'">'+v.name+'</span>';
+                        // });
+                        // 获取所有的分类id数组
+                        var arrId = [];
+                        $.each(data, function (_, val) {
+                            arrId.push(val.id);
+                        })
+ "elementId1451468734579" elementid="elementId1451468734579"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1133 1101l352-352q19-19 19-45t-19-45l-352-352q-30-31-69-14-40 17-40 59v160q-119 0-216 19.5t-162.5 51-114 79-76.5 95.5-44.5 109-21.5 111.5-5 110.5q0 181 167 404 10 12 25 12 7 0 13-3 22-9 19-33-44-354 62-473 46-52 130-75.5t224-23.5v160q0 42 40 59 12 5 24 5 26 0 45-19zm531-685v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="8"
++							style="width: 30px; height: 30px; left: 319.817px; top: 396.5px; z-index: 8;"
++							id="elementId1451468775197" elementid="elementId1451468775197"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-188v-595h199l30-232h-229v-148q0-56 23.5-84t91.5-28l122-1v-207q-63-9-178-9-136 0-217.5 80t-81.5 226v171h-200v232h200v595h-532q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="9"
++							style="width: 30px; height: 30px; left: 423.817px; top: 396.5px; z-index: 9;"
++							id="elementId1451468779362" elementid="elementId1451468779362"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1408 928v-480q0-26-19-45t-45-19h-480q-42 0-59 39-17 41 14 70l144 144-534 534q-19 19-19 45t19 45l102 102q19 19 45 19t45-19l534-534 144 144q18 19 45 19 12 0 25-5 39-17 39-59zm256-512v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div data-zindex="10"
++							style="width: 314px; height: 25px; left: 213.817px; top: 639.117px; z-index: 10;"
++							id="elementid14514689778950" elementid="elementid14514689778950"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<span style="font-size: 14px;">软件，质量不软；启匠，匠人精神</span>
++							</div>
++						</div>
++						<div wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="11"
++							style="width: 103px; height: 34px; left: 185.817px; top: 560px; z-index: 11;"
++							id="elementid14514689778955" elementid="elementid14514689778955"
++							class="wqdelementEdit" data-elementtype="button"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>本公司</em></a>
++							</div>
++						</div>
++						<div data-zindex="12"
++							style="width: 326px; height: 32px; left: 185.817px; top: 604.733px; z-index: 12;"
++							id="elementid14514689778954" elementid="elementid14514689778954"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<strong><span style="font-size: 18px;">您的创业梦想需要一个非同凡响的网站</span></strong>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="13"
++							style="width: 30px; height: 30px; left: 185.817px; top: 636.5px; z-index: 13;"
++							id="elementid14514689778951" elementid="elementid14514689778951"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1133 1101l352-352q19-19 19-45t-19-45l-352-352q-30-31-69-14-40 17-40 59v160q-119 0-216 19.5t-162.5 51-114 79-76.5 95.5-44.5 109-21.5 111.5-5 110.5q0 181 167 404 10 12 25 12 7 0 13-3 22-9 19-33-44-354 62-473 46-52 130-75.5t224-23.5v160q0 42 40 59 12 5 24 5 26 0 45-19zm531-685v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="14"
++							style="width: 30px; height: 30px; left: 319.817px; top: 636.5px; z-index: 14;"
++							id="elementid14514689778952" elementid="elementid14514689778952"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-188v-595h199l30-232h-229v-148q0-56 23.5-84t91.5-28l122-1v-207q-63-9-178-9-136 0-217.5 80t-81.5 226v171h-200v232h200v595h-532q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="15"
++							style="width: 30px; height: 30px; left: 423.817px; top: 636.5px; z-index: 15;"
++							id="elementid14514689778953" elementid="elementid14514689778953"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1408 928v-480q0-26-19-45t-45-19h-480q-42 0-59 39-17 41 14 70l144 144-534 534q-19 19-19 45t19 45l102 102q19 19 45 19t45-19l534-534 144 144q18 19 45 19 12 0 25-5 39-17 39-59zm256-512v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div data-zindex="16"
++							style="width: 487px; height: 25px; left: 213.817px; top: 874.117px; z-index: 16;"
++							id="elementid14514689858160" elementid="elementid14514689858160"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<span style="font-size: 14px;">技日新月异，求精求变是启匠执着动力</span>
++							</div>
++						</div>
++						<div wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="17"
++							style="width: 103px; height: 34px; left: 185.817px; top: 795px; z-index: 17;"
++							id="elementid14514689858165" elementid="elementid14514689858165"
++							class="wqdelementEdit" data-elementtype="button"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>本公司</em></a>
++							</div>
++						</div>
++						<div data-zindex="18"
++							style="width: 326px; height: 32px; left: 185.817px; top: 839.733px; z-index: 18;"
++							id="elementid14514689858164" elementid="elementid14514689858164"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<strong><span style="font-size: 18px;">您的软件需要我们</span></strong>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="19"
++							style="width: 30px; height: 30px; left: 185.817px; top: 871.5px; z-index: 19;"
++							id="elementid14514689858161" elementid="elementid14514689858161"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1133 1101l352-352q19-19 19-45t-19-45l-352-352q-30-31-69-14-40 17-40 59v160q-119 0-216 19.5t-162.5 51-114 79-76.5 95.5-44.5 109-21.5 111.5-5 110.5q0 181 167 404 10 12 25 12 7 0 13-3 22-9 19-33-44-354 62-473 46-52 130-75.5t224-23.5v160q0 42 40 59 12 5 24 5 26 0 45-19zm531-685v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="20"
++							style="width: 30px; height: 30px; left: 319.817px; top: 871.5px; z-index: 20;"
++							id="elementid14514689858162" elementid="elementid14514689858162"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-188v-595h199l30-232h-229v-148q0-56 23.5-84t91.5-28l122-1v-207q-63-9-178-9-136 0-217.5 80t-81.5 226v171h-200v232h200v595h-532q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="21"
++							style="width: 30px; height: 30px; left: 423.817px; top: 871.5px; z-index: 21;"
++							id="elementid14514689858163" elementid="elementid14514689858163"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1408 928v-480q0-26-19-45t-45-19h-480q-42 0-59 39-17 41 14 70l144 144-534 534q-19 19-19 45t19 45l102 102q19 19 45 19t45-19l534-534 144 144q18 19 45 19 12 0 25-5 39-17 39-59zm256-512v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInLeft"
++							wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="22"
++							style="width: 71px; height: 65px; left: 1116.82px; top: 337px; z-index: 22;"
++							id="elementid14514690417610" elementid="elementid14514690417610"
++							class="wqdelementEdit aniTriOther" data-elementtype="button"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>查看详细</em></a>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInLeft"
++							wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="23"
++							style="width: 71px; height: 65px; left: 1116.82px; top: 571.5px; z-index: 23;"
++							id="elementid14514690704560" elementid="elementid14514690704560"
++							class="wqdelementEdit aniTriOther" data-elementtype="button"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>查看详细</em></a>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInLeft"
++							wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="24"
++							style="width: 71px; height: 65px; left: 1116.82px; top: 807.233px; z-index: 24;"
++							id="elementid14514690752690" elementid="elementid14514690752690"
++							class="wqdelementEdit aniTriOther" data-elementtype="button"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>查看详细</em></a>
++							</div>
++						</div>
++						<div wqdpathfill="#d3d3d3" wqdhref="0" data-zindex="25"
++							style="width: 1200px; height: 30px; left: 0px; top: 479px; z-index: 25;"
++							id="elementId1451469090310" elementid="elementId1451469090310"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div wqdpathfill="#d3d3d3" wqdhref="0" data-zindex="26"
++							style="width: 1200px; height: 30px; left: 0px; top: 714px; z-index: 26;"
++							id="elementid14514691122990" elementid="elementid14514691122990"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div wqdpathfill="#d3d3d3" wqdhref="0" data-zindex="27"
++							style="width: 1200px; height: 30px; left: 0px; top: 948px; z-index: 27;"
++							id="elementid14514691270520" elementid="elementid14514691270520"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInDown"
++							data-zindex="28"
++							style="width: 437px; height: 38px; left: 380.383px; top: 103.5px; z-index: 28;"
++							id="elementid14514684713410" elementid="elementid14514684713410"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;h2 class=&quot;wqd-text-title2 wqdCkEmptyTextos&quot;&gt;H2 标题文字&lt;/h2&gt;
++							"
++								class="wqdelementEditBox">
++								<i
++									style="display: block; font-style: normal; text-align: center;"><strong><span
++										style="font-size: 24px;">一站式的在线H5建站平台</span></strong></i>
++							</div>
++						</div>
++						<div wqdpathfill="#212121" wqdhref="0" data-zindex="29"
++							style="width: 100px; height: 30px; left: 547.767px; top: 144.5px; z-index: 29;"
++							id="elementid14514684713411" elementid="elementid14514684713411"
++							class="wqdelementEdit" data-elementtype="line"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div class="wqd-line"
++									style="height: 0; border-top: 1px solid #3d9be9; position: relative; top: 50%;"></div>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInUp"
++							data-zindex="30"
++							style="width: 796px; height: 30px; left: 202px; top: 193.5px; z-index: 30;"
++							id="elementid14514684713412" elementid="elementid14514684713412"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3" style="text-align: center;">
++									<span style="color: #808080;">本公司建站平台将突破人们对于传统建站的认知,不仅可以制作精美的企业官网,还可以个性化定制</span>
++								</p>
++							</div>
++						</div>
++					</section>
++				</div>
++			</div>
++			<div class="yzmoveContent">
++				<div wqdbgset="0" wqdback_position="1"
++					style="background-attachment: scroll; background-size: cover; background-position: center center; background-repeat: no-repeat;"
++					class="wqdSectiondiv" data-type="wqdSectiondiv" sortid="11"
++					partid="wqd1451459264122serial" commonpartid="10542"
++					id="wqd1451459264122serial" sectionname="空白栏目-PC/手机均可"
++					partcategoryid="2">
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469433765">
++#elementId1451469433765 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469422427">
++#elementId1451469422427 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469417832">
++#elementId1451469417832 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469441947">
++#elementId1451469441947 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469700515">
++#elementId1451469700515 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469680080">
++#elementId1451469680080 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469660300">
++#elementId1451469660300 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469628927">
++#elementId1451469628927 path {
++	fill: #31343b;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469251254">
++#elementId1451469251254 .carousel-control:hover {
++	background-color: rgba(34, 85, 85, 0) !important;
++}
++
++#elementId1451469251254 .carousel-control:hover polygon {
++	fill: #9d9d9d;
++}
++
++#elementId1451469251254 .carousel-control:hover path {
++	fill: #9d9d9d;
++}
++
++#elementId1451469251254 .carousel-control {
++	background-color: rgba(34, 85, 85, 0);
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469359260">
++#elementId1451469359260 .wqd-freeRect {
++	border-color: #dddddd !important;
++	border-width: 1px;
++	border-style: solid;
++	background-color: #f6f7f9 !important;
++}
++
++#elementId1451469359260 .wqd-freeRect:hover {
++	background-color: #f6f7f9 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469340711">
++#elementId1451469340711 .wqd-freeRect {
++	border-color: #dddddd !important;
++	border-width: 1px;
++	border-style: solid;
++	background-color: #f6f7f9 !important;
++}
++
++#elementId1451469340711 .wqd-freeRect:hover {
++	background-color: #f6f7f9 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469319117">
++#elementId1451469319117 .wqd-freeRect {
++	border-color: #dddddd !important;
++	border-width: 1px;
++	border-style: solid;
++	background-color: #f6f7f9 !important;
++}
++
++#elementId1451469319117 .wqd-freeRect:hover {
++	background-color: #f6f7f9 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementId1451469286623">
++#elementId1451469286623 .wqd-freeRect {
++	background-color: #f6f7f9 !important;
++	border-color: #dddddd !important;
++	border-width: 1px;
++	border-style: solid;
++}
++
++#elementId1451469286623 .wqd-freeRect:hover {
++	background-color: #f6f7f9 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="wqd1451459264122serial">
++#wqd1451459264122serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #f6f7f9;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514692017041">
++#elementid14514692017041 .wqd-line {
++	border-top-color: #212121 !important;
++}
++</style>
++					<section wqdbgcolor="#f6f7f9" wqdwidthlimit="0" wqdbgattachment="0"
++						bac_position="5" wqdheight="616" sectionwidth="1200"
++						class="wqd1445504393013css wqdBkEditos sectionV2 moveMainArea elementsContainer"
++						style="height: 616px; margin: 0px auto; position: relative; z-index: 5;"
++						wqdimgurlos="http://img.wqdian.com/group2/M00/29/0F/yq0KXlaDgceAdbp8AAFsd7xn318811.jpg"
++						wqdbgcoloros="#eee" data-maxzindex="4">
++						<div num="3" controlbg="rgba(34,85,85,0)" svghover="#9d9d9d"
++							controlbghover="rgba(34,85,85,0)" data-zindex="1"
++							id="elementId1451469251254" elementid="elementId1451469251254"
++							class="wqdelementEdit elementsContainer"
++							data-elementtype="carouse" data-elemandgroup="true"
++							style="width: 1200px; height: 179px; left: 0px; top: 273.5px; z-index: 1;">
++							<div class="wqdelementEditBox">
++								<div class="wqdCarousel slide" data-pause="false">
++									<a style="display: inline-block;" data-slide="prev"
++										href="/"
++										class="left carousel-control"><svg class="wqdDIcon"
++											viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
++											<path fill="#999"
++												d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"></path></svg></a>
++									<a style="display: inline-block;" data-slide="next"
++										href="/"
++										class="right carousel-control"><svg class="wqdDIcon"
++											viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
++											<path fill="#999"
++												d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"></path></svg></a>
++									<div class="carousel-inner">
++										<div class="item active">
++											<div bg="0"
++												url="url(&quot;http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg&quot;)"
++												data-maxzindex="8" class="bannerContainer" style="">
++												<div wqdhovercolor="#f6f7f9"
++													wqdpath_width="1.9811320754716981" wqdpathstrok="#dddddd"
++													wqdpathfill="#f6f7f9" wqdhref="0" data-zindex="1"
++													style="width: 300px; height: 179px; left: 2px; top: 0px; z-index: 1;"
++													id="elementId1451469286623"
++													elementid="elementId1451469286623" class="wqdelementEdit"
++													data-elementtype="freeRect" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<div class="wle').css('width', 75.5 - 5*$obj.attr('col') + '%');
+            // 获取当前对象父盒子对象
+            var _curParObj = $obj.parent();
+            var _curParObjH = _curParObj.height();
+            // 获取当前对象的高度值
+            var H = $obj.height();
+            if(data.siblingsData.length) {
+                $.each(data.siblingsData, function (i, _) {
+                    var _curObj = _curParObj.children().eq(_.index);
+                    // 设置会有可能遮盖的元素高度
+                    _curObj.css({
+                        'top': H - data.H + _.disY + 'px'
+                    });
+                    
+                    // // 重新设置当前通栏的高度
+                    // if(_curObj.offset().top + _curObj.height() > data._curParObjH) {
+                    //     _curParObj.css({
+                    //         'height': data._curParObjH + H - data.H + 'px'
+                    //     });
+                    // }
+                    _curParObj.css({
+                        'height': _curParObjH + H - data.H + 'px'
+                    });
+                })
+            } else {
+                _curParObj.css({
+                    'height': _curParObjH + H - data.H + 'px'
+                });
+            }
+        },
+        /**
+         * 获取初始样式
+         * @param {[Object]} $obj 传入当前操作对象
+         * @returns {[Object]} oData 返回所有当前通栏下 有可能会覆盖元素的集合 以及其 索引值 和 相对通栏的top值对象
+         */
+        getOriginStyle: function ($obj) {
+            var oData = {};
+            // 获取通栏对象
+            var $wrap = $obj.parents('.wqdSectiondiv');
+            var disH = $wrap.offset().top;
+            // 获取当前对象父盒子对象
+            var _curParObj = $obj.parent();
+            // 获取兄弟节点数组
+            var $siblingsObjArr = $obj.siblings();
+            // 获取当前对象 宽度 和 高度 以及 offset值 (相对于通栏)
+            oData.top = $obj.offset().top;
+            oData.left = $obj.offset().left;
+            oData.H = $obj.height();
+            oData.W = $obj.width();
+            oData.siblingsData = [];
+            // 获取配置
+            $.each($siblingsObjArr, function (i, _) {
+                // 只获取当前元素以下的元素
+                if($(_).offset().top >= oData.top) {
+                    // 判定当前对象高度向下扩展时是否会影响到这些对象
+                    if(oData.left < $(_).offset().left + $(_).width() && $(_).offset().left < oData.left) {     // 左侧
+                        oData.siblingsData.push({
+                            index: $.inArray(_, _curParObj.children()), // 获取当前元素索引位置
+                            disY: $(_).offset().top - disH, // 相对于当前通栏的top值
+                        });
+                    }
+                    if(oData.left + oData.W > $(_).offset().left && $(_).offset().left > oData.left) {          // 右侧
+                        oData.siblingsData.push({
+                            index: $.inArray(_, _curParObj.children()), // 获取当前元素索引位置
+                            disY: $(_).offset().top - disH, // 相对于当前通栏的top值
+                        });
+                    }
+                }
+            });
+            return oData;
+        }
+    };
+    artListPluginLx.init();
+})

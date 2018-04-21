@@ -1,0 +1,658 @@
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;word-break:normal}address,cite,dfn,em,var{font-style:normal}code,kbd,pre,samp{font-family:courier new, courier, monospace}h1,h2,h3,h4,h5,h6,p,a,span{text-transform:none !important;word-wrap:break-word;word-break:break-all}small{font-size:12px}ul,ol{list-style:none outside none}sup{vertical-align:text-top}sub{vertical-align:text-bottom}legend{color:#000000}fieldset,img{border:0 none}button,input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{display:block;margin:0;padding:0}mark{background:none repeat scroll 0 0 #FFFF00}body{font-family:"微软雅黑", Verdana, Arial, Helvetica, sans-serif}img{border:medium none}body a{text-decoration:none}a:acitve{color:inherit}a:link,a:visited,a:hover,a:active,a:focus{outline:none;text-decoration:none}h1 em,h2 em,h3 em,h4 em,h5 em,h6 em,p em{font-style:italic}s,b{font-weight:normal;text-decoration:none}input:focus,input:active{outline:none}button{outline:none}button:active,button:visited{outline:none}::-ms-clear,::-ms-reveal{display:none}.clearfix{zoom:1}.clearfix:before{content:"\200B";display:block;height:0;visibility:hidden}.clearfix:after{clear:both;content:"\200B";display:block;height:0;visibility:hidden}.wqdtableTouchos{overflow-x:auto;zoom:1}#HTMLDATA .wqdtableTouchos{overflow:hidden;zoom:1}.wqdAreaView .wqdBkEditos{margin:0 auto;width:1200px}.wqdAreaView footer.wqdBkEditos{overflow:hidden}.wqdAreaView .wqdSectiondiv{min-width:1200px}#HTMLDATACENTER .yzmoveContent,.wqd-carouseOverlay{overflow:hidden}.hiwqd.pc .yzmoveContent{min-width:1200px}.hiwqd.phone .yzmoveContent{min-width:inherit !important}.wqdPhoneContainer .yzmoveContent{min-width:inherit !important}.sectionCenter.yzmoveContent{overflow:hidden !important}.sectionCenter.yzmoveContent.onDraging{overflow:visible !important}.wqdSectiondiv section.overShow{overflow:visible}.fullscreen [data-elementtype='carouse']{width:100%;height:100% !important}.fullscreen .fullMode{left:50% !important;-webkit-transform:translateX(-50%);transform:translateX(-50%)}section.sectionV2{position:relative;margin:0 auto}#wqdIphonePage .fullscreen{width:320px !important}.wqdIphoneView .fullscreen .bannerContainer{width:100% !important}.fullscreen_item{width:100%;background-size:cover}.wqdCarousel .carousel-inner .item{background-size:cover}#HTMLDATA .onDraging .wqdGroup:after,#HTMLDATA .onGrouping:after{width:100%;height:100%;content:'';position:absolute;top:0px;left:0px;border:1px solid #60c1ff !important}#HTMLDATA .onDraging .wqdelementEdit .wqdGroup:after{display:none}.wqdGroup{position:absolute}#HTMLDATA .wqdGroupmove:after,.wqd-carouseOverlay .wqdGroupmove:after{width:100%;height:100%;content:'';position:absolute;top:0px;left:0px;border:1px solid #60c1ff !important}.wqdAppFromos .radio,.wqdAppFromos .checkbox{display:inline-block;padding-right:25px}textarea.form-control{min-height:200px}.wqdfromemptyos{background:none !important;border:0 !important;box-shadow:none !important}.wqdfromemptyos:hover{border:0 !important}@media (max-width: 991px){.wqdfromemptyos{display:none}}#HTMLDATA{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.wqdversionos{display:none}#HTMLDATA .wqdversionos{display:block}.wqdBtnMask{position:relative;visibility:hidden}.wqdBtnMask:before{content:"显示按钮";position:absolute;top:-2px;left:-1px;bottom:-2px;right:-1px;background:rgba(0,0,0,0.2);border:1px dotted #9c9c9c;padding:inherit}#HTMLDATA .wqdBtnMask{visibility:visible;border-color:transparent !important;background-color:transparent !important}#HTMLDATA .wqdBtnMask *{opacity:0}.wqdelementEdit{position:absolute}.wqdelementEdit .wqdelementEditBox,.wqdelementEdit .wqdelementContent{width:100%;height:100%;overflow:hidden;position:absolute;z-index:1}.wqdelementEdit .wqdelementEditBox.wqdshadowBox,.wqdelementEdit .wqdelementEditBox.wqdelementArrow,.wqdelementEdit .wqdelementContent.wqdshadowBox,.wqdelementEdit .wqdelementContent.wqdelementArrow{overflow:visible}.wqdelementEdit.onEditing{border:#48beef}#HTMLDATA .wqdelementEdit.wqdselected:before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid #7dafff !important}.elementsContainer>.wqdelementEditBox{overflow:visible !important}.wqdelementEditBox.wqdfreeRect1,.wqdelementEditBox.wqdfreeRect2,.wqd-freeRect.wqdfreeRect1,.wqd-freeRect.wqdfreeRect2{position:relative}.wqdelementEditBox.wqdfreeRect1 .wqd-arrow1,.wqd-freeRect.wqdfreeRect1 .wqd-arrow1{position:absolute;left:-10px;top:50%;margin-top:-10px;border:solid transparent;border-width:10px 10px 10px 0;border-right-color:#2b6ca3}.wqd-freeRect.wqdfreeRect2 .wqd-arrow2,.wqdelementEditBox.wqdfreeRect2 .wqd-arrow2{position:absolute;bottom:-16px;right:0;border-top-width:16px;border-left-width:16px;border-style:solid;border-top-color:#002e5d;border-right-color:#002e5d;border-bottom-color:transparent;border-left-color:transparent}.wqdelementEditBox.wqdfreeRect1.wqdfreeRect3 .wqd-arrow3,.wqd-freeRect.wqdfreeRect1.wqdfreeRect3 .wqd-arrow3{position:absolute;left:-10px;top:50%;margin-top:-10px;border:solid transparent;border-width:10px 10px 10px 0;border-right-color:#01b1af}html{font-size:62.5%}body{font-size:14px;font-size:1.4rem}.wqd-text-title1{font-size:56px !important;font-size:5.6rem !important;line-height:1.75}.wqd-text-title2{font-size:46px !important;font-size:4.6rem !important;line-height:1.75}.wqd-text-title3{font-size:28px !important;font-size:2.8rem !important;line-height:1.75}.wqd-text-title4{font-size:20px !important;font-size:2rem !important;line-height:1.75}.wqd-text-article1{font-size:18px !important;font-size:1.8rem !important;line-height:1.75}.wqd-text-article2{font-size:16px !important;font-size:1.6rem !important;line-height:1.75}.wqd-text-article3{font-size:14px !important;font-size:1.4rem !important;line-height:1.75}.wqd-text-article4{font-size:12px !important;font-size:1.2rem !important;line-height:1.75}body.phone .wqd-text-title1,.wqdPhoneContainer .wqd-text-title1{font-size:3.2rem !important;font-size:32px !important;line-height:1.75}body.phone .wqd-text-title2,.wqdPhoneContainer .wqd-text-title2{font-size:3rem !important;font-size:30px !important;line-height:1.75}body.phone .wqd-text-title3,.wqdPhoneContainer .wqd-text-title3{font-size:2.4rem !important;font-size:24px !important;line-height:1.75}body.phone .wqd-text-title4,.wqdPhoneContainer .wqd-text-title4{font-size:1.8rem !important;font-size:18px !important;line-height:1.75}body.phone .wqd-text-article1,.wqdPhoneContainer .wqd-text-article1{font-size:1.6rem !important;font-size:16px !important;line-height:1.75}body.phone .wqd-text-article2,.wqdPhoneContainer .wqd-text-article2{font-size:1.4rem !important;font-size:14px !important;line-height:1.75}body.phone .wqd-text-article3,.wqdPhoneContainer .wqd-text-article3{font-size:1.2rem !important;font-size:12px !important;line-height:1.75}body.phone .wqd-text-article4,.wqdPhoneContainer .wqd-text-article4{font-size:1.2rem !important;font-size:12px !important;line-height:1.75}@media (min-width: 320px) and (max-width: 767px){.wqd-text-title1{font-size:32px !important;font-size:3.2rem !important;line-height:1.75}.wqd-text-title2{font-size:30px !important;font-size:3rem !important;line-height:1.75}.wqd-text-title3{font-size:24px !important;font-size:2.4rem !important;line-height:1.75}.wqd-text-title4{font-size:18px !important;font-size:1.8rem !important;line-height:1.75}.wqd-text-article1{font-size:16px !important;font-size:1.6rem !important;line-height:1.75}.wqd-text-article2,.wqd-text-article3{font-size:14px !important;font-size:1.4rem !important;line-height:1.75}.wqd-text-article4{font-size:12px !important;font-size:1.2rem !important;line-height:1.75}}.wqdelementEdit[data-elementtype=formSelect] .wqdelementEditBox{overflow:visible}.wqdelementEdit [data-elementtype=formDate] .wqdelementEditBox{overflow:visible !important}.wqd-form.wqdControlForm [data-elementtype=formSelect]>.wqdelementEditBox,.wqd-form.wqdControlForm [data-elementtype=formDate]>.wqdelem`q4K|Rcoy-o@Iyy^0Gh<z4&
+z!JZr*!5_BQKV0%gnHT!aB=!_+^o$Hm<TO#_Fd$3Zp{B;J{GGf7l#Z#${;-RGA<fWs
+z>>dUY7+nIlQL;xep;wPqd{3@gE<1ZNqncxy$99tCOFI^tT&Q`2TQ7N)8dB~4Lhe^N
+z{D$xV8jNSdS6*qBcSTi^Xd~V;F>&kLq=`L&7!U;Z%>|%+S0UOJ;2$(BetE96TCp%Z
+z*Tjh}0TCQJKPFy%(SRM%xUU*j_wOqQhO7+fgtk=|ls52Y)Va}`O)G7#dr9_$p6IQ#
+zjrMF<IIwAC9q(M+%7*L~!n|mjyrZjUL$WUX$>#q2=0>!U)0vBeQVbHy$>6nlIuG6}
+zUuzy+TZ|}C7S_dSVf%4BHGrks=uc>yT<>B6zp`MFfg`Ks6(ND=)U)MN^7dxr+r~U<
+z;u+8<ek@0~u!-%m5s+xs1jE092g&xCPARDkWHq`pZ8wX&$7~VJu+jixf4X2__{5N#
+z?vq{G#;w{!8_mQGzwIxeNKaU-+MC5sHB?-88MTp-+kPc8z~!T3-2+u5R7PNWds5se
+za>$BzsJ)b7Z#YzaQxoK-C6#V6=P5nBRMwb?p+&mo?_^2~;;Cy#iNRLIkf|dJnP2@n
+zIUE7@{@$e0t^@sOz*mEf48bPN*C>%+^R#@eH5j8X$2CN*20#d1(A?m9*l{11#bG5l
+zG@1f|yZI+{WU<>rNZFqj&=Up}H}S1^0gQBHtu(hjEj;)$MrBFfo7GHI!n^7I)dS>%
+zrWLAaP%1w2=_6${`kN*A9MH5bFI}4DBtq5v$@<JxK>yL9U}G=E_k;tFM&d(1mxU`j
+zo4d_H&oXi&W2;)aC{F5=MIL)O8oDApdWEcNA3`9N#i%3Trx?OUt$4J@0$-sZJpNQx
+z?+EwAbbr0SIcMMaIr)tBG^xho*Wh4>SCTrk!i4}y(gVZhYk(er#u?sF?SudcHoN`-
+z!H{y{Nz)J^0W%+Yu#rN%Om8(}pa*o`r;$wq?|a=s$QVa1zvVpH(@joWqDvzeyyq^E
+z>8si{4K3*3NYv%{YTI--Ch-^WZ!dt=$`+S>Kw8juVx$rje8g{gY)hpE?eG-wfPXLR
+zT}NaQ?0Y^UZ-M=a;Y)Kvk=w7A%5IkG)noT3>3i=zO7>h_8CpBGj!850h8;xUH^9VA
+zft)cWI{<kSx)m5~^s1*BSSG%}ptry7kb`O76v8NZJssdfP1^hbX~YqEU#Y}Ce{`>C
+zcruQ*a|}_q4^K9F_Ve=Q`JG)e57nV7D0+RJ^kBkXU)1FZMXIy1wxYE${M0fxiT_^a
+z9oU&uDsvpD693e^2F6oJ5yE4Pp2a<XDrklhAm54qYO&+QbVBs_6?{+cX#dEV!MEMs
+z%FGNXZv8t<hWE?fa1nb3u-{rtYYt1`VQhr?E!P|@D;MDtjKE9{whoW<hkSk^N0#61
+z-r<o=ra{3eAi5;g%%rQc+{9rR)fl3vA#mXo8l3K0k?Hqd{`YdQ;p)S}t?_2EO$t^>
+zBm_MDPT79NaTQuu2Eu*vX4$@d42H+-fcU$m1;Z><3PNaYwGv&UZ<BbVS1yyIwq96`
+zKq7}iH*FZDqDQ$|FPf`jS~xKzfZ)uKsm<dWw6+i!Rb7>Yi_%lI&3^ewwYH!5rc6OC
+z#IRKfU}oAv_?$Ex*Mb)f7k=F%m{*0MJ8m=k@+<k~{y~Q3930>8&7-m}tNCHjJEf4g
+zYFGyR^5^K)_nP();<SLe#tt^OqK!en$7ZyDiW7<Z#1@Kc;{Tu(Scqw}*p&*8EPUzz
+zgD%}+RIS=ZsGw1fudj#dsn=Yv_}8*iD~e9WtIYr7LA&S)Jo}g|jH0s|0t+z)6XIx1
+z>$F;nDuj%IU$tR=c3<R<OYV|)BD$ki0R!gNR@&s^6JL|Q@SXEFW?;NrP9vw<=@qfY
+zJ$y#fxOZ3AQq$a0!gJ#~9=S;ND|I6OOuMIO=fuiG5QFt-I-^yNZbzMS)zRXOH@ZG1
+zof`0&f07S}sD#@XZb-Z3qMF3uIf}|bw2)f39t|f_q+rg!xSe$S3o=_dN!OaJZRArX
+z53aSLuj-MH!_j18)Jh-NhGtM0i=4v{lbYSDNe$x|4u@krd1LlTM9^dZDRUMnzS;MW
+z`{rJp-RS5lZAcLd3$FVM42;S(BRaVUM+wu7c2Ha#ty|@>vwCFF@s-L*^8h?i<Ty~!
+zpW00bif`Dk!O$wfdO|xC{Dgr!V<Tk(T`Z%0gjVg42+n^9zLxe>?ioRhi*n4w_6v6j
+zW+;AS9PVS#;E-oIuu6{hW2OeQ0qUu3=l}$$rE<#orz#83GkM@_nYW~}R_hhJF%KTE
+z(<997#K~)`MC1%r)*=U!6%n3uf_LN22+U*c^a<I0V3Gs8eSet=6c3x)u(&PeI+Hk}
+zi^FU%;iD_%WLi^NuSV3WXPc0BNcx<n)?Dh3=IR+C%CYzLVqc8fyL$L(mwb>>PCxiu
+zw~ZL+toNbHLzA~};7dpl&o7fHl!SdTJrHfM*)!iBn&Iqx;?CcaPA?90fDn+;KHn$V
+zd>{GU6uU;$TcLmB4Ih$Gv{M*^Wa}AmZdNfL0{<?W^2QMS7~}hl`t*V#bUhI!VbA04
+zzWh7HkXzf>1|kj07%P&YQO=^(cvN;5Zjv3BjjcJ%j>6+-|FfU$;o2k#EoUX+r#b}E
+zyOjCYY%>J%ejpg26}?J$_RPJs(&@={avW@JQ_?m|ft!}~C&Gx3ZR<}&8n|MrY$^?}
+z0V0_ShK3TvOpf;lb5-5W@cL`0?p8cm_5jd!!>a(YB|akw<30B}8HF?tiNDt%$$RN^
+zVA=UTypALe9%RanPJfSGEnjYJYwm6?A+!g1prkhm=%SE3Zd|cnaP4s+kc^`hUlQLl
+z$+Dh0P4Fqe&uJ?HQxQ%(RuqQ=LG;0rw-ckNkU&ikUEUDS9UhI$34f=jY8mlU)u!6q
+z1^1C)z>tS>S2Bd2cLn6p^00BzK|vElUPKBZsp1MDRPxKqE%FH)#{l<t5H%W<?u}X@
+z6!x^AY1NH1I-G)N)CJU|%^J*NioCeI5i_R%lpX8|FN<c@lhy6^z^<?E3HaC!k}<YT
+zPx)}uH@>a$qxAhFp&%t$g<eo2V0?}7uOk?FR)#biLWFM=W7X+Z^lG!NtX^o6i$kl;
+zI@e;e%abE$<755O_N84%w3ljyU_{6Let$Nb3hr<x+QA?(thx7Z=kO?@guw;5M&BSR
+z0F)@Z3*a{&IitH1-8GItzho7)lrO*9Pfo1K>}D2rRQnAQyqc}8xj!EAnX}|rXbyNE
+zlXfJAoUf^b&iYKD*XpDH3{6OYoRt(HNsjt-jb(s%Lv`&J<gf4>fw5y0R>09xcNQ(B
+z#QMye;|Z*{9&zW3MB~Mzq2ep!*FU>Zo;G|*5wTsg*Fs_<V=MYekOI0ZW!P(WL2ktQ
+z1`sh}>}7tf&U*=VQytk=OJ<FJQTjo_f)8nrd(mJ;xryspNbmls)=02tw4%Ah7E>S=
+zuR|w|*Kb#T-I~`8$}wPfup*==w4$?naz=H5Ot{Xf)Jeck|BdWt2mo)=t`Y?CEg+d_
+zum<3RT2$w5miJhXlY!wL8q-8sK()-Bv$3=or1BQk;LrVsEb9Qo0Me+^7d=(R>~M)C
+z>V2uo*6<D#nvRANyoaWH0}Gc6e(7F09{uIXG-Qk<6psj5y&LVQ7(DH@d&=S7NNAUQ
+zSh~@AVh#)*f1WRJYkLW4$o_&9<2mGC6hlv)q4SoPbuoGvBw*YIbxILD^kw58%eYb(
+z#&q2sr_1)t^5F*S0rvbg04(&fGZc9k{aJ@9EE=>fKG%IvW-Tn0NYCEPr`7>ew_^h=
+zQbghvLVHfTjN`+D8Yx;wMNTt3`_@`(vDPVaQ@S@{U2*5{|31pUv}e)MW!;IL8L{oa
+zV}4)y8A(dY7u}f78xQGGy*9^~>iw~Qm1&&_gCpEY>V^p6TO92O60_!0n#H<!6&t3p
+zm~MH0pV}wmB=L}Y`ZJlzR-d6khJ{w0ti0DJ+F0*~*(PS<DHy7rt2nYAo!89^c1PNh
+zOKpg*W(^(UuAcobm^Pe?ZUqzzA#t`4ZWcE=9}`39>tE#5Lgme>*{fhO=Z)sbw>gWV
+z37xn{2CHk=Y4Lq(=0x?)>zNE28%A+fIe$GGpH$g81uvYf-$Hi({aa)|0)uS)Mf7Lu
+zV|OomRCdz(8Nlsxx%%4|%6<r~jvx(Ug$`XH^q3f8ng$kLRO)xUUZy3TSJ{)e;qkp^
+zyO~{>;ei(}FSU6Ojo>u<X&0GD<G09NR6$&IBwa(D!BL^SH|e7RuMG_`oFR^A+ysvI
+z;(Z`#v)dRA&MdK_cG97wrXEcL$2VloPrZB6)n)rJ-}~(9sb2bN9P520IRRwfYvXZB
+z>-$Ft20+>ql%__LibiVFT=9d+a#gZgUX13!V@Gz+N8P!5JvUz|2XzDOX@~~sCO)??
+zkt@Wryi@Kk9+v@1S**uwkzv&4!Rku$;Yp0osv6UCQx$#Wfr(AP$FY?(zoKq@{H`T(
+z$ik)FOB;%?ymb}2YN!%^22cpC17iR#Gc`^3{_GK%=5}jlhTtuZsIz=8mCLP9N>e+A
+z)`$MW1rm=OPDco~c@wMK;QgQjy9VFb&H};*0G!}Y(^g;}jA1)x@Otq(|63Bsi_e;5
+z!_NPie1!oGwN46NY>vN7L&1o!imN|jt!~|ee0Z(2w9*e7g4$g+I#8698q7*ZF*hWM
+z=TDW-0V=6!8+0ukU~bdh_P`W%1&Vnq*|1k!R2#DlE=}K9Um57nQvxyyGm4S%PhT4O
+z=%KI5!DtpYj&jHlo((k+Y7?e|`9k+83hQ%jmr+h-jGlTcql!ZeUxdnC|AJIm7o6mp
+z(Tu*@;UT8z3F#X4{tR)sPdq9e3a11)X7XcFi;xM`kilkxtk8&vw!pprgc*jR^n845
+zY<Ot0qVqS(j+%|qLe@h<3hn%Tr9G>ZYfh`{x>{aSdEHFRe9!@-IYC*lAv=j3k9%{+
+zr)6)-ilTj?yR%Z`=lt4B4wmVF2lb+%p9M+aJ<l=u<Y#UQMC148yezZZ0J9BaJLnJ8
+zr2iF;iQx9i1xe`lo_ETROs9Ccv(rS5jS+=6|E#WttYM;BNt>vOOb{N~P`3tWu(3b(
+zMZnh9E<_Fi#mWX0POG(P81`jILedugwVd43g+`=nhluVD9U(Q@uR|<?*i*Geb>*sr
+zPtk7f)(uAAny9*au9c(cRlR>+LoJfqQnwvd1yt4ef2<<AYPX0KHwI<#1&yZN@->+Y
+zRASIEd60k~T24;{C?lM-`(;))%H>;nMwesDfDPNGA*t__BiJ$~YgORVRILG6X-#VY
+zlc`4$uKsTykp+pT5S$R_71D9sg-{Ntqy*=%o*{ka|1iIwwW_jnSEtIqKexj*eX8{I
+zERy-~v$AMudmFv8$(Dm9!cK!-1hdYJe9J+$_d$wcSWXgJKJ!kQ0v4>WFCbMTxLzS@
+zxe493y+^)ggCjfEj&gQnS7ks$LBw>pu;jjEV5h<iNqnj56OO~+bjdPIbW9hcZ`0Ag
+zI<q0`{2k}6W!ClyCRL(Xx}Z;XB>Bz{$v<<O9=<^i+_-AvNdLw`or@e2h;CUxj4>J>
+zoG^;5^Iwo9$QR^bp-}@MW8>vDD{DnWou8bJZg`!P;1&C9tAhSbwO8tDl7s2?;O{XU
+z;9>Fj-CM4aQ`|%=&2P8t0^A}{MLsx^BQ40oL7<ih2=xQO-*Z7Ork!E;)V8OgOwrfV
+z?7RQZWL040oYqs|fD;6n!gAT>rtqUOnH%Hplh|ulULmc>fx?6V(3n}-5=39T(K$f*
+zn#qgY^Go?DS9i^2?{tH?SWCdnhYblSL~+q7u)3~N8AG`9((R=snXZ&f#c{5k^Z>H~
+zOP`iQj&EySIzl^)aN`)xbq;MRj4Dd|*1kc$0><m=R>1;za#aca|2*3*lbHt2(7-2V
+zPpv8~gaSc^m|{R(E_gpSnW_nssmNq!yk2(d1mA}u9&btUvxV~Dic(uEth|BBM#hT)
+zmw}53I{~|ugO{W`UNHDHhOklFIoZ8w<bbTSl>`Z5aN)i(789_InOu6cPlypq?Nc1&
+zEv?%pcLk0IP_<aew7qJ{pDmXUyP#88dnoEe5P+EmZfcr2r&4E*J@5|ym4DXXEL#h<
+zWM1G1B+M7Aw5SBn;HPhvMG#4JfU*)ts}xtKD5sVt*={EG_`Ik7T3V2qY-h7$=f`^d
+zQ4ii^{ry~6KJ@}RlPFv;qa*!fUG|RK?F^rw#d{8HEtVguWc&INlLtP25_!iUMF3(f
+zFENls1J}0IT6Iw%micbqQI%n_jTiM1ikhcU0%zpXNUFA&bmdkzzL-nuvH86!iA&zj
+zEM}sj8hGGzIXLO?ylUB!<`bLS7dN*oo^QLzBaCrSJ+aH*A{Vh^8XgUG2PUIFr&!v?
+z^kXK=U4=}-8x~~IHi)6Va2sygh$gSV%rY&CVu+5#A#2HX#t(nuzvMUIQ&)kh#Q3G=
+z=IRmQ|E(fp4=I7ih^9}JU+SW|CaI?Y6O~(w7u)>r+r2)Cv(KCzXDj&r73~KQ=T_bl
+z6mRn0Kl~SCH%3P^$yN?EHJLTBl~))YPErp+#MMJPN)OH8(Po5A1~Fw+XZXYbZ;JeH
+zVyxEVt~va_{-Lao3Bp<5O%pp3?+s|S!1^Ue&|?n5shae<@Hyb$96r=nlhW1bT5MxN
+z@jfwe+m$kx!2vaow0<S@{YVOfp&o**3yfH%3oiag+0E+3(#rk_=RaEZF;!Brx|k5#
+zQ)??e5q<DpmiO51n-_0#C$q^YzVCcS=Em<rq-X()Z8AGfl@9Mnw^)VMji+HiOgc){
+z1(jW`FrkLzn8O&lnz{BB=}3G#RBH4i!I-TjjT}2$HT5EgQ|~qY(9LbazQ4%x;CWeX
+z_9O;B)Y7`F=6#ZGLcB0D(D``g?UI7*Exq!=Wkc1TH5I`92k6}O(Npg4B|b*`s^oIA
+z2|m)3vZ+-benVT0%0Qp>N}|<r?pd-sJVUtV;}!kW(lu+CIQ4qW3vQ5O1N;q=YVzHj
+zbR(~kjoM~^tg@EQD|BuZmKn0}C-x7c_c%U0dw3c;X;9@>D}>T+!nN}7w!7sMq>lPX
+zA@9Sf#JyGGNZy^j$bR&D%OtF_zt8|7<d@AS$PzS?Mf1xwnAr}T1>2ovAD+@E{T>h!
+zcFBNg>0t(;=u~>=Pvip(yXVu$kP~iUx_|7^b&tIBd&~Hvrj?V=3eS&_!Sm0N_rV$O
+z@5LY3P&z#zNQ{}<P}*06Zqj?FBi^l|$!V3s=2W$eFIj`Su2Pg93sI;y!pJsguR%#y
+zeKoK0<jGZ1B9bp!Qi*MW2WpQf*L;&$zl<(7Wf5h4^b^;~RD9$rMJxwDh+;CjL3-82
+z$H-3L5SRR3$$8Baa(Guov9p-{P?Ko&CFSB|Kuz_ZqAY=oN)Pak3h@fTZ7@n`E9)Mo
+zKclG7`w(7Y?-XdWY*gC=bL2?nbMOD)w!M-*HIH*K{~2z_C`Qnr(u_jG5BRo!m4&d&
+zhN=WJ)+OGWq9T82JtX3lFUa?a_JzX<)0Md~R;c1TL1qn+zxZeiJ0Yl1X5na=k7ym+
+zm|5S<tz>`d(h?lE|6y>@0;i8#xPfgv*Y}T=d&f3vDztxSTo<EXPl@^b5_un_7r`3C
+z8G?5jgebOpOp!R6MmHkA;HOfJB(9EF0p6QCH84A%Wm&RD`7_<KS{|+a#gFNs(_xG(
+zY&9T!F5i95lQM+?mp-cwX08;wfg-{6U=^#V{?!|0b<zr?GCF(qs-=VdK=lj~CaZHU
+z>tl-2h?k4Qrrz1}hO{Sc=9^mF^KlA`2w6!B#fe_Qa>59zDYDc26X!4KUe*19&iSC(
+z`#<?jHLM<bQI>Ze-&&eIEABE2uxdjwL`lq^#crj!7^?kTE<7TV`q`(+#|vYdQeA;m
+zF%2H%66tn(rvR8I{PmAA_lYsN>%S=n0Dxo^Y|@d0VN3=kYK(|QY*a~fWm)FKxiT3Z
+zOt(o4mV!{FQJdgdpI9NgbqtSJE6Wi*8*u67$8yb`@<8x>L+d+ad35g^2_<+LA#;Oa
+z8agv5h=vA^fb)6L@1`pqk}}~r<@`dXEe8~W{9Qu*V8Z0D`azNLA8eIBH7uN_$`Ug?
+z3y#;5bBiK!<br2qDmuqi*D<Bt7b5o=LI-qfY5Lpe%CQSiYDe8cHjX9r3VB9NAMGFU
+zw-xdeQElJ!BWYR2^VImAA4#hI>P2sGU9tB29deje&=Wijg_0zDwVOnPg-{YvWS)1t
+z46}2C^7-&+hDw-}RQgtD<9zUfx|E<X9MVGa_{h8uED+Q!^rAr>21ap^NQ93t>K0{F
+zAxN7P+q_l&-Let^dKAc?BNDf!eAgkhVbyST*A38VxT4(X4Vhl5OR|70m$?vlv&8Cf
+ztLf_A|DWhW*|QN3?T62RbfODGKmDA(sh#L+Y#4=#mJ>$V6L<EZPI>2wQZTVPDx>I3
+z5;ez@-Es`(z`_<XQROdA$u6%We5oPxNIQAU1F{F(>th5i41vV1@`B=Dd=~l%x@ep!
+z>Ad$4IK|)VU^=vY!sM(WCsoy|Me{vXwXQ~=|EavgV0;lP<l^rahssAOX}$GiW(yV8
+z(D>UemDhxpHRu<L+;MJs!3<xS==eg(;bUKr=62v>v-%UWoWSrJPC);)OgKf0HS<sD
+zU#QZ!Vqe+QkOP*_NMizU5CAs)GkKfaI1uvI1dCJqc9^!)1u_Me?T{kEE%~C>B#mSS
+zdNFN$R6dH+(gN{r*p+61()$D907Y;QBH^aek{ZmR{=wDbo?3F3pVgUYmB7D51U^P(
+zfk;Akk7@e99@34X@aLbB8HD&PAQZttewg6uZ#Ix0pa@Y|-|+@HZUyDz3i^zm-frld
+z<ViXlD+P6EGdLfe>gnv+<R&}DrQ>6nfDaHDiY9Ixa4a=V${^>{TcT#V_)+;}#_=bD
+zYgUgV(#4v|#u7HoMw8K2H<Ga+-m=cYDJQp-v$tf8mmj_u{exm4Bb-5?BxlEz74q5#
+zbWs^%1Oz#{XWlCBT2@8CPHU4Q<IP5K^tV3=Fv`CmHa5P7<r{q{@?lG|)OF7Ft+c;K
+z(RKH3vSda3Q18HaU&X@YSZ9XrX)Ln}c9KWSDXpIP7kRf@iJb#%B53MX4|1I2Styq;
+zIaQkA!HrkC*h&sIWT7E6>hJ;8?}6#H2>)?ue(Ni;2ZR88f&_t)?=yAN6X+PXlv+O6
+z<b1F8faJ<9*g@`r{wpDfH1jZ{_8Q&C`qI2nOpREk&V;28HBvpI&YwduvPtK97btV1
+zjU5!+N0yAUYvQC=9XDJZ3s}Q#zAkfX&zUAWIE&5;L~_T=a`=kU;-I@H@mTU?2)AA(
+z;xpUHL1<A9-2;g-nzh=DxzK1pj8=Q}j<dGNu`5a`UM_(2CSidBRc!?AKYpLg?F2+#
+z0k$2XaI5f$7%%9D<I!Z37=VU;MgF2~eix1gIV)C)E5#M1K+1u2rPg|ui1#whxV6GU
+z--2={I$rko;*F8d9=irk3qAqUi?*rGv{!b33qei?b6AIoTW^*3DA>MxSX;xe9~_t!
+z*<8cjzgfdb7oCpDnpPV^yBuo9DwPR8bE%*_5nK7>bZn*`%gIypGsw3WJR_YNf%l$w
+zNs(|)wx+w9Cnz0Sj7}UFah#PnKm9g&sw1u_;>w^|Cz)Lcln4DM91R3ks@QW_xL4^(
+zxfi7=eFc$}<8ru%X|m&0K;?{l<C6j~jqdD&ccB+dTL%wobg-Q!05D*cJ_-PkY7Q0<
+zZMXJL!t66AAfk!%57yBX$T@d7UN{QiWpDvn0F7xm8#OPoF6`oo@feiQ2r;UWLX%Iq
+z_pTQChIMzXuInEGDQmQ5o{iol0TE!P8E4+7?V3<Agg6l90Cb?ci$Wv$4*U}KjFHu(
+zQXu(tNo8!q@aTH|`ZZ{Jm;5Qc!S%rTAC#jNT}DI{7EidgE7Y7ppJ-@+UJxQkA!aX2
+z`-1jWu;y1S9bE;xRsRwHs!z@<zJ?EFcq|~+9+4xOM-cWHgB1-Otnu5F;ZQ`x&M1?_
+ztuOhZydNI*D43QMO>ey*=W^>H`B$rGzzfF;Z4`bZJ2JqoxET<Rxz1;QLyl=48X`~{
+z@tAyFM($zs9NEL9s=-xY*4Ufa{$*m~k#RZR{4(ud0wou^`Q{wyD1`IXz)gA&XA)&S
+zV_x3a(4S#|i+1!IKKjPp<p2vX9H-u+5+F<MVrG!U3gew)$JDXD^Az;jQaBV!5=O|a
+z(Hc^lTFDj=xBkB9_Y`6U?&bXCy>ifUwBuYi2_5K`(WF&=`Q1mYlmZ4HB2d_(Xr*N?
+zK(UnKY1u2NHG<VNhK$_L@MtbN`I}!!i(SPhPTEGf!RR6XsLKzKuZOUCQWnkt9?kxo
+zA#{pE$LrB+t^Z}eMD?fHo<bQ~U}<$JGe6UpcGhmP@BCIsnLwi|i~M=!pHVKr9N7Fm
+z`81ey_UyK9K&etwb=!k_Zmebkltz66;1o|d*E-tQ{KR);_l{w}OhYpr(_a*(RzUya
+z205gyYko(bgc8MAziNec>NC&DEcB66dj%RCemWdV%K{W@(z14Q6BC!Mm5(J+>d6BE
+z$wG3HAnrPY)LS|J=;22@=kZ-+5%X@DZ|C-w9w}4+W6q{BY7=eAZSjeBd_azFMeMKo
+zhx9yp_HEK@0b`asZKYOw(mG&`%GBEyCyS@2$Q)IGunvYt(aMUm)*AND9HgpL0rK;I
+zLvJV8GRv}AsfiQkqC>l{n-1|9fVLL$xBuc7vJTKFk2~j>x`5#ho?u86E19DWR-I0o
+z3BQLBOjdh+)~@pQ1wHtP;8%dyt&7(E_sZ1{^sDDs7JTuP8VgRqAI7aQP&x^VZxayf
+zdzj<EHeDd2bn;%3n~e%ky%3mj)|!S4{qlqIHi~bx!o9iTlQ+mN0T@oI%t`&{&yiM}
+z=MmI5G>VFY(D(f?H!a9Y8$&xjYLP&n-CfE+G%#=cfgFw#fcK)E9P{SVB>Ntrk0;4g
+z>$RCxv!|hWKk?_jBRhwlm|B+ZIp14b<ph{jN(510xK!Z#DSnu(sbd;V+C1%&-wJx6
+zjdhRq$M`epotfIEtnI%)wxH?Nhu5TTb}2gZ_gALzj3CSVM-Vhhz)WWzC>JcR_E`Q<
+zW8PcK?L=rJmH_j#w$2P;ZwBkl%g}02EdxdVaq?*Q@={3dOnw==7HLpC%F>69kXfK#
+z^tu`gPw?b<C|NdY;(@T+Tdd2!a+Z7<wOy4_LWm4di+^QTa*(CkW!uiq>iNa}n1m~F
+zVcB2mh<3g!^J|{kB!~HqCDGQpu0U`Wb+5H2Bs{ObmiY?fP`?9!BlDx_3Ka)+3~O#~
+zLuEBg?!hL6peh*A*fX%H+HcnX6`w<;85+-wphuHdtmNCKK&*%2-6WTI^E%nh2CG)B
+z#)Rw(wzm1$XQJnIY<^p<!aeHKFtKYA|43D<NtoDM^-=2l&zI!{GaXAK{Vesy(>2hR
+zQwu=BXeEp@iW>l7awQ_j-a|an(b>mKscu8=z!J8oMh&?WeNt-)qD%K4)}PlRn$S4l
+z!nK>QbPI#rd%v6<m*ir^cOw;N^}-I`X|kTE;i9c-wUAYK>H-WI<19&TVN~dzzKaVx
+z^Fwk1(;w<VdGrk%zKwX}BG$&Zk3p9wek!}b)MfmsZ4?zEG%*ba@YFGK0s~5mFu+&K
+zouK!#7``VQqQ!+D3_h>O`*4%xixdr>Mf>j=l((J;Z*qAF?+UGe_mh7FqJB<WcSoO<
+zdD1~um}*jht12dV6!i`zjj;8N4YFYhV?lH9&!9g_1Mdvt-7gYq3D!sLFEP^b_?V1$
+zkdFd5G?ZKWN(LD|G>}3fll9kJ`?9QjEDEZci_~3X%qDWhb4%o%Hj^-O`BWWGOx$v<
+z>=w5x#>_l>_xM?|JcLSuSa$o3^xR(=Thqi&B+j6X<0xscBum_0v7NL)kkU#sY2YSI
+z-ZRO00T7oX8gXp`T|yU7oZK&R;i6Jk`w*K$jfQUQ-t%xPA`>S7FGfG1Z+(XI<bg-o
+zT83;zTZ^%E!+pWZ@#0VQ8XKN|Ej<JeBfZTH<SWjTy}Hp|7V!{<OTaZ?fKXO9J9MGm
+z{9}0=vBt>gGHbiN239XVS*9)bzNr;uLbMU0Bqg7@*kykIrw_<9D~Hh;-m6fd2|WS!
+z#WaTsXFzLtr*YNYpObelK)F^m^B%)289r8{8u$KCKGeFf-3*V^fKpE90?_6XIw^D-
+zV?Tk7o19kCElBpMR_>mINs1O{84XdjeRkG?e{P+T0xo${_E=h4&<YMiF9{|ZtLR0V
+zGhAP}S&r%ed}@3cc2rb2st^bnN62t=cqk51<4^TQeJ+%}!VV%q1o>dXR>R@mGUnF5
+zktv49gW8^E|70Y>7=qR0-g=B2(+bMNGcZqlnX5mp1`ZYKF2;H>5h=@$A*PwmYIT~q
+z{!%$L%+pYw0C(oPBG%`etsH@qGdQEJWoYb|1)s6uDrpqfu#fEAiPCc~F>@OI*#g-o
+zd@o9a85)H#qc$<)lwjpiW#lvNl`BEpI&TJ$c;MKeRgldF*&Lb$gSboReK~+MLliwq
+zPU@wn@f`n@OoN7B+SSUo2Vryz9#k%kk1~=&bIlT4xxZrZmab^<_w;T*or_+Nx??1W
+zVu)n2I49&94eh!O!Dr7wtCe@l{H_J9hs~Lz;n(1S=j^56M&q|a?J*h*sf!jB!kNF8
+zA*f3}sgH`0U8W~7l<VlmL`zXrdWb5mWrgM}<0ToW`tiS%sl+Z+vwol;1eYp|z)(ot
+zu^!E_EHcb^t~SobWtK#GVYBSMWEfbQY9-CE<L~C&KYOOk%MUe-n_rAi)$~ldPUbBe
+z3eIs~NO5LTEz3k$enImGrhaa}NdAskf6YI&0#XRRFAZT@`8o_N2*a0oP~dhHUlNvy
+z)R11)gy7kly6nh9%&sqo>&rU$#mKYHUr+1-M8{ezVVtw|gy5E5aJx(iCc7H+)}DS@
+zdrm(7&juM}k3<71K_an?`78C)7r|$tALpyD7p4j3Y9ijlFIkx8!IR~EOArq{C5*1d
+zd!zQ?My~;fM<eRIuONa2!Au@huR#w5atatlXuAl<hViBfpg*LDCr+1TO6!(EDa2!Q
+zLb9q^d{4)CJPVhUhuo+PwNK9F4}D!uSMCZU2M;w7Oam#a`<vXXZz!gco%3tdFd1B1
+z*1peW?gW+I5o)30ec|`^w#6!_O1{d=9+y2dCfqqZGCtB#85%dN6oTyAD^%mfugfwz
+z37Vw{Mi~yHVeT}Q2|W9}Bo3?fw{JO3nmCYz$^C{ov6QH&OCDS;$1NIO&BVeo;2UC3
+z9?Ip7FeduJM?GGv#VndODag?yHGLF%zdTL8VGbO^`O(tcMzQC<CkK|j>b~rDjQ$7=
+z&|%p?1*?c_d+djDP!hUI%gAiUl)z!mSu+-zJQsgj-o`RgJ_iS7X|<PsisEMeXxX+y
+z0>onCgR*b!<P*!RX3Z7&)EnL+2QJg&%r&FT@dyq|qZI~Z?7>uK$br6O`A#=HsU~g8
+z=7ez9kEK(Cl_shNFgmmv!{<Ix)ft*BWQwJ!enw(?N$Hy+?wMgsQ6FBNfXf|P$2HJm
+z<=5T2Q8u}!5qipM;B#)ifT8%c!QlW}e6$zXL`FjbL(}6~*45t7=J3D!_y6WvdH;gN
+zOPe_@EeX(W^-J{=?~$ECFx!rN2W8v`@W@rfUxB8EN3*d%zKb#Vo6mmge!P4*x_4_k
+zIaaLED7Iev_gx{MfG}XDtgU}7(*ExD`9qTh=Qhh}+}H%sCB_Dtf?-0@<xaH6&5i)3
+ziDXi@E7xN`kqs7W?qUcF$}&>c<Z&=8)15j#yPj@xd0O-GtO?x}KbB8)uzDR{Lv)P`
+zj(fTh_2N1jRBVsVI=5gFTd8?tf7Ra<Wy4d?!E92sMDeK=Qp#BTDu_Lz&Xf~x`ib;*
+z^!N3{Flwu?Bp#cUtIOGXkio0D`51c!jBo2kqj4CLF-h^cwX$b0D9rl{Ru30whT2c=
+zl@&qGbu5Num&D)F8dDhYJ$=~T7zr|lS)4LdntO|Z-y08+o7?8L1+!b37*!*&kd7M!
+z7ol%1YdvU7F~SsF;qvlU8uRRD)(LkxXYAvKG9K$b2!dO{JHVDQ8s$S&G>7H!-&G)^
+z0tqQKjqmVczR*@s)=>Al4dwX+O#<v?vBOr-fZA!WP^O)T5MHlpYc+J38M$bod|lHL
+zqqc%D_79#G3xHzbOg(Na<fup_*aBRszFbOwdSw>zV6JII`w_6@KW<Tn8m-wt%O^HT
+zyP7+kE&<43G|=nJrr@9)tXD&XNPW;yp$ne^E*|ZYrJ?g?M@ywADJ~7R2lp|h7?-^2
+z@P#|0l^%KK#sw^wg@s^@vlO)q{T4(IO|kC0RSu%p{wf+wUi)U*h3&uS2%_2>$KXX+
+zXYL~Vgq~}tYc$bLh0X8>a;yxDQv00yIyo?e(GtXjLRBb6)LI;_!cZkc@P^ASl)3Ef
+zXfaz_vw8C=C)&NcqsoGpo|B!MtDvjWIM6+`53KX>Er&~M&><lZ9Kb7yGRg^b1X9t=
+z6$?TltmkAMPo+zH_=~c?BYT$u?boM^3r>CDK6MZH9T)zktcF37v^dR5OL7t__iFcu
+zjVN*MBwk#hwGR2m#dE*!L$cR$ifk6`rjQNwB@iW_n7Dm~yeogVZh@=5-+T#0lN*Mi
+z58<c+C)_`jc&oW?vl(Uz!5O+E<Ooh<8y?M|)_1ItJ?MI9I654Dc%MO}A38(6ff&*H
+zMZ^6=%kjUJQG~z%)1t&|oU1W;q<RfXHl%P^1**@{MjeS-wI?d@D@ZQa(`AcakwZ~j
+z9vD@3lVbknFU#~;s7ncz>}W2vJBGg@pL>OLmKMy(Y8*gzxp36h6%cMmfPAPAjX2lG
+zLw#<VtR%yL3KbO?qJeG;)RTe@y%QXj%7wznu`QR%?roLT<D5C)3!`+65diqj;tF^D
+zOiJe80sIQoHgQxTL|_7r?gy$ZCjqk2y@`oeAlhclnm6k(^t?D&j%5g@mJcZtg86Gh
+zC6aOwqKVOKX&61NlpUWuNTx1=q$C*ziLGmKMB2tC1q4n^T=ivHz0LLg!8am1H=1Ib
+zP+733+|)%S|4cL9H1!hvdOxfpVpLThWyK5cm7|)+hB2s;$xjq4X;j6}T9=}RPe%4|
+z0(p6g+P!(997LNSWa>Dd#%WQX0L2|VDGM&}#rNzYA9MT1qv0&pujZ@u-ASQ*hp|%I
+zC^tI7(UhS%z<=S~E5yL9Y4$oDfTj3BQ?Ate=l|<=%W_?oLe$fDttcOR2RQGyDe1Dr
+z&uaiI&i=IekI_-d-d$c^q5}bI)Awv!Q~%K>p-6|Oj#D1EIxv;jiIOoUe`dy3SWSag
+zO*;dKdOEsU_V=!b+^!crZCGA-_JcAz=5=Y~`R#rxQF&v`WpfBu@iZS@E7QF7U|ujl
+zm_fZnex8_k@jU534%4J@G-rx0QrcZTih*}JGLnf&{$##WyerDh7r!e9s9`#P+lKUP
+zlqv14%b=uCk~ED|;6PiNgrX=pRdY>e&XnuBI@+NqtghaiM@MQZg{5K6QFzN^m1Npk
+zu2YZwwY;cfMIa##O-M8wqSAFhUzppX*VKCy46ZVkXR9*8F{)33rD|r{6>+C-_<<a?
+zuzdlQ0u2W<8j<kp>4Ok~5<raF4_obh1SUrY#$gs!(JX(BO5m5?DhGQX5wnSdMECf%
+zt6b}4!vNRj<+4eWNm;ntbC+)X_GLuUq-2(Zdj#Vi8P1G>Xe8wmm)X-jdFdkhicPXU
+zGfoIuFGRy~@}?1HJte}R0}`?<XoZJglD!yx3`z8yL7`xgiHU1(lS5iMI@QrKH4Tu6
+z8P$yrVfEmM9m0(5rqa8pjJ@_gbw)50O2vq8Ly7f&pD6qXIg|yC>RK0!mc;C+8+Ajh
+zZB)MAiU<qDgVOk9L{rCqfaXP;)XXQ%$^Upgto)vnfqg*75a!T4UX(F)-H6e{8|7fo
+z4&+l^gRIEBpc`~KJ`@F{=$~Hlca(aW+_4#4jly*GEHWj*r<&w5OmSK%ou*sd^l<8J
+zxWl~!C$E7Cm+TJtIYf+j92uj>i_3-AMXC1ep)y0cC=Jb;A~H$s+fmgZ5)Akk1x*&|
+z-@;kW%DUa&&g-z8^XZeeHN}rD{cG7#g9L080-<8T>7Se@2M4|nTYRXowXKF8y#<yH
+zDyk6CAIag1pyJ$LY;+uXN>#Z?o9>wd<!FSPSs3hLHM}v+KqO~@`iPpAU|hqNGW0(z
+zNNNVeA)(MLi{%DSPKMFt*VGI~ZZDR@nwv}AOS{+#GI6kzcjnja^C7tOXZMv^7OL(>
+zirgMRn=`5rHRuBthX1U7|5;zdgp}@%#mnd~<z+12>V0<CjSUW<!S3#&sWf`;fsu3W
+zT0CJgEK-&jkB|_i{(H@|IUZ$Q&YXC!9L(Z#Rljtwa@&^aXZSRgAylFE3?Uiuip++l
+zMrkXOlB?YsGHOA;u_m>IFf&^(f&Jg=itYLi_#T{XUqa1GJoyA;$Y=QY%nVI>VV@j`
+z(7IA?Zh6#$$>?=PxBKx47{UGs=5L1?)9{qj4n0VqenA8DzuHOOyQn7{cbJ`}9bp7N
+z+#?s^?TjEzf>SHR_w;Ds3HB>8Y;0@rnuhv0>b6AQG#X{-?_xF@qa~JdGG-JyPcD$I
+z<^e`9Hnq@`cBundle" value="org.eclipse.ui.ide"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Phb10UInEeihDcMTWByheg" elementId="org.eclipse.ui.console.ConsoleView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Console" iconURI="platform:/plugin/org.eclipse.ui.console/icons/full/cview16/console_view.png" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.console.ConsoleView"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.console"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Phb10kInEeihDcMTWByheg" elementId="org.eclipse.ui.views.BookmarkView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Bookmarks" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/bkmrk_nav.png" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.views.markers.BookmarksView"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.ide"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Phb100InEeihDcMTWByheg" elementId="org.eclipse.ui.views.ProgressView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Progress" iconURI="platform:/plugin/org.eclipse.ui.ide/icons/full/eview16/pview.png" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.progress.ProgressView"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.ide"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Phb11EInEeihDcMTWByheg" elementId="org.eclipse.search.ui.views.SearchView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Search" iconURI="platform:/plugin/org.eclipse.search/icons/full/eview16/searchres.gif" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.search2.internal.ui.SearchView"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.search"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_Phb11UInEeihDcMTWByheg" elementId="org.eclipse.ui.views.ContentOutline" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Outline" iconURI="platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.views.contentoutline.ContentOutline"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.views"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
+      <tags>View</tags>
+      <tags>categoryTag:General</tags>
+      <menus xmi:id="_Pr7OkEInEeihDcMTWByheg" elementId="org.eclipse.ui.views.ContentOutline">
+        <tags>ViewMenu</tags>
+        <tags>menuContribution:menu</tags>
+      </menus>
+      <toolbar xmi:id="_Pr7OkUInEeihDcMTWByheg" elementId="org.eclipse.ui.views.ContentOutline"/>
+    </sharedElements>
+    <sharedElements xsi:type="basic:Part" xmi:id="_PhdD8EInEeihDcMTWByheg" elementId="org.eclipse.mylyn.tasks.ui.views.tasks" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Task List" iconURI="platform:/plugin/org.eclipse.mylyn.tasks.ui/icons/eview16/task-list.gif" tooltip="" closeable="true">
+      <persistedState key="originalCompatibilityViewClass" value="org.eclipse.mylyn.internal.tasks.ui.views.TaskListView"/>
+      <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.mylyn.tasks.ui"/>
+      <tags>View</tags>
+      <tags>categoryTag:Mylyn</tags>
+    </sharedElements>
+    <trimBars xmi:id="_PL6RwEInEeihDcMTWByheg" elementId="org.eclipse.ui.main.toolbar">
+      <children xsi:type="menu:ToolBar" xmi:id="_PYFskEInEeihDcMTWByheg" elementId="group.file" toBeRendered="false">
+        <tags>toolbarSeparator</tags>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_PYGToEInEeihDcMTWByheg" elementId="group.file" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYG6sEInEeihDcMTWByheg" elementId="org.eclipse.ui.workbench.file">
+        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PYO2gEInEeihDcMTWByheg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_Oe3lvUInEeihDcMTWByheg"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYG6sUInEeihDcMTWByheg" elementId="additions" toBeRendered="false">
+        <tags>toolbarSeparator</tags>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_PYG6skInEeihDcMTWByheg" elementId="additions" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PkTjoEInEeihDcMTWByheg" elementId="org.eclipse.debug.ui.launchActionSet">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_Pi1kAEInEeihDcMTWByheg" elementId="org.eclipse.jst.j2ee.J2eeMainActionSet">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_Pjvi8EInEeihDcMTWByheg" elementId="org.eclipse.search.searchActionSet">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PjN-gEInEeihDcMTWByheg" elementId="org.eclipse.wst.server.ui.internal.webbrowser.actionSet">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PkE6IEInEeihDcMTWByheg" elementId="org.eclipse.wst.ws.explorer.explorer">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYG6s0InEeihDcMTWByheg" elementId="group.nav" toBeRendered="false">
+        <tags>toolbarSeparator</tags>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_PYG6tEInEeihDcMTWByheg" elementId="group.nav" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYG6tUInEeihDcMTWByheg" elementId="org.eclipse.ui.workbench.navigate">
+        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PYQEo0InEeihDcMTWByheg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_Oe2-0kInEeihDcMTWByheg"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYHhwEInEeihDcMTWByheg" elementId="group.editor" toBeRendered="false">
+        <tags>toolbarSeparator</tags>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_PYHhwUInEeihDcMTWByheg" elementId="group.editor" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYHhwkInEeihDcMTWByheg" elementId="group.help" toBeRendered="false">
+        <tags>toolbarSeparator</tags>
+        <children xsi:type="menu:ToolBarSeparator" xmi:id="_PYHhw0InEeihDcMTWByheg" elementId="group.help" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_PYHhxEInEeihDcMTWByheg" elementId="org.eclipse.ui.workbench.help" visible="false">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolControl" xmi:id="_PeB8gEInEeihDcMTWByheg" elementId="PerspectiveSpacer" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+        <tags>stretch</tags>
+        <tags>SHOW_RESTORE_MENU</tags>
+      </children>
+      <children xsi:type="menu:ToolControl" xmi:id="_PeDKoEInEeihDcMTWByheg" elementId="PerspectiveSwitcher" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.e4.ui.workbench.addons.perspectiveswitcher.PerspectiveSwitcher">
+        <tags>Draggable</tags>
+        <tags>HIDEABLE</tags>
+        <tags>SHOW_RESTORE_MENU</tags>
+      </children>
+    </trimBars>
+    <trimBars xmi:id="_PeaXAEInEeihDcMTWByheg" elementId="org.eclipse.ui.trim.status" side="Bottom">
+      <children xsi:type="menu:ToolControl" xmi:id="_Pef2kEInEeihDcMTWByheg" elementId="org.eclipse.ui.StatusLine" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
+        <tags>stretch</tags>
+      </children>
+      <children xsi:type="menu:ToolControl" xmi:id="_Pet5AEInEeihDcMTWByheg" elementId="org.eclipse.ui.HeapStatus" toBeRendered="false" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
+        <tags>Draggable</tags>
+      </children>
+      <children xsi:type="menu:ToolControl" xmi:id="_Pe3C8EInEeihDcMTWByheg" elementId="org.eclipse.ui.ProgressBar" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.StandardTrim">
+        <tags>Draggable</tags>
+      </children>
+    </trimBars>
+    <trimBars xmi:id="_PfFscEInEeihDcMTWByheg" elementId="org.eclipse.ui.trim.vertical1" toBeRendered="false" side="Left">
+      <children xsi:type="menu:ToolControl" xmi:id="_Qoj18EInEeihDcMTWByheg" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+        <tags>TrimStack</tags>
+        <tags>Draggable</tags>
+      </children>
+    </trimBars>
+    <trimBars xmi:id="_PfGTgEInEeihDcMTWByheg" elementId="org.eclipse.ui.trim.vertical2" side="Right"/>
+  </children>
+  <bindingTables xmi:id="_OdP080InEeihDcMTWByheg" contributorURI="platform:/plugin/org.eclipse.platform" bindingContext="_OdP09EInEeihDcMTWByheg">
+    <bindings xmi:id="_Ofdbd0InEeihDcMTWByheg" keySequence="CTRL+A" command="_Oe1JdkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepkkInEeihDcMTWByheg" keySequence="CTRL+X" command="_Oe0iUkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeplEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+L" command="_Oe3l_EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeplUInEeihDcMTWByheg" keySequence="ALT+SHIFT+F3" command="_Oe3lyUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3v0InEeihDcMTWByheg" keySequence="ALT+PAGE_DOWN" command="_Oe2-k0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF2kInEeihDcMTWByheg" keySequence="SHIFT+INSERT" command="_OeyGO0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs60InEeihDcMTWByheg" keySequence="CTRL+SHIFT+D" command="_Oe3mKUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs90InEeihDcMTWByheg" keySequence="CTRL+C" command="_Oe1wk0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs-EInEeihDcMTWByheg" keySequence="ALT+PAGE_UP" command="_Oe1waUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT90InEeihDcMTWByheg" keySequence="CTRL+Z" command="_Oe0iSkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7GEInEeihDcMTWByheg" keySequence="ALT+/" command="_Oe2-_0InEeihDcMTWByheg">
+      <tags>locale:zh</tags>
+    </bindings>
+    <bindings xmi:id="_Ofi7GUInEeihDcMTWByheg" keySequence="CTRL+F10" command="_OeytHUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwMkInEeihDcMTWByheg" keySequence="CTRL+V" command="_OeyGO0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwNkInEeihDcMTWByheg" keySequence="CTRL+Y" command="_Oe1JqkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwPUInEeihDcMTWByheg" keySequence="CTRL+1" command="_Oez7NUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwQEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+N" command="_OeytEUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXREInEeihDcMTWByheg" keySequence="ALT+SHIFT+F1" command="_OezUIkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXRkInEeihDcMTWByheg" keySequence="CTRL+INSERT" command="_Oe1wk0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXR0InEeihDcMTWByheg" keySequence="ALT+SHIFT+F2" command="_Oe2XzUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXU0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+I" command="_OezUTEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBoUInEeihDcMTWByheg" keySequence="SHIFT+DEL" command="_Oe0iUkInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_OfX74EInEeihDcMTWByheg" elementId="org.eclipse.jdt.ui.javaEditorScope" bindingContext="_Oe-TS0InEeihDcMTWByheg">
+    <bindings xmi:id="_OfcNUEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe1wq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0dkInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_RIGHT" command="_OeytMEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0ekInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_UP" command="_Oe1wZkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0gEInEeihDcMTWByheg" keySequence="ALT+SHIFT+B" command="_Oe4M3UInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0g0InEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_DOWN" command="_OezUIEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofdbf0InEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_UP" command="_Oe1JjEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepoEInEeihDcMTWByheg" keySequence="ALT+SHIFT+U" command="_Oe2-0EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQr0InEeihDcMTWByheg" keySequence="CTRL+O" command="_Oe1Jd0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3ukInEeihDcMTWByheg" keySequence="CTRL+F3" command="_Oe4MsEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgeyEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F" command="_Oe3mCUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT_EInEeihDcMTWByheg" keySequence="CTRL+SHIFT+/" command="_Oe1Jn0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiUBUInEeihDcMTWByheg" keySequence="CTRL+/" command="_Oe1wq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfjiFUInEeihDcMTWByheg" keySequence="ALT+SHIFT+O" command="_Oe0iRUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJIEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+P" command="_Oe2-pEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwRUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+M" command="_Oez7QUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXSkInEeihDcMTWByheg" keySequence="CTRL+I" command="_Oe0iZkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-V0InEeihDcMTWByheg" keySequence="CTRL+7" command="_Oe1wq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-ZkInEeihDcMTWByheg" keySequence="CTRL+T" command="_Oe1wt0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoakkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+\" command="_OeytNkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBqUInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_LEFT" command="_Oe0ib0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBrUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_DOWN" command="_Oe1JeUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfposkInEeihDcMTWByheg" keySequence="CTRL+2 M" command="_Oe0idEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfqPzkInEeihDcMTWByheg" keySequence="CTRL+2 F" command="_Oe3mLUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofq20EInEeihDcMTWByheg" keySequence="CTRL+2 L" command="_OeytKEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofq210InEeihDcMTWByheg" keySequence="CTRL+2 R" command="_Oe2-6EInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_OfcNUUInEeihDcMTWByheg" elementId="org.eclipse.jdt.ui.propertiesEditorScope" bindingContext="_Oe-Tf0InEeihDcMTWByheg">
+    <bindings xmi:id="_OfcNUkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe1wq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiUBkInEeihDcMTWByheg" keySequence="CTRL+/" command="_Oe1wq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-WEInEeihDcMTWByheg" keySequence="CTRL+7" command="_Oe1wq0InEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_OfcNU0InEeihDcMTWByheg" elementId="org.eclipse.tm.terminal.EditContext" bindingContext="_Oe-TQEInEeihDcMTWByheg">
+    <bindings xmi:id="_OfcNVEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe2-2EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0aEInEeihDcMTWByheg" keySequence="ALT+ARROW_RIGHT" command="_Oe3mG0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF2UInEeihDcMTWByheg" keySequence="SHIFT+INSERT" command="_Oe0ihEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT-0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+V" command="_Oe0ihEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXRUInEeihDcMTWByheg" keySequence="CTRL+INSERT" command="_Oe2-2EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoamUInEeihDcMTWByheg" keySequence="ALT+ARROW_UP" command="_Oexe-EInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_Ofc0YEInEeihDcMTWByheg" elementId="org.eclipse.wst.jsdt.ui.javaEditorScope" bindingContext="_Oe-TREInEeihDcMTWByheg">
+    <bindings xmi:id="_Ofc0YUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe2XhUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0d0InEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_RIGHT" command="_Oe2-gEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0e0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_UP" command="_Oe4M90InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0hkInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_DOWN" command="_Oe2-zkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbgUInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_UP" command="_OeyGSkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeppEInEeihDcMTWByheg" keySequence="ALT+SHIFT+U" command="_Oe0iT0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3sEInEeihDcMTWByheg" keySequence="CTRL+O" command="_OeyGIkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3u0InEeihDcMTWByheg" keySequence="CTRL+F3" command="_Oe1wmUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgeykInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F" command="_OeytK0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs8UInEeihDcMTWByheg" keySequence="ALT+SHIFT+E" command="_Oe1wgEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT_UInEeihDcMTWByheg" keySequence="CTRL+SHIFT+/" command="_Oe1JkkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiUB0InEeihDcMTWByheg" keySequence="CTRL+/" command="_Oe2XhUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfjiFkInEeihDcMTWByheg" keySequence="ALT+SHIFT+O" command="_Oe0iekInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJIkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+P" command="_Oe2XtkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwSUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+M" command="_OeytFUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXS0InEeihDcMTWByheg" keySequence="CTRL+I" command="_Oe1JXkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-UkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+T" command="_Oe1JlUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-WUInEeihDcMTWByheg" keySequence="CTRL+7" command="_Oe2XhUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-Z0InEeihDcMTWByheg" keySequence="CTRL+T" command="_Oe2Xn0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofoak0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+\" command="_OeytUEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBqkInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_LEFT" command="_Oe3mC0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBrkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_DOWN" command="_OezUNEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfqPz0InEeihDcMTWByheg" keySequence="CTRL+2 F" command="_Oe0ihkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofq20UInEeihDcMTWByheg" keySequence="CTRL+2 L" command="_Oe4MskInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofq22EInEeihDcMTWByheg" keySequence="CTRL+2 R" command="_Oez7REInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_Ofc0YkInEeihDcMTWByheg" elementId="org.eclipse.wst.sse.ui.structuredTextEditorScope" bindingContext="_Oe-TTUInEeihDcMTWByheg">
+    <bindings xmi:id="_Ofc0Y0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe3mB0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0eEInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_RIGHT" command="_Oe2XpkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0fEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_UP" command="_OezUREInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0f0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+A" command="_Oe4M70InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbcEInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_DOWN" command="_Oe2-s0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbgkInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_UP" command="_Oe2-mUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3sUInEeihDcMTWByheg" keySequence="CTRL+O" command="_Oe2XeEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofgey0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+F" command="_Oe4MyUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT_kInEeihDcMTWByheg" keySequence="CTRL+SHIFT+/" command="_Oe1wp0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7DkInEeihDcMTWByheg" keySequence="F3" command="_Oe1wtkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJI0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+P" command="_Oe1wuUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXTEInEeihDcMTWByheg" keySequence="CTRL+I" command="_Oe3lwkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoalEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+\" command="_Oe2XzEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoalkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+>" command="_Oe3lm0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBq0InEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_LEFT" command="_OeytEEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBr0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_DOWN" command="_Oe1Jk0InEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_Ofc0ZEInEeihDcMTWByheg" elementId="org.eclipse.dltk.ui.scriptEditorScope" bindingContext="_Oe-Td0InEeihDcMTWByheg">
+    <bindings xmi:id="_Ofc0ZUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oez7SUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0fUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_UP" command="_Oe4MqkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCjkInEeihDcMTWByheg" keySequence="ALT+SHIFT+T" command="_Oe2-xkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3skInEeihDcMTWByheg" keySequence="CTRL+O" command="_Oe2XokInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgezEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F" command="_Oe3mH0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF1UInEeihDcMTWByheg" keySequence="CTRL+SHIFT+G" command="_Oe0ifEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF30InEeihDcMTWByheg" keySequence="ALT+CTRL+H" command="_OezUWUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiUCEInEeihDcMTWByheg" keySequence="CTRL+/" command="_Oez7SUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7D0InEeihDcMTWByheg" keySequence="F3" command="_Oe3lrUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJJEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+P" command="_Oe0iYkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXQ0InEeihDcMTWByheg" keySequence="ALT+SHIFT+J" command="_Oe4MqUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXTUInEeihDcMTWByheg" keySequence="CTRL+I" command="_OezUQkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-WkInEeihDcMTWByheg" keySequence="CTRL+7" command="_Oez7SUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-YkInEeihDcMTWByheg" keySequence="ALT+SHIFT+R" command="_Oe1JoUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-aEInEeihDcMTWByheg" keySequence="CTRL+T" command="_Oe3ln0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnziEInEeihDcMTWByheg" keySequence="F4" command="_OeyGHUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBsEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+ARROW_DOWN" command="_Oez7NEInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_Ofc0ZkInEeihDcMTWByheg" elementId="org.eclipse.php.ui.phpEditorScope" bindingContext="_Oe-TT0InEeihDcMTWByheg">
+    <bindings xmi:id="_Ofc0Z0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+C" command="_Oe3mB0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0eUInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_RIGHT" command="_Oe1woEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbcUInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_DOWN" command="_Oe2XcUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofdbg0InEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_UP" command="_Oe2-9UInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3tUInEeihDcMTWByheg" keySequence="CTRL+O" command="_Oe2XokInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgezUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F" command="_Oe4MyUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs4UInEeihDcMTWByheg" keySequence="ALT+CTRL+H" command="_Oe2-7kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs6kInEeihDcMTWByheg" keySequence="CTRL+SHIFT+H" command="_Oe3mHEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT8kInEeihDcMTWByheg" keySequence="F2" command="_Oe1wukInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiUCUInEeihDcMTWByheg" keySequence="CTRL+/" command="_Oe3mB0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7EEInEeihDcMTWByheg" keySequence="F3" command="_OeytOEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfjiE0InEeihDcMTWByheg" keySequence="SHIFT+F2" command="_Oe2XxEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfjiF0InEeihDcMTWByheg" keySequence="ALT+SHIFT+O" command="_Oe3lr0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJJUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+P" command="_Oe1ws0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwSkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+M" command="_Oe1JekInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXTkInEeihDcMTWByheg" keySequence="CTRL+I" command="_Oe3lwkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXUEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+J" command="_Oe1JXUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-U0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+T" command="_Oe2-tUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-W0InEeihDcMTWByheg" keySequence="CTRL+7" command="_Oe3mB0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-ZEInEeihDcMTWByheg" keySequence="ALT+SHIFT+R" command="_Oe1JoUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-aUInEeihDcMTWByheg" keySequence="CTRL+T" command="_Oe3ln0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlZUInEeihDcMTWByheg" keySequence="ALT+SHIFT+V" command="_Oe2-v0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofmlb0InEeihDcMTWByheg" keySequence="CTRL+N" command="_OeyGRkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoakEInEeihDcMTWByheg" keySequence="F4" command="_Oe1JokInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBrEInEeihDcMTWByheg" keySequence="ALT+SHIFT+ARROW_LEFT" command="_OezUSkInEeihDcMTWByheg"/>
+  </bindingTables>
+  <bindingTables xmi:id="_Ofc0aUInEeihDcMTWByheg" elementId="org.eclipse.ui.contexts.window" bindingContext="_OdP09UInEeihDcMTWByheg">
+    <bindings xmi:id="_Ofc0akInEeihDcMTWByheg" keySequence="ALT+ARROW_RIGHT" command="_Oe0iaEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0a0InEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+ARROW_RIGHT" command="_Oe2XhkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0ckInEeihDcMTWByheg" keySequence="CTRL+B" command="_OeyGR0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofc0fkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+A" command="_Oe2-kUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbckInEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+ARROW_UP" command="_Oe2XnUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofdbc0InEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+A" command="_Oe2-oUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbdEInEeihDcMTWByheg" keySequence="ALT+C" command="_Oez7c0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbeEInEeihDcMTWByheg" keySequence="ALT+ARROW_LEFT" command="_OeytIUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbhUInEeihDcMTWByheg" keySequence="ALT+SHIFT+D A" command="_Oe3lmkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfdbhkInEeihDcMTWByheg" keySequence="ALT+SHIFT+D J" command="_Oe2-y0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofdbh0InEeihDcMTWByheg" keySequence="ALT+SHIFT+D Q" command="_Oe1JjUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCgEInEeihDcMTWByheg" keySequence="ALT+SHIFT+D R" command="_Oe1Jq0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCgUInEeihDcMTWByheg" keySequence="ALT+SHIFT+D R" command="_OezUV0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCgkInEeihDcMTWByheg" keySequence="ALT+SHIFT+D P" command="_Oe3lt0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCg0InEeihDcMTWByheg" keySequence="ALT+SHIFT+D E" command="_Oe4M3kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeChEInEeihDcMTWByheg" keySequence="ALT+SHIFT+D H" command="_Oe2-hkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeChUInEeihDcMTWByheg" keySequence="ALT+SHIFT+D T" command="_OeyGCkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeChkInEeihDcMTWByheg" keySequence="ALT+SHIFT+D 3" command="_Oez7YEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCh0InEeihDcMTWByheg" keySequence="ALT+SHIFT+D X" command="_Oe1Jm0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCiEInEeihDcMTWByheg" keySequence="ALT+SHIFT+D O" command="_Oe1wmkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCiUInEeihDcMTWByheg" keySequence="ALT+SHIFT+D U" command="_Oe0iXEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCikInEeihDcMTWByheg" keySequence="ALT+SHIFT+D W" command="_OeyGQ0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCi0InEeihDcMTWByheg" keySequence="ALT+SHIFT+T" command="_Oe1wu0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCkUInEeihDcMTWByheg" keySequence="CTRL+F11" command="_Oe3l6EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeCkkInEeihDcMTWByheg" keySequence="F11" command="_Oe3mHUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeClEInEeihDcMTWByheg" keySequence="CTRL+-" command="_Oe3l_kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepkUInEeihDcMTWByheg" keySequence="CTRL+F7" command="_Oe1wlEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofepk0InEeihDcMTWByheg" keySequence="ALT+SHIFT+P" command="_Oe2X0kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfeplkInEeihDcMTWByheg" keySequence="DEL" command="_OeytUkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofepl0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+W" command="_Oe0iUEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepmkInEeihDcMTWByheg" keySequence="CTRL+W" command="_Oe1wZEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofepm0InEeihDcMTWByheg" keySequence="CTRL+," command="_OeyGQUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepnEInEeihDcMTWByheg" keySequence="CTRL+BREAK" command="_OeytL0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfepnUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+U" command="_OezUM0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQoEInEeihDcMTWByheg" keySequence="ALT+SHIFT+L" command="_OezUakInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQpUInEeihDcMTWByheg" keySequence="ALT+SHIFT+S" command="_Oe1wekInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQqUInEeihDcMTWByheg" keySequence="CTRL+Q" command="_Oe3lz0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQqkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F4" command="_Oe0iUEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OffQrUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F12" command="_OeyGGUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3tkInEeihDcMTWByheg" keySequence="ALT+SHIFT+Z" command="_Oe1wgUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3uUInEeihDcMTWByheg" keySequence="CTRL+S" command="_Oe0ilUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Off3wEInEeihDcMTWByheg" keySequence="ALT+SHIFT+H" command="_Oez7dUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgewEInEeihDcMTWByheg" keySequence="ALT+SHIFT+G" command="_Oe2XqkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgewUInEeihDcMTWByheg" keySequence="ALT+SHIFT+F" command="_Oe3l1EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofgew0InEeihDcMTWByheg" keySequence="CTRL+E" command="_Oe0iQUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfgexUInEeihDcMTWByheg" keySequence="CTRL+F" command="_OeytQEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofge0EInEeihDcMTWByheg" keySequence="CTRL+SHIFT+E" command="_OezULUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF0EInEeihDcMTWByheg" keySequence="CTRL+G" command="_Oexe-kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF0kInEeihDcMTWByheg" keySequence="ALT+CTRL+G" command="_Oe2XykInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF00InEeihDcMTWByheg" keySequence="CTRL+SHIFT+G" command="_Oe4MyEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF10InEeihDcMTWByheg" keySequence="CTRL+H" command="_Oe2-_kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfhF3UInEeihDcMTWByheg" keySequence="ALT+CTRL+H" command="_OeytE0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs40InEeihDcMTWByheg" keySequence="ALT+SHIFT+I" command="_OeytH0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs50InEeihDcMTWByheg" keySequence="CTRL+SHIFT+H" command="_Oe1whkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs8kInEeihDcMTWByheg" keySequence="CTRL+#" command="_OeytHkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofhs-0InEeihDcMTWByheg" keySequence="ALT+F5" command="_Oe1JbEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT8EInEeihDcMTWByheg" keySequence="F2" command="_OeyGRUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT80InEeihDcMTWByheg" keySequence="CTRL+M" command="_Oe2--EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT9EInEeihDcMTWByheg" keySequence="CTRL+." command="_Oe4Ms0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfiT-kInEeihDcMTWByheg" keySequence="CTRL+SHIFT+V" command="_Oe3l6kInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7AUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+O" command="_Oe3mJEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7B0InEeihDcMTWByheg" keySequence="ALT+CR" command="_Oe2-5EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7CEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F7" command="_Oe3mIUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7CUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+R" command="_Oe4M9EInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7CkInEeihDcMTWByheg" keySequence="F12" command="_Oe2_AkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7DEInEeihDcMTWByheg" keySequence="F3" command="_OezUZkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7E0InEeihDcMTWByheg" keySequence="ALT+-" command="_Oe1wqEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofi7FkInEeihDcMTWByheg" keySequence="ALT+SHIFT+W" command="_Oe4MrUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfjiEUInEeihDcMTWByheg" keySequence="SHIFT+F2" command="_Oe2Xo0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJJkInEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+T" command="_OeytHEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJJ0InEeihDcMTWByheg" keySequence="ALT+SHIFT+M" command="_Oe3mL0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJKUInEeihDcMTWByheg" keySequence="CTRL+3" command="_Oez7P0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJKkInEeihDcMTWByheg" keySequence="CTRL+P" command="_Oe3lvUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJK0InEeihDcMTWByheg" keySequence="SHIFT+F5" command="_Oe1JhkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJLkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F9" command="_Oe1JaUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkJL0InEeihDcMTWByheg" keySequence="ALT+CTRL+P" command="_OeytSkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwMEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+S" command="_Oe2XtEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwM0InEeihDcMTWByheg" keySequence="CTRL+F4" command="_Oe1wZEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwN0InEeihDcMTWByheg" keySequence="ALT+F7" command="_Oe1wwUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwOEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+NUMPAD_DIVIDE" command="_Oez7aEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwP0InEeihDcMTWByheg" keySequence="CTRL+SHIFT+N" command="_Oe1wqUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwQUInEeihDcMTWByheg" keySequence="CTRL+F8" command="_Oez7OEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfkwTUInEeihDcMTWByheg" keySequence="ALT+F11" command="_OeytR0InEeihDcMTWByheg">
+      <tags>platform:win32</tags>
+    </bindings>
+    <bindings xmi:id="_OflXQUInEeihDcMTWByheg" keySequence="ALT+SHIFT+J" command="_Oez7ekInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXSEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+NUMPAD_MULTIPLY" command="_Oe2Xs0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXUUInEeihDcMTWByheg" keySequence="CTRL+TAB" command="_OeytS0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXUkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+TAB" command="_Oe2XvkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXWUInEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+M" command="_Oe3mIEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXWkInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F6" command="_Oe2XvkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXXEInEeihDcMTWByheg" keySequence="CTRL+U" command="_Oe1JnkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OflXXUInEeihDcMTWByheg" keySequence="ALT+X" command="_Oe1wf0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-UUInEeihDcMTWByheg" keySequence="CTRL+SHIFT+T" command="_Oe0iUUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-VkInEeihDcMTWByheg" keySequence="CTRL+F6" command="_OeytS0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofl-XUInEeihDcMTWByheg" keySequence="ALT+SHIFT+R" command="_Oe1JsEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlYEInEeihDcMTWByheg" keySequence="CTRL+F9" command="_OezUMUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlYUInEeihDcMTWByheg" keySequence="ALT+SHIFT+V" command="_Oe1JW0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlZkInEeihDcMTWByheg" keySequence="ALT+SHIFT+N" command="_Oe0iS0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlakInEeihDcMTWByheg" keySequence="ALT+CTRL+T" command="_Oe1wjkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlbkInEeihDcMTWByheg" keySequence="CTRL+N" command="_Oe4MzkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfmlcUInEeihDcMTWByheg" keySequence="ALT+SHIFT+F7" command="_Oe2-pUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofmlc0InEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+F12" command="_Oe3mMUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnMcUInEeihDcMTWByheg" keySequence="ALT+V" command="_Oe1JfEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnMdEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+F8" command="_Oez7ZUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnzgEInEeihDcMTWByheg" keySequence="CTRL+{" command="_Oez7ZkInEeihDcMTWByheg">
+      <parameters xmi:id="_OfnzgUInEeihDcMTWByheg" elementId="Splitter.isHorizontal" name="Splitter.isHorizontal" value="false"/>
+    </bindings>
+    <bindings xmi:id="_Ofnzg0InEeihDcMTWByheg" keySequence="F5" command="_Oe0icUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnzhEInEeihDcMTWByheg" keySequence="CTRL+F12" command="_OeytXEInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfnzhUInEeihDcMTWByheg" keySequence="F4" command="_OeyGTkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfoalUInEeihDcMTWByheg" keySequence="ALT+SHIFT+?" command="_Oez7YkInEeihDcMTWByheg">
+      <tags>locale:zh</tags>
+    </bindings>
+    <bindings xmi:id="_Ofoam0InEeihDcMTWByheg" keySequence="CTRL+_" command="_Oez7ZkInEeihDcMTWByheg">
+      <parameters xmi:id="_OfoanEInEeihDcMTWByheg" elementId="Splitter.isHorizontal" name="Splitter.isHorizontal" value="true"/>
+    </bindings>
+    <bindings xmi:id="_OfoanUInEeihDcMTWByheg" keySequence="CTRL+DEL" command="_Oe3mAkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_Ofoan0InEeihDcMTWByheg" keySequence="ALT+?" command="_Oez7YkInEeihDcMTWByheg">
+      <tags>locale:zh</tags>
+    </bindings>
+    <bindings xmi:id="_OfoaoEInEeihDcMTWByheg" keySequence="CTRL+=" command="_Oe0ia0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBoEInEeihDcMTWByheg" keySequence="SHIFT+DEL" command="_Oez7XkInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBo0InEeihDcMTWByheg" keySequence="ALT+CTRL+SHIFT+ARROW_DOWN" command="_Oe4M1UInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBpEInEeihDcMTWByheg" keySequence="CTRL+SHIFT+B" command="_OeytWUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBpUInEeihDcMTWByheg" keySequence="ALT+SHIFT+C" command="_Oe2_BUInEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBsUInEeihDcMTWByheg" keySequence="ALT+CTRL+B" command="_Oe2-i0InEeihDcMTWByheg"/>
+    <bindings xmi:id="_OfpBs0InEeihDcMTWByheg" keySequence="ALT+SHIFT+Q Z" command="_Oe2-gkInEeihDcMTWByheg">
+      <parameters xmi:id="_OfpBtEInEeihDcMTWByheg" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.team.ui.GenericHistoryView"/>
+    </bindings>
+    <bindings xmi:id="_OfposEInEeihDcMTWByheg" keySequence="ALT+SHIFT+Q V" command="_Oe2-gkInEeihDcMTWByheg">
+      <parameters xmi:id="_OfposUInEeihDcMTWByheg" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.debug.ui.VariableView"/>
+    </bindings>
+    <bindings xmi:id="_Ofpos0InNvbGlkO1xyXG4gICAgYm9yZGVyLXRvcC1jb2xvcjogIzAwMmU1ZDtcclxuICAgIGJvcmRlci1yaWdodC1jb2xvcjogIzAwMmU1ZDtcclxuICAgIGJvcmRlci1ib3R0b20tY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgYm9yZGVyLWxlZnQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgLyogYm9yZGVyLXJpZ2h0LWNvbG9yOiB0cmFuc3BhcmVudDsgKi9cclxufVxyXG4ud3FkZWxlbWVudEVkaXRCb3gud3FkZnJlZVJlY3QxLndxZGZyZWVSZWN0MyAud3FkLWFycm93Mywud3FkLWZyZWVSZWN0LndxZGZyZWVSZWN0MS53cWRmcmVlUmVjdDMgLndxZC1hcnJvdzN7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICBsZWZ0OiAtMTBweDtcclxuICAgIHRvcDogNTAlO1xyXG4gICAgbWFyZ2luLXRvcDogLTEwcHg7XHJcbiAgICBib3JkZXI6IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxMHB4IDEwcHggMTBweCAwO1xyXG4gICAgYm9yZGVyLXJpZ2h0LWNvbG9yOiByZ2IoMSwxNzcsMTc1KTtcclxufVxyXG4vKiDmloflrZfpgILphY3moIflh4YgbGl1bWluZ3JlbiovXHJcbmh0bWwge1xyXG4gIGZvbnQtc2l6ZTogNjIuNSU7XHJcbn1cclxuXHJcbmJvZHkge1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBmb250LXNpemU6IDEuNHJlbTtcclxufVxyXG5cclxuLndxZC10ZXh0LXRpdGxlMSB7XHJcbiAgZm9udC1zaXplOiA1NnB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiA1LjZyZW0gIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuLndxZC10ZXh0LXRpdGxlMiB7XHJcbiAgZm9udC1zaXplOiA0NnB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiA0LjZyZW0gIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuLndxZC10ZXh0LXRpdGxlMyB7XHJcbiAgZm9udC1zaXplOiAyOHB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAyLjhyZW0gIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuLndxZC10ZXh0LXRpdGxlNCB7XHJcbiAgZm9udC1zaXplOiAyMHB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAycmVtICFpbXBvcnRhbnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNzU7XHJcbn1cclxuXHJcbi53cWQtdGV4dC1hcnRpY2xlMSB7XHJcbiAgZm9udC1zaXplOiAxOHB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAxLjhyZW0gIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuLndxZC10ZXh0LWFydGljbGUyIHtcclxuICBmb250LXNpemU6IDE2cHggIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDEuNnJlbSAhaW1wb3J0YW50O1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjc1O1xyXG59XHJcblxyXG4ud3FkLXRleHQtYXJ0aWNsZTMge1xyXG4gIGZvbnQtc2l6ZTogMTRweCAhaW1wb3J0YW50O1xyXG4gIGZvbnQtc2l6ZTogMS40cmVtICFpbXBvcnRhbnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNzU7XHJcbn1cclxuXHJcbi53cWQtdGV4dC1hcnRpY2xlNCB7XHJcbiAgZm9udC1zaXplOiAxMnB4ICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAxLjJyZW0gIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuLyrmiYvmnLrorr7orqHnlYzpnaIqL1xyXG5cclxuYm9keS5waG9uZSAud3FkLXRleHQtdGl0bGUxLCAud3FkUGhvbmVDb250YWluZXIgLndxZC10ZXh0LXRpdGxlMSB7XHJcbiAgZm9udC1zaXplOiAzLjJyZW0gIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDMycHggIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuYm9keS5waG9uZSAud3FkLXRleHQtdGl0bGUyLCAud3FkUGhvbmVDb250YWluZXIgLndxZC10ZXh0LXRpdGxlMiB7XHJcbiAgZm9udC1zaXplOiAzcmVtICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAzMHB4ICFpbXBvcnRhbnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNzU7XHJcbn1cclxuXHJcbmJvZHkucGhvbmUgLndxZC10ZXh0LXRpdGxlMywgLndxZFBob25lQ29udGFpbmVyIC53cWQtdGV4dC10aXRsZTMge1xyXG4gIGZvbnQtc2l6ZTogMi40cmVtICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAyNHB4ICFpbXBvcnRhbnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNzU7XHJcbn1cclxuXHJcbmJvZHkucGhvbmUgLndxZC10ZXh0LXRpdGxlNCwgLndxZFBob25lQ29udGFpbmVyIC53cWQtdGV4dC10aXRsZTQge1xyXG4gIGZvbnQtc2l6ZTogMS44cmVtICFpbXBvcnRhbnQ7XHJcbiAgZm9udC1zaXplOiAxOHB4ICFpbXBvcnRhbnQ7XHJcbiAgbGluZS1oZWlnaHQ6IDEuNzU7XHJcbn1cclxuXHJcbmJvZHkucGhvbmUgLndxZC10ZXh0LWFydGljbGUxLCAud3FkUGhvbmVDb250YWluZXIgLndxZC10ZXh0LWFydGljbGUxIHtcclxuICBmb250LXNpemU6IDEuNnJlbSAhaW1wb3J0YW50O1xyXG4gIGZvbnQtc2l6ZTogMTZweCAhaW1wb3J0YW50O1xyXG4gIGxpbmUtaGVpZ2h0OiAxLjc1O1xyXG59XHJcblxyXG5ib2R5LnBob25lIC53cWQtdGV4dC1hcnRpY2xlMiwgLndxZFBob25lQ29udGFpbmVyIC53cWQtdGV4dC1hcnRpY2xlMiB7XHJcbiAgZm9udC1zaXplOiAxLjRyZW0gIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDE0cHggIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5ib2R5LnBob25lIC53cWQtdGV4dC1hcnRpY2xlMywgLndxZFBob25lQ29udGFpbmVyIC53cWQtdGV4dC1hcnRpY2xlMyB7XHJcbiAgZm9udC1zaXplOiAxLjJyZW0gIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDEycHggIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5ib2R5LnBob25lIC53cWQtdGV4dC1hcnRpY2xlNCwgLndxZFBob25lQ29udGFpbmVyIC53cWQtdGV4dC1hcnRpY2xlNCB7XHJcbiAgZm9udC1zaXplOiAxLjJyZW0gIWltcG9ydGFudDtcclxuICBmb250LXNpemU6IDEycHggIWltcG9ydGFudDtcclxuICBsaW5lLWhlaWdodDogMS43NTtcclxufVxyXG5cclxuQG1lZGlhIChtaW4td2lkdGg6IDMyMHB4KSBhbmQgKG1heC13aWR0aDogNzY3cHgpIHtcclxuICAud3FkLXRleHQtdGl0bGUxIHtcclxuICAgIGZvbnQtc2l6ZTogMzJweCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAzLjJyZW0gIWltcG9ydGFudDtcclxuICAgIGxpbmUtaGVpZ2h0OiAxLjc1O1xyXG4gIH1cclxuICAud3FkLXRleHQtdGl0bGUyIHtcclxuICAgIGZvbnQtc2l6ZTogMzBweCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAzcmVtICFpbXBvcnRhbnQ7XHJcbiAgICBsaW5lLWhlaWdodDogMS43NTtcclxuICB9XHJcbiAgLndxZC10ZXh0LXRpdGxlMyB7XHJcbiAgICBmb250LXNpemU6IDI0cHggIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMi40cmVtICFpbXBvcnRhbnQ7XHJcbiAgICBsaW5lLWhlaWdodDogMS43NTtcclxuICB9XHJcbiAgLndxZC10ZXh0LXRpdGxlNCB7XHJcbiAgICBmb250LXNpemU6IDE4cHggIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMS44cmVtICFpbXBvcnRhbnQ7XHJcbiAgICBsaW5lLWhlaWdodDogMS43NTtcclxuICB9XHJcbiAgLndxZC10ZXh0LWFydGljbGUxIHtcclxuICAgIGZvbnQtc2l6ZTogMTZweCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAxLjZyZW0gIWltcG9ydGFudDtcclxuICAgIGxpbmUtaGVpZ2h0OiAxLjc1O1xyXG4gIH1cclxuICAud3FkLXRleHQtYXJ0aWNsZTIsIC53cWQtdGV4dC1hcnRpY2xlMyB7XHJcbiAgICBmb250LXNpemU6IDE0cHggIWltcG9ydGFudDtcclxuICAgIGZvbnQtc2l6ZTogMS40cmVtICFpbXBvcnRhbnQ7XHJcbiAgICBsaW5lLWhlaWdodDogMS43NTtcclxuICB9XHJcbiAgLndxZC10ZXh0LWFydGljbGU0IHtcclxuICAgIGZvbnQtc2l6ZTogMTJweCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1zaXplOiAxLjJyZW0gIWltcG9ydGFudDtcclxuICAgIGxpbmUtaGVpZ2h0OiAxLjc1O1xyXG4gIH1cclxufVxyXG5cclxuLndxZGVsZW1lbnRFZGl0IHtcclxuICAmW2RhdGEtZWxlbWVudHR5cGU9Zm9ybVNlbGVjdF0gLndxZGVsZW1lbnRFZGl0Qm94IHtcclxuICAgIG92ZXJmbG93OiB2aXNpYmxlO1xyXG4gIH1cclxuICBbZGF0YS1lbGVtZW50dHlwZT1mb3JtRGF0ZV0gLndxZGVsZW1lbnRFZGl0Qm94IHtcclxuICAgIG92ZXJmbG93OiB2aXNpYmxlICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG59XHJcblxyXG4ud3FkLWZvcm0ud3FkQ29udHJvbEZvcm0ge1xyXG4gIFtkYXRhLWVsZW1lbnR0eXBlPWZvcm1TZWxlY3RdID4gLndxZGVsZW1lbnRFZGl0Qm94LCBbZGF0YS1lbGVtZW50dHlwZT1mb3JtRGF0ZV0gPiAud3FkZWxlbWVudEVkaXRCb3gge1xyXG4gICAgb3ZlcmZsb3c6IHZpc2libGU7XHJcbiAgfVxyXG59XHJcblxyXG4ud3FkZWxlbWVudEVkaXQge1xyXG4gICZbZGF0YS1lbGVtZW50dHlwZT1zdmddIC53cWRlbGVtZW50RWRpdEJveCB7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG4gIHN2ZyB7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICB9XHJcbiAgJltkYXRhLWVsZW1lbnR0eXBlPVwidGV4dFwiXSBlbSB7XHJcbiAgICBmb250LXN0eWxlOiBpdGFsaWM7XHJcbiAgfVxyXG59XHJcblxyXG4ud3FkLWltZyB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaW1nIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gIH1cclxufVxyXG5cclxuLndxZC1hcnQtaW1nIHtcclxuICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLndxZC1pbWctZGVmYXVsdCB7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG59XHJcblxyXG4ud3FkZWxlbWVudEVkaXQgLndxZEltZ0xpbmtWMiB7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMDtcclxuICBib3R0b206IDA7XHJcbiAgbGVmdDogMDtcclxuICByaWdodDogMDtcclxuICB6LWluZGV4OiAyO1xyXG59XHJcblxyXG4ud3FkLWJ1dHRvbiB7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuXHJcbmEud3FkLWJ1dHRvbiB7XHJcbiAgJjp2aXNpdGVkLCAmOmhvdmVyLCAmOmZvY3VzIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gIH1cclxufVxyXG5cclxuLndxZC1idXR0b24gPiBlbSB7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHRvcDogNTAlO1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTtcclxufVxyXG5cclxuLndxZC1pY29uIHtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICAuZmEge1xyXG4gICAgZGlzcGxheTogYmxvY2sgIWltcG9ydGFudDtcclxuICB9XHJcbn1cclxuXHJcbi53cWRlbGVtZW50RWRpdFtkYXRhLWVsZW1lbnR0eXBlPVwiaW1nXCJdIC53cWRlbGVtZW50RWRpdEJveCBhIHtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuIl19 */

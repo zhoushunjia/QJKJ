@@ -1,0 +1,664 @@
+/*! nanoScrollerJS - v0.8.1 - 2014
+* http://jamesflorentino.github.com/nanoScrollerJS/
+* Copyright (c) 2014 James Florentino; Licensed MIT */
+(function($, window, document) {
+  "use strict";
+  var BROWSER_IS_IE7, BROWSER_SCROLLBAR_WIDTH, DOMSCROLL, DOWN, DRAG, ENTER, KEYDOWN, KEYUP, MOUSEDOWN, MOUSEENTER, MOUSEMOVE, MOUSEUP, MOUSEWHEEL, NanoScroll, PANEDOWN, RESIZE, SCROLL, SCROLLBAR, TOUCHMOVE, UP, WHEEL, cAF, defaults, getBrowserScrollbarWidth, hasTransform, isFFWithBuggyScrollbar, rAF, transform, _elementStyle, _prefixStyle, _vendor;
+  defaults = {
+
+    /**
+      a classname for the pane element.
+      @property paneClass
+      @type String
+      @default 'nano-pane'
+     */
+    paneClass: 'nano-pane',
+
+    /**
+      a classname for the slider element.
+      @property sliderClass
+      @type String
+      @default 'nano-slider'
+     */
+    sliderClass: 'nano-slider',
+
+    /**
+      a classname for the content element.
+      @property contentClass
+      @type String
+      @default 'nano-content'
+     */
+    contentClass: 'nano-content',
+
+    /**
+      a setting to enable native scrolling in iOS devices.
+      @property iOSNativeScrolling
+      @type Boolean
+      @default false
+     */
+    iOSNativeScrolling: false,
+
+    /**
+      a setting to prevent the rest of the page being
+      scrolled when user scrolls the `.content` element.
+      @property preventPageScrolling
+      @type Boolean
+      @default false
+     */
+    preventPageScrolling: false,
+
+    /**
+      a setting to disable binding to the resize event.
+      @property disableResize
+      @type Boolean
+      @default false
+     */
+    disableResize: false,
+
+    /**
+      a setting to make the scrollbar always visible.
+      @property alwaysVisible
+      @type Boolean
+      @default false
+     */
+    alwaysVisible: false,
+
+    /**
+      a default timeout for the `flash()` method.
+      @property flashDelay
+      @type Number
+      @default 1500
+     */
+    flashDelay: 1500,
+
+    /**
+      a minimum height for the `.slider` element.
+      @property sliderMinHeight
+      @type Number
+      @default 20
+     */
+    sliderMinHeight: 20,
+
+    /**
+      a maximum height for the `.slider` element.
+      @property sliderMaxHeight
+      @type Number
+      @default null
+     */
+    sliderMaxHeight: null,
+
+    /**
+      an alternate document context.
+      @property documentContext
+      @type Document
+      @default null
+     */
+    documentContext: null,
+
+    /**
+      an alternate window context.
+      @property windowContext
+      @type Window
+      @default null
+     */
+    windowContext: null
+  };
+
+  /**
+    @property SCROLLBAR
+    @type String
+    @static
+    @final
+    @private
+   */
+  SCROLLBAR = 'scrollbar';
+
+  /**
+    @property SCROLL
+    @type String
+    @static
+    @final
+    @private
+   */
+  SCROLL = 'scroll';
+
+  /**
+    @property MOUSEDOWN
+    @type String
+    @final
+    @private
+   */
+  MOUSEDOWN = 'mousedown';
+
+  /**
+    @property MOUSEENTER
+    @type String
+    @final
+    @private
+   */
+  MOUSEENTER = 'mouseenter';
+
+  /**
+    @property MOUSEMOVE
+    @type String
+    @static
+    @final
+    @private
+   */
+  MOUSEMOVE = 'mousemove';
+
+  /**
+    @property MOUSEWHEEL
+    @type String
+    @final
+    @private
+   */
+  MOUSEWHEEL = 'mousewheel';
+
+  /**
+    @property MOUSEUP
+    @type String
+    @static
+    @final
+    @private
+   */
+  MOUSEUP = 'mouseup';
+
+  /**
+    @property RESIZE
+    @type String
+    @final
+    @private
+   */
+  RESIZE = 'resize';
+
+  /**
+    @property DRAG
+    @type String
+    @static
+    @final
+    @private
+   */
+  DRAG = 'drag';
+
+  /**
+    @property ENTER
+    @type String
+    @static
+    @final
+    @private
+   */
+  ENTER = 'enter';
+
+  /**
+    @property UP
+    @type String
+    @static
+    @final
+    @private
+   */
+  UP = 'up';
+
+  /**
+    @property PANEDOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  PANEDOWN = 'panedown';
+
+  /**
+    @property DOMSCROLL
+    @type String
+    @static
+    @final
+    @private
+   */
+  DOMSCROLL = 'DOMMouseScroll';
+
+  /**
+    @property DOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  DOWN = 'down';
+
+  /**
+    @property WHEEL
+    @type String
+    @static
+    @final
+    @private
+   */
+  WHEEL = 'wheel';
+
+  /**
+    @property KEYDOWN
+    @type String
+    @static
+    @final
+    @private
+   */
+  KEYDOWN = 'keydown';
+
+  /**
+    @property KEYUP
+    @type String
+    @static
+    @final
+    @private
+   */
+  KEYUP = 'keyup';
+
+  /**
+    @property TOUCHMOVE
+    @type String
+    @static
+    @final
+    @private
+   */
+  TOUCHMOVE = 'touchmove';
+
+  /**
+    @property BROWSER_IS_IE7
+    @type Boolean
+    @static
+    @final
+    @private
+   */
+  BROWSER_IS_IE7 = window.navigator.appName === 'Microsoft Internet Explorer' && /msie 7./i.test(window.navigator.appVersion) && window.ActiveXObject;
+
+  /**
+    @property BROWSER_SCROLLBAR_WIDTH
+    @type Number
+    @static
+    @default null
+    @private
+   */
+  BROWSER_SCROLLBAR_WIDTH = null;
+  rAF = window.requestAnimationFrame;
+  cAF = window.cancelAnimationFrame;
+  _elementStyle = document.createElement('div').style;
+  _vendor = (function() {
+    var i, transform, vendor, vendors, _i, _len;
+    vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'];
+    for (i = _i = 0, _len = vendors.length; _i < _len; i = ++_i) {
+      vendor = vendors[i];
+      transform = vendors[i] + 'ransform';
+      if (transform in _elementStyle) {
+        return vendors[i].substr(0, vendors[i].length - 1);
+      }
+    }
+    return false;
+  })();
+  _prefixStyle = function(style) {
+    if (_vendor === false) {
+      return false;
+    }
+    if (_vendor === '') {
+      return style;
+    }
+    return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
+  };
+  transform = _prefixStyle('transform');
+  hasTransform = transform !== false;
+
+  /**
+    Returns browser's native scrollbar width
+    @method getBrowserScrollbarWidth
+    @return {Number} the scrollbar width in pixels
+    @static
+    @private
+   */
+  getBrowserScrollbarWidth = function() {
+    var outer, outerStyle, scrollbarWidth;
+    outer = document.createElement('div');
+    outerStyle = outer.style;
+    outerStyle.position = 'absolute';
+    outerStyle.width = '100px';
+    outerStyle.height = '100px';
+    outerStyle.overflow = SCROLL;
+    outerStyle.top = '-9999px';
+    document.body.appendChild(outer);
+    scrollbarWidth = outer.offsetWidth - outer.clientWidth;
+    document.body.removeChild(outer);
+    return scrollbarWidth;
+  };
+  isFFWithBuggyScrollbar = function() {
+    var isOSXFF, ua, version;
+    ua = window.navigator.userAgent;
+    isOSXFF = /(?=.+Mac OS X)(?=.+Firefox)/.test(ua);
+    if (!isOSXFF) {
+      return false;
+    }
+    version = /Firefox\/\d{2}\./.exec(ua);
+    if (version) {
+      version = version[0].replace(/\D+/g, '');
+    }
+    return isOSXFF && +version > 23;
+  };
+
+  /**
+    @class NanoScroll
+    @param element {HTMLElement|Node} the main element
+    @param options {Object} nanoScroller's options
+    @constructor
+   */
+  NanoScroll = (function() {
+    function NanoScroll(el, options) {
+      this.el = el;
+      this.options = options;
+      BROWSER_SCROLLBAR_WIDTH || (BROWSER_SCROLLBAR_WIDTH = getBrowserScrollbarWidth() || 17);
+      this.$el = $(this.el);
+      this.doc = $(this.options.documentContext || document);
+      this.win = $(this.options.windowContext || window);
+      this.body = this.doc.find('body');
+      this.$content = this.$el.children("." + options.contentClass);
+      this.$content.attr('tabindex', this.options.tabIndex || 0);
+      this.content = this.$content[0];
+      this.previousPosition = 0;
+      if (this.options.iOSNativeScrolling && (this.el.style.WebkitOverflowScrolling != null)) {
+        this.nativeScrolling();
+      } else {
+        this.generate();
+      }
+      this.createEvents();
+      this.addEvents();
+      this.reset();
+    }
+
+
+    /**
+      Prevents the rest of the page being scrolled
+      when user scrolls the `.nano-content` element.
+      @method preventScrolling
+      @param event {Event}
+      @param direction {String} Scroll direction (up or down)
+      @private
+     */
+
+    NanoScroll.prototype.preventScrolling = function(e, direction) {
+      if (!this.isActive) {
+        return domain = "http://member.wqdian.com";
++      if(domain.indexOf("wqdian.com") != -1) {
++        document.domain = "wqdian.com";
++      }else if (domain.indexOf("wqdian.net") != -1) {
++        document.domain = "wqdian.net";
++      }
++  } catch (e) {
++      //console.log("����");
++  }
++  (function () {
++    var userAgent = navigator.userAgent,
++        isMobile  = !!userAgent.match(/AppleWebKit.*Mobile.*/);
++    if(isMobile) {
++        var viewport  = document.querySelector('meta[name="viewport"]'),
++            wWidth    = document.documentElement.clientWidth || window.innerWidth || document.body.clientWidth;
++            sca       = wWidth/320,
++            displayMode = 'pc';
++
++        if(displayMode == "phone") {
++          viewport.content='width=320,initial-scale='+sca+',minimum-scale='+sca+',maximum-scale='+sca+', user-scalable=no';
++        } else if(displayMode == "pc") {
++          var pcWidth = '' || 1600;
++          sca = wWidth / pcWidth;
++          viewport.content='width=320,initial-scale=1';
++          viewport.content='width=320,initial-scale='+sca+',minimum-scale='+sca;
++        }
++    }
++    //����pcģ��ģ��Ԥ���������´��ڴ����� -- hjj
++    window.parent != window.self && $(document).find("a[target=_blank]").removeAttr("target");
++
++  })();
++</script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery-1.11.2.min.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/allocation.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdformDate.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jweixin-1.0.0.js"></script>
++<script src="${ctxPath}/static/modular/system/home/qc.php" type="text/javascript" charset="utf-8"></script>
++<!-- <script src="${ctxPath}/static/modular/system/home/jquery.qrcode.min.js"></script> -->
+\ No newline at end of file
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/40/80125de0dc3b001815f3afc29ba63f00 b/.metadata/.plugins/org.eclipse.core.resources/.history/40/80125de0dc3b001815f3afc29ba63f00
+new file mode 100644
+index 0000000000000000000000000000000000000000..e045e46ed8378deb7c2b478cdc9431b7ef5e9aa8
+--- /dev/null
++++ b/.metadata/.plugins/org.eclipse.core.resources/.history/40/80125de0dc3b001815f3afc29ba63f00
+@@ -0,0 +1,1275 @@
++<!DOCTYPE html>
++<!-- saved from url=(0069)http://template_10998.wqdian.cn/2f58a23144474e0cad8080c41ba4baec.html -->
++<html xmlns="http://www.w3.org/1999/xhtml">
++<!-- 页面head信息 -->
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<meta itemprop="image" content="undefined">
++<meta property="qc:admins" content="1755101013252671411666547">
++
++<meta http-equiv="X-UA-Compatible" content="IE=edge">
++<meta name="viewport"
++	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
++<meta property="qc:admins" content="1755101013252671411663757">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/font-awesome.min.css">
++<script type="text/javascript"
++	src="${ctxPath}/static/modular/system/home/jquery-1.11.2.min.js"></script>
++<script type="text/javascript"
++	src="${ctxPath}/static/modular/system/home/vue.min.js"></script>
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/bootstrap.min.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/base.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/plugin.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/animate.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/component_pc.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/wqdhost.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/edit-mall.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/nanoscroller.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/members.css">
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/wechat_login.css">
++<!-- 商品搜索结果列表页样式 PC -->
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/searchResult.css">
++<!-- 文章控件样式 PC -->
++<link rel="stylesheet" type="text/css"
++	href="${ctxPath}/static/modular/system/home/artListPlugin.css">
++<script type="text/javascript">
++
++  var SAAS_SHOP = 'http://saas.wqdian.com'; 
++  var SAAS_NEWS = 'http://saas.wqdian.com'; 
++
++  try {
++      var domain = "http://member.wqdian.com";
++      if(domain.indexOf("wqdian.com") != -1) {
++        document.domain = "wqdian.com";
++      }else if (domain.indexOf("wqdian.net") != -1) {
++        document.domain = "wqdian.net";
++      }
++  } catch (e) {
++      //console.log("跨域");
++  }
++  (function () {
++    var userAgent = navigator.userAgent,
++        isMobile  = !!userAgent.match(/AppleWebKit.*Mobile.*/);
++    if(isMobile) {
++        var viewport  = document.querySelector('meta[name="viewport"]'),
++            wWidth    = document.documentElement.clientWidth || window.innerWidth || document.body.clientWidth;
++            sca       = wWidth/320,
++            displayMode = 'pc';
++
++        if(displayMode == "phone") {
++          viewport.content='width=320,initial-scale='+sca+',minimum-scale='+sca+',maximum-scale='+sca+', user-scalable=no';
++        } else if(displayMode == "pc") {
++          var pcWidth = '' || 1600;
++          sca = wWidth / pcWidth;
++          viewport.content='width=320,initial-scale=1';
++          viewport.content='width=320,initial-scale='+sca+',minimum-scale='+sca;
++        }
++    }
++    //处理pc模版模版预览超链接新窗口打开问题 -- hjj
++    window.parent != window.self && $(document).find("a[target=_blank]").removeAttr("target");
++
++  })();
++</script>
++
++<title>启匠科技-联系我们</title>
++				
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery-1.11.2.min.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/allocation.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdformDate.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jweixin-1.0.0.js"></script>
++<script src="${ctxPath}/static/modular/system/home/qc.php" type="text/javascript" charset="utf-8"></script>
++<!-- <script src="${ctxPath}/static/modular/system/home/jquery.qrcode.min.js"></script> -->
++</head>
++
++<body class="" style="position: relative;">
++
++	<script type="text/javascript">
++	var CSSURLPATH = 'http://u10527-08e9afad9bec48caa282e76a714e3827.ktb.wqdian.net/';
++	var companyInfo=''||'{}'
++	var siteInfo=''||'{}';
++	var isAgentUser=;
++</script>
++
++	<!-- 页面主体内容  -->
++	<div class="wqdView wqdHeaderView">
++		<style type="text/css" id="styleCss" uw="1200">
++.wqdAreaView .wqdSectiondiv {
++	min-width: 1200px;
++}
++
++.wqdAreaView .wqdBkEditos {
++	width: 1200px;
++}
++
++.fullscreen .bannerContainer {
++	margin: 0 auto;
++	width: 1200px !important;
++}
++</style>
++		<div class="wqdAreaView">
++			<div class="yzmoveContent">
++				<div class="wqdSectiondiv wqdSticky" data-type="wqdSectiondiv"
++					sortid="6" partid="wqd1451474119776serial" commonpartid="10646"
++					id="wqd1451474119776serial" sectionname="横版导航（空白）"
++					partcategoryid="21"
++					style="background-attachment: scroll; background-size: cover; background: #fff; background-position: 50% 50%; background-repeat: no-repeat;"
++					wqdback_position="1">
++					<style sectionwidth="1200" type="text/css"
++						class="wqd1451474119776serial">
++#wqd1451474119776serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #ffffff;
++}
++</style>
++					<style type="text/css" class="elementId1449889646847"
++						sectionwidth="1200">
++#elementId1449889646847 .wqdNavList li a {
++	background-color: #ffffff;
++	padding-left: 28px;
++	padding-right: 28px;
++	padding-top: 22px;
++	padding-bottom: 22px;
++	color: #999;
++}
++
++#elementId1449889646847 .wqdNavList li a:hover {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++
++#elementId1449889646847 .wqdNavList li.active a {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++</style>
++					<header
++						class="wqdTopNavWrap wqdBkEditos sectionV2 elementsContainer wqdCommonNav"
++						wqd-bgcolor="rgba(240,240,240,0.6)"
++						style="position: relative; height: 120px;" wqdheight="120"
++						data-maxzindex="3" bac_position="5" wqdbgattachment="0"
++						wqdwidthlimit="0" sectionwidth="1200" wqdnavstickyed="on"
++						wqdbgcolor="#ffffff">
++
++						<div class="wqdelementEdit" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 180px; height: 67px; left: 65px; top: 21px; z-index: 1;"
++							elementid="elementId1449888900593" id="elementId1449888900593"
++							data-zindex="1">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="./设计专用-网站模板-联系我们_files/yq0KXlZri4qAU4_VAAAkv7ye_tA089.png"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div class="wqdelementEdit elementsContainer wqdTopNavbox"
++							wqd-textcolor="#999" wqd-texthovercolor="#4c4c4c"
++							wqdpaddingx="28" wqdpaddingy="22" wqdfontsize="14"
++							data-elementtype="firstNav" data-unused="set,copy"
++							data-elemandgroup="true"
++							style="width: 627px; height: 60px; left: 409px; top: 33.5px; z-index: 2;"
++							elementid="elementId1449889646847" id="elementId1449889646847"
++							data-zindex="2" wqd-menucolor="#ffffff"
++							wqd-menuhovercolor="#ffffff">
++							<div class="wqdelementEditBox">
++								<nav class="wqdNavWrap">
++									<ul class="wqdNavList">
++										<li class="wqdNavLi active"><a homepage="true"
++											pageid="169268" categorylink="2"
++											href="http://template_10998.wqdian.cn/home.html">首页</a></li>
++										<li class="wqdNavLi"><a pageid="169825" categorylink="2"
++											href="/home/aboutUs">关于我们</a></li>
++										<li class="wqdNavLi"><a pageid="169821" categorylink="2"
++											href="/home/team">团队介绍</a></li>
++										<li class="wqdNavLi"><a pageid="169721" categorylink="2"
++											href="/home/serviceContent">服务内容</a></li>
++										<li wqdnavmark="mark1451474183472" class="wqdNavLi"><a
++											pageid="169781" categorylink="2"
++											href="/home/FAQ">FAQ</a></li>
++										<li class="wqdNavLi"><a pageid="169797" categorylink="2"
++											href="/home/contactUs">联系我们</a></li>
++									</ul>
++								</nav>
++							</div>
++						</div>
++						<div class="wqdelementEdit" data-elementtype="share"
++							data-elemandgroup="true" elementid="elementId1449890679463"
++							id="elementId1449890679463" data-zindex="3"
++							style="width: 165px; height: 35px; left: 1035px; top: 46px; z-index: 3;"
++							iconcolor="#585858" size="28" hiconspace="4">
++							<div class="wqdelementEditBox">
++								<ul class="wqd-share share-default wqdControlShare share-list"
++									data-url="http://template_10998.wqdian.cn/2f58a23144474e0cad8080c41ba4baec.html">
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 3px;"
++										class="btn-share" data-type="sqq"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M896,0C401.2,0,0,401.2,0,896s401.2,896,896,896s896-401.2,896-896S1390.8,0,896,0z M1354,1069.3v6.7v6.2  l-1.2,7.5l-1.6,12.9l-2.2,11.7l-3.4,10.5l-1.3,4.3l-2.4,5.1l-2,3.6l-2.7,4.5l-2.4,2.8l-3,3.6l-2.7,2.9l-2.9,2.5l-3.4,1.5l-3.1,1.6  l-2.5,0.8h-2.3h-1.6l-2.5-0.8l-4.7-2.4l-2.2-1.5l-2.3-1.7l-2.4-2.3l-2.5-2.4l-4.2-4.6l-4.9-6.5l-3.9-6.7l-3.9-5.4l-3.7-6.2  l-5.3-11.2l-5.9-11.5l-0.8-0.4h-0.9l-2.5,1.8l-1.4,3.1l-2.4,3.7l-4,11.3l-6.1,15.9l-7.9,19.1l-5.9,9.7l-6.2,9.9l-7.3,11.3l-7.8,11  l-4,4.9l-4.9,5.5l-11.1,10.9l1,1l1.5,1.6l5.5,3.3l23.2,11.1l10.1,5.7l9.7,5.5l9.5,7l8.5,7.2l4.2,3.2l3,3.8l3.2,4.2l2.7,4.7l1.3,3.9  l1.8,4.7l0.7,4.1l0.9,4.7l-0.9,3.2v3.2l-0.7,3.3l-1.8,3.1l-0.6,2.3l-1.6,2.9l-4.2,5.7l-3.8,4.7l-3.1,3.4l-2.5,2.5l-6.4,4.7l-7.2,4.1  l-7.7,3.9l-8.3,3.7l-9.3,3.6l-4.9,1.5l-4.4,1.3l-10.7,2.5l-11.1,2.3l-11,2.4l-12.1,1.9l-12.5,0.6l-12.9,1.5h-12.6h-13.3h-13.7  l-14.3-0.8l-13.4-1.3l-14.3-1.9l-14.3-1.5l-15-2.1l-14.5-3.6l-14.2-2.8l-14.1-4l-14.5-5.2l-14.2-4.3l-7.4-2.4l-6.7-2.4l-4.3-1.7  l-4.1-0.8h-5.4h-6.4l-13.6-1l-6.9-0.7l-8.9-1l-5.7,5.2l-7.8,4.8l-10.5,5.2l-11.7,6.4l-7,3.4l-7.5,2.8l-16.3,6.7l-8.9,2.2l-9.3,2.5  l-12.9,2.5l-8.1,0.7l-8.6,0.7l-8.9,1l-10.4,0.4h-9.9h-10.4h-22.1l-24-0.4l-23.3-2.4l-11.7-1.7l-11.4-1.7l-11.1-1.6l-11.1-2.2  l-10.3-3.4l-10.3-2.3l-9.3-3.8l-8.7-3.4l-8.2-3.9l-7.1-4.3l-7.1-5.2l-2.4-2.4l-3.1-3.1l-2.4-2.7l-2.2-3l-2-3.1l-1.5-3l-2.2-6.6  l-0.8-3.3l-1-3.7v-3.5l1-3.9v-3.9l0.8-3.9v-2.3v-5.4l0.4-4.2l1.8-4.7l1.5-4.8l2.8-5.7l2.1-2.1l1.7-2.6l4.4-5.4l3.5-2.8l3.3-1.9  l3-2.4l4.9-1.6l3.9-2.4l4.9-2.5l5.5-1.6l5.5-1.7l6.4-1.4l6.1-0.9l7.2-0.9l7.9-0.6l2.1-0.7h0.4l0.9-0.8v-0.9l-1.3-2l-4.2-1.9  l-10.4-9.1l-7-5.5l-8.1-7.1l-8.1-7.9l-8.5-10.1l-9.7-11.4l-3.7-6.2l-4.8-6.3l-4.1-7.4l-3.8-8.1l-5-7.6l-3.3-8.7l-3.9-8.8l-3.9-9.7  l-2.9-9.3l-2.7-11.5l-0.8-0.5h-0.8l-0.4-0.8h-1l-1.7,0.8l-0.8,0.5l-1.2,2l-0.4,2.3l-0.8,2.1l-1.5,3.4l-4.7,8.5l-2.5,5.2l-3.9,4.4  l-4.2,5.4l-4.5,6l-4.9,5.2l-5.7,5.2l-5.3,4.8l-5.8,3.8l-6.4,4l-6.1,2.4l-7.2,1.8l-7.1,0.6h-0.7h-1l-1.6-0.6l-1.3-2.8l-2.1-1.4  l-2.7-6.7l-1.7-3.6l-1.8-5.1l-1.6-5.4l-0.7-5.3l-2.3-12.1l-0.9-7v-7.3v-16l0.9-17.4l1.4-8.9l1.6-9.2l1.6-9.8l2.6-9.2l3.1-10.6  l3-10.2l4.2-10.6l3.9-10.1l5.4-10.2l5-11.2l6.1-10.4l7.2-11.3l7.4-10.1l7.6-11.2l6.4-7.8l8.2-9.1l8.6-9l4-4.3l4.9-4.8l7-6.1l7.3-6.3  l11.8-10.5l8.9-6.5l3.2-2.4l-1.8-5.4l-1.4-7.1l-1-3.9v-4.9v-5.8v-5.3l1.7-6.2l1.7-6.7l2.3-6.9l3-7.8l4.1-8l5.7-8.1V767l0.6-5.3  l0.8-7.2l2.5-8l2.2-8.8l1.8-4l2.1-3.8l2.6-4.1l2.9-3.1V717v-6.4v-7.9l1.7-10.3l1.7-11.9l3-14.3l4.1-14.9l3.1-8.1l3.1-8.9l3.3-8.3  l4-9l4.1-9.7l4.7-9.1l5.3-9.7l6.6-9.8l3.1-5.5l3.3-4.6l7.1-10.3l7.3-10.2l8.4-10.6l8.9-10.3l9.7-10.1l10.1-10.4l12.2-11.3l7.8-6.8  l9.5-7.3l9.6-6.5l10.4-6.3l9.9-5.5l11.3-4.6l11.9-5.7l11.9-3.9l11.8-4l12.9-4l12.7-3.1l13.5-2.5l13.6-2.3l13.4-1.7l13.5-1.9  l14.3-0.8h13.7h14.1h14.6l14.1,1.8l14.2,1.7l14.5,1.5l13.4,3.2l14.1,3.1l13.3,3.4l14.7,3.9l13.3,4.7l12.8,5.4l13.6,5.8l12.5,6.2  l12.1,6.9l11.8,7.7l10.3,7l4.7,4.1l4.9,2.9l9.5,8.1l8,7.7l7.9,8.1l7.8,8.9l6.5,8.6l7.5,8.9l5.4,9.5l5.3,8.5l5.7,9.9l4.8,8.6l8,18.2  l3.9,9.4l3,8.7l3.1,9.5l2.8,8.9l1.9,7.6l2.5,9.1l4.4,16l2.7,14.1l1.8,13.6l1.6,10.9l2.4,16.7l0.6,2.6l1.9,3.1l5.3,8.6l3.4,5.8l3,6.2  l3.9,6.4l3.3,7.9l2.2,8l2.4,8.8l1.8,9l0.9,4.4l0.7,5.4v4.7l-0.7,4.8v5.8l-1.4,5.7l-2.5,11l-3,5.5l-2,6.3v1.5l0.9,1.9l2.9,4.6  l12.5,18.5l9.9,13.9l4.7,9.3l6.4,10.1l5.6,11.2l6.3,11.8l6.4,13.4l7.3,15.1l4,9.3l3.7,9l3.2,9.6l3.2,8.6l2.4,9.1l2.4,8.4l3.1,16.5  l2.5,17l1.7,15V1069.3z"></path></svg></li>
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 0px;"
++										class="btn-share" data-type="weixin"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M882.8,728.3c26.5,0,44.1-17.7,44.1-44.1c0-26.6-17.6-44-44.1-44s-53,17.4-53,44  C829.8,710.6,856.4,728.3,882.8,728.3z M636,640.2c-26.4,0-53.1,17.5-53.1,44c0,26.4,26.7,44.1,53.1,44.1c26.4,0,44-17.7,44-44.1  C680,657.6,662.4,640.2,636,640.2z M896,0C401.2,0,0,401.2,0,896s401.2,896,896,896s896-401.2,896-896S1390.8,0,896,0z   M750.4,1090.2c-44,0-79.4-8.9-123.5-17.7l-123.2,61.8l35.3-106.1c-88.3-61.7-141.1-141.3-141.1-238.1  c0-167.8,158.8-299.9,352.6-299.9c173.4,0,325.3,105.6,355.8,247.7c-11.3-1.3-22.6-2.1-34-2.1c-167.5,0-299.8,124.9-300,279.1  c0,25.7,4,50.3,11,73.9C772.5,1089.6,761.5,1090.2,750.4,1090.2z M1270.7,1213.7l26.5,88.1l-96.8-53c-35.3,8.7-70.7,17.6-105.8,17.6  c-167.8,0-299.9-114.6-299.9-255.8c0-141,132.1-255.9,299.9-255.9c158.5,0,299.5,114.9,299.5,255.9  C1394.1,1090.1,1341.4,1160.6,1270.7,1213.7z M1191.4,896c-17.5,0-35.1,17.7-35.1,35.3c0,17.8,17.6,35.2,35.1,35.2  c26.3,0,44.1-17.5,44.1-35.2C1235.5,913.7,1217.8,896,1191.4,896z M997.4,896c-17.6,0-35.3,17.7-35.3,35.3  c0,17.8,17.7,35.2,35.3,35.2c26.7,0,44.1-17.5,44.1-35.2C1041.5,913.7,1024.1,896,997.4,896z"></path></svg></li>
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 0px;"
++										class="btn-share" data-type="tsina"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M789.4,1023.9c-10.5,7.7-12.6,22.2-6.9,31.3c1.7,2.9,4.1,5,7,6.3c6.2,2.8,14.5,1.6,21.6-3.7  c10.1-8,14.1-22,8.6-31.3C814.2,1017.5,801.5,1014.9,789.4,1023.9z M751.8,1053.9c-10-6.9-23.8-10.5-40.2-9  c-30.7,3.2-52.6,29.9-52.6,55.5c0,23.2,20.3,39.9,46.9,40.2c2.7,0,5.5-0.1,8.4-0.5c30.6-3.5,55.4-27.1,55.3-52.6  C769.6,1073.9,763.1,1061.8,751.8,1053.9z M896,0.4C401.2,0.4,0,401.6,0,896.4s401.2,896,896,896s896-401.2,896-896  S1390.8,0.4,896,0.4z M1241.2,1064.4c-0.6,1.8-1.2,3.6-1.8,5.4c-0.8,2.4-1.7,4.7-2.6,7.1c-0.8,2.1-1.7,4.3-2.6,6.5  c-1.4,3.3-2.8,6.6-4.4,9.9c-3.2,6.7-6.6,13.2-10.5,19.6c-77.5,129.6-286.4,192.3-443.1,180.1c-156.2-12.3-357.2-64.2-377.9-253.3  c0,0-0.2-1.6-0.3-4.8c-0.9-19.2,0.7-96.2,72.4-191.8c0,0,119.4-166.8,258.5-214.4c139.3-47.3,155.5,32.8,155.5,80.2  c-7.4,40.2-21.3,63.8,31,47.6c0,0,136.9-63.5,193.2-7.2c45.4,45.5,7.5,108,7.5,108s-18.8,20.8,19.9,28.4  C1172,893,1280.2,942.5,1241.2,1064.4z M1124.9,694.6c-8.9,0.1-18.9,1.3-30.2,3.8c-14.8,0.2-26.7-11.8-26.7-26.6  c0-4.2,0.9-8.2,2.6-11.8c0.6-1.2,1.2-2.3,1.9-3.4c0.5-0.7,1-1.4,1.5

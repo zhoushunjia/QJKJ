@@ -1,0 +1,366 @@
+lementid14514649110230">
++#elementid14514649110230 .wqd-line {
++	border-top-color: #909090 !important;
++}
++
++#elementid14514649110230 {
++	transform: rotateZ(90deg);
++	-webkit-transform: rotateZ(90deg);
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514649150940">
++#elementid14514649150940 .wqd-line {
++	border-top-color: #909090 !important;
++}
++
++#elementid14514649150940 {
++	transform: rotateZ(90deg);
++	-webkit-transform: rotateZ(90deg);
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514649201890">
++#elementid14514649201890 .wqd-line {
++	border-top-color: #909090 !important;
++}
++
++#elementid14514649201890 {
++	transform: rotateZ(90deg);
++	-webkit-transform: rotateZ(90deg);
++}
++</style>
++					<section wqdbgcolor="#ffffff" wqdwidthlimit="0" wqdbgattachment="0"
++						bac_position="5" wqdheight="1000" sectionwidth="1200"
++						class="wqd1445504393013css wqdBkEditos sectionV2 moveMainArea elementsContainer"
++						style="height: 1000px; margin: 0px auto; position: relative; z-index: 5;"
++						wqdimgurlos="http://img.wqdian.com/group3/M00/AF/93/yq0KZVaDf_2AONwOAAP8qlVRoQc636.jpg"
++						wqdbgcoloros="#eee" data-maxzindex="23">
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="fadeInUp"
++							data-zindex="1"
++							style="width: 796px; height: 56px; left: 199.117px; top: 181.5px; z-index: 1;"
++							id="elementid14514638575050" elementid="elementid14514638575050"
++							class="wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article3 wqdCkEmptyTextos&quot;&gt;正文文本3&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<p class="wqd-text-article3" style="text-align: center;">
++									<span style="color: #808080;">本公司建站平台将突破人们对于传统建站的认知,不仅可以制作精美的企业官网,还可以个性化定制“推广落地页.游戏促销.邀请函.活动专题.节日贺卡.企业招聘”等炫酷页面,满足中小微企业和个人创业者官方展示和移动运营推广的多方面需求.</span>
++								</p>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="2"
++							style="width: 40px; height: 40px; left: 646px; top: 337px; z-index: 2;"
++							id="elementId1451464605611" elementid="elementId1451464605611"
++							class="wqdelementEdit aniTriOther" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M192 1664h288v-288h-288v288zm352 0h320v-288h-320v288zm-352-352h288v-320h-288v320zm352 0h320v-320h-320v320zm-352-384h288v-288h-288v288zm736 736h320v-288h-320v288zm-384-736h320v-288h-320v288zm768 736h288v-288h-288v288zm-384-352h320v-320h-320v320zm-352-864v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm736 864h288v-320h-288v320zm-384-384h320v-288h-320v288zm384 0h288v-288h-288v288zm32-480v-288q0-13-9.5-22.5t-22.5-9.5h-64q-13 0-22.5 9.5t-9.5 22.5v288q0 13 9.5 22.5t22.5 9.5h64q13 0 22.5-9.5t9.5-22.5zm384-64v1280q0 52-38 90t-90 38h-1408q-52 0-90-38t-38-90v-1280q0-52 38-90t90-38h128v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h384v-96q0-66 47-113t113-47h64q66 0 113 47t47 113v96h128q52 0 90 38t38 90z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="3"
++							style="width: 40px; height: 40px; left: 810.817px; top: 337px; z-index: 3;"
++							id="elementId1451464629138" elementid="elementId1451464629138"
++							class="wqdelementEdit aniTriOther" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M480 1408v128h-352v-128h352zm352-128q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm160-384v128h-864v-128h864zm-640-512v128h-224v-128h224zm1312 1024v128h-736v-128h736zm-960-1152q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm640 512q26 0 45 19t19 45v256q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-256q0-26 19-45t45-19h256zm320 128v128h-224v-128h224zm0-512v128h-864v-128h864z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="4"
++							style="width: 40px; height: 40px; left: 980.817px; top: 337px; z-index: 4;"
++							id="elementId1451464643431" elementid="elementId1451464643431"
++							class="wqdelementEdit aniTriOther" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M896 434v434h-145v-434h145zm398 0v434h-145v-434h145zm0 760l253-254v-795h-1194v1049h326v217l217-217h398zm398-1194v1013l-434 434h-326l-217 217h-217v-217h-398v-1158l109-289h1483z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="5"
++							style="width: 40px; height: 40px; left: 487px; top: 337px; z-index: 5;"
++							id="elementId1451464663116" elementid="elementId1451464663116"
++							class="wqdelementEdit aniTriOther" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M384 448q0-53-37.5-90.5t-90.5-37.5-90.5 37.5-37.5 90.5 37.5 90.5 90.5 37.5 90.5-37.5 37.5-90.5zm1067 576q0 53-37 90l-491 492q-39 37-91 37-53 0-90-37l-715-716q-38-37-64.5-101t-26.5-117v-416q0-52 38-90t90-38h416q53 0 117 26.5t102 64.5l715 714q37 39 37 91zm384 0q0 53-37 90l-491 492q-39 37-91 37-36 0-59-14t-53-45l470-470q37-37 37-90 0-52-37-91l-715-714q-38-38-102-64.5t-117-26.5h224q53 0 117 26.5t102 64.5l715 714q37 39 37 91z"></path></svg>
++							</div>
++						</div>
++						<div data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="6"
++							style="width: 40px; height: 40px; left: 333.817px; top: 337px; z-index: 6;"
++							id="elementId1451464676899" elementid="elementId1451464676899"
++							class="wqdelementEdit aniTriOther" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div style="" class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M128 1408h1024v-128h-1024v128zm0-512h1024v-128h-1024v128zm1568 448q0-40-28-68t-68-28-68 28-28 68 28 68 68 28 68-28 28-68zm-1568-960h1024v-128h-1024v128zm1568 448q0-40-28-68t-68-28-68 28-28 68 28 68 68 28 68-28 28-68zm0-512q0-40-28-68t-68-28-68 28-28 68 28 68 68 28 68-28 28-68zm96 832v384h-1792v-384h1792zm0-512v384h-1792v-384h1792zm0-512v384h-1792v-384h1792z"></path></svg>
++							</div>
++						</div>
++						<div triggertype="unveil.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="rotateIn"
++							data-zindex="7"
++							style="width: 72px; height: 59px; left: 158.817px; top: 327.5px; z-index: 7;"
++							id="elementId1451464685356" elementid="elementId1451464685356"
++							class="wqdelementEdit aniTriOther iframe: !1,
+            inline: !1,
+            transition: "elastic",
+            speed: 300,
+            fadeOut: 300,
+            width: !1,
+            initialWidth: "600",
+            innerWidth: !1,
+            maxWidth: !1,
+            height: !1,
+            initialHeight: "450",
+            innerHeight: !1,
+            maxHeight: !1,
+            scalePhotos: !0,
+            scrolling: !0,
+            opacity: .9,
+            preloading: !0,
+            className: !1,
+            overlayClose: !0,
+            escKey: !0,
+            arrowKey: !0,
+            top: !1,
+            bottom: !1,
+            left: !1,
+            right: !1,
+            fixed: !1,
+            data: void 0,
+            closeButton: !0,
+            fastIframe: !0,
+            open: !1,
+            reposition: !0,
+            loop: !0,
+            slideshow: !1,
+            slideshowAuto: !0,
+            slideshowSpeed: 2500,
+            slideshowStart: "start slideshow",
+            slideshowStop: "stop slideshow",
+            photoRegex: /\.|(gif|png|jp(e|geg)|bmp|ico|webp|jxr|svg)((#|\?).*)?$/i,
+            retinaImage: !1,
+            retinaUrl: !1,
+            retinaSuffix: "@2x.$1",
+            current: "image {current} of {total}",
+            previous: "previous",
+            next: "next",
+            close: "close",
+            xhrError: "This content failed to load.",
+            imgError: "This image failed to load.",
+            returnFocus: !0,
+            trapFocus: !0,
+            onOpen: !1,
+            onLoad: !1,
+            onComplete: !1,
+            onCleanup: !1,
+            onClosed: !1,
+            rel: function() {
+                return this.rel
+            },
+            href: function() {
+                return t(this).attr("href")
+            },
+            title: function() {
+                return this.title
+            },
+            createImg: function() {
+                var e = new Image,
+                    i = t(this).data("cbox-img-attrs");
+                return "object" == typeof i && t.each(i, function(t, i) {
+                    e[t] = i
+                }), e
+            },
+            createIframe: function() {
+                var i = e.createElement("iframe"),
+                    n = t(this).data("cbox-iframe-attrs");
+                return "object" == typeof n && t.each(n, function(t, e) {
+                    i[t] = e
+                }), "frameBorder" in i && (i.frameBorder = 0), "allowTransparency" in i && (i.allowTransparency = "true"), i.name = (new Date).getTime(), i.allowFullScreen = !0, i
+            }
+        },
+        Y = "colorbox",
+        Z = "cbox",
+        te = Z + "Element",
+        ee = Z + "_open",
+        ie = Z + "_load",
+        ne = Z + "_complete",
+        oe = Z + "_cleanup",
+        re = Z + "_closed",
+        he = Z + "_purge",
+        ae = t("<a/>"),
+        se = "div",
+        le = 0,
+        de = {},
+        ce = function() {
+            function t() {
+                clearTimeout(h)
+            }
+
+            function e() {
+                (_.get("loop") || W[A + 1]) && (t(), h = setTimeout(J.next, _.get("slideshowSpeed")))
+            }
+
+            function i() {
+                R.html(_.get("slideshowStop")).unbind(s).one(s, n), ae.bind(ne, e).bind(ie, t), y.removeClass(a + "off").addClass(a + "on")
+            }
+
+            function n() {
+                t(), ae.unbind(ne, e).unbind(ie, t), R.html(_.get("slideshowStart")).unbind(s).one(s, function() {
+                    J.next(), i()
+                }), y.removeClass(a + "on").addClass(a + "off")
+            }
+
+            function o() {
+                r = !1, R.hide(), t(), ae.unbind(ne, e).unbind(ie, t), y.removeClass(a + "off " + a + "on")
+            }
+            var r, h, a = Z + "Slideshow_",
+                s = "click." + Z;
+            return function() {
+                r ? _.get("slideshow") || (ae.unbind(oe, o), o()) : _.get("slideshow") && W[1] && (r = !0, ae.one(oe, o), _.get("slideshowAuto") ? i() : n(), R.show())
+            }
+        }();
+    t[Y] || (t(p), J = t.fn[Y] = t[Y] = function(e, i) {
+        var n, o = this;
+        return e = e || {}, t.isFunction(o) && (o = t("<a/>"), e.open = !0), o[0] ? (p(), m() && (i && (e.onComplete = i), o.each(function() {
+            var i = t.data(this, Y) || {};
+            t.data(this, Y, t.extend(i, e))
+        }).addClass(te), n = new r(o[0], e), n.get("open") && f(o[0])), o) : o
+    }, J.position = function(e, i) {
+        function n() {
+            T[0].style.width = k[0].style.width = b[0].style.width = parseInt(y[0].style.width, 10) - D + "px", b[0].style.height = C[0].style.height = H[0].style.height = parseInt(y[0].style.height, 10) - j + "px"
+        }
+        var r, h, s, l = 0,
+            d = 0,
+            c = y.offset();
+        if (E.unbind("resize." + Z), y.css({
+                top: -9e4,
+                left: -9e4
+            }), h = E.scrollTop(), s = E.scrollLeft(), _.get("fixed") ? (c.top -= h, c.left -= s, y.css({
+                position: "fixed"
+            })) : (l = h, d = s, y.css({
+                position: "absolute"
+            })), d += _.get("right") !== !1 ? Math.max(E.width() - _.w - z - D - a(_.get("right"), "x"), 0) : _.get("left") !== !1 ? a(_.get("left"), "x") : Math.round(Math.max(E.width() - _.w - z - D, 0) / 2), l += _.get("bottom") !== !1 ? Math.max(o() - _.h - N - j - a(_.get("bottom"), "y"), 0) : _.get("top") !== !1 ? a(_.get("top"), "y") : Math.round(Math.max(o() - _.h - N - j, 0) / 2), y.css({
+                top: c.top,
+                left: c.left,
+                visibility: "visible"
+            }), x[0].style.width = x[0].style.height = "9999px", r = {
+                width: _.w + z + D,
+                height: _.h + N + j,
+                top: l,
+                left: d
+            }, e) {
+            var g = 0;
+            t.each(r, function(t) {
+                return r[t] !== de[t] ? (g = e, void 0) : void 0
+            }), e = g
+        }
+        de = r, e || y.css(r), y.dequeue().animate(r, {
+            duration: e || 0,
+            complete: function() {
+                n(), q = !1, x[0].style.width = _.w + z + D + "px", x[0].style.height = _.h + N + j + "px", _.get("reposition") && setTimeout(function() {
+                    E.bind("resize." + Z, J.position)
+                }, 1), t.isFunction(i) && i()
+            },
+            step: n
+        })
+    }, J.resize = function(t) {
+        var e;
+        $ && (t = t || {}, t.width && (_.w = a(t.width, "x") - z - D), t.innerWidth && (_.w = a(t.innerWidth, "x")), I.css({
+            width: _.w
+        }), t.height && (_.h = a(t.height, "y") - N - j), t.innerHeight && (_.h = a(t.innerHeight, "y")), t.innerHeight || t.height || (e = I.scrollTop(), I.css({
+            height: "auto"
+        }), _.h = I.height()), I.css({
+            height: _.h
+        }), e && I.scrollTop(e), J.position("none" === _.get("transition") ? 0 : _.get("speed")))
+    }, J.prep = function(i) {
+        function o() {
+            return _.w = _.w || I.width(), _.w = _.mw && _.mw < _.w ? _.mw : _.w, _.w
+        }
+
+        function a() {
+            return _.h = _.h || I.height(), _.h = _.mh && _.mh < _.h ? _.mh : _.h, _.h
+        }
+        if ($) {
+            var d, g = "none" === _.get("transition") ? 0 : _.get("speed");
+            I.remove(), I = n(se, "LoadedContent").append(i), I.hide().appendTo(L.show()).css({
+                width: o(),
+                overflow: _.get("scrolling") ? "auto" : "hidden"
+            }).css({
+                height: a()
+            }).prependTo(b), L.hide(), t(U).css({
+                "float": "none"
+            }), c(_.get("className")), d = function() {
+                function i() {
+                    t.support.opacity === !1 && y[0].style.removeAttribute("filter")
+                }
+                var n, o, a = W.length;
+                $ && (o = function() {
+                    clearTimeout(Q), M.hide(), u(ne), _.get("onComplete")
+                }, S.html(_.get("title")).show(), I.show(), a > 1 ? ("string" == typeof _.get("current") && F.html(_.get("current").replace("{current}", A + 1).replace("{total}", a)).show(), K[_.get("loop") || a - 1 > A ? "show" : "hide"]().html(_.get("next")), P[_.get("loop") || A ? "show" : "hide"]().html(_.get("previous")), ce(), _.get("preloading") && t.each([h(-1), h(1)], function() {
+                    var i, n = W[this],
+                        o = new r(n, t.data(n, Y)),
+                        h = o.get("href");
+                    h && s(o, h) && (h = l(o, h), i = e.createElement("img"), i.src = h)
+                })) : O.hide(), _.get("iframe") ? (n = _.get("createIframe"), _.get("scrolling") || (n.scrolling = "no"), t(n).attr({
+                    src: _.get("href"),
+                    "class": Z + "Iframe"
+                }).one("load", o).appendTo(I), ae.one(he, function() {
+                    n.src = "//about:blank"
+                }), _.get("fastIframe") && t(n).trigger("load")) : o(), "fade" === _.get("transition") ? y.fadeTo(g, 1, i) : i())
+            }, "fade" === _.get("transition") ? y.fadeTo(g, 0, function() {
+                J.position(0, d)
+            }) : J.position(g, d)
+        }
+    }, J.next = function() {
+        !q && W[1] && (_.get("loop") || W[A + 1]) && (A = h(1), f(W[A]))
+    }, J.prev = function() {
+        !q && W[1] && (_.get("loop") || A) && (A = h(-1), f(W[A]))
+    }, J.close = function() {
+        // $ && !G && (G = !0, $ = !1, u(oe), _.get("onCleanup"), E.unbind("." + Z), v.fadeTo(_.get("fadeOut") || 0, 0), y.stop().fadeTo(_.get("fadeOut") || 0, 0, function() {
+        //     y.hide(), v.hide(), u(he), I.remove(), setTimeout(function() {
+        //         G = !1, u(re), _.get("onClosed")
+        //     }, 1)
+        // }))
+        // alert($(".cboxPhoto").attr("src"));
+        $ && !G && (G = !0, $ = !1, u(oe), _.get("onCleanup"), E.unbind("." + Z), v.fadeTo(_.get("fadeOut") || 0, 0), y.stop().fadeTo(_.get("fadeOut") || 0, 0, function() {
+            y.hide(), v.hide(), u(he), endImgSrc = I.find(".cboxPhoto").attr("src"), I.remove(), setTimeout(function() {
+                G = !1
+                    // u(re), 
+                    // _.get("onClosed")
+            }, 1)
+        }))
+    }, J.remove = function() {
+        y && (y.stop(), t[Y].close(), y.stop(!1, !0).remove(), v.remove(), G = !1, y = null, t("." + te).removeData(Y).removeClass(te), t(e).unbind("click." + Z).unbind("keydown." + Z))
+    }, J.element = function() {
+        return t(_.el)
+    }, J.settings = X)
+})(jQuery, document, window);

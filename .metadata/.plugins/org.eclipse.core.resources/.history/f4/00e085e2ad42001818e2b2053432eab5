@@ -1,0 +1,409 @@
+           }, 0);
++            }).emulateTransitionEnd(Wqdcarousel.TRANSITION_DURATION);
++        } else {
++            $active.removeClass('active');
++            $next.addClass('active');
++            this.sliding = false;
++            this.$element.trigger(slidEvent);
++        }
++
++        isCycling && this.cycle();
++
++        return this;
++    }
++
++
++    // Wqdcarousel PLUGIN DEFINITION
++    // ==========================
++
++    function Plugin(option) {
++        return this.each(function() {
++            var $this = $(this);
++            var data = $this.data('Wqdcarousel');
++            var options = $.extend({}, Wqdcarousel.DEFAULTS, $this.data(), typeof option == 'object' && option);
++            var action = typeof option == 'string' ? option : options.slide;
++
++            if (!data) $this.data('Wqdcarousel', (data = new Wqdcarousel(this, options)));
++            if (typeof option == 'number') {
++                data.options.interval = false;
++                data.to(option);
++            } else if (action) data[action]();
++            else if (options.interval) data.pause().cycle();
++        });
++    }
++
++    var old = $.fn.Wqdcarousel;
++
++    $.fn.Wqdcarousel = Plugin;
++    $.fn.Wqdcarousel.Constructor = Wqdcarousel;
++
++
++    // Wqdcarousel NO CONFLICT
++    // ====================
++
++    $.fn.Wqdcarousel.noConflict = function() {
++        $.fn.Wqdcarousel = old;
++        return this;
++    }
++
++
++    // Wqdcarousel DATA-API
++    // =================
++
++    var clickHandler = function(e) {
++        var href;
++        var $this = $(this);
++        var $target = $this.parents($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')); // strip for ie7
++        if (!$target.hasClass('wqdCarousel')) return;
++        var options = $.extend({}, $target.data(), $this.data());
++        var slideIndex = $this.attr('data-wqdslide-to');
++        if (slideIndex) options.interval = false;
++
++        Plugin.call($target, options);
++
++        if (slideIndex) {
++            $target.data('Wqdcarousel').to(slideIndex);
++        }
++
++        e.preventDefault();
++    }
++
++    $(document).on('click.Wqdcarousel', '[data-slide]', clickHandler).on('click.Wqdcarousel', '[data-wqdslide-to]', clickHandler);
++
++    $(window).on('load', function() {
++        $('.wqdCarousel').each(function() {
++            var $Wqdcarousel = $(this);
++            $Wqdcarousel.find(".item").removeClass("left right prev next");
++            if ($Wqdcarousel.parents("#HTMLDATA").length||$Wqdcarousel.attr("data-uncarousel")) return false;
++            Plugin.call($Wqdcarousel, $Wqdcarousel.data());
++            // if($(this).parents(".fullscreen").length) {
++            //     var width = $(window).width(),
++            //         sectionWidth = +$(this).parents(".sectionV2").attr("sectionwidth") || 1200;
++            //     width = width < sectionWidth ? sectionWidth : width;
++            //     $(this).parents("[data-elementtype=carouse]").eq(0).width(width).css("opacity",1);
++            // }
++        });
++    });
++
++})(jQuery);
+diff --git a/qj-official-web/target/classes/static/modular/system/home/wqdformDate.js b/qj-official-web/target/classes/static/modular/system/home/wqdformDate.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..b01650ade2d2cbcc8def5f3e5477e15a8c0cbf51
+--- /dev/null
++++ b/qj-official-web/target/classes/static/modular/system/home/wqdformDate.js
+@@ -0,0 +1,282 @@
++DateInput = (function($) {
++	function DateInput(el, opts) {
++		if (typeof(opts) != "object") opts = {};
++		$.extend(this, DateInput.DEFAULT_OPTS, opts);
++		this.input = $(el);
++		this.bindMethodsToObj("show", "hide", "hideIfClickOutside", "keydownHandler", "selectDate");
++		this.build();
++		this.selectDate();
++		this.hide()
++	};
++	DateInput.DEFAULT_OPTS = {
++		month_names: ["一月份", "二月份", "三月份", "四月份", "五月份", "六月份", "七月份", "八月份", "九月份", "十月份", "十一月份", "十二月份"],
++		short_month_names: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
++		short_day_names: ["日", "一", "二", "三", "四", "五", "六"],
++		start_of_week: 1
++	};
++	DateInput.prototype = {
++		build: function() {
++			var monthNav = $('<p class="month_nav">' + '<span class="button prev" title="[Page-Up]">&#171;</span>' + ' <span class="month_name"></span> ' + '<span class="button next" title="[Page-Down]">&#187;</span>' + '</p>');
++			this.monthNameSpan = $(".month_name", monthNav);
++			$(".prev", monthNav).click(this.bindToObj(function() {
++				this.moveMonthBy( - 1);
++				return false;
++			}));
++			$(".next", monthNav).click(this.bindToObj(function() {
++				this.moveMonthBy(1);
++				return false;
++			}));
++			var yearNav = $('<p class="year_nav">' + '<span class="button prev" title="[Ctrl+Page-Up]">&#171;</span>' + ' <span class="year_name"></span> ' + '<span class="button next" title="[Ctrl+Page-Down]">&#187;</span>' + '</p>');
++			this.yearNameSpan = $(".year_name", yearNav);
++			$(".prev", yearNav).click(this.bindToObj(function() {
++				this.moveMonthBy( - 12);
++				return false;
++			}));
++			$(".next", yearNav).click(this.bindToObj(function() {
++				this.moveMonthBy(12);
++				return false;
++			}));
++			var nav = $('<div class="nav"></div>').append(monthNav, yearNav);
++			var tableShell = "<table><thead><tr>";
++			$(this.adjustDays(this.short_day_names)).each(function() {
++				tableShell += "<th>" + this + "</th>"
++			});
++			tableShell += "</tr></thead><tbody></tbody></table>";
++			this.dateSelector = this.rootLayers = $('<div class="date_selector"></div>').append(nav, tableShell).insertAfter(this.input);
++			if (true/*$.browser.msie && $.browser.version < 7*/) {
++				//this.ieframe = $('<iframe class="date_selector_ieframe" frameborder="0" src="#"></iframe>').insertBefore(this.dateSelector);
++				//this.rootLayers = this.rootLayers.add(this.ieframe);
++				this.rootLayers = this.rootLayers.add(this.dateSelector);
++				$(".button", nav).mouseover(function() {
++					$(this).addClass("hover")
++				});
++				$(".button", nav).mouseout(function() {
++					$(this).removeClass("hover")
++				})
++			};
++			this.tbody = $("tbody", this.dateSelector);
++			this.input.change(this.bindToObj(function() {
++				this.selectDate()
++			}));
++			this.selectDate()
++		},
++		selectMonth: function(date) {
++			var newMonth = new Date(date.getFullYear(), date.getMonth(), 1);
++			if (!this.currentMonth || !(this.currentMonth.getFullYear() == newMonth.getFullYear() && this.currentMonth.getMonth() == newMonth.getMonth())) {
++				this.currentMonth = newMonth;
++				var rangeStart = this.rangeStart(date),
++				rangeEnd = this.rangeEnd(date);
++				var numDays = this.daysBetween(rangeStart, rangeEnd);
++				var dayCells = "";
++				for (var i = 0; i <= numDays; i++) {
++					var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i, 12, 00);
++					if (this.isFirstDayOfWeek(currentDay)) dayCells += "<tr>";
++					if (currentDay.getMonth() == date.getMonth()) {
++						dayCells += '<td class="selectable_day" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>'
++					} else {
++						dayCells += '<td class="selectable_day unselected_month" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>'
++					};
++					if (this.isLastDayOfWeek(currentDay)) dayCells += "</tr>"
++				};
++				this.tbody.empty().append(dayCells);
++				this.monthNameSpan.empty().append(this.monthName(date));
++				this.yearNameSpan.empty().append(this.currentMonth.getFullYear());
++				$(".selectable_day", this.tbody).click(this.bindToObj(function(event) {
++					this.changeInput($(event.target).attr("date"))
++				}));
++				$("td[date=" + this.dateToString(new Date()) + "]", this.tbody).addClass("today");
++				$("td.selectable_day", this.tbody).mouseover(function() {
++					$(this).addClass("hover")
++				});
++				$("td.selectable_day", this.tbody).mouseout(function() {
++					$(this).removeClass("hover")
++				})
++			};
++			$('.selected', this.tbody).removeClass("selected");
++			$('td[date=' + this.selectedDateString + ']', this.tbody).addClass("selected")
++		},
++		selectDate:/javascript" src="${ctxPath}/static/modular/system/home/commodityDetail.js"></script>
++	<!-- 商品搜索结果页 PC -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commoditySearchResult.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdWechatlogin.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery.nanoscroller.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/editShopping.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/edit-curve.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdManageInfo.js"></script>
++	<!-- 新闻plugin 功能 -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArtPlugin.js"></script>
++
++	<!--  -->
++	<script type="text/javascript">
++$(function(){
++	if ('' == 'false') {
++		$('.formDate.wqdControlFormEl6 input').date_input();
++	}
++})
++</script>
++	<div style="display: none"></div>
++
++
++	<div id="J_qr_code_share"
++		style="top: 361px !important; box-shadow: 1px 1px 39px 1px; box-shadow: 1px 1px 39px 1px; padding-top: 35px; display: none; z-index: 999; position: fixed; margin-top: -130px; margin-left: -130px; text-align: center; background: #FFF; border-radius: 8px"></div>
++	<script src="${ctxPath}/static/modular/system/serviceContent/qzopensl.js" charset="utf-8"> </script>
++	<script src="${ctxPath}/static/modular/system/serviceContent/loader.js"
++		widget="IFRAME_SHARE_QQ" charset="utf-8"></script>
++	<div
++		style="width: 240px; height: 270px; position: fixed; display: none; top: 361px; left: 50%; box-shadow: 1px 1px 21px 2px; z-index: 99; border-radius: 8px; margin-top: -135px; margin-left: -120px;"
++		class="follow_box">
++		<span class="follow_txt" style="float: left; margin: 10px 0 0 10px"></span><span
++			class="follow_close" style="float: right; margin: 10px 10px 0 0"><i
++			class="fa fa-remove" style="font-size: 22px; cursor: pointer"></i></span>
++		<p
++			style="width: 100%; height: 200px; margin-top: 39px; width: 90%; margin: 39px auto 0; background-size: 100% 100%;"></p>
++	</div>
++	<div id="cboxOverlay" style="display: none;"></div>
++	<div id="colorbox" class="" role="dialog" tabindex="-1"
++		style="display: none;">
++		<div id="cboxWrapper">
++			<div>
++				<div id="cboxTopLeft" style="float: left;"></div>
++				<div id="cboxTopCenter" style="float: left;"></div>
++				<div id="cboxTopRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxMiddleLeft" style="float: left;"></div>
++				<div id="cboxContent" style="float: left;">
++					<div id="cboxTitle" style="float: left;"></div>
++					<div id="cboxCurrent" style="float: left;"></div>
++					<button type="button" id="cboxPrevious"></button>
++					<button type="button" id="cboxNext"></button>
++					<button id="cboxSlideshow"></button>
++					<div id="cboxLoadingOverlay" style="float: left;"></div>
++					<div id="cboxLoadingGraphic" style="float: left;"></div>
++				</div>
++				<div id="cboxMiddleRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxBottomLeft" style="float: left;"></div>
++				<div id="cboxBottomCenter" style="float: left;"></div>
++				<div id="cboxBottomRight" style="float: left;"></div>
++			</div>
++		</div>
++		<div
++			style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
++	</div>
++	<div class="mtucebg"
++		style="display: none; background-color: #000; position: fixed; top: 0; width: 100%; z-index: 999">
++		<div id="mWrapper" style="height: 722px">
++			<div id="mScrollerShow">
++				<ul style="white-space: nowrap"></ul>
++			</div>
++		</div>
++	</div>
++	<script src="${ctxPath}/static/modular/system/serviceContent/getscript"></script>
++</body>
++<script type="text/javascript"
++	src="${ctxPath}/static/modular/system/serviceContent/jquery.colorbox-min.js"></script>
++</html>
+\ No newline at end of file
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/58/c0a7cc1d363d0018188f809bc87e41fe b/.metadata/.plugins/org.eclipse.core.resources/.history/58/c0a7cc1d363d0018188f809bc87e41fe
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/58/e0d779cb533d0018188f809bc87e41fe b/.metadata/.plugins/org.eclipse.core.resources/.history/58/e0d779cb533d0018188f809bc87e41fe
+new file mode 100644
+index 0000000000000000000000000000000000000000..23699b7c2ceeb7abce48a66aac346536ca0223d3
+--- /dev/null
++++ b/.metadata/.plugins/org.eclipse.core.resources/.history/58/e0d779cb533d0018188f809bc87e41fe
+@@ -0,0 +1,161 @@
++
++<script type="text/javascript">
++	var CSSURLPATH = 'http://u10527-08e9afad9bec48caa282e76a714e3827.ktb.wqdian.net/';
++	var companyInfo = '' || '{}'
++	var siteInfo = '' || '{}';
++	var isAgentUser;
++</script>
++
++<!-- 页面主体内容  -->
++<div class="wqdView wqdHeaderView">
++	<style type="text/css" id="styleCss" uw="1200">
++.wqdAreaView .wqdSectiondiv {
++	min-width: 1200px;
++}
++
++.wqdAreaView .wqdBkEditos {
++	width: 1200px;
++}
++
++.fullscreen .bannerContainer {
++	margin: 0 auto;
++	width: 1200px !important;
++}
++</style>
++	<div class="wqdAreaView">
++		<div class="yzmoveContent">
++			<div class="wqdSectiondiv wqdSticky" data-type="wqdSectiondiv"
++				sortid="6" partid="wqd1451474119776serial" commonpartid="10646"
++				id="wqd1451474119776serial" sectionname="横版导航（空白）"
++				partcategoryid="21"
++				style="background-attachment: scroll; background-size: cover; background: #fff; background-position: 50% 50%; background-repeat: no-repeat;"
++				wqdback_position="1">
++				<style sectionwidth="1200" type="text/css"
++					class="wqd1451474119776serial">
++#wqd1451474119776serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #ffffff;
++}
++</style>
++				<style type="text/css" class="elementId1449889646847"
++					sectionwidth="1200">
++#elementId1449889646847 .wqdNavList li a {
++	background-color: #ffffff;
++	padding-left: 28px;
++	padding-right: 28px;
++	padding-top: 22px;
++	padding-bottom: 22px;
++	color: #999;
++}
++
++#elementId1449889646847 .wqdNavList li a:hover {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++
++#elementId1449889646847 .wqdNavList li.active a {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++</style>
++				<header
++					class="wqdTopNavWrap wqdBkEditos sectionV2 elementsContainer wqdCommonNav"
++					wqd-bgcolor="rgba(240,240,240,0.6)"
++					style="position: relative; height: 120px;" wqdheight="120"
++					data-maxzindex="3" bac_position="5" wqdbgattachment="0"
++					wqdwidthlimit="0" sectionwidth="1200" wqdnavstickyed="on"
++					wqdbgcolor="#ffffff">
++
++					<div class="wqdelementEdit" data-elementtype="img"
++						data-elemandgroup="true"
++						style="width: 180px; height: 70px; left: 65px; top: 21px; z-index: 1;"
++						elementid="elementId1449888900593" id="elementId1449888900593"
++						data-zindex="1">
++						<div class="wqdelementEditBox">
++							<img class="wqd-img"
++								src="${ctxPath}/static/modular/system/home/yq0KXlZri4qAU4_VAAAkv7ye_tA089.png"
++								ondragstart="return false;">
++						</div>
++					</div>
++
++					<div class="wqdelementEdit elementsContainer wqdTopNavbox"
++						wqd-textcolor="#999" wqd-texthovercolor="#4c4c4c" wqdpaddingx="28"
++						wqdpaddingy="22" wqdfontsize="14" data-elementtype="firstNav"
++						data-unused="set,copy" data-elemandgroup="true"
++						style="width: 627px; height: 60px; left: 409px; top: 33.5px; z-index: 2;"
++						elementid="elementId1449889646847" id="elementId1449889646847"
++						data-zindex="2" wqd-menucolor="#ffffff"
++						wqd-menuhovercolor="#ffffff">
++						<div class="wqdelementEditBox">
++							<nav class="wqdNavWrap">
++								<ul class="wqdNavList">
++									<li class="wqdNavLi active"><a homepage="true"
++										pageid="169268" categorylink="2" href="/">首页</a></li>
++									<li class="wqdNavLi"><a pageid="169825" categorylink="2"
++										href="/home/aboutUs">关于我们</a></li>
++									<li class="wqdNavLi"><a pageid="169821" categorylink="2"
++										href="/home/team">团队介绍</a></li>
++									<li class="wqdNavLi"><a pageid="169721" categorylink="2"
++										href="/home/serviceContent">服务内容</a></li>
++									<li wqdnavmark="mark1451474183472" class="wqdNavLi"><a
++										pageid="169781" categorylink="2" href="/home/FAQ">成功案例</a></li>
++									<li class="wqdNavLi"><a pageid="169797" categorylink="2"
++										href="/home/contactUs">联系我们</a></li>
++								</ul>
++							</nav>
++						</div>
++					</div>
++
++					<div class="wqdelementEdit" data-elementtype="share"
++						data-elemandgroup="true" elementid="elementId1449890679463"
++						id="elementId1449890679463" data-zindex="3"
++						style="width: 165px; height: 35px; left: 1035px; top: 46px; z-index: 3;"
++						iconcolor="#585858" size="28" hiconspace="4">
++
++
++						<div class="wqdelementEditBox">
++							<ul class="wqd-share share-default wqdControlShare share-list"
++								data-url="http://template_10998.wqdian.cn/home.html">
++								<li style="width: 28px; height: 28px; margin: 3px 4px 3px 3px;"
++									class="btn-share" data-type="sqq"><svg
++										viewBox="-50 -50 1892 1892" xmlns="http://www.w3.org/2000/svg">
++								<path fill="#585858"
++											d="M896,0C401.2,0,0,401.2,0,896s401.2,896,896,896s896-401.2,896-896S1390.8,0,896,0z M1354,1069.3v6.7v6.2  l-1.2,7.5l-1.6,12.9l-2.2,11.7l-3.4,10.5l-1.3,4.3l-2.4,5.1l-2,3.6l-2.7,4.5l-2.4,2.8l-3,3.6l-2.7,2.9l-2.9,2.5l-3.4,1.5l-3.1,1.6  l-2.5,0.8h-2.3h-1.6l-2.5-0.8l-4.7-2.4l-2.2-1.5l-2.3-1.7l-2.4-2.3l-2.5-2.4l-4.2-4.6l-4.9-6.5l-3.9-6.7l-3.9-5.4l-3.7-6.2  l-5.3-11.2l-5.9-11.5l-0.8-0.4h-0.9l-2.5,1.8l-1.4,3.1l-2.4,3.7l-4,11.3l-6.1,15.9l-7.9,19.1l-5.9,9.7l-6.2,9.9l-7.3,11.3l-7.8,11  l-4,4.9l-4.9,5.5l-11.1,10.9l1,1l1.5,1.6l5.5,3.3l23.2,11.1l10.1,5.7l9.7,5.5l9.5,7l8.5,7.2l4.2,3.2l3,3.8l3.2,4.2l2.7,4.7l1.3,3.9  l1.8,4.7l0.7,4.1l0.9,4.7l-0.9,3.2v3.2l-0.7,3.3l-1.8,3.1l-0.6,2.3l-1.6,2.9l-4.2,5.7l-3.8,4.7l-3.1

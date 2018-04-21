@@ -1,0 +1,1840 @@
+@charset "UTF-8";
+
+/*!
+ * animate.css -http://daneden.me/animate
+ * Version - 3.5.1
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2016 Daniel Eden
+ */
+.animated { -webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; animation-fill-mode: both; }
+.animated.infinite { -webkit-animation-iteration-count: infinite; animation-iteration-count: infinite; }
+.animated.hinge { -webkit-animation-duration: 2s; animation-duration: 2s; }
+.animated.flipOutX, .animated.flipOutY, .animated.bounceIn, .animated.popOut { -webkit-animation-duration: .75s; animation-duration: .75s; }
+@-webkit-keyframes bounce {
+  from, 20%, 53%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  40%, 43% { -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); -webkit-transform: translate3d(0, -30px, 0); transform: translate3d(0, -30px, 0); }
+  70% { -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); -webkit-transform: translate3d(0, -15px, 0); transform: translate3d(0, -15px, 0); }
+  90% { -webkit-transform: translate3d(0, -4px, 0); transform: translate3d(0, -4px, 0); }
+}
+@keyframes bounce {
+  from, 20%, 53%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  40%, 43% { -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); -webkit-transform: translate3d(0, -30px, 0); transform: translate3d(0, -30px, 0); }
+  70% { -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060); -webkit-transform: translate3d(0, -15px, 0); transform: translate3d(0, -15px, 0); }
+  90% { -webkit-transform: translate3d(0, -4px, 0); transform: translate3d(0, -4px, 0); }
+}
+.bounce { -webkit-animation-name: bounce; animation-name: bounce; -webkit-transform-origin: center bottom; transform-origin: center bottom; }
+@-webkit-keyframes flash {
+  from, 50%, to { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+@keyframes flash {
+  from, 50%, to { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.flash { -webkit-animation-name: flash; animation-name: flash; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes pulse {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  50% { -webkit-transform: scale3d(1.05, 1.05, 1.05); transform: scale3d(1.05, 1.05, 1.05); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+@keyframes pulse {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  50% { -webkit-transform: scale3d(1.05, 1.05, 1.05); transform: scale3d(1.05, 1.05, 1.05); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+.pulse { -webkit-animation-name: pulse; animation-name: pulse; }
+@-webkit-keyframes rotateAlways {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  /*50% { -webkit-transform: rotate(180deg); transform: rotate(180deg); }*/
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes rotateAlways {
+  from { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  /*50% { -webkit-transform: rotate(180deg); transform: rotate(180deg); }*/
+  to { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+.pulse { -webkit-animation-name: pulse; animation-name: pulse; }
+@-webkit-keyframes rubberBand {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  30% { -webkit-transform: scale3d(1.25, 0.75, 1); transform: scale3d(1.25, 0.75, 1); }
+  40% { -webkit-transform: scale3d(0.75, 1.25, 1); transform: scale3d(0.75, 1.25, 1); }
+  50% { -webkit-transform: scale3d(1.15, 0.85, 1); transform: scale3d(1.15, 0.85, 1); }
+  65% { -webkit-transform: scale3d(.95, 1.05, 1); transform: scale3d(.95, 1.05, 1); }
+  75% { -webkit-transform: scale3d(1.05, .95, 1); transform: scale3d(1.05, .95, 1); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+@keyframes rubberBand {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  30% { -webkit-transform: scale3d(1.25, 0.75, 1); transform: scale3d(1.25, 0.75, 1); }
+  40% { -webkit-transform: scale3d(0.75, 1.25, 1); transform: scale3d(0.75, 1.25, 1); }
+  50% { -webkit-transform: scale3d(1.15, 0.85, 1); transform: scale3d(1.15, 0.85, 1); }
+  65% { -webkit-transform: scale3d(.95, 1.05, 1); transform: scale3d(.95, 1.05, 1); }
+  75% { -webkit-transform: scale3d(1.05, .95, 1); transform: scale3d(1.05, .95, 1); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+.rubberBand { -webkit-animation-name: rubberBand; animation-name: rubberBand; }
+@-webkit-keyframes shake {
+  from, to { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% { -webkit-transform: translate3d(10px, 0, 0); transform: translate3d(10px, 0, 0); }
+}
+@keyframes shake {
+  from, to { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+  10%, 30%, 50%, 70%, 90% { -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); }
+  20%, 40%, 60%, 80% { -webkit-transform: translate3d(10px, 0, 0); transform: translate3d(10px, 0, 0); }
+}
+.shake { -webkit-animation-name: shake; animation-name: shake; }
+@-webkit-keyframes headShake {
+  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  6.5% { -webkit-transform: translateX(-6px) rotateY(-9deg); transform: translateX(-6px) rotateY(-9deg); }
+  18.5% { -webkit-transform: translateX(5px) rotateY(7deg); transform: translateX(5px) rotateY(7deg); }
+  31.5% { -webkit-transform: translateX(-3px) rotateY(-5deg); transform: translateX(-3px) rotateY(-5deg); }
+  43.5% { -webkit-transform: translateX(2px) rotateY(3deg); transform: translateX(2px) rotateY(3deg); }
+  50% { -webkit-transform: translateX(0); transform: translateX(0); }
+}
+@keyframes headShake {
+  0% { -webkit-transform: translateX(0); transform: translateX(0); }
+  6.5% { -webkit-transform: translateX(-6px) rotateY(-9deg); transform: translateX(-6px) rotateY(-9deg); }
+  18.5% { -webkit-transform: translateX(5px) rotateY(7deg); transform: translateX(5px) rotateY(7deg); }
+  31.5% { -webkit-transform: translateX(-3px) rotateY(-5deg); transform: translateX(-3px) rotateY(-5deg); }
+  43.5% { -webkit-transform: translateX(2px) rotateY(3deg); transform: translateX(2px) rotateY(3deg); }
+  50% { -webkit-transform: translateX(0); transform: translateX(0); }
+}
+.headShake { -webkit-animation-timing-function: ease-in-out; animation-timing-function: ease-in-out; -webkit-animation-name: headShake; animation-name: headShake; }
+@-webkit-keyframes swing {
+  20% { -webkit-transform: rotate3d(0, 0, 1, 15deg); transform: rotate3d(0, 0, 1, 15deg); }
+  40% { -webkit-transform: rotate3d(0, 0, 1, -10deg); transform: rotate3d(0, 0, 1, -10deg); }
+  60% { -webkit-transform: rotate3d(0, 0, 1, 5deg); transform: rotate3d(0, 0, 1, 5deg); }
+  80% { -webkit-transform: rotate3d(0, 0, 1, -5deg); transform: rotate3d(0, 0, 1, -5deg); }
+  to { -webkit-transform: rotate3d(0, 0, 1, 0deg); transform: rotate3d(0, 0, 1, 0deg); }
+}
+@keyframes swing {
+  20% { -webkit-transform: rotate3d(0, 0, 1, 15deg); transform: rotate3d(0, 0, 1, 15deg); }
+  40% { -webkit-transform: rotate3d(0, 0, 1, -10deg); transform: rotate3d(0, 0, 1, -10deg); }
+  60% { -webkit-transform: rotate3d(0, 0, 1, 5deg); transform: rotate3d(0, 0, 1, 5deg); }
+  80% { -webkit-transform: rotate3d(0, 0, 1, -5deg); transform: rotate3d(0, 0, 1, -5deg); }
+  to { -webkit-transform: rotate3d(0, 0, 1, 0deg); transform: rotate3d(0, 0, 1, 0deg); }
+}
+.swing { -webkit-transform-origin: top center; transform-origin: top center; -webkit-animation-name: swing; animation-name: swing; }
+@-webkit-keyframes tada {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  10%, 20% { -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+@keyframes tada {
+  from { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+  10%, 20% { -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg); }
+  30%, 50%, 70%, 90% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
+  40%, 60%, 80% { -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
+  to { -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+.tada { -webkit-animation-name: tada; animation-name: tada; }
+
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+@-webkit-keyframes wobble {
+  from { -webkit-transform: none; transform: none; }
+  15% { -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% { -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% { -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% { -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% { -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to { -webkit-transform: none; transform: none; }
+}
+@keyframes wobble {
+  from { -webkit-transform: none; transform: none; }
+  15% { -webkit-transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg); }
+  30% { -webkit-transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg); }
+  45% { -webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg); }
+  60% { -webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg); }
+  75% { -webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg); }
+  to { -webkit-transform: none; transform: none; }
+}
+.wobble { -webkit-animation-name: wobble; animation-name: wobble; }
+@-webkit-keyframes jello {
+  from, 11.1%, to { -webkit-transform: none; transform: none; }
+  22.2% { -webkit-transform: skewX(-12.5deg) skewY(-12.5deg); transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { -webkit-transform: skewX(6.25deg) skewY(6.25deg); transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { -webkit-transform: skewX(-3.125deg) skewY(-3.125deg); transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { -webkit-transform: skewX(1.5625deg) skewY(1.5625deg); transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg); transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { -webkit-transform: skewX(0.390625deg) skewY(0.390625deg); transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg); transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+@keyframes jello {
+  from, 11.1%, to { -webkit-transform: none; transform: none; }
+  22.2% { -webkit-transform: skewX(-12.5deg) skewY(-12.5deg); transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { -webkit-transform: skewX(6.25deg) skewY(6.25deg); transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { -webkit-transform: skewX(-3.125deg) skewY(-3.125deg); transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { -webkit-transform: skewX(1.5625deg) skewY(1.5625deg); transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg); transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { -webkit-transform: skewX(0.390625deg) skewY(0.390625deg); transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg); transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+.jello { -webkit-animation-name: jello; animation-name: jello; -webkit-transform-origin: center; transform-origin: center; }
+@-webkit-keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: scale3d(.3, .3, .3); transform: scale3d(.3, .3, .3); }
+  20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); }
+  40% { -webkit-transform: scale3d(.9, .9, .9); transform: scale3d(.9, .9, .9); }
+  60% { opacity: 1; -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03); }
+  80% { -webkit-transform: scale3d(.97, .97, .97); transform: scale3d(.97, .97, .97); }
+  to { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: scale3d(.3, .3, .3); transform: scale3d(.3, .3, .3); }
+  20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); }
+  40% { -webkit-transform: scale3d(.9, .9, .9); transform: scale3d(.9, .9, .9); }
+  60% { opacity: 1; -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03); }
+  80% { -webkit-transform: scale3d(.97, .97, .97); transform: scale3d(.97, .97, .97); }
+  to { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); }
+}
+.bounceIn { -webkit-animation-name: bounceIn; animation-name: bounceIn; }
+@-webkit-keyframes bounceInDown {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: translate3d(0, -3000px, 0); transform: translate3d(0, -3000px, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(0, 25px, 0); transform: translate3d(0, 25px, 0); }
+  75% { -webkit-transform: translate3d(0, -10px, 0); transform: translate3d(0, -10px, 0); }
+  90% { -webkit-transform: translate3d(0, 5px, 0); transform: translate3d(0, 5px, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+@keyframes bounceInDown {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: translate3d(0, -3000px, 0); transform: translate3d(0, -3000px, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(0, 25px, 0); transform: translate3d(0, 25px, 0); }
+  75% { -webkit-transform: translate3d(0, -10px, 0); transform: translate3d(0, -10px, 0); }
+  90% { -webkit-transform: translate3d(0, 5px, 0); transform: translate3d(0, 5px, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+.bounceInDown { -webkit-animation-name: bounceInDown; animation-name: bounceInDown; }
+@-webkit-keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: translate3d(-3000px, 0, 0); transform: translate3d(-3000px, 0, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(25px, 0, 0); transform: translate3d(25px, 0, 0); }
+  75% { -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); }
+  90% { -webkit-transform: translate3d(5px, 0, 0); transform: translate3d(5px, 0, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+@keyframes bounceInLeft {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  0% { opacity: 0; -webkit-transform: translate3d(-3000px, 0, 0); transform: translate3d(-3000px, 0, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(25px, 0, 0); transform: translate3d(25px, 0, 0); }
+  75% { -webkit-transform: translate3d(-10px, 0, 0); transform: translate3d(-10px, 0, 0); }
+  90% { -webkit-transform: translate3d(5px, 0, 0); transform: translate3d(5px, 0, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+.bounceInLeft { -webkit-animation-name: bounceInLeft; animation-name: bounceInLeft; }
+@-webkit-keyframes bounceInRight {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  from { opacity: 0; -webkit-transform: translate3d(3000px, 0, 0); transform: translate3d(3000px, 0, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(-25px, 0, 0); transform: translate3d(-25px, 0, 0); }
+  75% { -webkit-transform: translate3d(10px, 0, 0); transform: translate3d(10px, 0, 0); }
+  90% { -webkit-transform: translate3d(-5px, 0, 0); transform: translate3d(-5px, 0, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  from { opacity: 0; -webkit-transform: translate3d(3000px, 0, 0); transform: translate3d(3000px, 0, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(-25px, 0, 0); transform: translate3d(-25px, 0, 0); }
+  75% { -webkit-transform: translate3d(10px, 0, 0); transform: translate3d(10px, 0, 0); }
+  90% { -webkit-transform: translate3d(-5px, 0, 0); transform: translate3d(-5px, 0, 0); }
+  to { -webkit-transform: none; transform: none; }
+}
+.bounceInRight { -webkit-animation-name: bounceInRight; animation-name: bounceInRight; }
+@-webkit-keyframes bounceInUp {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  from { opacity: 0; -webkit-transform: translate3d(0, 3000px, 0); transform: translate3d(0, 3000px, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
+  75% { -webkit-transform: translate3d(0, 10px, 0); transform: translate3d(0, 10px, 0); }
+  90% { -webkit-transform: translate3d(0, -5px, 0); transform: translate3d(0, -5px, 0); }
+  to { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+}
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+  from { opacity: 0; -webkit-transform: translate3d(0, 3000px, 0); transform: translate3d(0, 3000px, 0); }
+  60% { opacity: 1; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
+  75% { -webkit-transform: translate3d(0, 10px, 0); transform: translate3d(0, 10px, 0); }
+  90% { -webkit-transform: translate3d(0, -5px, 0); transform: translate3d(0, -5px, 0); }
+  to { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+}
+.bounceInUp { -webkit-animation-name: bounceInUp; animation-name: bounceInUp; }
+@-webkit-keyframes popOut {
+  20% { -webkit-transform: scale3d(.9, .9, .9); transform: scale3d(.9, .9, .9); }
+  50%, 55% { opacity: 1; -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); }
+  to { opacity: 0; -webkit-transform: scale3d(.3, .3, .3); transform: scale3d(.3, .3, .3); }
+}
+@keyframes popOut {
+  20% { -webkit-transform: scale3d(.9, .9, .9); transform: scale3d(.9, .9, .9); }
+  50%, 55% { opacity: 1; -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); }
+  to { opacity: 0; -webkit-transform: scale3d(.3, .3, .3); transform: scale3d(.3, .3, .3); }
+}
+.popOut { -webkit-animation-name: popOut; animation-name: popOut; }
+@-webkit-keyframes popOutDown {
+  20% { -webkit-transform: translate3d(0, 10px, 0); transform: translate3d(0, 10px, 0); }
+  40%, 45% { opacity: 1; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(0, 2000px, 0); transform: translate3d(0, 2000px, 0); }
+}
+@keyframes popOutDown {
+  20% { -webkit-transform: translate3d(0, 10px, 0); transform: translate3d(0, 10px, 0); }
+  40%, 45% { opacity: 1; -webkit-transform: translate3d(0, -20px, 0); transform: translate3d(0, -20px, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(0, 2000px, 0); transform: translate3d(0, 2000px, 0); }
+}
+.popOutDown { -webkit-animation-name: popOutDown; animation-name: popOutDown; }
+@-webkit-keyframes popOutLeft {
+  20% { opacity: 1; -webkit-transform: translate3d(20px, 0, 0); transform: translate3d(20px, 0, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(-2000px, 0, 0); transform: translate3d(-2000px, 0, 0); }
+}
+@keyframes popOutLeft {
+  20% { opacity: 1; -webkit-transform: translate3d(20px, 0, 0); transform: translate3d(20px, 0, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(-2000px, 0, 0); transform: translate3d(-2000px, 0, 0); }
+}
+.popOutLeft { -webkit-animation-name: popOutLeft; animation-name: popOutLeft; }
+@-webkit-keyframes popOutRight {
+  20% { opacity: 1; -webkit-transform: translate3d(-20px, 0, 0); transform: translate3d(-20px, 0, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(2000px, 0, 0); transform: translate3d(2000px, 0, 0); }
+}
+@keyframes popOutRight {
+  20% { opacity: 1; -webkit-transform: translate3d(-20px, 0, 0); transform: translate3d(-20px, 0, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(2000px, 0, 0); transform: translate3d(2000px, 0, 0); }
+}
+.popOutRight { -webkit-animation-name: popOutRight; animation-name: popOutRight; }
+@-webkit-keyframes popOutUp {
+  20% { -webkit-transform: translate3d(0, -10px, 0); transform: translate3d(0, -10px, 0); }
+  40%, 45% { opacity: 1; -webkit-transform: translate3d(0, 20px, 0); transform: translate3d(0, 20px, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(0, -2000px, 0); transform: translate3d(0, -2000px, 0); }
+}
+@keyframes popOutUp {
+  20% { -webkit-transform: translate3d(0, -10px, 0); transform: translate3d(0, -10px, 0); }
+  40%, 45% { opacity: 1; -webkit-transform: translate3d(0, 20px, 0); transform: translate3d(0, 20px, 0); }
+  to { opacity: 0; -webkit-transform: translate3d(0, -2000px, 0); transform: translate3d(0, -2000px, 0); }
+}
+.popOutUp { -webkit-animation-name: popOutUp; animation-name: popOutUp; }
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fadeIn { -webkit-animation-name: fadeIn; animation-name: fadeIn; }
+@-webkit-keyframes fadeInDown {
+  from { opacity: 0; -webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
+  to { opacity: 1; -webkit-transform: none; transform: none; }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; -webkit-transform: translate3d(0, -100%, 0); transform: translate3d(0, -100%, 0); }
+  to { opacity: 1; -webkit-transform: none; transform: none; }
+}
+.fadeInDown { -webkit-animation-name: fadeInDown; animation-name: f/
++	public static BigInteger toBigInteger(Object value) {
++		return toBigInteger(value, null);
++	}
++
++	/**
++	 * 转换为BigDecimal<br>
++	 * 如果给定的值为空，或者转换失败，返回默认值<br>
++	 * 转换失败不会报错
++	 * 
++	 * @param value 被转换的值
++	 * @param defaultValue 转换错误时的默认值
++	 * @return 结果
++	 */
++	public static BigDecimal toBigDecimal(Object value, BigDecimal defaultValue) {
++		if (value == null) {
++			return defaultValue;
++		}
++		if (value instanceof BigDecimal) {
++			return (BigDecimal) value;
++		}
++		if (value instanceof Long) {
++			return new BigDecimal((Long) value);
++		}
++		if (value instanceof Double) {
++			return new BigDecimal((Double) value);
++		}
++		if (value instanceof Integer) {
++			return new BigDecimal((Integer) value);
++		}
++		final String valueStr = toStr(value, null);
++		if (StrKit.isBlank(valueStr)) {
++			return defaultValue;
++		}
++		try {
++			return new BigDecimal(valueStr);
++		} catch (Exception e) {
++			return defaultValue;
++		}
++	}
++
++	/**
++	 * 转换为BigDecimal<br>
++	 * 如果给定的值为空，或者转换失败，返回默认值<br>
++	 * 转换失败不会报错
++	 * 
++	 * @param value 被转换的值
++	 * @return 结果
++	 */
++	public static BigDecimal toBigDecimal(Object value) {
++		return toBigDecimal(value, null);
++	}
++
++	// ----------------------------------------------------------------------- 全角半角转换
++	/**
++	 * 半角转全角
++	 * 
++	 * @param input String.
++	 * @return 全角字符串.
++	 */
++	public static String toSBC(String input) {
++		return toSBC(input, null);
++	}
++
++	/**
++	 * 半角转全角
++	 * 
++	 * @param input String
++	 * @param notConvertSet 不替换的字符集合
++	 * @return 全角字符串.
++	 */
++	public static String toSBC(String input, Set<Character> notConvertSet) {
++		char c[] = input.toCharArray();
++		for (int i = 0; i < c.length; i++) {
++			if (null != notConvertSet && notConvertSet.contains(c[i])) {
++				// 跳过不替换的字符
++				continue;
++			}
++
++			if (c[i] == ' ') {
++				c[i] = '\u3000';
++			} else if (c[i] < '\177') {
++				c[i] = (char) (c[i] + 65248);
++
++			}
++		}
++		return new String(c);
++	}
++
++	/**
++	 * 全角转半角
++	 * 
++	 * @param input String.
++	 * @return 半角字符串
++	 */
++	public static String toDBC(String input) {
++		return toDBC(input, null);
++	}
++
++	/**
++	 * 替换全角为半角
++	 * 
++	 * @param text 文本
++	 * @param notConvertSet 不替换的字符集合
++	 * @return 替换后的字符
++	 */
++	public static String toDBC(String text, Set<Character> notConvertSet) {
++		char c[] = text.toCharArray();
++		for (int i = 0; i < c.length; i++) {
++			if (null != notConvertSet && notConvertSet.contains(c[i])) {
++				// 跳过不替换的字符
++				continue;
++			}
++
++			if (c[i] == '\u3000') {
++				c[i] = ' ';
++			} else if (c[i] > '\uFF00' && c[i] < '\uFF5F') {
++				c[i] = (char) (c[i] - 65248);
++			}
++		}
++		String returnString = new String(c);
++
++		return returnString;
++	}
++
++	// --------------------------------------------------------------------- hex
++	/**
++	 * 字符串转换成十六进制字符串
++	 * 
++	 * @param str 待转换的ASCII字符串
++	 * @return 16进制字符串
++	 */
++	public static String toHex(String str) {
++		return HexKit.encodeHexStr(str.getBytes());
++	}
++
++	/**
++	 * byte数组转16进制串
++	 * 
++	 * @param bytes 被转换的byte数组
++	 * @return 转换后的值
++	 */
++	public static String toHex(byte[] bytes) {
++		return HexKit.encodeHexStr(bytes);
++	}
++
++	/**
++	 * Hex字符串转换为Byte值
++	 * 
++	 * @param src Byte字符串，每个Byte之间没有分隔符
++	 * @return byte[]
++	 */
++	public static byte[] hexToBytes(String src) {
++		return HexKit.decodeHex(src.toCharArray());
++	}
++
++	/**
++	 * 十六进制转换字符串
++	 * 
++	 * @param hexStr Byte字符串(Byte之间无分隔符 如:[616C6B])
++	 * @param charset 编码 {@link Charset}
++	 * @return 对应的字符串
++	 */
++	public static String hexStrToStr(String hexStr, Charset charset) {
++		return HexKit.decodeHexStr(hexStr, charset);
++	}
++
++	/**
++	 * String的字符串转换成unicode的String
++	 * 
++	 * @param strText 全角字符串
++	 * @return String 每个unicode之间无分隔符
++	 * @throws Exception
++	 */
++	public static String strToUnicode(String strText) throws Exception {
++		char c;
++		StringBuilder str = new StringBuilder();
++		int intAsc;
++		String strHex;
++		for (int i = 0; i < strText.length(); i++) {
++			c = strText.charAt(i);
++			intAsc = (int) c;
++			strHex = Integer.toHexString(intAsc);
++			if (intAsc > 128)
++				str.append("\\u" + strHex);
++			else // 低位在前面补00
++				str.append("\\u00" + strHex);
++		}
++		return str.toString();
++	}
++
++	/**
++	 * unicode的String转换成String的字符串
++	 * 
++	 * @param hex 16进制值字符串 （一个unicode为2byte）
++	 * @return String 全角字符串
++	 */
++	public static String unicodeToStr(String hex) {
++		int t = hex.length() / 6;
++		StringBuilder str = new StringBuilder();
++		for (int i = 0; i < t; i++) {
++			String s = hex.substring(i * 6, (i + 1) * 6);
++			// 高位需要补上00再转
++			String s1 = s.substring(2, 4) + "00";
++			// 低位直接转
++			String s2 = s.substring(4);
++			// 将16进制的string转为int
++			int n = Integer.valueOf(s1, 16) + Integer.valueOf(s2, 16);
++			// 将int转换为字符
++			char[] chars = Character.toChars(n);
++			str.append(new String(chars));
++		}
++		return str.toString();
++	}
++
++	/**
++	 * 给定字符串转换字符编码<br/>
++	 * 如果参数为空，则返回原字符串，不报错。
++	 * 
++	 * @param str 被转码的字符串
++	 * @param sourceCharset 原字符集
++	 * @param destCharset 目标字符集
++	 * @return 转换后的字符串
++	 */
++	public static String convertCharset(String str, String sourceCharset, String destCharset) {
++		if (StrKit.hasBlank(str, sourceCharset, destCharset)) {
++			return str;
++		}
++
++		try {
++			return new String(str.getBytes(sourceCharset), destCharset);
++		} catch (UnsupportedEncodingException e) {
++			return str;
++		}
++	}
++
++	/**
++	 * 数字金额大写转换 先写个完整的然后将如零拾替换成零
++	 * 
++	 * @param n 数字
++	 * @return 中文大写数字
++	 */
++	public static String digitUppercase(double n) {
++		String fraction[] = { "角", "分" };
++		String digit[] = { "零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
++		String unit[][] = { { "元", "万", "亿" }, { "", "拾", "佰", "仟" } };
++
++		String head = n < 0 ? "负" : "";
++		n = Math.abs(n);
++
++		String s = "";
++		for (int i = 0; i < fraction.length; i++) {
++			s += (digit[(int) (Math.floor(n * 10 * Math.pow(10, i)) % 10)] + fraction[i]).replaceAll("(零.)+", "");
++		}
++		if (s.length() < 1) {
++			s = "整";
++		}
++		int integerPart = (int) Math.floor(n);
++
++		for (int i = 0; i < unit[0].length && integerPart > 0; i++) {
++			String p = "";
++			for (int j = 0; j < unit[1].length && n > 0; j++) {
++				p = digit[integerPart % 10] + unit[1][j] + p;
++				integerPart = integerPart / 10;
++			}
++			s = p.replaceAll("(零.)*零$", "").replaceAll("^$", "零") + unit[0][i] + s;
++		}
++		return head + s.replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零").replaceAll("^整$", "零元整");
++	}
++	
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/DateUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/DateUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..5c2cf03bf2eb21e86566d2d86975e1aad0c3b1e1
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/DateUtil.java
+@@ -0,0 +1,312 @@
++/**
++ * Copyright (c) 2015-2016, Chill Zhuang 庄骞 (smallchill@163.com).
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package com.stylefeng.guns.core.util;
++
++import org.apache.commons.lang3.StringUtils;
++import org.apache.commons.lang3.time.DateFormatUtils;
++import org.apache.commons.lang3.time.DateUtils;
++
++import java.sql.Timestamp;
++import java.text.DateFormat;
++import java.text.ParseException;
++import java.text.SimpleDateFormat;
++import java.util.Calendar;
++import java.util.Date;
++
++public class DateUtil {
++
++
++	/**
++	 * 获取YYYY格式
++	 *
++	 * @return
++	 */
++	public static String getYear() {
++		return formatDate(new Date(), "yyyy");
++	}
++
++	/**
++	 * 获取YYYY格式
++	 *
++	 * @return
++	 */
++	public static String getYear(Date date) {
++		return formatDate(date, "yyyy");
++	}
++
++	/**
++	 * 获取YYYY-MM-DD格式
++	 *
++	 * @return
++	 */
++	public static String getDay() {
++		return formatDate(new Date(), "yyyy-MM-dd");
++	}
++
++	/**
++	 * 获取YYYY-MM-DD格式
++	 *
++	 * @return
++	 */
++	public static String getDay(Date date) {
++		return formatDate(date, "yyyy-MM-dd");
++	}
++
++	/**
++	 * 获取YYYYMMDD格式
++	 *
++	 * @return
++	 */
++	public static String getDays() {
++		return formatDate(new Date(), "yyyyMMdd");
++	}
++
++	/**
++	 * 获取YYYYMMDD格式
++	 *
++	 * @return
++	 */
++	public static String getDays(Date date) {
++		return formatDate(date, "yyyyMMdd");
++	}
++
++	/**
++	 * 获取YYYY-MM-DD HH:mm:ss格式
++	 *
++	 * @return
++	 */
++	public static String getTime() {
++		return formatDate(new Date(), "yyyy-MM-dd HH:mm:ss");
++	}
++
++	/**
++	 * 获取YYYY-MM-DD HH:mm:ss.SSS格式
++	 *
++	 * @return
++	 */
++	public static String getMsTime() {
++		return formatDate(new Date(), "yyyy-MM-dd HH:mm:ss.SSS");
++	}
++
++	/**
++	 * 获取YYYYMMDDHHmmss格式
++	 *
++	 * @return
++	 */
++	public static String getAllTime() {
++		return formatDate(new Date(), "yyyyMMddHHmmss");
++	}
++
++	/**
++	 * 获取YYYY-MM-DD HH:mm:ss格式
++	 *
++	 * @return
++	 */
++	public static String getTime(Date date) {
++		return formatDate(date, "yyyy-MM-dd HH:mm:ss");
++	}
++
++	public static String formatDate(Date date, String pattern) {
++		String formatDate = null;
++		if (StringUtils.isNotBlank(pattern)) {
++			formatDate = DateFormatUtils.format(date, pattern);
++		} else {
++			formatDate = DateFormatUtils.format(date, "yyyy-MM-dd");
++		}
++		return formatDate;
++	}
++
++	/**
++	 * @Title: compareDate
++	 * @Description:(日期比较，如果s>=e 返回true 否则返回false)
++	 * @param s
++	 * @param e
++	 * @return boolean
++	 * @throws
++	 * @author luguosui
++	 */
++	public static boolean compareDate(String s, String e) {
++		if (parseDate(s) == null || parseDate(e) == null) {
++			return false;
++		}
++		return parseDate(s).getTime() >= parseDate(e).getTime();
++	}
++
++	/**
++	 * 格式化日期
++	 *
++	 * @return
++	 */
++	public static Date parseDate(String date) {
++		return parse(date,"yyyy-MM-dd");
++	}
++
++	/**
++	 * 格式化日期
++	 *
++	 * @return
++	 */
++	public static Date parseTime(String date) {
++		return parse(date,"yyyy-MM-dd HH:mm:ss");
++	}
++
++	/**
++	 * 格式化日期
++	 *
++	 * @return
++	 */
++	public static Date parse(String date, String pattern) {
++		try {
++			return DateUtils.parseDate(date,pattern);
++		} catch (ParseException e) {
++			e.printStackTrace();
++			return null;
++		}
++	}
++
++	/**
++	 * 格式化日期
++	 *
++	 * @return
++	 */
++	public static String format(Date date, String pattern) {
++		return DateFormatUtils.format(date, pattern);
++	}
++
++	/**
++	 * 把日期转换为Timestamp
++	 *
++	 * @param date
++	 * @return
++	 */
++	public static Timestamp format(Date date) {
++		return new Timestamp(date.getTime());
++	}
++
++	/**
++	 * 校验日期是否合法
++	 *
++	 * @return
++	 */
++	public static boolean isValidDate(String s) {
++		return parse(s, "yyyy-MM-dd HH:mm:ss") != null;
++	}
++
++	/**
++	 * 校验日期是否合法
++	 *
++	 * @return
++	 */
++	public static boolean isValidDate(String s, String pattern) {
++        return parse(s, pattern) != null;
++	}
++
++	public static int getDiffYear(String startTime, String endTime) {
++		DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
++		try {
++			int years = (int) (((fmt.parse(endTime).getTime() - fmt.parse(
++					startTime).getTime()) / (1000 * 60 * 60 * 24)) / 365);
++			return years;
++		} catch (Exception e) {
++			// 如果throw java.text.ParseException或者NullPointerException，就说明格式不对
++			return 0;
++		}
++	}
++
++	/**
++	 * <li>功能描述：时间相减得到天数
++	 *
++	 * @param beginDateStr
++	 * @param endDateStr
++	 * @return long
++	 * @author Administrator
++	 */
++	public static long getDaySub(String beginDateStr, String endDateStr) {
++		long day = 0;
++		SimpleDateFormat format = new SimpleDateFormat(
++				"yyyy-MM-dd");
++		Date beginDate = null;
++		Date endDate = null;
++
++		try {
++			beginDate = format.parse(beginDateStr);
++			endDate = format.parse(endDateStr);
++		} catch (ParseException e) {
++			e.printStackTrace();
++		}
++		day = (endDate.getTime() - beginDate.getTime()) / (24 * 60 * 60 * 1000);
++		// System.out.println("相隔的天数="+day);
++
++		return day;
++	}
++
++	/**
++	 * 得到n天之后的日期
++	 *
++	 * @param days
++	 * @return
++	 */
++	public static String getAfterDayDate(String days) {
++		int daysInt = Integer.parseInt(days);
++
++		Calendar canlendar = Calendar.getInstance(); // java.util包
++		canlendar.add(Calendar.DATE, daysInt); // 日期减 如果不够减会将月变动
++		Date date = canlendar.getTime();
++
++		SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
++		String dateStr = sdfd.format(date);
++
++		return dateStr;
++	}
++
++	/**
++	 * 得到n天之后是周几
++	 *
++	 * @param days
++	 * @return
++	 */
++	public static String getAfterDayWeek(String days) {
++		int daysInt = Integer.parseInt(days);
++
++		Calendar canlendar = Calendar.getInstance(); // java.util包
++		canlendar.add(Calendar.DATE, daysInt); // 日期减 如果不够减会将月变动
++		Date date = canlendar.getTime();
++
++		SimpleDateFormat sdf = new SimpleDateFormat("E");
++		String dateStr = sdf.format(date);
++
++		return dateStr;
++	}
++
++	/**
++	 * 格式化Oracle Date
++	 * @param value
++	 * @return
++	 */
++//	public static String buildDateValue(Object value){
++//		if(Func.isOracle()){
++//			return "to_date('"+ value +"','yyyy-mm-dd HH24:MI:SS')";
++//		}else{
++//			return Func.toStr(value);
++//		}
++//	}
++
++	public static void main(String[] args) {
++		System.out.println(getTime(new Date()));
++		System.out.println(getAfterDayWeek("3"));
++	}
++
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/FileUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/FileUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..f8761837467613ab2087c00ffa501a44ebb48327
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/FileUtil.java
+@@ -0,0 +1,73 @@
++package com.stylefeng.guns.core.util;
++
++import com.stylefeng.guns.core.exception.GunsException;
++import com.stylefeng.guns.core.exception.GunsExceptionEnum;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
++
++import java.io.File;
++import java.io.FileInputStream;
++import java.io.IOException;
++import java.nio.ByteBuffer;
++import java.nio.channels.FileChannel;
++
++public class FileUtil {
++
++    private static Logger log = LoggerFactory.getLogger(FileUtil.class);
++
++    /**
++     * NIO way
++     */
++    public static byte[] toByteArray(String filename) {
++
++        File f = new File(filename);
++        if (!f.exists()) {
++            log.error("文件未找到！" + filename);
++            throw new GunsException(GunsExceptionEnum.FILE_NOT_FOUND);
++        }
++        FileChannel channel = null;
++        FileInputStream fs = null;
++        try {
++            fs = new FileInputStream(f);
++            channel = fs.getChannel();
++            ByteBuffer byteBuffer = ByteBuffer.allocate((int) channel.size());
++            while ((channel.read(byteBuffer)) > 0) {
++                // do nothing
++                // System.out.println("reading");
++            }
++            return byteBuffer.array();
++        } catch (IOException e) {
++            throw new GunsException(GunsExceptionEnum.FILE_READING_ERROR);
++        } finally {
++            try {
++                channel.close();
++            } catch (IOException e) {
++                throw new GunsException(GunsExceptionEnum.FILE_READING_ERROR);
++            }
++            try {
++                fs.close();
++            } catch (IOException e) {
++                throw new GunsException(GunsExceptionEnum.FILE_READING_ERROR);
++            }
++        }
++    }
++
++    /**
++     * 删除目录
++     *
++     * @author fengshuonan
++     * @Date 2017/10/30 下午4:15
++     */
++    public static boolean deleteDir(File dir) {
++        if (dir.isDirectory()) {
++            String[] children = dir.list();
++            for (int i = 0; i < children.length; i++) {
++                boolean success = deleteDir(new File(dir, children[i]));
++                if (!success) {
++                    return false;
++                }
++            }
++        }
++        return dir.delete();
++    }
++}
+\ No newline at end of file
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/HttpSessionHolder.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/HttpSessionHolder.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..6eb8d8047d9887e3a51fa7a07101b93a70c95915
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/HttpSessionHolder.java
+@@ -0,0 +1,26 @@
++package com.stylefeng.guns.core.util;
++
++import javax.servlet.http.HttpSession;
++
++/**
++ * 非Controller中获取当前session的工具类
++ *
++ * @author fengshuonan
++ * @date 2016年11月28日 上午10:24:31
++ */
++public class HttpSessionHolder {
++
++    private static ThreadLocal<HttpSession> tl = new ThreadLocal<HttpSession>();
++
++    public static void put(HttpSession s) {
++        tl.set(s);
++    }
++
++    public static HttpSession get() {
++        return tl.get();
++    }
++
++    public static void remove() {
++        tl.remove();
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/IdGenerator.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/IdGenerator.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..77c339301bc4c987d5402bb01fdf887e14fdc75d
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/IdGenerator.java
+@@ -0,0 +1,20 @@
++package com.stylefeng.guns.core.util;
++
++import com.baomidou.mybatisplus.toolkit.IdWorker;
++
++/**
++ * 唯一id生成器
++ *
++ * @author fengshuonan
++ * @date 2017-08-23 11:10
++ */
++public class IdGenerator {
++
++    public static String getId() {
++        return String.valueOf(IdWorker.getId());
++    }
++
++    public static long getIdLong() {
++        return IdWorker.getId();
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/MD5Util.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/MD5Util.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..87e21bd5d9c6dbdffbccba5ba2cef5ebf470dd3a
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/MD5Util.java
+@@ -0,0 +1,39 @@
++package com.stylefeng.guns.core.util;
++
++import java.security.MessageDigest;
++import java.security.NoSuchAlgorithmException;
++
++/**
++ * MD5加密类（封装jdk自带的md5加密方法）
++ *
++ * @author fengshuonan
++ * @date 2016年12月2日 下午4:14:22
++ */
++public class MD5Util {
++
++    public static String encrypt(String source) {
++        return encodeMd5(source.getBytes());
++    }
++
++    private static String encodeMd5(byte[] source) {
++        try {
++            return encodeHex(MessageDigest.getInstance("MD5").digest(source));
++        } catch (NoSuchAlgorithmException e) {
++            throw new IllegalStateException(e.getMessage(), e);
++        }
++    }
++
++    private static String encodeHex(byte[] bytes) {
++        StringBuffer buffer = new StringBuffer(bytes.length * 2);
++        for (int i = 0; i < bytes.length; i++) {
++            if (((int) bytes[i] & 0xff) < 0x10)
++                buffer.append("0");
++            buffer.append(Long.toString((int) bytes[i] & 0xff, 16));
++        }
++        return buffer.toString();
++    }
++
++    public static void main(String[] args) {
++        System.out.println(encrypt("123456"));
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/NumUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/NumUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..6213b66faa452837277c4f932dff31e3b7052ebd
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/NumUtil.java
+@@ -0,0 +1,89 @@
++package com.stylefeng.guns.core.util;
++
++import java.math.BigDecimal;
++import java.math.RoundingMode;
++import java.text.DecimalFormat;
++import java.text.NumberFormat;
++
++/**
++ * 数字格式化的类
++ *
++ * @author fengshuonan
++ * @date 2016年11月30日 下午5:58:40
++ */
++public class NumUtil {
++
++    /**
++     * @Description 保留指定位数的小数(少的位数不补零)
++     * @author fengshuonan
++     */
++    public static String keepRandomPoint(Double value, int n) {
++        if (value == null) {
++            value = 0.00;
++            return new BigDecimal(value).setScale(n, RoundingMode.HALF_UP).toString();
++        } else {
++            return new BigDecimal(value).setScale(n, RoundingMode.HALF_UP).toString();
++        }
++    }
++
++    /**
++     * @Description 浮点保留两位小数(少的位数不补零)
++     * @author fengshuonan
++     */
++    public static String keep2Point(double value) {
++        return keepRandomPoint(value, 2);
++    }
++
++    /**
++     * @Description 浮点保留1位小数(少的位数不补零)
++     * @author fengshuonan
++     */
++    public static String keep1Point(double value) {
++        return keepRandomPoint(value, 1);
++    }
++
++    /**
++     * @Description 浮点保留任意位小数(少位补零)
++     * @author fengshuonan
++     */
++    public static String keepRandomPointZero(double value, int n) {
++        DecimalFormat df = new DecimalFormat("#0.00");
++        return df.format(Double.valueOf(keepRandomPoint(value, n)));
++    }
++
++    /**
++     * @Description 浮点保留两位小数(少位补零)
++     * @author fengshuonan
++     */
++    public static String keep2PointZero(double value) {
++        return keepRandomPointZero(value, 2);
++    }
++
++    /**
++     * @Description 获取任意小数点位的百分比表示
++     * @author fengshuonan
++     */
++    public static String percentRandomPoint(double value, int n) {
++        NumberFormat percent = NumberFormat.getPercentInstance();
++        percent.setGroupingUsed(false);
++        percent.setMaximumFractionDigits(n);
++        return percent.format(value);
++    }
++
++    /**
++     * @Description 百分比保留两位小数
++     * @author fengshuonan
++     */
++    public static String percent2Point(double value) {
++        return percentRandomPoint(value, 2);
++    }
++
++    /**
++     * @Description 获取格式化经纬度后的小数(保留3位)
++     * @author fengshuonan
++     */
++    public static String latLngPoint(double value) {
++        return keepRandomPoint(value, 3);
++    }
++
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/PingYinUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/PingYinUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..f8592e05416ddd511cb99ee5027f91b0db95e606
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/PingYinUtil.java
+@@ -0,0 +1,206 @@
++package com.stylefeng.guns.core.util;
++
++import java.util.Random;
++
++/***
++ * 
++ * 得到中文首字母
++ * 
++ * @author lxm_09
++ * 
++ */
++
++public class PingYinUtil {
++
++	public static void main(String[] args) {
++		String str = "这是一个测试";
++		System.out.println("中文首字母：" + getPYIndexStr(str, true));
++	}
++
++	/**
++	 * 返回首字母
++	 */
++	public static String getPYIndexStr(String strChinese, boolean bUpCase) {
++		try {
++			StringBuffer buffer = new StringBuffer();
++			byte b[] = strChinese.getBytes("GBK");// 把中文转化成byte数组
++			for (int i = 0; i < b.length; i++) {
++				if ((b[i] & 255) > 128) {
++					int char1 = b[i++] & 255;
++					char1 <<= 8;// 左移运算符用“<<”表示，是将运算符左边的对象，向左移动运算符右边指定的位数，并且在低位补零。其实，向左移n位，就相当于乘上2的n次方
++					int chart = char1 + (b[i] & 255);
++					buffer.append(getPYIndexChar((char) chart, bUpCase));
++					continue;
++				}
++				char c = (char) b[i];
++				if (!Character.isJavaIdentifierPart(c))// 确定指定字符是否可以是 Java
++														// 标识符中首字符以外的部分。
++					c = 'A';
++				buffer.append(c);
++			}
++			return buffer.toString();
++		} catch (Exception e) {
++			System.out.println((new StringBuilder()).append("\u53D6\u4E2D\u6587\u62FC\u97F3\u6709\u9519")
++					.append(e.getMessage()).toString());
++		}
++		return null;
++	}
++
++	/**
++	 * 得到首字母
++	 */
++	private static char getPYIndexChar(char strChinese, boolean bUpCase) {
++
++		int charGBK = strChinese;
++
++		char result;
++
++		if (charGBK >= 45217 && charGBK <= 45252)
++
++			result = 'A';
++
++		else
++
++		if (charGBK >= 45253 && charGBK <= 45760)
++
++			result = 'B';
++
++		else
++
++		if (charGBK >= 45761 && charGBK <= 46317)
++
++			result = 'C';
++
++		else
++
++		if (charGBK >= 46318 && charGBK <= 46825)
++
++			result = 'D';
++
++		else
++
++		if (charGBK >= 46826 && charGBK <= 47009)
++
++			result = 'E';
++
++		else
++
++		if (charGBK >= 47010 && charGBK <= 47296)
++
++			result = 'F';
++
++		else
++
++		if (charGBK >= 47297 && charGBK <= 47613)
++
++			result = 'G';
++
++		else
++
++		if (charGBK >= 47614 && charGBK <= 48118)
++
++			result = 'H';
++
++		else
++
++		if (charGBK >= 48119 && charGBK <= 49061)
++
++			result = 'J';
++
++		else
++
++		if (charGBK >= 49062 && charGBK <= 49323)
++
++			result = 'K';
++
++		else
++
++		if (charGBK >= 49324 && charGBK <= 49895)
++
++			result = 'L';
++
++		else
++
++		if (charGBK >= 49896 && charGBK <= 50370)
++
++			result = 'M';
++
++		else
++
++		if (charGBK >= 50371 && charGBK <= 50613)
++
++			result = 'N';
++
++		else
++
++		if (charGBK >= 50614 && charGBK <= 50621)
++
++			result = 'O';
++
++		else
++
++		if (charGBK >= 50622 && charGBK <= 50905)
++
++			result = 'P';
++
++		else
++
++		if (charGBK >= 50906 && charGBK <= 51386)
++
++			result = 'Q';
++
++		else
++
++		if (charGBK >= 51387 && charGBK <= 51445)
++
++			result = 'R';
++
++		else
++
++		if (charGBK >= 51446 && charGBK <= 52217)
++
++			result = 'S';
++
++		else
++
++		if (charGBK >= 52218 && charGBK <= 52697)
++
++			result = 'T';
++
++		else
++
++		if (charGBK >= 52698 && charGBK <= 52979)
++
++			result = 'W';
++
++		else
++
++		if (charGBK >= 52980 && charGBK <= 53688)
++
++			result = 'X';
++
++		else
++
++		if (charGBK >= 53689 && charGBK <= 54480)
++
++			result = 'Y';
++
++		else
++
++		if (charGBK >= 54481 && charGBK <= 55289)
++
++			result = 'Z';
++
++		else
++
++			result = (char) (65 + (new Random()).nextInt(25));
++
++		if (!bUpCase)
++
++			result = Character.toLowerCase(result);
++
++		return result;
++
++	}
++
++}
+\ No newline at end of file
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/RenderUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/RenderUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..14d6e5576dde7ad8dcc1b0c3cda03b3a81c5a86c
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/RenderUtil.java
+@@ -0,0 +1,32 @@
++package com.stylefeng.guns.core.util;
++
++import com.alibaba.fastjson.JSON;
++import com.stylefeng.guns.core.exception.GunsException;
++import com.stylefeng.guns.core.exception.GunsExceptionEnum;
++
++import javax.servlet.http.HttpServletResponse;
++import java.io.IOException;
++import java.io.PrintWriter;
++
++/**
++ * 渲染工具类
++ *
++ * @author stylefeng
++ * @date 2017-08-25 14:13
++ */
++public class RenderUtil {
++
++    /**
++     * 渲染json对象
++     */
++    public static void renderJson(HttpServletResponse response, Object jsonObject) {
++        try {
++            response.setContentType("application/json");
++            response.setCharacterEncoding("UTF-8");
++            PrintWriter writer = response.getWriter();
++            writer.write(JSON.toJSONString(jsonObject));
++        } catch (IOException e) {
++            throw new GunsException(GunsExceptionEnum.WRITE_ERROR);
++        }
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ResKit.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ResKit.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..dc735af54d93958bad2b3cd9f46df5c636f9ab39
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ResKit.java
+@@ -0,0 +1,38 @@
++package com.stylefeng.guns.core.util;
++
++import org.springframework.core.io.Resource;
++import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
++import org.springframework.core.io.support.ResourcePatternResolver;
++
++import java.io.IOException;
++
++/**
++ * 资源文件相关的操作类
++ *
++ * @author fengshuonan
++ * @date 2016年11月17日 下午10:09:23
++ */
++public class ResKit {
++
++    /**
++     * @Description 批量获取ClassPath下的资源文件
++     * @author fengshuonan
++     */
++    public static Resource[] getClassPathResources(String pattern) {
++        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
++        try {
++            return resolver.getResources(pattern);
++        } catch (IOException e) {
++            throw new RuntimeException("加载resource文件时,找不到文件,所找文件为：" + pattern);
++        }
++    }
++
++    /**
++     * @Description 批量获取ClassPath下的资源文件
++     * @author fengshuonan
++     */
++    public static String getClassPathFile(String file) {
++		//return ResKit.class.getClassLoader().getResource(file).getPath();
++        return Thread.currentThread().getContextClassLoader().getResource(file).getPath();
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SimpleContrast.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SimpleContrast.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..41659dbaaf4d0ff4fe6167c418b4679870aa423e
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SimpleContrast.java
+@@ -0,0 +1,58 @@
++package com.stylefeng.guns.core.util;
++
++import java.beans.PropertyDescriptor;
++import java.lang.reflect.Field;
++import java.lang.reflect.Method;
++import java.util.Date;
++
++/**
++ * 对比两个对象的变化的工具类
++ *
++ * @author fengshuonan
++ * @Date 2017/3/31 10:36
++ */
++public class SimpleContrast {
++
++    //记录每个修改字段的分隔符
++    public static final String separator = ";;;";
++
++    /**
++     * 比较两个对象,并返回不一致的信息
++     *
++     * @author stylefeng
++     * @Date 2017/5/9 19:34
++     */
++    public static String contrastObj(Object pojo1, Object pojo2) {
++        String str = "";
++        try {
++            Class clazz = pojo1.getClass();
++            Field[] fields = pojo1.getClass().getDeclaredFields();
++            int i = 1;
++            for (Field field : fields) {
++                if ("serialVersionUID".equals(field.getName())) {
++                    continue;
++                }
++                PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
++                Method getMethod = pd.getReadMethod();
++                Object o1 = getMethod.invoke(pojo1);
++                Object o2 = getMethod.invoke(pojo2);
++                if (o1 == null || o2 == null) {
++                    continue;
++                }
++                if (o1 instanceof Date) {
++                    o1 = DateUtil.getDay((Date) o1);
++                }
++                if (!o1.toString().equals(o2.toString())) {
++                    if (i != 1) {
++                        str += separator;
++                    }
++                    str += "字段名称" + field.getName() + ",旧值:" + o1 + ",新值:" + o2;
++                    i++;
++                }
++            }
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++        return str;
++    }
++}
+\ No newline at end of file
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SpringContextHolder.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SpringContextHolder.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..9074c4167e5db70a81149bb8db76ef6187506e17
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SpringContextHolder.java
+@@ -0,0 +1,46 @@
++package com.stylefeng.guns.core.util;
++
++import org.springframework.beans.BeansException;
++import org.springframework.context.ApplicationContext;
++import org.springframework.context.ApplicationContextAware;
++import org.springframework.stereotype.Component;
++
++/**
++ * Spring的ApplicationContext的持有者,可以用静态方法的方式获取spring容器中的bean
++ *
++ * @author fengshuonan
++ * @date 2016年11月27日 下午3:32:11
++ */
++@Component
++public class SpringContextHolder implements ApplicationContextAware {
++
++    private static ApplicationContext applicationContext;
++
++    @Override
++    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
++        SpringContextHolder.applicationContext = applicationContext;
++    }
++
++    public static ApplicationContext getApplicationContext() {
++        assertApplicationContext();
++        return applicationContext;
++    }
++
++    @SuppressWarnings("unchecked")
++    public static <T> T getBean(String beanName) {
++        assertApplicationContext();
++        return (T) applicationContext.getBean(beanName);
++    }
++
++    public static <T> T getBean(Class<T> requiredType) {
++        assertApplicationContext();
++        return applicationContext.getBean(requiredType);
++    }
++
++    private static void assertApplicationContext() {
++        if (SpringContextHolder.applicationContext == null) {
++            throw new RuntimeException("applicaitonContext属性为null,请检查是否注入了SpringContextHolder!");
++        }
++    }
++
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SqlUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SqlUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..3c6132e78254a7e6b75b0af3bd5c04d1ed1a4363
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/SqlUtil.java
+@@ -0,0 +1,35 @@
++package com.stylefeng.guns.core.util;
++
++import java.util.ArrayList;
++import java.util.List;
++
++/**
++ * sql语句工具类
++ *
++ * @author fengshuonan
++ * @date 2016年12月6日 下午1:01:54
++ */
++public class SqlUtil {
++
++    /**
++     * @Description 根据集合的大小，输出相应个数"?"
++     * @author fengshuonan
++     */
++    public static String parse(List<?> list) {
++        String str = "";
++        if (list != null && list.size() > 0) {
++            str = str + "?";
++            for (int i = 1; i < list.size(); i++) {
++                str = str + ",?";
++            }
++        }
++        return str;
++    }
++
++    public static void main(String[] args) {
++        ArrayList<Object> arrayList = new ArrayList<>();
++        arrayList.add(2);
++        arrayList.add(2);
++        System.out.println(parse(arrayList));
++    }
++}
+diff --git a/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ToolUtil.java b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ToolUtil.java
+new file mode 100644
+index 0000000000000000000000000000000000000000..651f8224a5745c3db47d66960a598fb907094f06
+--- /dev/null
++++ b/qj-official-core/src/main/java/com/stylefeng/guns/core/util/ToolUtil.java
+@@ -0,0 +1,571 @@
++/**
++ * Copyright (c) 2015-2016, Chill Zhuang 庄骞 (smallchill@163.com).
++ * <p>
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ * <p>
++ * http://www.apache.org/licenses/LICENSE-2.0
++ * <p>
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package com.stylefeng.guns.core.util;
++
++import com.stylefeng.guns.core.support.StrKit;
++
++import java.io.IOException;
++import java.io.PrintWriter;
++import java.io.StringWriter;
++import java.lang.reflect.Array;
++import java.math.BigDecimal;
++import java.net.URISyntaxException;
++import java.util.*;
++import java.util.Map.Entry;
++
++/**
++ * 高频方法集合类
++ */
++public class ToolUtil {
++
++    /**
++     * 获取随机位数的字符串
++     *
++     * @author fengshuonan
++     * @Date 2017/8/24 14:09
++     */
++    public static String getRandomString(int length) {
++        String base = "abcdefghijklmnopqrstuvwxyz0123456789";
++        Random random = new Random();
++        StringBuffer sb = new StringBuffer();
++        for (int i = 0; i < length; i++) {
++            int number = random.nextInt(base.length());
++            sb.append(base.charAt(number));
++        }
++        return sb.toString();
++    }
++
++    /**
++     * 判断一个对象是否是时间类型
++     *
++     * @author stylefeng
++     * @Date 2017/4/18 12:55
++     */
++    public static String dateType(Object o) {
++        if (o instanceof Date) {
++            return DateUtil.getDay((Date) o);
++        } else {
++            return o.toString();
++        }
++    }
++
++    /**
++     * 获取异常的具体信息
++     *
++     * @author fengshuonan
++     * @Date 2017/3/30 9:21
++     * @version 2.0
++     */
++    public static String getExceptionMsg(Exception e) {
++        StringWriter sw = new StringWriter();
++        try {
++            e.printStackTrace(new PrintWriter(sw));
++        } finally {
++            try {
++                sw.close();
++            } catch (IOException e1) {
++                e1.printStackTrace();
++            }
++        }
++        return sw.getBuffer().toString().replaceAll("\\$", "T");
++    }
++
++    /**
++     * 比较两个对象是否相等。<br>
++     * 相同的条件有两个，满足其一即可：<br>
++     * 1. obj1 == null && obj2 == null; 2. obj1.equals(obj2)
++     *
++     * @param obj1 对象1
++     * @param obj2 对象2
++     * @return 是否相等
++     */
++    public static boolean equals(Object obj1, Object obj2) {
++        return (obj1 != null) ? (obj1.equals(obj2)) : (obj2 == null);
++    }
++
++    /**
++     * 计算对象长度，如果是字符串调用其length函数，集合类调用其size函数，数组调用其length属性，其他可遍历对象遍历计算长度
++     *
++     * @param obj 被计算长度的对象
++     * @return 长度
++     */
++    public static int length(Object obj) {
++        if (obj == null) {
++            return 0;
++        }
++        if (obj instanceof CharSequence) {
++            return ((CharSequence) obj).length();
++        }
++        if (obj instanceof Collection) {
++            return ((Collection<?>) obj).size();
++        }
++        if (obj instanceof Map) {
++            return ((Map<?, ?>) obj).size();
++        }
++
++        int count;
++        if (obj instanceof Iterator) {
++            Iterator<?> iter = (Iterator<?>) obj;
++            count = 0;
++            while (iter.hasNext()) {
++                count++;
++                iter.next();
++            }
++            return count;
++        }
++        if (obj instanceof Enumeration) {
++            Enumeration<?> enumeration = (Enumeration<?>) obj;
++            count = 0;
++            while (enumeration.hasMoreElements()) {
++                count++;
++                enumeration.nextElement();
++            }
++            return count;
++        }
++        if (obj.getClass().isArray() == true) {
++            return Array.getLength(obj);
++        }
++        return -1;
++    }
++
++    /**
++     * 对象中是否包含元素
++     *
++     * @param obj     对象
++     * @param element 元素
++     * @return 是否包含
++     */
++    public static boolean contains(Object obj, Object element) {
++        if (obj == null) {
++            return false;
++        }
++        if (obj instanceof String) {
++            if (element == null) {
++                return false;
++            }
++            return ((String) obj).contains(element.toString());
++        }
++        if (obj instanceof Collection) {
++            return ((Collection<?>) obj).contains(element);
++        }
++        if (obj instanceof Map) {
++            return ((Map<?, ?>) obj).values().contains(element);
++        }
++
++        if (obj instanceof Iterator) {
++            Iterator<?> iter = (Iterator<?>) obj;
++            while (iter.hasNext()) {
++                Object o = iter.next();
++                if (equals(o, element)) {
++                    return true;
++                }
++            }
++            return false;
++        }
++        if (obj instanceof Enumeration) {
++            Enumeration<?> enumeration = (Enumeration<?>) obj;
++            while (enumeration.hasMoreElements()) {
++                Object 

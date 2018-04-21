@@ -1,0 +1,22 @@
+hover="#797979"
++							btnshape="0" suffixshape="3" data-zindex="4"
++							id="elementId1451488058692" elementid="elementId1451488058692"
++							class="wqdelementEdit elementsContainer"
++							data-elementtype="carouse" data-elemandgroup="true"
++							style="width: 1200px; height: 526px; left: 0px; top: 329.5px; z-index: 4;">
++							<div class="wqdelementEditBox">
++								<div class="wqdCarousel slide" data-pause="false">
++									<a style="display: inline-block;" data-slide="prev"
++										href="http://template_10998.wqdian.cn/.wqdCarousel"
++										class="left carousel-control carousel-control_1"><svg
++											class="wqdDIcon" viewBox="0 0 1792 1792"
++											xmlns="http://www.w3.org/2000/svg"> <path fill="#fff"
++												d="M1203 544q0 13-10 23l-393 393 393 393q10 10 10 23t-10 23l-50 50q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l50 50q10 10 10 23z"></path> </svg></a>
++									<a style="display: inline-block;" data-slide="next"
++										href="http://template_10998.wqdian.cn/.wqdCarousel"
++										class="right carousel-control carousel-control_1"><svg
++											class="wqdDIcon" viewBox="0 0 1792 1792"
++											xmlns="http://www.w3.org/2000/svg"> <path fill="#fff"
++												d="M1171 960q0 13-10 23l-466 466q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l393-393-393-393q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l466 466q10 10 10 23z"></path> </svg></a>
++									<div class="carousel-inner">
++								

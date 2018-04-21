@@ -1,0 +1,343 @@
+/org.eclipse.core.resources/.history/f7/70e9fac14e3d0018188f809bc87e41fe
+@@ -0,0 +1,2729 @@
++<!DOCTYPE html>
++<!-- saved from url=(0069)http://template_10998.wqdian.cn/d4a3c7fda1b54744b3cfe1e99af554fe.html -->
++<html xmlns="http://www.w3.org/1999/xhtml">
++<!-- 页面head信息 -->
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
++<meta itemprop="image" content="undefined">
++<meta property="qc:admins" content="1755101013252671411666547">
++
++<meta http-equiv="X-UA-Compatible" content="IE=edge">
++<meta name="viewport"
++	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
++<meta property="qc:admins" content="1755101013252671411663757">
++<!--css文件-->
++    @include("/common/_css.html"){}
++
++<title>启匠科技-服务内容</title>
++				
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery-1.11.2.min.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/allocation.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdformDate.js"></script>
++<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jweixin-1.0.0.js"></script>
++<script src="${ctxPath}/static/modular/system/home/qc.php" type="text/javascript" charset="utf-8"></script>
++<!-- <script src="${ctxPath}/static/modular/system/home/jquery.qrcode.min.js"></script> -->
++</head>
++
++<body class="" style="position: relative;">
++
++	<script type="text/javascript">
++	var CSSURLPATH = 'http://u10527-08e9afad9bec48caa282e76a714e3827.ktb.wqdian.net/';
++	var companyInfo=''||'{}'
++	var siteInfo=''||'{}';
++	var isAgentUser=;
++</script>
++
++	<!-- 页面主体内容  -->
++	<div class="wqdView wqdHeaderView">
++		<style type="text/css" id="styleCss" uw="1200">
++.wqdAreaView .wqdSectiondiv {
++	min-width: 1200px;
++}
++
++.wqdAreaView .wqdBkEditos {
++	width: 1200px;
++}
++
++.fullscreen .bannerContainer {
++	margin: 0 auto;
++	width: 1200px !important;
++}
++</style>
++		<div class="wqdAreaView">
++			<div class="yzmoveContent">
++				<div class="wqdSectiondiv wqdSticky" data-type="wqdSectiondiv"
++					sortid="6" partid="wqd1451474119776serial" commonpartid="10646"
++					id="wqd1451474119776serial" sectionname="横版导航（空白）"
++					partcategoryid="21"
++					style="background-attachment: scroll; background-size: cover; background: #fff; background-position: 50% 50%; background-repeat: no-repeat;"
++					wqdback_position="1">
++					<style sectionwidth="1200" type="text/css"
++						class="wqd1451474119776serial">
++#wqd1451474119776serial:before {
++	content: ' ';
++	position: absolute;
++	top: 0;
++	left: 0;
++	width: 100%;
++	height: 100%;
++	background-color: #ffffff;
++}
++</style>
++					<style type="text/css" class="elementId1449889646847"
++						sectionwidth="1200">
++#elementId1449889646847 .wqdNavList li a {
++	background-color: #ffffff;
++	padding-left: 28px;
++	padding-right: 28px;
++	padding-top: 22px;
++	padding-bottom: 22px;
++	color: #999;
++}
++
++#elementId1449889646847 .wqdNavList li a:hover {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++
++#elementId1449889646847 .wqdNavList li.active a {
++	background-color: #ffffff;
++	color: #4c4c4c;
++}
++</style>
++					<header
++						class="wqdTopNavWrap wqdBkEditos sectionV2 elementsContainer wqdCommonNav"
++						wqd-bgcolor="rgba(240,240,240,0.6)"
++						style="position: relative; height: 120px;" wqdheight="120"
++						data-maxzindex="3" bac_position="5" wqdbgattachment="0"
++						wqdwidthlimit="0" sectionwidth="1200" wqdnavstickyed="on"
++						wqdbgcolor="#ffffff">
++
++						<div class="wqdelementEdit" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 180px; height: 67px; left: 70px; top: 21px; z-index: 1;"
++							elementid="elementId1449888900593" id="elementId1449888900593"
++							data-zindex="1">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/serviceContent/yq0KXlZri4qAU4_VAAAkv7ye_tA089.png"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div class="wqdelementEdit elementsContainer wqdTopNavbox"
++							wqd-textcolor="#999" wqd-texthovercolor="#4c4c4c"
++							wqdpaddingx="28" wqdpaddingy="22" wqdfontsize="14"
++							data-elementtype="firstNav" data-unused="set,copy"
++							data-elemandgroup="true"
++							style="width: 627px; height: 60px; left: 409px; top: 33.5px; z-index: 2;"
++							elementid="elementId1449889646847" id="elementId1449889646847"
++							data-zindex="2" wqd-menucolor="#ffffff"
++							wqd-menuhovercolor="#ffffff">
++							<div class="wqdelementEditBox">
++								<nav class="wqdNavWrap">
++									<ul class="wqdNavList">
++										<li class="wqdNavLi active"><a homepage="true"
++											pageid="169268" categorylink="2"
++											href="/">首页</a></li>
++										<li class="wqdNavLi"><a pageid="169825" categorylink="2"
++											href="/home/aboutUs">关于我们</a></li>
++										<li class="wqdNavLi"><a pageid="169821" categorylink="2"
++											href="/home/team">团队介绍</a></li>
++										<li class="wqdNavLi"><a pageid="169721" categorylink="2"
++											href="/home/serviceContent">服务内容</a></li>
++										<li wqdnavmark="mark1451474183472" class="wqdNavLi"><a
++											pageid="169781" categorylink="2"
++											href="/home/FAQ">FAQ</a></li>
++										<li class="wqdNavLi"><a pageid="169797" categorylink="2"
++											href="/home/contactUs">联系我们</a></li>
++									</ul>
++								</nav>
++							</div>
++						</div>
++						<div class="wqdelementEdit" data-elementtype="share"
++							data-elemandgroup="true" elementid="elementId1449890679463"
++							id="elementId1449890679463" data-zindex="3"
++							style="width: 165px; height: 35px; left: 1035px; top: 46px; z-index: 3;"
++							iconcolor="#585858" size="28" hiconspace="4">
++							<div class="wqdelementEditBox">
++								<ul class="wqd-share share-default wqdControlShare share-list"
++									data-url="http://template_10998.wqdian.cn/d4a3c7fda1b54744b3cfe1e99af554fe.html">
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 3px;"
++										class="btn-share" data-type="sqq"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M896,0C401.2,0,0,401.2,0,896s401.2,896,896,896s896-401.2,896-896S1390.8,0,896,0z M1354,1069.3v6.7v6.2  l-1.2,7.5l-1.6,12.9l-2.2,11.7l-3.4,10.5l-1.3,4.3l-2.4,5.1l-2,3.6l-2.7,4.5l-2.4,2.8l-3,3.6l-2.7,2.9l-2.9,2.5l-3.4,1.5l-3.1,1.6  l-2.5,0.8h-2.3h-1.6l-2.5-0.8l-4.7-2.4l-2.2-1.5l-2.3-1.7l-2.4-2.3l-2.5-2.4l-4.2-4.6l-4.9-6.5l-3.9-6.7l-3.9-5.4l-3.7-6.2  l-5.3-11.2l-5.9-11.5l-0.8-0.4h-0.9l-2.5,1.8l-1.4,3.1l-2.4,3.7l-4,11.3l-6.1,15.9l-7.9,19.1l-5.9,9.7l-6.2,9.9l-7.3,11.3l-7.8,11  l-4,4.9l-4.9,5.5l-11.1,10.9l1,1l1.5,1.6l5.5,3.3l23.2,11.1l10.1,5.7l9.7,5.5l9.5,7l8.5,7.2l4.2,3.2l3,3.8l3.2,4.2l2.7,4.7l1.3,3.9  l1.8,4.7l0.7,4.1l0.9,4.7l-0.9,3.2v3.2l-0.7,3.3l-1.8,3.1l-0.6,2.3l-1.6,2.9l-4.2,5.7l-3.8,4.7l-3.1,3.4l-2.5,2.5l-6.4,4.7l-7.2,4.1  l-7.7,3.9l-8.3,3.7l-9.3,3.6l-4.9,1.5l-4.4,1.3l-10.7,2.5l-11.1,2.3l-11,2.4l-12.1,1.9l-12.5,0.6l-12.9,1.5h-12.6h-13.3h-13.7  l-14.3-0.8l-13.4-1.3l-14.3-1.9l-14.3-1.5l-15-2.1l-14.5-3.6l-14.2-2.8l-14.1-4l-14.5-5.2l-14.2-4.3l-7.4-2.4l-6.7-2.4l-4.3-1.7  l-4.1-0.8h-5.4h-6.4l-13.6-1l-6.9-0.7l-8.9-1l-5.7,5.2l-7.8,4.8l-10.5,5.2l-11.7,6.4l-7,3.4l-7.5,2.8l-16.3,6.7l-8.9,2.2l-9.3,2.5  l-12.9,2.5l-8.1,0.7l-8.6,0.7l-8.9,1l-10.4,0.4h-9.9h-10.4h-22.1l-24-0.4l-23.3-2.4l-11.7-1.7l-11.4-1.7l-11.1-1.6l-11.1-2.2  l-10.3-3.4l-10.3-2.3l-9.3-3.8l-8.7-3.4l-8.2-3.9l-7.1-4.3l-7.1-5.2l-2.4-2.4l-3.1-3.1l-2.4-2.7l-2.2-3l-2-3.1l-1.5-3l-2.2-6.6  l-0.8-3.3l-1-3.7v-3.5l1-3.9v-3.9l0.8-3.9v-2.3v-5.4l0.4-4.2l1.8-4.7l1.5-4.8l2.8-5.7l2.1-2.1l1.7-2.6l4.4-5.4l3.5-2.8l3.3-1.9  l3-2.4l4.9-1.6l3.9-2.4l4.9-2.5l5.5-1.6l5.5-1.7l6.4-1.4l6.1-0.9l7.2-0.9l7.9-0.6l2.1-0.7h0.4l0.9-0.8v-0.9l-1.3-2l-4.2-1.9  l-10.4-9.1l-7-5.5l-8.1-7.1l-8.1-7.9l-8.5-10.1l-9.7-11.4l-3.7-6.2l-4.8-6.3l-4.1-7.4l-3.8-8.1l-5-7.6l-3.3-8.7l-3.9-8.8l-3.9-9.7  l-2.9-9.3l-2.7-11.5l-0.8-0.5h-0.8l-0.4-0.8h-1l-1.7,0.8l-0.8,0.5l-1.2,2l-0.4,2.3l-0.8,2.1l-1.5,3.4l-4.7,8.5l-2.5,5.2l-3.9,4.4  l-4.2,5.4l-4.5,6l-4.9,5.2l-5.7,5.2l-5.3,4.8l-5.8,3.8l-6.4,4l-6.1,2.4l-7.2,1.8l-7.1,0.6h-0.7h-1l-1.6-0.6l-1.3-2.8l-2.1-1.4  l-2.7-6.7l-1.7-3.6l-1.8-5.1l-1.6-5.4l-0.7-5.3l-2.3-12.1l-0.9-7v-7.3v-16l0.9-17.4l1.4-8.9l1.6-9.2l1.6-9.8l2.6-9.2l3.1-10.6  l3-10.2l4.2-10.6l3.9-10.1l5.4-10.2l5-11.2l6.1-10.4l7.2-11.3l7.4-10.1l7.6-11.2l6.4-7.8l8.2-9.1l8.6-9l4-4.3l4.9-4.8l7-6.1l7.3-6.3  l11.8-10.5l8.9-6.5l3.2-2.4l-1.8-5.4l-1.4-7.1l-1-3.9v-4.9v-5.8v-5.3l1.7-6.2l1.7-6.7l2.3-6.9l3-7.8l4.1-8l5.7-8.1V767l0.6-5.3  l0.8-7.2l2.5-8l2.2-8.8l1.8-4l2.1-3.8l2.6-4.1l2.9-3.1V717v-6.4v-7.9l1.7-10.3l1.7-11.9l3-14.3l4.1-14.9l3.1-8.1l3.1-8.9l3.3-8.3  l4-9l4.1-9.7l4.7-9.1l5.3-9.7l6.6-9.8l3.1-5.5l3.3-4.6l7.1-10.3l7.3-10.2l8.4-10.6l8.9-10.3l9.7-10.1l10.1-10.4l12.2-11.3l7.8-6.8  l9.5-7.3l9.6-6.5l10.4-6.3l9.9-5.5l11.3-4.6l11.9-5.7l11.9-3.9l11.8-4l12.9-4l12.7-3.1l13.5-2.5l13.6-2.3l13.4-1.7l13.5-1.9  l14.3-0.8h13.7h14.1h14.6l14.1,1.8l14.2,1.7l14.5,1.5l13.4,3.2l14.1,3.1l13.3,3.4l14.7,3.9l13.3,4.7l12.8,5.4l13.6,5.8l12.5,6.2  l12.1,6.9l11.8,7.7l10.3,7l4.7,4.1l4.9,2.9l9.5,8.1l8,7.7l7.9,8.1l7.8,8.9l6.5,8.6l7.5,8.9l5.4,9.5l5.3,8.5l5.7,9.9l4.8,8.6l8,18.2  l3.9,9.4l3,8.7l3.1,9.5l2.8,8.9l1.9,7.6l2.5,9.1l4.4,16l2.7,14.1l1.8,13.6l1.6,10.9l2.4,16.7l0.6,2.6l1.9,3.1l5.3,8.6l3.4,5.8l3,6.2  l3.9,6.4l3.3,7.9l2.2,8l2.4,8.8l1.8,9l0.9,4.4l0.7,5.4v4.7l-0.7,4.8v5.8l-1.4,5.7l-2.5,11l-3,5.5l-2,6.3v1.5l0.9,1.9l2.9,4.6  l12.5,18.5l9.9,13.9l4.7,9.3l6.4,10.1l5.6,11.2l6.3,11.8l6.4,13.4l7.3,15.1l4,9.3l3.7,9l3.2,9.6l3.2,8.6l2.4,9.1l2.4,8.4l3.1,16.5  l2.5,17l1.7,15V1069.3z"></path></svg></li>
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 0px;"
++										class="btn-share" data-type="weixin"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M882.8,728.3c26.5,0,44.1-17.7,44.1-44.1c0-26.6-17.6-44-44.1-44s-53,17.4-53,44  C829.8,710.6,856.4,728.3,882.8,728.3z M636,640.2c-26.4,0-53.1,17.5-53.1,44c0,26.4,26.7,44.1,53.1,44.1c26.4,0,44-17.7,44-44.1  C680,657.6,662.4,640.2,636,640.2z M896,0C401.2,0,0,401.2,0,896s401.2,896,896,896s896-401.2,896-896S1390.8,0,896,0z   M750.4,1090.2c-44,0-79.4-8.9-123.5-17.7l-123.2,61.8l35.3-106.1c-88.3-61.7-141.1-141.3-141.1-238.1  c0-167.8,158.8-299.9,352.6-299.9c173.4,0,325.3,105.6,355.8,247.7c-11.3-1.3-22.6-2.1-34-2.1c-167.5,0-299.8,124.9-300,279.1  c0,25.7,4,50.3,11,73.9C772.5,1089.6,761.5,1090.2,750.4,1090.2z M1270.7,1213.7l26.5,88.1l-96.8-53c-35.3,8.7-70.7,17.6-105.8,17.6  c-167.8,0-299.9-114.6-299.9-255.8c0-141,132.1-255.9,299.9-255.9c158.5,0,299.5,114.9,299.5,255.9  C1394.1,1090.1,1341.4,1160.6,1270.7,1213.7z M1191.4,896c-17.5,0-35.1,17.7-35.1,35.3c0,17.8,17.6,35.2,35.1,35.2  c26.3,0,44.1-17.5,44.1-35.2C1235.5,913.7,1217.8,896,1191.4,896z M997.4,896c-17.6,0-35.3,17.7-35.3,35.3  c0,17.8,17.7,35.2,35.3,35.2c26.7,0,44.1-17.5,44.1-35.2C1041.5,913.7,1024.1,896,997.4,896z"></path></svg></li>
++									<li style="width: 28px; height: 28px; margin: 3px 4px 3px 0px;"
++										class="btn-share" data-type="tsina"><svg
++											viewBox="-50 -50 1892 1892"
++											xmlns="http://www.w3.org/2000/svg">
++											<path fill="#585858"
++												d="M789.4,1023.9c-10.5,7.7-12.6,22.2-6.9,31.3c1.7,2.9,4.1,5,7,6.3c6.2,2.8,14.5,1.6,21.6-3.7  c10.1-8,14.1-22,8.6-31.3C814.2,1017.5,801.5,1014.9,789.4,1023.9z M751.8,1053.9c-10-6.9-23.8-10.5-40.2-9  c-30.7,3.2-52.6,29.9-52.6,55.5c0,23.2,20.3,39.9,46.9,40.2c2.7,0,5.5-0.1,8.4-0.5c30.6-3.5,55.4-27.1,55.3-52.6  C769.6,1073.9,763.1,1061.8,751.8,1053.9z M896,0.4C401.2,0.4,0,401.6,0,896.4s401.2,896,896,896s896-401.2,896-896  S1390.8,0.4,896,0.4z M1241.2,1064.4c-0.6,1.8-1.2,3.6-1.8,5.4c-0.8,2.4-1.7,4.7-2.6,7.1c-0.8,2.1-1.7,4.3-2.6,6.5  c-1.4,3.3-2.8,6.6-4.4,9.9c-3.2,6.7-6.6,13.2-10.5,19.6c-77.5,129.6-286.4,192.3-443.1,180.1c-156.2-12.3-357.2-64.2-377.9-253.3  c0,0-0.2-1.6-0.3-4.8c-0.9-19.2,0.7-96.2,72.4-191.8c0,0,119.4-166.8,258.5-214.4c139.3-47.3,155.5,32.8,155.5,80.2  c-7.4,40.2-21.3,63.8,31,47.6c0,0,136.9-63.5,193.2-7.2c45.4,45.5,7.5,108,7.5,108s-18.8,20.8,19.9,28.4  C1172,893,1280.2,942.5,1241.2,1064.4z M112       }
++
++
++        this.uid = uid;
++        this.url = 'http://s.share.baidu.com/';
++        this.title = document.title;
++        this.size = 'height=500,width=700,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no';
++        this.render = 'table';
++        this.options = $.extend({}, {
++            render: this.render,
++            width: 120,
++            height: 120,
++            background: "#fff",
++            foreground: "#000",
++            text: ''
++        }, options);
++        this.isLoad = false;
++
++        this.init();
++    }
++
++    Share.prototype = {
++        constructor: 'Share',
++        init: function() {
++            var that = this;
++
++            $('body').css("position", "relative").off('click.share', '.btn-share').on('click.share', '.btn-share', function(event) {
++                var _self = $(this),
++                    type = _self.data('type'),
++                    data = _self.parent('.share-list').data();
++                if ($(this).attr("data-type") == "weixin") {
++                    $("#J_qr_code_share").css({
++                        top: $(window).width() > 1200 ? ($(window).height() * 0.5) : ("280px!important"),
++                        left: $(window).width() * 0.5
++                    }).show();
++                }
++                that.fire(type, data, _self);
++                event.stopPropagation();
++            })
++        },
++        setwin: function(w, d) {
++            var iWidth = w; //弹出窗口的宽度;
++            var iHeight = d; //弹出窗口的高度;
++            var iTop = (window.screen.availHeight - 30 - iHeight) / 2; //获得窗口的垂直位置;
++            var iLeft = (window.screen.availWidth - 10 - iWidth) / 2; //获得窗口的水平位置;
++            return {
++                iTop: iTop,
++                iLeft: iLeft
++            }
++        },
++        fire: function(t, d, self) {
++            var that = this,
++                query = that.set(t, d);
++            this.load(query);
++
++            if (t === 'weixin') {
++                if (!that.isLoad) {
++                    var qrcode = document.createElement('script');
++                    qrcode.src = 'javascripts/jquery.qrcode.min.js';
++                    document.head.appendChild(qrcode);
++                    that.isLoad = true;
++                    qrcode.onload = function() {
++                        that.renderQrCode(self);
++                    };
++                }
++
++                that.renderQrCode(self);
++                return;
++            } else if (t === "qzone") {
++                (function() {
++                    var p = {
++                        url: location.href,
++                        showcount: '1',
++                        desc: d.desc,
++                        summary: d.summary,
++                        title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title,
++                        site: document.domain,
++                        pics: d.pic,
++                        style: '203',
++                        width: 98,
++                        height: 22
++                    };
++                    var s = [];
++                    for (var i in p) {
++                        s.push(i + '=' + encodeURIComponent(p[i] || ''));
++                    }
++                    window.open("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?" + s.join('&'), "newwindow", "width=601,height=590, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(601, 590).iTop + ",left=" + that.setwin(601, 590).iLeft)
++                })();
++                return;
++            } else if (t === "sqq") {
++                var p = {
++                    url: d.url,
++                    desc: d.desc,
++                    title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title,
++                    summary: d.summary,
++                    pics: d.pic,
++                    flash: '',
++                    site: document.domain,
++                    style: '201',
++                    width: 32,
++                    height: 32
++                };
++                var s = [];
++                for (var i in p) {
++                    s.push(i + '=' + encodeURIComponent(p[i] || ''));
++                }
++
++                window.open("http://connect.qq.com/widget/shareqq/index.html?" + s.join('&'), "newwindow", "width=721,height=572, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(721, 567).iTop + ",left=" + that.setwin(721, 567).iLeft);
++                return;
++            }
++            this.open(query);
++        },
++
++        /**
++         * 设置分享内容
++         * @param  {String} type 分享到的社交媒体，如tsina,qqzone，以data-type的形式存储在 .btn-share 标签上
++         * @param  {Object} data 需要分享的hash表，以data-***的形式存储在 .share-list 标签上
++         * @return {String} queryString  序列化的分享内容url字符串;
++         *
++         */
++        set: function(type, data) {
++            var query = {};
++            query.click = 1;
++            query.url = (data.url || "");
++            query.uid = this.uid;
++            query.to = type;
++            query.type = "text";
++            query.relateUid = data.wbuid || "";
++            query.pic = (data.pic || "");
++            query.title =/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):this._formatTitle(data.text);
++            query.key = "";
++            query.sign = "on";
++            query.desc = (data.desc || "");
++            query.summary = (data.summary || "");
++            query.comment = encodeURIComponent(data.comment || "");
++            query.searchPic = 0;
++            query.l = this.time();
++            query.linkid = this.string();
++            query.sloc = "";
++            query.apiType = 0;
++            query.buttonType = 0;
++            query.site = "bshare";
++
++            this.options.text = query.url;
++            return '?' + $.param(query);
++        },
++
++        load: function(query) {
++            var img = new Image();
++            img.onload = function() {
++                img = img.onload = null;
++            };
++            img.src = this.url + "commit" + query + "&t=" + Math.random();
++        },
++
++        open: function(query) {
++            var that = this;
++            window.open(that.url + query, "_blank", "width=721,height=572, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(721, 567).iTop + ",left=" + that.setwin(721, 567).iLeft);
++        },
++
++        time: function() {
++            var t = +new Date,
++                e = t + 1000,
++                n = t + 3000;
++            return t.toString(32) + e.toString(32) + n.toString(32)
++        },
++
++        string: function() {
++            var t = (new Date).toString(36),
++                e = Math.random().toString(36).substr(3);
++
++            return t + e
++        },
++        _formatTitle: function(text) {
++            return text ? (text.substr(0, 120

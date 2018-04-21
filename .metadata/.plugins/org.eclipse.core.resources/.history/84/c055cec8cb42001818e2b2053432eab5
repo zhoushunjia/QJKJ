@@ -1,0 +1,298 @@
+/style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689778955">
++#elementid14514689778955 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514689778955 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858161">
++#elementid14514689858161 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858162">
++#elementid14514689858162 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858163">
++#elementid14514689858163 path {
++	fill: #777777;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514689858165">
++#elementid14514689858165 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514689858165 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514690417610">
++#elementid14514690417610 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514690417610 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514690704560">
++#elementid14514690704560 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514690704560 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514690752690">
++#elementid14514690752690 a {
++	background-color: #ffffff;
++	border-color: #515151;
++}
++
++#elementid14514690752690 a em {
++	color: #515151;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514691122990">
++#elementid14514691122990 .wqd-line {
++	border-top-color: #d3d3d3 !important;
++}
++</style>
++					<style sectionwidth="1200" type="text/css"
++						class="elementid14514691270520">
++#elementid14514691270520 .wqd-line {
++	border-top-color: #d3d3d3 !important;
++}
++</style>
++					<section wqdbgcolor="#ffffff" wqdwidthlimit="0" wqdbgattachment="0"
++						bac_position="5" wqdheight="996" sectionwidth="1200"
++						class="wqd1445504393013css wqdBkEditos sectionV2 moveMainArea elementsContainer"
++						style="height: 996px; margin: 0px auto; position: relative; z-index: 5;"
++						wqdimgurlos="http://img.wqdian.com/group2/M00/29/07/yq0KXlaDgZuAFYqVAALRP8f0atI348.jpg"
++						wqdbgcoloros="#eee" data-maxzindex="30">
++						<div data-zindex="1" id="elementId1451468936419"
++							elementid="elementId1451468936419" class="wqdelementEdit"
++							data-elementtype="img" data-elemandgroup="true"
++							style="width: 177px; height: 115px; left: 0px; top: 320px; z-index: 1;">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/home/yq0KXlaDp32AFCGYAAAiQwQTMgM127.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div data-zindex="2" id="elementid14514689968950"
++							elementid="elementid14514689968950" class="wqdelementEdit"
++							data-elementtype="img" data-elemandgroup="true"
++							style="width: 177px; height: 115px; left: 0px; top: 555px; z-index: 2;">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/home/yq0KXlaDp3-AZ2XdAAAc7KAa1gQ348.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div data-zindex="3" id="elementid14514690124320"
++							elementid="elementid14514690124320" class="wqdelementEdit"
++							data-elementtype="img" data-elemandgroup="true"
++							style="width: 177px; height: 115px; left: 0px; top: 791px; z-index: 3;">
++							<div class="wqdelementEditBox">
++								<img class="wqd-img"
++									src="${ctxPath}/static/modular/system/home/yq0KX1aDp0-AUVXNAAAcsMOPEQ0316.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div data-zindex="4"
++							style="width: 314px; height: 25px; left: 213.817px; top: 399.117px; z-index: 4;"
++							id="elementid14514688056360" elementid="elementid14514688056360"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<span style="font-size: 14px;">本公司专业技术团队 诚心服务 非同凡响</span>
++							</div>
++						</div>
++						<div wqdborder_width="2" wqdon="false" wqdbordercolor="#515151"
++							wqdbgcolor="#ffffff" wqdcolor="#515151" wqdborderradius="0"
++							wqdheight="38" wqdhref="0" data-zindex="5"
++							style="width: 103px; height: 34px; left: 185.817px; top: 320px; z-index: 5;"
++							id="elementId1451468629706" elementid="elementId1451468629706"
++							class="wqdelementEdit" data-elementtype="button"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<a style="border-width: 1px; border-style: solid;"
++									class="wqd-button wqdComponentBtn1" wqdbtnborder="false"
++									ondragstart="return false;"><em>本公司</em></a>
++							</div>
++						</div>
++						<div data-zindex="6"
++							style="width: 326px; height: 32px; left: 185.817px; top: 364.733px; z-index: 6;"
++							id="elementId1451468681108" elementid="elementId1451468681108"
++							class="wqdelementEdit" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<strong><span style="font-size: 18px;">您的创业梦想需要一个非同凡响的网站</span></strong>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="7"
++							style="width: 30px; height: 30px; left: 185.817px; top: 396.5px; z-index: 7;"
++							id="elementId1451468734579" elementid="elementId1451468734579"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1133 1101l352-352q19-19 19-45t-19-45l-352-352q-30-31-69-14-40 17-40 59v160q-119 0-216 19.5t-162.5 51-114 79-76.5 95.5-44.5 109-21.5 111.5-5 110.5q0 181 167 404 10 12 25 12 7 0 13-3 22-9 19-33-44-354 62-473 46-52 130-75.5t224-23.5v160q0 42 40 59 12 5 24 5 26 0 45-19zm531-685v960q0 119-84.5 203.5t-203.5 84.5h-960q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960q119 0 203.5 84.5t84.5 203.5z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="8"
++							style="width: 30px; height: 30px; left: 319.817px; top: 396.5px; z-index: 8;"
++							id="elementId1451468775197" elementid="elementId1451468775197"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1376 128q119 0 203.5 84.5t84.5 203.5v960q0 119-84.5 203.5t-203.5 84.5h-188v-595h199l30-232h-229v-148q0-56 23.5-84t91.5-28l122-1v-207q-63-9-178-9-136 0-217.5 80t-81.5 226v171h-200v232h200v595h-532q-119 0-203.5-84.5t-84.5-203.5v-960q0-119 84.5-203.5t203.5-84.5h960z"></path></svg>
++							</div>
++						</div>
++						<div wqdpathfill="#777777" wqdhref="0" data-zindex="9"
++							style="width: 30px; height: 30px; left: 423.817px; top: 396.5px; z-index: 9;"
++							id="elementId1451468779362" elementid="elementId1451468779362"
++							class="wqdelementEdit" data-elementtype="icon"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++									xmlns="http://www.w3.org/2000/svg">
++									<path fill="#999"
++										d="M1408 928v-480q0-26-19-45t-45+){
+					tList[i] = tList[i] || {};
+					var ev = tList[i].ev || "";
+					if(ev.indexOf("click") != -1){
+						triggerClick.push(i);
+					}else if(ev.indexOf("mouseenter") != -1){
+						triggerMouse.push(i);
+					}else if(ev.indexOf("unveil") != -1){
+						triggerunveil.push(i);
+					}
+				}
+
+				if(triggerClick.length){
+					$node.on("click.wqdAnimate",function(e){
+						$("#"+elemId).wqdAnimate(triggerClick);
+					}).addClass('aniTriOther');
+				}
+				if(triggerMouse.length){
+					$node.on("mouseenter.wqdAnimate",function(e){
+						$("#"+elemId).wqdAnimate(triggerMouse);
+					}).addClass('aniTriOther');
+				}
+				if(triggerunveil.length){
+					$node.one("unveil.wqdAnimate",function(e){
+						$("#"+elemId).wqdAnimate(triggerunveil);
+					}).addClass('aniTriOther');
+				}
+			};
+
+			var bindTriggers = [];
+			$.each(triggerElemNum,function (i,val) {
+				var triggerList = [];
+				$.each(val,function (j,__) {
+					triggerList[__] = {};
+					triggerList[__].ev = triggerType[__];
+				});
+				bindTrigger($("#"+i),thisId,triggerList);
+			})
+		});
+	}
+	wqdUnveil.init = function(){
+		$("[elementandgroup='true']").off(".wqdAnimate");
+		bindAnimate();
+        $(document).on('slid.Wqdcarousel','.wqdCarousel',function () {
+			wqdUnveil.unveil();
+        	// var elements =  $(this).find(".carousel-inner .item.active .bannerContainer").find("[data-animate]");
+        	// elements.each(function(){
+        	// 	var triggertypes = $(this).attr("triggertype") || "unveil.wqdAnimate";
+        	// 		triggertypes = triggertypes.split(",");
+        	// 	for(var k=0; k < triggertypes.length; k++){
+        	// 		if(triggertypes[k] == "unveil.wqdAnimate"){
+        	// 			$(this).wqdAnimate();
+        	// 			break;
+        	// 		}
+        	// 	}
+        	// });
+        });
+	};
+
+	wqdUnveil.unveil = function(){
+		var element = $("[data-animate],.aniunveil,.progunveil");
+		if($("#HTMLDATA .wqdIphoneView").length){
+			var inview = element.filter(function() {
+	            var that = $(this),
+	            	elemTop = that.offset().top,
+	            	elemTh = elemTop + that.height(),
+	            	boxTop = $("#wqdIphoneContainer").offset().top,
+	            	boxHeight = $(window).height() > $("#wqdIphoneContainer").height()+boxTop ? $("#wqdIphoneContainer").height()+boxTop : $(window).height();
+	            return elemTop >= boxTop && elemTh <= boxHeight;
+	        });
+	    }else{
+	    	var inview = element.filter(function() {
+
+	            var $e = $(this), $w = $(window), wt = $w.scrollTop(), wb = wt + $w.height(), et = $e.offset().top, eb = et + $e.height();
+
+	            return et >= wt && eb <= wb && $e.is(":visible");
+	        });
+	    }
+        inview.trigger("unveil.wqdAnimate");
+	};
+
+	wqdUnveil.bindEvent = function(){
+		if($("#HTMLDATA .wqdIphoneView").length){
+			$("#wqdIphoneContainer .nano-content").scroll(function(){
+				wqdUnveil.unveil();
+			});
+		}
+		$(document).bind("scroll", function() {
+            wqdUnveil.unveil();
+        });
+        $(document).on("domInit", function() {
+        	wqdUnveil.init();
+            wqdUnveil.unveil();
+        });
+        setTimeout(function () {
+        	wqdUnveil.unveil();
+        },400)
+	};
+	wqdUnveil.init();
+	wqdUnveil.bindEvent();
+
+	return wqdUnveil;
+})(jQuery);
+

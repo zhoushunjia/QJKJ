@@ -1,0 +1,243 @@
+(function($) {
+    var Wqdcarousel = function(element, options) {
+        this.$element = $(element);
+        this.$indicators = this.$element.find('.carousel-indicators');
+        this.options = options;
+        this.paused = null;
+        this.sliding = null;
+        this.interval = null;
+        this.$active = null;
+        this.$items = null;
+        this.pointx = null;
+        this.pointy = null;
+        this.options.keyboard && this.$element.on('keydown.Wqdcarousel', $.proxy(this.keydown, this));
+        this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element.on('mouseenter.bs.Wqdcarousel', $.proxy(this.pause, this)).on('mouseleave.bs.Wqdcarousel', $.proxy(this.cycle, this));
+        this.$element.on('touchstart', $.proxy(this.touchStart, this)).on('touchmove', $.proxy(this.touchMove, this));
+        this.$element.on('touchend', $.proxy(this.touchEnd, this));
+    };
+
+    Wqdcarousel.VERSION = '3.3.4';
+    Wqdcarousel.TRANSITION_DURATION = 600;
+    Wqdcarousel.DEFAULTS = {
+        interval: 5000,
+        pause: 'hover',
+        wrap: true,
+        keyboard: true
+    };
+    Wqdcarousel.prototype.touchStart = function(e) {
+        if (this.sliding || e.originalEvent.changedTouches.length != 1) return this;
+        this.pointx = e.originalEvent.changedTouches[0].screenX;
+        this.pointy = e.originalEvent.changedTouches[0].screenY;
+        return this;
+    }
+    Wqdcarousel.prototype.touchMove = function(e) {
+        if (e.originalEvent.changedTouches.length != 1) return this;
+        var preventDefault = false;
+        var pointx = e.originalEvent.changedTouches[0].screenX;
+        var pointy = e.originalEvent.changedTouches[0].screenY;
+        var changeX = pointx - this.pointx;
+        var changeY = pointy - this.pointy;
+        var sin = changeY / Math.sqrt(changeX * changeX + changeY * changeY);
+        if (sin > Math.sin(Math.PI / 6) || sin < -Math.sin(Math.PI / 6)) {
+            preventDefault = true;
+        }
+        return preventDefault;
+    }
+    Wqdcarousel.prototype.touchEnd = function(e) {
+        if (this.sliding || e.originalEvent.changedTouches.length != 1) return this;
+        var pointx = e.originalEvent.changedTouches[0].screenX;
+        var pointy = e.originalEvent.changedTouches[0].screenY;
+        var changeX = pointx - this.pointx;
+        var changeY = pointy - this.pointy;
+        var sin = changeY / Math.sqrt(changeX * changeX + changeY * changeY);
+        if (sin > Math.sin(Math.PI / 6) || sin < -Math.sin(Math.PI / 6)) return false;
+        changeX < -50 && this.next();
+        changeX > 50 && this.prev();
+        return this;
+    }
+
+    Wqdcarousel.prototype.keydown = function(e) {
+        if (/input|textarea/i.test(e.target.tagName)) return;
+        switch (e.which) {
+            case 37:
+                this.prev();
+                break;
+            case 39:
+                this.next();
+                break;
+            default:
+                return;
+        }
+
+        e.preventDefault();
+    }
+
+    Wqdcarousel.prototype.cycle = function(e) {
+        e || (this.paused = false);
+
+        this.interval && clearInterval(this.interval);
+
+        this.options.interval && !this.paused && (this.interval = setInterval($.proxy(this.next, this), this.options.interval));
+
+        return this;
+    }
+
+    Wqdcarousel.prototype.getItemIndex = function(item) {
+        this.$items = item.parent().children('.item');
+        return this.$items.index(item || this.$active);
+    }
+
+    Wqdcarousel.prototype.getItemForDirection = function(direction, active) {
+        var activeIndex = this.getItemIndex(active);
+        var willWrap = (direction == 'prev' && activeIndex === 0) || (direction == 'next' && activeIndex == (this.$items.length - 1));
+        if (willWrap && !this.options.wrap) return active;
+        var delta = direction == 'prev' ? -1 : 1;
+        var itemIndex = (activeIndex + delta) % this.$items.length;
+        return this.$items.eq(itemIndex);
+    }
+
+    Wqdcarousel.prototype.to = function(pos) {
+        var that = this;
+        var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'));
+
+        if (pos > (this.$items.length - 1) || pos < 0) return;
+
+        if (this.sliding) return this.$element.one('slid.Wqdcarousel', function() {
+            that.to(pos)
+        }); // yes, "slid"
+        if (activeIndex == pos) return this.pause().cycle();
+
+        return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos));
+    }
+
+    Wqdcarousel.prototype.pause = function(e) {
+        e || (this.paused = true);
+
+        if (this.$element.find('.next, .prev').length && $.support.transition) {
+            this.$element.trigger($.support.transition.end);
+            this.cycle(true);
+        }
+
+        this.interval = clearInterval(this.interval);
+
+        return this;
+    }
+
+    Wqdcarousel.prototype.next = function() {
+        if (this.sliding) return;
+        return this.slide('next');
+    }
+
+    Wqdcarousel.prototype.prev = function() {
+        if (this.sliding) return;
+        return this.slide('prev');
+    }
+
+    Wqdcarousel.prototype.slide = function(type, next) {
+        var $active = this.$element.find('.item.active');
+        var $next = next || this.getItemForDirection(type, $active);
+        var isCycling = this.interval;
+        var direction = type == 'next' ? 'left' : 'right';
+        var that = this;
+
+        if ($next.hasClass('active')) return (this.sliding = false);
+
+        var relatedTarget = $next[0];
+        var slideEvent = $.Event('slide.Wqdcarousel', {
+            relatedTarget: relatedTarget,
+            direction: direction
+        });
+        this.$element.trigger(slideEvent);
+        if (slideEvent.isDefaultPrevented()) return;
+
+        this.sliding = true;
+
+        isCycling && this.pause();
+
+        if (this.$indicators.length) {
+            this.$indicators.find('.active').removeClass('active');
+            var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)]);
+            $nextIndicator && $nextIndicator.addClass('active');
+        }
+
+        var slidEvent = $.Event('slid.Wqdcarousel', {
+            relatedTarget: relatedTarget,
+            direction: direction
+        }); // yes, "slid"
+        if ($.support.transition && this.$element.hasClass('slide')) {
+            $next.addClass(type);
+            $next[0].offsetWidth; // force reflow
+            $active.addClass(direction);
+            $next.addClass(direction);
+            $active.one('bsTransitionEnd', function() {
+                $next.removeClass([type, direction].join(' ')).addClass('active');
+                $active.removeClass(['active', direction].join(' '));
+                that.sliding = false;
+                setTimeout(function() {
+                    that.$element.trigger(slidEvent);
+                }, 0);
+            }).emulateTransitionEnd(Wqdcarousel.TRANSITION_DURATION);
+        } else {
+            $active.removeClass('active');
+            $next.addClass('active');
+            this.sliding = false;
+            this.$element.trigger(slidEvent);
+        }
+
+        isCycling && this.cycle();
+
+        return this;
+    }
+
+
+    // Wqdcarousel PLUGIN DEFINITION
+    // ==========================
+
+    function Plugin(option) {
+        return this.each(function() {
+            var $this = $(this);
+            var data = $this.data('Wqdcarousel');
+            var options = $.extend({}, Wqdcarousel.DEFAULTS, $this.data(), typeof option == 'object' && option);
+            var action = typeof option == 'string' ? option : options.slide;
+
+            if (!data) $this.data('Wqdcarousel', (data = new Wqdcarousel(this, options)));
+            if (typeof option == 'number') {
+                data.options.interval = false;
+                data.to(option);
+            } else if (action) data[action]();
+            else if (options.interval) data.pause().cycle();
+        });
+    }
+
+    var old = $.fn.Wqdcarousel;
+
+%#U
+z#uuP{i*;bW{ulSV*t`$Ui#8G&N^Ni_Y9Sl!`uN7_G#1;&{_%?vMUnm<q?^QcZ9X=%
+znvk8_BGRPoQHTjap-f-zYd^x>8&_!Fq&U>C5;ztX(<>oG5N`7zl(C2LFMi-j&zWe0
+zVPh5===9OoI{v?x(iVDx*&J#OHo*aPb3Tgt#?;TbzQs~NT5bW>Q6_r5TcYhi9&_7d
+z97d)^#@BGZuPL3hdANL?jqsuCO}E9c%4j<^^othfT{vX)3ppya_>vaJlh(vGxmfsv
+zGy14`wH)ScJy&x4DG$(xd7*oi3!<|IUk1`abDoMd)sxY_w1PXlJJm>vg}_Gt+Fb)1
+zVPKSOPx`;yLc18eas#Q8VIjFVyvnziK`G<h;F>hVLV3-+L;-y?4zCpMK3lWtc#_A4
+zuh?Re?e}o)Xt1X8u%<^!ALVebo1c(gqrq>B%6F)5Y~952Hoj_`!+Ks)9V^mT?3X(d
+z<5-kd!>W9#rbzj_bfT(4#2wB+=#sd>cTnZBT0D-Y-8{q<O@D$v(TsT1v6F`;&uDk}
+z!Y3XsYCEexEEk_O=4Mv`mnh}o4i|czTEjd})YiaTX~0J~!(vg#(A5(#S<BapQoK|q
+zlgkrCd*k;p33g4I@~CQOqMDfVMUT<kSr|5Yb5U%4X5I!i-65AIB%S8ywy+i$_J5Zm
+zxZ`a-186#^QZ4V~b0X$e*axeoi{S_(=^B-kgsL%X*9<CK7i{#0($H5Mc;Y3@Galu1
+zt!Ko-iJ9co&t`08DJb$`S?wtj<@U{Ab3<l#8J9^sK(vg7u)NQzQALcfpc9;DfSq<m
+zxVw!%ag*KQ)Y=eoi{?8HcDI%h)|&N|uP~0-Fi}a?d+;7XP1+Uo$Bx(c?52K33+ZS<
+zvHmunbZ4u`?Fb6q5S-G>$ZkBPbMK^zm@31bH~v(otVkmZ1GTtlA5*YTp7~ILvzwi|
+zcICvr`)2ZGC{SSbBO$?-4J~7DzR$f``#8=c-wBqo(3-f^G{3fdyf-9)X;4$!@)@={
+z@!6MV^h-1LB~YU*3_&@c>u)6Dp2soAWO2X!FdX|FAIAnh4G3JH1i1owh~^;P7N#50
+zjwaj_5S%0o@bTk4Xm-9RHbQ5BecXhn#5Rg(RIRpp3woG7AW%740iR`$8#)h|p_)1o
+zn!ymA2=}lJ5pmosemWcz@5C5bWo(ww0-;c(9Y2sXw4!sxXE5hSm6B#~P?$ygIn7zY
+zZ-)$|TOJ4ZIXe2GdqkNQ6;|3L$<}>F`qw<N(!YYJ0p6bsjzjlt4>HyXx(b@lzEHrj
+z7rK`S{RjpY%~*;gd&hbNeDnE|%!%hqY+3vz+>lYFQrMpQJt=twYHuR5=eR|X@dT!5
+zqc*{hVWl;psQ95yXXU^WvI?!S8XjJO3H8sfcNQ}11anE|n9tV*|H}EQmxBNt?5?AP
+zkxG`+LOAOzO0C>upy|befzQBVSnaTGOixPnU&A347guFNSO{~PM|`lefZ76q=RT;z
+z3K!KqIF?%-Ko-5i|4dK;6Wt`3Pd;b-u$-Wz1Su}Tofk|laDEB}Nc1%u^^BI5xpCt!
+zA#DqaBb2>__t^NK#j8oECmAa2_f49`$njx`ep3z)3GPjqnCpk#yVrUQ@WI<`)8I4>
+zEHu&O8-{<JMPRc!876sT=E(wq_pcDdWl_)g>G*0M?hJo{P5xKz4B@H}2gR9)B>sm&
+z1N;}{!;&SdB@iyzODh#jN$hO>_c-XYk5`VVR0y!(I;CQP^OfrPPw{iwjp8NlTz7c>
+zA^`CeGlzIq$2*JdxohfIPrzG26X`aotH<v-h&aRC_zM#tv;H!-r4EjwFB<YtqT8r9
+z#54&gfn6ysMP$@zm_JrOkthLeszCQ&NPfjskq4TB$x%&;)26!DqH#E3_Y8sz$Yord
+z0qho7fc|i%KQ6iN*P3$81;-ihYVt3L!)J^HW

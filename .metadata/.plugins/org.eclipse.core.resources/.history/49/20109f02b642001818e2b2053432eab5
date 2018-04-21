@@ -1,0 +1,1590 @@
+/*! iScroll v5.1.3 ~ (c) 2008-2014 Matteo Spinelli ~ http://cubiq.org/license */
+(function (window, document, Math) {
+var rAF = window.requestAnimationFrame  ||
+    window.webkitRequestAnimationFrame  ||
+    window.mozRequestAnimationFrame     ||
+    window.oRequestAnimationFrame       ||
+    window.msRequestAnimationFrame      ||
+    function (callback) { window.setTimeout(callback, 1000 / 60); };
+
+var utils = (function () {
+    var me = {};
+
+    var _elementStyle = document.createElement('div').style;
+    var _vendor = (function () {
+        var vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'],
+            transform,
+            i = 0,
+            l = vendors.length;
+
+        for ( ; i < l; i++ ) {
+            transform = vendors[i] + 'ransform';
+            if ( transform in _elementStyle ) return vendors[i].substr(0, vendors[i].length-1);
+        }
+
+        return false;
+    })();
+
+    function _prefixStyle (style) {
+        if ( _vendor === false ) return false;
+        if ( _vendor === '' ) return style;
+        return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
+    }
+
+    me.getTime = Date.now || function getTime () { return new Date().getTime(); };
+
+    me.extend = function (target, obj) {
+        for ( var i in obj ) {
+            target[i] = obj[i];
+        }
+    };
+
+    me.addEvent = function (el, type, fn, capture) {
+        el.addEventListener(type, fn, !!capture);
+    };
+
+    me.removeEvent = function (el, type, fn, capture) {
+        el.removeEventListener(type, fn, !!capture);
+    };
+
+    me.prefixPointerEvent = function (pointerEvent) {
+        return window.MSPointerEvent ? 
+            'MSPointer' + pointerEvent.charAt(9).toUpperCase() + pointerEvent.substr(10):
+            pointerEvent;
+    };
+
+    me.momentum = function (current, start, time, lowerMargin, wrapperSize, deceleration) {
+        var distance = current - start,
+            speed = Math.abs(distance) / time,
+            destination,
+            duration;
+
+        deceleration = deceleration === undefined ? 0.0006 : deceleration;
+
+        destination = current + ( speed * speed ) / ( 2 * deceleration ) * ( distance < 0 ? -1 : 1 );
+        duration = speed / deceleration;
+
+        if ( destination < lowerMargin ) {
+            destination = wrapperSize ? lowerMargin - ( wrapperSize / 2.5 * ( speed / 8 ) ) : lowerMargin;
+            distance = Math.abs(destination - current);
+            duration = distance / speed;
+        } else if ( destination > 0 ) {
+            destination = wrapperSize ? wrapperSize / 2.5 * ( speed / 8 ) : 0;
+            distance = Math.abs(current) + destination;
+            duration = distance / speed;
+        }
+
+        return {
+            destination: Math.round(destination),
+            duration: duration
+        };
+    };
+
+    var _transform = _prefixStyle('transform');
+
+    me.extend(me, {
+        hasTransform: _transform !== false,
+        hasPerspective: _prefixStyle('perspective') in _elementStyle,
+        hasTouch: 'ontouchstart' in window,
+        hasPointer: window.PointerEvent || window.MSPointerEvent, // IE10 is prefixed
+        hasTransition: _prefixStyle('transition') in _elementStyle
+    });
+
+    // This should find all Android browsers lower than build 535.19 (both stock browser and webview)
+    me.isBadAndroid = /Android /.test(window.navigator.appVersion) && !(/Chrome\/\d/.test(window.navigator.appVersion));
+
+    me.extend(me.style = {}, {
+        transform: _transform,
+        transitionTimingFunction: _prefixStyle('transitionTimingFunction'),
+        transitionDuration: _prefixStyle('transitionDuration'),
+        transitionDelay: _prefixStyle('transitionDelay'),
+        transformOrigin: _prefixStyle('transformOrigin')
+    });
+
+    me.hasClass = function (e, c) {
+        var re = new RegExp("(^|\\s)" + c + "(\\s|$)");
+        return re.test(e.className);
+    };
+
+    me.addClass = function (e, c) {
+        if ( me.hasClass(e, c) ) {
+            return;
+        }
+
+        var newclass = e.className.split(' ');
+        newclass.push(c);
+        e.className = newclass.join(' ');
+    };
+
+    me.removeClass = function (e, c) {
+        if ( !me.hasClass(e, c) ) {
+            return;
+        }
+
+        var re = new RegExp("(^|\\s)" + c + "(\\s|$)", 'g');
+        e.className = e.className.replace(re, ' ');
+    };
+
+    me.offset = function (el) {
+        var left = -el.offsetLeft,
+            top = -el.offsetTop;
+
+        // jshint -W084
+        while (el = el.offsetParent) {
+            left -= el.offsetLeft;
+            top -= el.offsetTop;
+        }
+        // jshint +W084
+
+        return {
+            left: left,
+            top: top
+        };
+    };
+
+    me.preventDefaultException = function (el, exceptions) {
+        for ( var i in exceptions ) {
+            if ( exceptions[i].test(el[i]) ) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    me.extend(me.eventType = {}, {
+        touchstart: 1,
+        touchmove: 1,
+        touchend: 1,
+
+        mousedown: 2,
+        mousemove: 2,
+        mouseup: 2,
+
+        pointerdown: 3,
+        pointermove: 3,
+        pointerup: 3,
+
+        MSPointerDown: 3,
+        MSPointerMove: 3,
+        MSPointerUp: 3
+    });
+
+    me.extend(me.ease = {}, {
+        quadratic: {
+            style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            fn: function (k) {
+                return k * ( 2 - k );
+            }
+        },
+        circular: {
+            style: 'cubic-bezier(0.1, 0.57, 0.1, 1)',   // Not properly "circular" but this looks better, it should be (0.075, 0.82, 0.165, 1)
+            fn: function (k) {
+                return Math.sqrt( 1 - ( --k * k ) );
+            }
+        },
+        back: {
+            style: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            fn: function (k) {
+                var b = 4;
+                return ( k = k - 1 ) * k * ( ( b + 1 ) * k + b ) + 1;
+            }
+        },
+        bounce: {
+            style: '',
+            fn: function (k) {
+                if ( ( k /= 1 ) < ( 1 / 2.75 ) ) {
+                    return 7.5625 * k * k;
+                } else if ( k < ( 2 / 2.75 ) ) {
+                    return 7.5625 * ( k -= ( 1.5 / 2.75 ) ) * k + 0.75;
+                } else if ( k < ( 2.5 / 2.75 ) ) {
+                    return 7.5625 * ( k -= ( 2.25 / 2.75 ) ) * k + 0.9375;
+                } else {
+                    return 7.5625 * ( k -= ( 2.625 / 2.75 ) ) * k + 0.984375;
+                }
+            }
+        },
+        elastic: {
+            style: '',
+            fn: function (k) {
+                var f = 0.22,
+                    e = 0.4;
+
+                if ( k === 0 ) { return 0; }
+                if ( k == 1 ) { return 1; }
+
+                return ( e * Math.pow( 2, - 10 * k ) * Math.sin( ( k - f / 4 ) * ( 2 * Math.PI ) / f ) + 1 );
+            }
+        }
+    });
+
+    me.tap = function (e, eventName) {
+        var ev = document.createEvent('Event');
+        ev.initEvent(eventName, true, true);
+        ev.pageX = e.pageX;
+        ev.pageY = e.pageY;
+        e.target.dispatchEvent(ev);
+    };
+
+    me.click = function (e) {
+        var target = e.target,
+            ev;
+
+        if ( !(/(SELECT|INPUT|TEXTAREA)/i).test(target.tagName) ) {
+            ev = document.createEvent('MouseEvents');
+            ev.initMouseEvent('click', true, true, e.view, 1,
+                target.screenX, target.screenY, target.clientX, target.clientY,
+                e.ctrlKey, e.altKey, e.shiftKey, e.metaKey,
+                0, null);
+
+            ev._constructed = true;
+            target.dispatchEvent(ev);
+        }
+    };
+
+    return me;
+})();
+
+function IScroll (el, options) {
+    this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
+    this.scroller = this.wrapper.children[0];
+    this.scrollerStyle = this.scroller.style;       // cache style for better performance
+
+    this.options = {
+
+        resizeScrollbars: true,
+
+    $J@w`jry
+zW`3(&?3sjG+b7^w`hZ;T<4AE@Pk&vU{`six{~`na6H$U)Mtdd7u~Wt34*7k*T*H9O
+zC|EY-(c3*)aL~Qt1#PN3Op#GF5>qr_OM;+S5u*Efr#!6UD7I3GSJ?~)KVy{(kwLw%
+zdf=xWyjN=~_wo?4i?81b0dfd`Z5U_9Z?WoBn|H}wX5(x*Asc7m8O9W|Pd{WHd7TbD
+z@Ed$D7-tbp#`<Xx1cS`V=+=rq7npy+NZi9h(Ja6x<ZRQ0Mx3#c&ftF_Lv?)96LMB2
+z6temMM{fRAgyft8TVrrGh{>&u!R+~IWC4Cj{zsfEmz^~x_-rQK*52?Wm#7yAU1b9Z
+zKR_&_&Nz$LFFB}NoW;V;_m>-I+f;W_=!U~No*3zf;ZrhLx6}0IWO3a`J8aD0X}QvK
+z!TIXOGY-zytIA`(iPVUcF3XX&aEtlf9YQZw;qzQ*5%!5^K=z8yG_enp*4%wJ6J5hy
+zGFT^oGr}RDZYM(Tja~Sz5!Lom84W9V3U_9C;gnI&ik#+%Gw1fvw+b0t*_U!M9hZmt
+z`>A}Dx*sLA&S_RA>f7LFo=UCul%}yV!_&U?xAHp>LJ1^4ae}S;R0caHmD&gx7|$C3
+z6+OCL!SV@N;;<4F#Y7)<3v|e7vUdj@wxwK!PV!>DQm72jTLKnDe{DId-zf<=l_o!t
+zQBQ*|S8p!8`*B9>i>UA$vWjRI^H8AL5_4lz<p&KbQ8FiqI93`3mKK(>iPi6Gq{OE?
+z-!lcIQWHK*jDA5*kBKmbNz$~qUH*U%ITUd0ATw1sF7j`z(A_038quUJH|z8>bRw_i
+z4`p3i_lwQQ3e@2I+vHEv;FR4_;n-A!7TE}P5!+j9%J^fQNzj%6_-6T3t&WS(*#A#-
+z+{<Gn7m=gtuF^zdvXHOWc!#(RqlqN5j2yrbrU^S^!Jm|`JM@V91HU}0vg**<YpSZc
+z1>ki`P^i(RD0u;8W{BUap<osYbf1D9X|B!>%>#wHn4h7l<z$Lc_y^@f&Lp*#Kbbu;
+zH5faTL890zKI`0lHu6~$6Q>Im7%+5&Zm@@Ao?}~bGXj1L9ma-O94^f4pz<t70cI8%
+zOz_{J`!v-n?Ja^x6+??wRVMu@JDE+GSd(;$NEpC^1IPB{FYBz$y3WCiX0O3oGb-?!
+zt}<VsmK(+e+0NWA+l-?^Yw;pEJ|i?+0K%64oNP@P42#&;z)6T5{Zskp8f0nMGI&eh
+zrbThO1~44AlG`wU9~jL3)9La#84z%IIUmd`1Ul@R>B6|SXL6%&(Cv+hqGFJISUUBX
+z^B|e;fj9~Jm2ndErNDgln~HptS&d&eWdQrPWv3e?C|-!h%glsz8ir91p|j-z=cr{v
+ztBr1!29)2E|KcX<RF%vu&kb|ZRh59v2l&dJHg;6wk_tE5Aa$pFg8ZmKeQjp$l+ZLA
+zV0aQ^BYxI6V&a%Y!Zqy~s;crol?$MK1xVv?8k?jJIm2q$3a$d<V<<WcJax|G00!PC
+z9|^!mfM~dIQFL7s(pp$McQ~;i&DIg9T2A-M6^)x*oe0f*L{``KB8!|qZ$gtVR-V%1
+zmJKL@O`gTk8b2QT1AzdVkL$dE<ycX6R(*D}*6AFPF@L#H4y}2%yWBcEIf)V}(hZaA
+zisShWNEpf)jT{j<<%g%d*3>-50Fu`A=04Zi$lV1V1{n+;(DWCsOxn138uA!qn&&=(
+z$4$Wa)5R~&pjz3oyuYp1ad5FK83rUWEFqx@Z>${)g!TjZC_E!>_ZVvcMg`|V`fbe^
+zsIT4Bcuyk_%?RRn^cVy^O#v0Pk!tq7udh?wQ4EFB#uzCu>mza$vmQYij_J~ul}ocT
+z;2!fGGLk7R#%&;4Uo^RIQ?1_^d<9>BP(Enh$=)rSP~;ZE%ZZ_krj`SjVM`_^ZEtwo
+zh{?~R*X4ajH?gKy`ld_8Da^GjBPNCcoUx#FayD<No1imgSwPx%q*R!|xHrp#*nuFS
+z8DI#0Wefv&aEC!)gSE#AwW`YbNxGKz?aEgVmL@K)*&KIwqus^aJ|usHxeb@E&K0U~
+zGZIRme|P4vVu=Q->_dp!Whxy{?v+jf5@lme7l4hFsT(I!&pFyyyIsA>nPKJ?xdk&H
+zDq_pP@i<k-KHy-><lgoGRoYp2e(v#&(N{2s<MPG0pb%b<a0(}uju~3U&%YirV<9AX
+zheOrla*!r83DvBc`cl<wS<g{^X}BOrD9(tyir<5~ROF!ojT0*2QI0P@t_ls4VB9^Q
+z2Z98#Y;aY*!_uHKh>=*Ivz!ObwY~Vo*Y)*1al7;ZPp5H27WVsZ<c+|&8a1phcn6wS
+z7Eu#@56lyMf*gG#_%?MneC2<Y_cd^KR^^?~@MRLd1W}RdR@>C7O=m!~?HXzwLNI~E
+zKqi2OQ9GHrlU$gYJKTF`l0lFVBMG|!EJR0Xi=c~NG+K;WMGGrhNZCaw6iPwtf|&KA
+z)n&CB)UNw~KF)j2dGCAYo;!1g^4o2HEtz}Yd*1W$eEgr!^C<lTdg!^^@Pd}%Kn(fD
+zfKA-Li8_egzr_fL@1W_&*Zmn9fF25_GJ{>$Kr)O>0&(~_J=A)6Gewx5%ZvLKeRg1I
+zNXR!dONF0=%2_(4k+2DzCI`gA)3;EuXJ-S)J?npXyjtSCbLIYy&UVlo1a_rS|C<pO
+zsg?&Dt)F5$pAkkTp{^M#Z8m*`Z7oU-WbbqW;Pbd0d+a^Wt`k?JR!!6PaAJh=YXEk@
+zvwz#wXE^6X#W^ZIO?)jY=)Il@tPPcB9`Y2^jNL&X1@2{z@Fo9MFoDIbW|#!PGfCEH
+z2`|m?Rcqy%4I?rzGMcfucMy`-28K?b7#W#jE$b0VkOq<Jp$<>|{8LwQt$ZMy?x#JX
+zI*N3UhZvbqlvd%~Hz<MJViQST+InL$J*KI|1=GU*JWW?2#K`_(y-|g2hJc9!Y1F3d
+z$+-nQkI0axyats=>w9F1T$IY&2(e_ka%b1!<=SawHcdf?th!tm0`5VOuwNNXIPR2K
+z4)PvOQD${M<hJy?`jlJ=2GS>Vta%xl@dE^x-;#%E5b&XQWMsLPl?R|z;>QV_Qb0t4
+z9z+^xPU!h>2T2^DD`R;i2c+$>5?&KBNy7g6$0HBO%1i>3$Lg5WH|U*Z<dzMfJ1{R@
+zaZ^^pbRs28%qc~WoA~Iu<&I(ui<j)B&sQ`C#LQyYjJaV|la&5>6U4$8j6r=yv`t4U
+z@L1JJJDEWI+({om(V^h)CfUfT064b6knHUJ27}0AkPMK}ub@y@XbHZBZugA%5_s15
+z0XFvnIu9iu<LHDZ7FTSPAz>g%5XMvEFsxJVb@~+Aws5WsADFiR&9&n5U=ksey(x2?
+zC6KcIq~CrbZmD(R3$Qul!0ZG)!jUwdu1n0wQbZFcnWcz^AjHzUQ+#0V_gRN1Hvt&`
+z3sQK>4bYum0S<f{-Nbm-y96ReaxR=SK<lMM5~lT!vk_u03Euv}?5_Y9?xV@gRY(_2
+zw`UJ{029K#60^by0X%dk!}XFd4h@#xNB;$)X&iO)j&l8+C6OjUw#9r=Y?ncq1h7Aa
+zSRL_0Ion+8v}V&lZPT*KkT9{yBsM<L;v$KIy=oRYtkV54+ET8uUrU)m8jc(O4f~`d
+za)lH0AyYVa*Lv5l0FuLN*IVdfP%@INj6SU4k~<IOVn?xQfq>kJNCSz6@%_eD=?bx$
+z_?5Qu`8D_A`Z*CzUYJhPt*lD|I%J-Rvj`dj?CqUS5kAZcicR5Yk+h%1Qck2}nXkI0
+zRPV+l{MV2<SJO@GWeFXR9r4H>mm&=9$klr4R-#esX>m9sO!H#8ZW!6;IA{sW1&1DN
+za;E^dlRD9+E|t!hnMI17=e@+#cG5H0L6`7?V~-;~sTjg+&zjaM6bqzH@EAKEyKWGx
+zZM$?U$%NFmxG`*|&|U0$Yi%G!bL_TXV++1WUj&p88He@H9{mD1wKll}RTWeOBs!M;
+zkGuVkv4U^V=gUa=85|f1+$1Vn^=c=VZc>~9n#jp>Z~?-;!LQ5J%GfAdc#)~|IQ>!@
+zwyqiG8A~=svhiV}zeu=5-sFUXv7u)2i)k^5auOWVDHJC{KAfH!=icEbW8w&}qaO@c
+zE2D@dDj?a!Z7saPlLnh?4UrWb77&P4?xZd(@;0_bRll2%NM`ZQr*A?$0+zg&-XHnr
+zirYJJbEovJc1xGjpV>VJs4m_QC}nRKD{jE#K1kSq#Eg7LIW|KBIGJX^6cMO5NMSt%
+zZ@^oxp_|GzSpAjFr3@VwRfQ&UY$WlTAn6uTc|D34qzzB(viU1<UT4WmEH{HNsQbK@
+zil8G^+GL^|itwztE{k5y7-vMXC4sCw^4dZpfV8U-v{*h;Vrj(99dNRv<CTfAq3~Wm
+z&ZbGHypYK?R)YzfgX>EAG)yD6D=g+1LPx&KRPFEabg`0+cPV>Xe6GrYZW_El{C)gs
+zuu~7wz~D%wR$?vfDPOiL#5Z#Y^_rDYqkj}v1{{BOke<&{0Z5*LRMfR9Vo{8Qr=%SO
+ziv#D%=d6iA2;rvnFU`Cl1+_9@?9H^UTw5*zXQ(s2Jfp6xkYrkHTF%m!&X|G^n9}^o
+zr81*O8A+VzA6Ji_(3NCS`B2OQ^wDxn9jdFjW3q-PXSir8S-`1+&2Xn2d#L&g%<=Ws
+z31`U#165A`j^W4-8UR+8zQ4giML3;iEfu`UwUeGOuj}jb*)G9}C2m8W_*=tJ{e_GC
+zFo)+k&oM&NvWU!ME80_htAknd`EFM|0ouQmK3FYnWJz2-4e|Txgp@Nb8yFecFfe!_
+zlfqgJ>q}c@DHuuL;7H+{=@Xo}hX8gr05Gz?)@y_t=+7%-0dUr)XJ8$hR`8XRovG5=
+z1G1tc!FF-tbC?U=)ZKeCeHGFO6=f^O;8sNg9X>PW@0=)30!v0O8P^m|E><K)FZzqX
+z)v0gKrQEOtU|10lvfu3*tro4KTGu)2(%LI|QKK5x^v45q3;g)HnQKeK*z`>bpH|Jy
+zj~_=+iuJ8KLvhcu_mNLDn?%#&{BhTdjr~tj_BZy^5|d|%?ZbB_83RTIG3d&4bvsd9
+z9SN9;BhSuvl8pqRaWQ=>$d`Iu#*DM@k`<H<%`sn!`wyliOu6nfVVb^6YQid~X)8yd
+z0J4~s!}G`_P3HiRr9CUCVICE~iSf`BebR-KX6*LV9%(uW(>kV96V&1yvCbx&A-*(1
+zBQVeyM*~;Yt5XPNut<qAt`^P_!F$by(Q#Z?(fT3W(tr%K02(kwwt)x=l3**F8F>mh
+z?0{d|gb2qZnJU&wT80a_m?sApaimrr=A~EzL;@w46q8qaQN5r37}Ig66;ok(YWEc^
+zOf$=KFK5On84C9Ad4?vk)V@;HM*svV=N8^9i!J2@*nyRcvp?ST22fFe?u4KOH?#ZO
+z$A!-s=ipsC(nl(-RKO+S=s|wrOfld#yfreGPB`BYrKX9#>3*AFti1E82AaK_er|l2
+z?V9&)B@?LurO1d5<2jjAyERm?p=NUAVGBTg9oYixz%KgBV*Ds%^_(K1D1qs2s^H`}
+zeNrtmmT8XLW=yI~**fJl*gGOaea7my2<;%b%vKa$waiT(ndk6-+)F4?z2wA7X2$bK
+zoM<$R|Hclh?{uBOj4p0f>yHb=BhK+jHIR99x%elEud}E7<F{Epk>w^~=2(9c3iAVo
+z%Sol_?AP7luR+ES()%LcV{h0hCOMnBBQD2WF7;RFdJWjK$%9jag0vX_T%+|F;RJ42
+zJD1Rj;4~!KEQ_WbtGgsNLr?e7na<P$6RlNqwtZmWRpNBlYe24Rs>_hgST9AO26|Wo
+z%X41J))t5Jwg_ZWWVJvWG^n0vaFN0nA}N{g+(LiA^`&ZM`Ia)ElqN3B&@;Zx0w(Xl
+z*-d2}kwa&8zn0=cR{heqFl<?xh7!#%GT_|Pvxv~Ki?Qbz?HDdsOKT9P7pqd_XD5B`
+zf(s+JXQRR333LmsFV_SL!_)@NdsACo0%@zw8}u78m-#;W26nf1$XzZ0o|4$PM#tjR
+zgr+s?ZC9)}Vq=vM;sj%pthfo6lt4g`yGbHh)K^o9XN-S~L)=3HSk>}sRnr<xP-ML`
+z+N4FChG<t7Ra{J$*%2S1dxMbb>?7KNBdrYp<_|SY@oXb(>IcY&x&OX{F;a62xNzv4
+zgQ0g`nSzU)XjA3u;;A5wy>#{<hl?i0r2~|NS&Tl~S0vu^K277yM<XK|+0^I_@XJ`8
+z<s-6-<Blh7QlP_kjslT-FFD1#>EnnR4j`8OoCI0Owg&HbVe=qeflcCsG|{XQ6cEc>
+zq6_J;)DAcDNxMw6MqctFLbgvi43scU_Y74O4{`~EZ%1gKC1T_}5@S)ZMRI45lPi~e
+z;=eBYMrK#=E$1oL>^>_0wN3;iTpnXTl0}Hw*Cmhhr5woZ^UC5jrEQq@*w7A?U>fS0
+zraPb~^^V5O_<T0)Ej#a-Oii>SIseoiv7tl2#u+fE#}{U~o3^0k+u(&IB#0qDxZ_nT
+zD|<Fb+5eKt@G$&2OThda;abA+D6+Vp{w(%IH|p}V^b;?)lMEyOcwy&bS8{EKy^lT@
+zS=pS>SQ^TpkcrB9i`76_)cJB{3D^kC48u0TWSAl3`yk`^W*Www)oki&)eQrtW^L-y
+zfKzM$i#W4=`VqZ7q$a${n@fR}GrNF`Bbe3Ii7|z`A|dAhU~JYOp$`dS5&e|qfNkA6
+zJ0}gid>zft5;nb#b{d;xb$hc`59wYkqib#2kz<Kzf}vR%XG0xr%f>ePgPv=WhPf@n
+zf{RP&kIS`lq#Z=l9*>FWA@q#q{IPe@Hi#$>`(62y*TyJ+x-o?;Vh$<tB_f8CnHTOo
+zUS}Pk;mj$`S`xOG7&<wpo=KorPy(fj7GMvrMlT^!EI;Tef|6x0HZlQwb$-@bveCm8
+zKB^&Q25B5lHd<2yZiV$PO-38S3^R9r;-Ik0-nF;LYbC*~xK6y;PYjq8ppO7|yqDeq
+zT*pRu$L;b=dydh4Tyk138I<DV<IS{SUgoMwb!|qGQQSpYY?sKkSR8hl1X1~&4$bu-
+z!_A72dYU*~cmNlEZ5RL`^iuI|_*e|OM2lyOdAFf#KdF^L5cm?4*e9k+cZZKdLymF|
+zGZ)GN#K9XX<srgv0dxY9iX*@t;Xg+Zm1@5`T{Bxhbo@1g=zHia(|}6G3i4;03Fld|
+zMsEeiVCN?9wwLE}M|6UOsjBBO3ZsPJ;F>P=Sru;~#6asSxe_bpZ6-~CAQqX=e8FP*
+zqhcwLcd#fuH1U?Zhg}DOCKR)@s7oNGE!3qiU{O*OCE_=9Bc@?*=x*``u+gXKlex^#
+zFvveknUD|&R4L-}yTW(6!~({tBaP{?7t=Kmna1}n8@+i4w)V6`p<$f!!w9*GTg!@6
+z1bp2>e}zN|iQYt(9xTy(0&8NEB(IDO8;FmuZw|L>^39akR2aWV9mha{BKkIc8DzkE
+zwok~*0&a;=#&{{>>H<KMKo&OAOa?12fqSgWJ<+T^4542|PhttY-(sQWJg}+B2&qeH
+z5YC-joHDqcz!JYwFNAl|S8(~92K*ypQ~I0#On`(_k}ju0!hvcGEY7>>5i?dey%co!
+z9I)vVjxcZuc;&|wx#h$qTTapzY?(ixPY@?7N~X$OHhr<+2ILO<hz;Xs8pjQF<U?YD
+z_*)D(EDcOo@QyUEh<}UmY%b!9=8stzoZsaM@ge$KJ4EY<x7G(1)81{A)I<yOZZtLq
+z%3jhe1NhVt<Z8j(JdF!OeA1uDY(aL=?t>Fm?&Z-PJuAM=2V$F}FX}{|tWLy)g!7M)
+zUvXllAY^?)oSh}<SmzLOAuTrhNs_Jc1^S$NTwMwUo8{S6D;_*&UpL%4^@_BL>e#Rq
+z$}PeuF{ww+;O=N@IF;|yPwiBU(3|whO;oM%3`0$o1*w`qw_=KnYnK-z=#La=P+l{5
+zmS4JBrp2RR_5VtxAl1}c-yp4IdQ?#aYc0F<CCd2pQR8X)V&uj=OB-oDR~(tqbXf2<
+zx-vHaAA0E+wo~k2XBr&K0s2#J67cU(Es})<*GKK8`DRHbIgpq6ZFbOx5;_@Z2^qX%
+z=yj5B=mu#jh_C1PwsKMP9->>}{g$f<21Xh*ITWD(3~DoK$(!UtjTttPuc9AyH*;s>
+zAb*@;k(2+Q#UeFHP-2{5Da^fSO(T{GUyYP#Gn?xtQ)>c(IU~b&>0SEjl|8lUAd{i`
+z;zx;NIxElwl3$MO;4M>~^pI}ifjuJmE`6AjP@D}Z$rv5!)ztyJD?q;w%ciWcd$3$S
+zRwrUZ+yky6<N8gxnRfD~NE&|@k18^`XI&1P5dzzmQjs`wYR)i3^l2rS2UU&=u&E{?
+zZ3v36nJ^XlHVT!eiX%aIajg2|)Q@+WIm<{qzPCOpAm9PANFI5MPZ)iW*5D1!o5`<`
+z+QOHofhBKHm_&6!*L&%`FlR$+T!^`IC|}%&(rgU5{kcAL;wK2$>LJ=_=@N#&T-UkT
+zWTXnQ$lLi&vBA1Dr;XIsBhs68nL>2;D)H}nUQW^*;mIMQEhi@y09x-s@IOrNi?B|{
+z9GWx-?~?0Fv3yItIxxu1-qIju6U-08Bkxv}cQTOadE)ZRGiS!Hx;QIFz=fenv5~oh
+zMwYkNJBbK0C+I+>Y8G1J<hl)PTM(_-JaJP6KUZJ^!RO7zWBMNaqlGK9jvk8rz53JA
+z5GQz{O*cBg*9T?-){(~MV79)_zc@qIHoGOGHY(F<QzIi9wmTcP8_Uoa*s!38uhW&h
+zIg_RMx;s`~Gv9-kMivcs3wT}-DJX3yK?*)S>L>J35P}4pAzI`i?@)nLD~S!v%8vYV
+zi6E-rr}<1**CFIuT4gbZRi%Lo`v!(f7Iipi7Rb_^DA&_FfgYrDj6}(B4tn2qqGvKX
+zdRz((K7(^$U_=J<8uEKIiPwZi172i)hEAdt??{pCe_P}M+Kr;6fr&BHo%{FB!nzAm
+zxB^OXZW0l>-oOoWezG1`qCB%_z!1~4cTjJ5WzEx}bUC4V^D<dB`|O<Cq7Cf|FLiDQ
+ztn;8Hn!Ke_hZCm?)2BnOIM1CA(UdvB*m3}aa*)%IRS;O6K{gHL?hG)Q3~j)-Ij~3@
+zKt0N)62#W%C{o?J;rZPN(A2%E!uLE}+I5!eOi}#mG&h_9`%EFo0Y$0S1zjWT<ZzB*
+za|%qkKX*GqKSMU}$J3X&&`;5{7uyypm|O}=LQBfozYTPW+mld`%9?LRv0uEk!F3Ff
+z|5m0EzmWHpJ`)`5+?cZUj+l^j_w!1bO-?gdKr!xVAlw>oy6|fsie%8hU{V|(y&K`=
+z)SNEJllyN<p+uVv@F;SWaCGKN_#B<bI2XcTCA5DP*-+{;RL|1FG#MYuW6?o&W61$D
+zAQ>Gk4V5KRK?emxnGj}S*xuYdlTOc57u|R*#V9JK{J~Zgl+K;yHPeqpGp)j{F1+)u
+z{1^o3`9>rBsR1ryb!Wq?MvO=IZ?DpIaqb9Cq~pm|MYwHKi|miPXq^zFCeC>8lG}?E
+zTFIMU>aW<>^-AM>&Z6`8pag8zrq?xsT`6SZ#DS2@h*b4D(GbkS#II;|*H<K6)P!RP
+zgR(+(c)@uYHMX^6%WG99v0&=9&^H9mPWq>yl*1V-?Ka4Z0`F~<a=5K3_MKZvS6iu;
+z#Uo*%pQQ8ZsI6y@h2V&}SoyMtBE7Su`g`eZqSkoqVi#Q!)Q{O)1gxRVQFn8i0O%E(
+zJqJ5@9I{muTvilj+BfH@y>V-E3oBE#?aM@+uuHnjOSPG-MfcKvHD}!ru-c==b@=AA
+zAJRu4c?5V)p<~df^GM*>8a{NFBtCL^iaZ()qP=MiL$hBLUN!OebcgQDX(es4iAH@R
+z+(sU${Lv1n9@pd7Cwu=LV}H@qz<1xL8(|p@Ol;ibtAQj@1>4oENGJ{UI-rva0HVer
+zl&zUH#7>&}CceF63364nEGh7j?WQk@Q04j#LoHx#pqY(ReuM1`O=txEY(Eqd`)(4g
+zc$pX{_Nwh(Fhy+i9W)X+`Eq{Jv>nX|GLq-s%~#oQ0q+=4k%7tw=_6>d*}youVFChY
+zwMnrU5`Rh&%D_B|vMma^>1nzVe7{zDo$&M=Q$_twl0<ZVa@dg8lZ$?Ye7=xd{S<JD
+zKO@|U2uE9ql?d$KQE9^E2vQRg+KU?dlxZ~!wF|bmEIr8HPM?wO34nX?6jOax(Sp@C
+z-l<($Y`cNo+D``z?Qxqcq#>E^+a!i2@@12>o+;hTd~OZHOzY_{f_7!iOw!`4Q>Nbr
+zyV{!M2ZLH{f={e5P3bbKWn~0t-R2Vf9eE?}#g!ZAlaeL@;6~HuO{h8$iJlh?(dljU
+zsak1lsFxd$50=<s1rB+34`9a4vM&Rd(q$4&(zqRDfYDK5+%AQwtC}vQ)UD>n&D7^%
+zpjOXkw3sAaVp<FV;AO;_5qe!FORx@w+6wOB{PeRMRS`BAw9ty=gM_7T%Y9$(hUAez
+zegBF+uL4Z6Atcsj#~YYOsa#+Oo3s49ODD5%<RkHY2913!80T0AwfdX|%5xRFK>}F8
+z;}Byz=>v|Io-JQhY$vg78Adp2qFOTi7HsV_eRKZnh1p{uGLKyV%?pPcADc@BvDbgM
+z(a2D_Ceb*!Yt2S%5i&{<5qUL8S%~l_Gz5Z$!a#~)O#*Z)#ldY<>w1+Y2@OX)A})l;
+zV&n7%8b%&b-6FC;#9Rjq5z@J~C9u)WPTfrx1r8Xz#596+o=n-aybMh9rC;3jOnGcI
+zkX3bxZ^Yg(P%HIqny3#|HjlYxv5XL$X5?oyJl|VjEhXWG_;6KYqKN&Xk$yk;44Oas
+zdH)4N8wP{lc~F>SL&sw!tZ^~A*eoC2P#PL44XtdkZA*IqNNuy^K6l+WKgAx9b-U=U
+z!*hfb{W*P10U3KCED_h4@S^P*(H5C*$zfO?07`*-iZ+L|ETZfom}~rO<9smN+i5+s
+zVXmPz=IJryENZB|M0<e7x!*^XY2IYY+(MG3^nxIzQ-e{&dzv;wuEmKjysE~6j&?*_
+zq>8<m6J6>H{jjaO2oBedUV<j-o$q>l4PP>OZqIlXA-igwJ7jukzKz}|-Br}GgAdF5
+z<mQ%!(hPKjeq({=IQas}|0_BhjnR>QEG>(L3&g~0KOlp(0;rkYKTW<kqBGum(;oZm
+zP5?BN@q8euLmhaHXAW-mFn{T;v-0so5`3m~*E{K=F%&Y|?GmiUm(9cF5}uaS{R7sz
+zk}sCy<Qji6Oy!LSlV)lL@tc&Wihn%q4!-x!uNy`9FPDDj5kJI4V0LatAB9r=?1?hs
+zujnUJ5%FX)d6wxZeE%DI24n-mxX7|muE5Ls(6_-{+iS+$t8iE%hS`7E=(9`o5M;hc
+zt{p$OhZ{sRyvWbyN$Gs#O4mWFtP2DBndLp5#}wlYQN0=(?bc9Ypn5^Ub^5wp>bb5G
+zUTVr@tj`-ZZqIR~Z)}n?2%*{N<k4RQJ|2C0>pu5hgw;@0Qd={Emci@bVc-=sY;6*V
+zHL&g0uo9l0I$V#jpSMouTkex@Fw@BQ#fQQh&^_exWIP)yg39FneS!JTtH}cf5V4r{
+zAYLxr=RZ4EmtW-Yb5-8%y-OwYOm5k3;_-D=+wK=2xII+EvT!TKV6`mzhQ;+f6mocJ
+zt(Xk2zLhHM7*sDVx<~R&6=v54pU%C3WRzqwM#Df~Ks>&Uq6iy_MkG5S0}*q+!c8Yx
+zW4ZbSoexnL^bem)Zeelj@bA&5ae%y_({X!RCOy{-pD|EfJup@th6`}z@L82wt<3pM
+zOt;|1Ip3_7tyh;X5R{7|8eL1=z*A0NpfEp!v)?Oi81m`IVZ|6+wuS>CjN8pV)*wN#
+z(jGKF-v3{D#~&l4mvcGhVy>hGk9R;grg=T~(Jdf2+}q+bfVx{$pUg6;sIYi-j(RM(
+zTDwYL0Z%mmkOouTNVLdeUyzorHY*^W1wk9*h&DxV*d6qDw(T&lS@F)-wlk!0sS$dp
+z0i-E*E;ai}Qkij;_D0_SK2E)b-Uw<dg#8PHCTYOGYGIRN0U~tfq)0<FAev4thIuo6
+z7<3hcMIeoXzY<gY{p?t*_M4rJi=@_p#Y<*&xg0C`)*>kV8kz|@^YXXd1@V>d_*Qgz
+z*IUn1Tdz-}?Z{pPmP*Q!ihh(`vhKZ=y?Iw?J8r_o`Nc?Qm0!|jl`-xr%>qifL^;|O
+z`6ai0H>7I*Hy5Bp{_+e}Yn+H<5Oa#Q<80ADG`smSvO{JAmJ0=?upcuiXth2ejWob9
+z_*W28sngo<-t!JrwQ2bALAsQUzY?-OrC!q^z37(S4&Uuk)3<q>Z$E7TAL=CZa#2?u
+zIKy<3oPiPfs{K%aeD~9>0cLY3EyHfTb(k_6ChDC-YXZ-3*<U|EA*(ef9omL%w3QnL
+zFr&;*Q(jCCwiC!6c}o)V3;qtM^EP@rTHRZZrt-z5Rj3D=lKq3v6X3=abNfC-Z@o^_
+zKWJt$?-#pEy_Z^Er1|n4j@K5lYm945`p?|JD7Hy_4>zFp?AG&PpNpjyfwnd}>8T_+
+zlVOl1iCD39{#e%$Aov&nTGB}B4w`IrDHFx2Ig@PC=XEvUF1pPpg{O4*{^sc#J)=5W
+zni`8|8<d3DssYd@>Fr^<Z*T@MO(`K-<&VIJ8$_XJ7WSjGX<!)q)CYKkh&8HvwEuLS
+zYak@Px-PgsA*}$yR%SXbO#ir;KF@G=GAoX6rcY;G1zzL@iMhj$QD@g5uFffQmMSBS
+zUEj9Qhd`kakD>`!zLn<da@L&bZ1|1SzU5MJcFPv%j2-kNOb~*t$j1~|CV_Bb$u+~x
+z5J?Kn#0^v#rqw!vYLDkDIGfFa6Xj-D54dCx-N|<AczAIUi{d;WNdxwtWel8IjUaXk
+zY*K8j!~~X&AooeT(s8aZ_obH@N_)p)%kb+g6LmvvVA3fq_e)V%d{A@j-sKe+O6j>u
+z79^}-rl418(q{F%%3NC^fr5GX+D8{UkiMmB*~89Sw*$-Y8111TZ7}Ey?1J)rE)6g-
+zC;-seM%v(=tgXDlcd0H(n$dBLQCPTp#p)ebUex-BrTBlUUt?Lu&r+=&gtINrS-TS=
+z)fv4F9Oq->ywJ!3VmHur>I49v$;AYLNX8f3nWeozLT1_&iDJ>dCVH0zc?I6AcXR{B
+zzKqsdF}F8zR#?a7#Cq-~p89*F=W!qRX0w|X*w#^9kb#aAVP>k%K@QP%R!lfa++oD&
+z6vLeC$u8iwgjcC}l>-znsZSUX4*L-9<JPuH%GToF2n2m9hH}z*kW(GB?kj?CE?puZ
+zIe81yp{58P5|WvGhojs{Xmy8tEjFJKn5j(E=dt(CkhbGdYjTu60dGD+@%-*!Ls$~c
+z@#e)M0*_UJ?dD8KTx{#WZrMdwgKS*%;aP1etA!<59llut)>`&<?<(|mT{=}s){%?P
+z6$&{K4f;f<dJ*QYu=#S=5w?ox%9u{BB7gq8Zs+<m*;R}o=3)7`U|gjoE}fC?@!91w
+zfsp+&{Rud|ym4$@g*l`^4kkf??wllSVSJ%Rb9@4M;AVZDo0(2tyTka217lE7a;xy{
+z+HMqt#vnKkq6PGluEPM?fXF%s8pUe@08)GvT1+H(xpr8M@!}h;04&CzuMUD~a~<Cs
+z{i0DY93=IFG+nM)bhk)k;uMPDc>As8i=<~myc(dHX%!o05P1)kwToPI1CWvvbW>?y
+zG_?Uy01aMs{;4au2z>+J{=--Q1oHSkIs>W|sb_O?8u=u<Y5EYV%`8QO)uEWz`nN-B
+z?X|+o02hM;_4RX{ob$k)6HgGPzGG<*FqM4Ci}Zj{zXbujo66!5@R_k73|_n_&n9U%
+zlwkM`y3PaY^fZt5lXMZ<iF8)<_>FLI<y>SumWIn)0>L*)e;Ngevfxm*PW89UM=NU=
+z8VUkX@_Gpdg*~|Lrgs7j2v$M%rdUw9qR5n;&m>G9L~0AN2b*`0$wIJ6o&eJUrsjkG
+zF}Y?e-K^}oS97BcZp#IttJ0-dr(D9wR^nXh+FN@dJm<$(C*Dif0kCmK4(ttXE{4nb
+z)J|gZH1*RdL(c@caHccbE-X#OOzEw(uD+lkp%KZRvv!qAKf@U5kVbTBxA0~L_lrbx
+zth2CBtczy?w)rU~`B)Ri_06<fpR^4ZE-&wQ0`Xl<pVB-_sRC4x5ghp3>Qy_kmw6*$
+zJAD%DqReTk1Z?B6+uYa|7F_GCjd(rqUhAtDhjSDDjy%~c(42cKtw10YVUgZa36EDi
+zLhn)E^0UOOQ9T^9akuAI>Tlw=?>Q;0TVCtsK1QGAIGbJU=p9kBsE;Uc;uTtG#UjAu
+zqK~xUf_8NQF7Xqra!kZD{&d%yVp(P*Xh?4Y?F!K7v1dVA*>fCCEw(!1c}KtKm$rV+
+zW7wEEP&Bn9L6#k$g8HycM>_&68>TUj2PFSAT?aA1k<FmfAq0WVdRDQ`)|_8e+0PgH
+zuns6y7soTe#HQ(-tb*9O@Mi7O5<Pb&Uku!aL8N!lBWA^e>hm(MP5l>1u_npS3|5>8
+zuVRf~I)9fWTtx53sahERS<1@{1OIZLx_30<t8SYNPIfP?s0|`j8&u}H&YX~z>yweP
+zf>09%57QoQ9{85hX7A%=0lrS7jyUKJd!S=spyxkBOc$ceId^^h<TBdh(vpn{qWs+`
+zQDw?pcs1nL)?rg|f+bq`CdMR6W0Os&QcPuh-5=DJbBqZem8+GpQ7-R`Ea%7RuLb25
+zTW}&Z*jZ%@Qs;bLBqvz`tc4Rw4EZ2@N_}P=`tC5N=R;l~zdPs_@P?*HXH$0K+gq&9
+zg$5roNlbY^eWHfI-#Ak5$|H#2_Q4F69;@>gJ`Mv)p`BsYFzQ{TgBZxe+y5Dk+Ci85
+z)IPDuxRF}Y$%ibSl**U=pgYKISj;aKuk$x)eT~~aqQf3U0;eORM=eStXIXE=E}n57
+z%sUyMp$$@C8p2hUZF#klN>H&r=?RJ}tMp;?{2hUbao&KYN5xtbw-?^HH34^<_U$?4
+z+&2U<7_%VXXc0wmKMrO$4D~O=o7o?9%DQv8MJ@h+E*~U=uGiBi#InHMMCJO_O761B
+zp>;^CjNOVv!z`<hL4iehgEcN}HZD7EtUeCr1n#<>?!|l|w8SZS>J&>iCKi+=2hJ79
+zF}CO3W0she=w@>}UJ$J<zIU|2iwPBiSv4`M3My_sLm!B4by0-^H{6`s;Dk~k@FH`B
+z(n>OfY^tS=r7iu~M;!eaQ%l|jyN&(?T-lHsDHbzJ{z7q_MB5QGFAO`PR!=fDgOp6q
+z%=^0*nqk5BxygJCp{A-^f7Iz_JBUhQaFShMZ*aXd8^Cir#(|ABGZ3#0VSd$$^nYuk
+zT|(+rJn@l*F#Q+w7c=L2r5=jORI>z9Oguw%`ipi_ye_5->Xj9xEvgJ-MKI^QfC61R
+zN$VlKM8QG40>8+`G)cO)VB`G@SVnFvRUse0OPkApp4ED<yQx7`>HJ*cz;%}~==?f;
+zLE)e_{DfRzC%|6yt=B2?wSF}#%vrD-MT#ZHoJLqRaqu;`u&{YQq$-Xlj?IV~%*0Bu
+z{)%7Ygo;<W5^nSAxjT9T-aAcy+ThBXg<q%8iG$b5^&i<b0~R!DN^#+gkB^k~s%bpT
+zKMLRsEPTsm^To7y%6gfn`SiRWK8grEAkNJI?P1Fcb;@k{q%~zk<dl_|c>7|ppB;|t
+zXY{F2zJd+;Bv3l}0urf)nU(r$s)M5G&D3;feXh|52-D)Izoe^hS1>zeR31n}e`7!a
+zUM_JdHJln-eTJ2y_WcdlG1YKICPIr|fq#ug{S{%IZ~(AG>~C>7*kuG!Szk3!tFNvM
+zm50lk^(;X^#ffZ(rs996lEZk4@VzC4T}zKY$L>nVwrEg&Ew%olYZmNgAki?`&u;f{
+zcfrHph)d}MY^TX421$~^rlu<Yq75wo;_E{*S6(9tX>l}7KF92Kc5!Cj+9rt%>Pj!l
+zacDC<@8o_lVsUb~K=w9~+tpG(azWg*l{TATPG^BU7jAd|OL`A>JL_HsVa~!+wMM3d
+z%;ldX(PK%|)AM|DW8}4}dnIFy@*qc<?{qgSMdef2Q3ddA(qy55(rA;%jT7TQ(X_Ny
+zFzqU)tH6t<R#ejdMA|_$t4D^Jn`b{&kO-1>?qV$v>hH9quRwzrFeThAn~?Mg<l<eY
+z51`!va>0AK=7itb;N(j^gv@oMH!20t<RKc(t{=f0^4E`~t;{p82uQJ=1MwwRF}fCb
+zh5EU!<CQRtoOowT>P2x>jukf?Z~hqze(j&_Nw<q_)>?CoCOy|teGw94;cV@hnbr;7
+z`)7JPTD@=yE%u-|2RLcX5olNH_J=S^pBbOnfZCl+joCa*Y3gNc7upPFiA%+zoZ-H2
+zft)>!D~XU<$y{yD%`C;IG-=*>3xa%`KFeS%eww+%_S6y3JV!>8XYLW(({yd1O2aAh
+zYRu1;80#>W3zIcw5V5XADi*I{^<q|Z;`NQ0ov)xmw<DjUk4OZvEp%(_qqDJMXR`Cq
+znNK>2ehZ|tCaOO}Zw*{EKF1n#%d#?Q&ZZjGqK%BI+t8DaFI~VzWEgr-Ej5L@x+#`M
+za!8t|KhK3;z}E<!W9p}J+%6DzbE$b~D$?{NQvUF@I3jF(<Bq#6k?&j07ujF)5)2MZ
+zpetyC4{@?IFBJ=3mnjaAd_#YByJ%w&Z*lIZ8@DEKOH9@w7%*QHzbY4e`EJ+m57b2L
+z1%?*mkXRDVM*?OnvNJ5vZ<3mIMH6Tp|I%dEOnGoidj>(A8%tU{-6Y}>i=F~Ws9{mR
+zPtd4$+i3-tp?Q@t%Mcm2<QosKSM#F&09^y((CXkp@fsMHv2bdO!<t02i+47A2@_Cx
+z3{agbwvPANL^KI`BgNdHY0m!!zL>A>WUzdLH{lF!rH6x?r?O~i63b*%SFGiVq))s>
+z*#IHgO7ygyOQ*6?8e*_m-#6X;J$4LzVi#*=Eozj&C#;(?RBKP=@ycu!V^hgL<T~+H
+z)pj$P-Ca06EaL}sO%za@ue$BV5L@_3gLixfz1a#J=a5U|IrL%rk;T9GB9Yg7_}D2d
+z)|w>kJR*7Mh{DgpDqF(6kqV5!corSN!LTJ;PQtZsOSYW6WXtP<%is97Did+MJ82VS
+zK<|+DfEyTb#lS+BV%$R<&Xx!ZZ07?s5o9ppEuBgiNNbl?r7vN*(iso=BvLBq^FQZ^
+zc?2Oy92nu|hE9FK0XYB>M3ResQCMTNoi5~RP~<|KUa4*#s1B_|#kk97=0;8|Q92Dv
+z2k{07raDY7DaOqMkK_~vA*jeo5&K}nR9&-HuBDp-HiSwpppGO35rga$+f#qxk`?ps
+zUHa;k+1;&bb5v>lW@MwR92-J$46=z!Bf&jkbHVIv*a|RTRYUI`K2AkeoP;6-dm<%(
+zN|PpP$mops(v`lCKj&bU@sPVBf#35i#JGXspolGy@(a4cr%Q!bPbSG5zrv(^DSNy-
+zzW8LZy;gFjK1p8#p<DWf+?DNOXJF4c<&TI|a6RN_mIVA%;}e0X$S0ZP#Dvx*ZKHFs
+zl(6MA&UdY9{5c48ciC^(AA+Pby@~HwWp2^561G@e)>AUF4RaogS#=X$Al;H(>hSre
+z7JB;SIm=yG7W7Dv5?*y`BSF52dD861)?lH>RRV9Q3{Bw*L3k)<>ITfC6(wTnXwbZW
+zL%U!Uc+Jb+uJGQXS(+gMr3C3oRtc+@tfQzO)en`iff0SDhd~Dj4FHgsZkiA@v!+>_
+z{3NGJY}$stpdZoLPzCOkXZOk-_OHOZtkKh6>3jpG(B2&^Xy+1zhiEInI}gw~=3j}%
+zU!m3I$Xra4b&*5OJ00$!3$Y+r655w7gz%|M?!@9CL(CDmtT>2!NL<Lb%K+70MQh77
+zm$Ho|X+H7nA)?m?-;)cG^8A2T%w25BxyV|WC9sME;)#?37Uzzf>q1n=evg}Vun&s;
+zxw-R50xm`85xRsNc05;|x5s71{8hAv&C#gQk&C+eO?>vuOK%%9eHKj%=kPSW0~O4;
+zx3Dq_IL;VkMV99@=cF-<5KPiNwy8lleSV?-?2Nq}s+PjV33MKpZdbLSf%10x1Y#cI
+z8DlcbVls(Ixv@|-;u3@+R!Hl~XGa@4Pim@L)M1B#0>|u6<&=T6Hdf~Gl-~hSIRDn`
+zSyA6srtGnS@!F<JJuPo5+qw{#KSDop9e!N-c9N_Jv_dg#ihW-G@!$rPz$e!P7BwA2
+z=8A0iB>3%Lu7%@Z{(EUBjttU0)4$C8fexPK<sguWMcyv~WHn7#RQBiBxz}SpbviFn
+zZL2yFpz`|d8Cr+s2A7XA?1e#Rsc}=wx8S<zK`s|~dGP}HAhH-+NI$=#TSa{{nrjfY
+zEL5>bMs?4g@R#X~V>;?*Dx8>z|DR$@=37-3S_-_GKJaV`BJ#cE#IgB>n-EuYHr+N{
+z=;$a2LR>}f2%?tqy26c0i(h72u9RWQ?@0+MBKLqBLJK8?ISD>1Gc`#s)*S-q3qbFF
+zx?DkTz|4$?g!!^)X_AaHM^2W(E>5<Yb0dS4nM))|oOwe1R-!W{nly(lumU8Z;XuHT
+z(tp?X2cGTN9yWgK1jul)`U00gYek(x)(xKZ?eq?IY{9*VWpr3HdrPxUktS6%Gl!E=
+z`2DCf4s`9tbND;S(kfuxz#bCUxk7N9{#7(ArP_V<fss<IyM)|w^q%zo*l{Vo9b@Gh
+z4Z_Qa5`Qfy^YX%7u9KiOR3fop4i+W!ELWLfXe{dq`tl}pFs=;LxU_AogbT)(aR!80
+z>lU+mmNiNwc)Dl2nO79c7C1S?TMD^j>^PfXtB4!H#@-5UaP1?y$~ZkhywmhW6@YAV
+ztT0>uk;_v<z2Xq7iL`7I@MSRLeAP;33TDL7)n1o8<#9=82yRRGl3bN;ohf7^J&xdw
+zOd&SorGV7JzKGMbJ&pv$`EtGat0-oxqS69G-={h#CXyJS952>glrhn%ISiGvnF||S
+zfZ93WKr6$-umQC^L=*4?PK*l>!Vkw_$CTNYLG>uybdG-JaDj>HTt4HvUjFP`itI*L
+z0%Vm2FtPpPJtXr&Ow*Y|>eQRlfPQ+@T?Ydq@;UJC<S^OV(s-p-hSZu$zC@%*z8Cpd
+zIt3bgn5T-&k=Y=|_t8|jcE;o=lLuSUjH%|8Uh*|*yXic48W0D8(w<9m9%P2_`9f?z
+z)`dHfS@@a6HUlm2NQ*QNp2(XtNtiOyB~1h@A5Wuwpfb5X6cdn*m^~D8lKE`p=R|kI
+z0+;sG3e!XYoYIL%XDL;AwvnnLu){x)1}XL_7#*kB@>;kyUJX&-R+d&a5lro4U7ys$
+zcR@Gc4ImW&5580d8?5fT(0(b>5%Wd?{9<=*96G4gaJ39Bz(8aBVw8}A&%;4Y&Le<_
+z`=!~NmL!A15%N2>v`00pO?1hq3@tz<g_?M1mmZWK8VB}$`f!cAbKv^nQCucJHYCxj
+zf4|loOnL>z=ni^k*ikHhwLuDX4?{euHg9I}K1esQhf7Oyl-roM*o8EQa-CRE$-7&h
+zTi|K)ug?U)j|pu+Hl8<7<;y^W&gvR1jm2qlT89vdndqU(ayva`Fqp9vdbl7#*P)q5
+zE>F7($0Vl1QIhxsI8)hdO<Gg9Ol+0@cmgi+4+my@D!O<W@WUr)2M5sj+?@!6m%#D{
+zQpgM-P@nGUS<ue&S(UAO9VWAlF7>$;S#o8P3F-+5;(S)lUEhZ08)*0BTkVPVmcx)%
+zpk`el%cVnUu!D0c(DuHGKks^rc+=P$rx+*8qi(<-l4KCGO=9~!Rd%q*xmQaQ6e4Dx
+zK7o=LelRfeEV|c@p2&uZ>Sf&O(BD{_ox8YUBI*d(-}`&xjRQsA;aY{dh>55RXIGt&
+z*22e2;xKL%+UBk0K{iHztP3=N6?hLHrca~aG{8q3zEsPG7j5uGPbN<UNxT*lK_Ys}
+z7EsvP@D2`RWYuE1Qt+fn#XeV2I~%g3t;@PzVP-pDbqju2r>{^lPBf3>H>3ow^cQf@
+zGZRF8Ns{Ql`OjVSwAN1hm}vgp>w+D~h6BZ4On(e(X;r>F-Y1zPW`CFpROeloqhaY-
+z*PuO}-027P$|tfmw4sWNDHCN>3_yy{sb-~`{W^#K;O6Jer49WXCdzzCeNEE0ToELD
+zB3QNsPLO}0TcQ6NOS&_&ze#K)&8Oz0BgKor+@-Zg<NJB4fX(@K9$s5KNjHblcor8b
+z`y44G`zA8Jc3`JdL3u$q=0^TUdS~QD20*g{o4JNW0vGb5^cURaQB=KUn#u(>I71k6
+zW0~*T9)U+44(E+isl_m@P7~59Fy6Cm4bv5*3K@s!1=~M$aWYl@(sYO9{2jTF^LAl+
+z2bsvxU%))sd+-mY&0?>vv@58i>tBEG*jNSk%$9~2?cpxs0Z#UvNjOH#&D^WY;^YAR
+zm*vKy3QK3OWYk7wwry&NM8kGx!*=I~g@F7w`Y5*Ch#<tx9SKY}o#Buxfr+Q;j@rK*
+z<=H~QnCj2EjzS2vT1NdbJ`^8~R+MG(N&jT_Z+0JFr!M+vE~*MW2Ckz;Ja7008l_qj
+z=S{xPo-P%;vWMO_TtU9?+R`v;c~M=qj8nVe$%YMNd&k&*25QO9qH4*>q5TMNvK9G&
+zcskP`>9W8a@s%I5FhB}AfAc*#e1G4P;ynqR+Voktc<|JyLT~nLWil}a&Z#0X29m`}
+zE*6Wn;WOnt)RvxqD%KQ0;=7BkRh>g+LV>?#FZDqvxU@|EFBo#N%)KxkxjcoE44kPK
+z6ecX2_Zl7^r@zL~pe5XYY|YX+3N1wzj{A!ReG+bt#0g&9L`p&=vOMqhvYut5pA!C1
+z`MWs!SY|3hb3R;6G5s{1JCjhBgVgOk1>FU%raNgP%*g=+MuAC{s$GCT4YXy7+u<Q`
+z{#d_O&Rf6+V?tI<@+iHnUSZ6|!be{>SHhIYI1h<!-%B5XEW(L6ImC;~{&HTe#7?w+
+z<C+-$F{}E=gUme!ri0l80v^35XazR=d_wVQBWei{fa}J9&`=-DudD=r2k`w~T3@g9
+zR;vS21=X4D52M9<>1|-$6=(#`#|w$jp>~g1GRJr6Vs0|bw7M$36(I3UodOFT6F49A
+zv4Li+`#!?B?U7H;+6o6-cs;$VT+8Z%c_OAl&7YiTTiZO$aUZdcE|#G$@)h(CrW?;g
+z+a=oSh#50Lbj$wIutb~c$YgM_IuhrWK2dOMVf)b!n`q|6Y9@bU8D@e{=YhnMv7r&^
+z{`q-&ha~re^_5I|dKg&}TasePYb5M>mejL7sID%ID<+$dtq)!URW7BBB`E7gfBf&E
+z9bhu?7H2Y4MD{GhyR8v;CgO`K=pPfFcSxWQ#!Y!J!UM0M=4MC+Ec2TWrJ-ox!md;F
+z@WT$O>c$e@V-H`$R}lGLQ>Wgv5-ZmkxFPe;&cW5I>n-$@&C0)P`=?Wjd|l9rU!@^U
+zw93pNanrbzv@|^*n)9M|G762b=M!jY?<!(_LA)4TskuRpMdXd4Crv407hM7RXD)YW
+z&_z_zY?vT`lN2{`&ld-9E?}(c7n)1LQaO}1FSl$JazLgoQYrukYs5)zr>eB`4~k@F
+zVHE{wsxozMB^i9?6i{@o)3hlt%Dmc}#p?@<GU!^lQ$4i4&gGTDOg(d~vUyB$8!Zwl
+z);_;CMX=be>UNqupQg9rP+fi8oYoTFy6P3iH2oQ_V;moFp5AQ6X{_evTr7hCSHugN
+z3Ax!eIQ}^9xj`kL_oT3Ra6Dz7K8J31Id4M=#<&aTF#oSrZ$#k2ZI2>YuNq0*M5wbL
+z7}EM^9vi!BHbhW-lT`E(7+h*z7MRcX)7K!8St@2;g}^ffL3!iW1f}UDMkpu?(&P&L
+zO&cQbtBo|1n}P8#UkN9LZUG?PMJ3#)o3&iC+Hc-Mj)MAa?3rbu5Rd@oYUX2|-U@ju
+z`-T_re_fn1?P!Mai+qlV&un{y?uesiyn=NaH_FH%6<kLeImv*GF+tJ0;V2GN?@AvG
+z6B1KPY$ephrF40$mV~0cmg0?@!T*^Amz|Ij1K*Q)pbIgPJ@nr&5%8(_V%5ixJdJjE
+zpwNOkzmW3to>sjorU(V+J*v`wVh`=Aj7j7c(sEVhInr00Z;euWTjZjm;^>~PGOBA5
+zbA=LJWGq6wn<@HH_gaZ==9CGhuvjJu%GfXW+N`NU0r_UdbMo~zBACMC-vCfi>mQaP
+zzNvooQ&}nn<Djt5wmGp>>{U=^F<1|hE<DZab6C_g{b%X#-s!96mFeN<8QcVaWND<h
+zhdDbe^!q?OPtt9LK|bMA7p+xKP^L!{bJ#`gjB}Yv=uH7oZSPWeeYrXvIlCjD&irk<
+z3}_7<btM-Lg<EKTH!xKi^3Ke4)$&H9c+Rqu{~2d+Q^4A$iTV(L=91b-sWiT%ULGyM
+zi5Apz-_><>&<U?|mmtX5iqF*H?qafy^mW8+{f^DNSG+f0m$A5wwn2;Yi)*LbUNp1J
+zWSXy;f#-fncaB$a=RmbSrJkAEStA33rA=bpI*bhB$mC*CB2c1Wj9mmx^X>*Mc3|D<
+zyB(IEX?|GA?X*^$Sv=J_IIz?QpwQFM?IlvgZJB&xqI#nz%<oGteiDnu@x4p;1b|-p
+zYP0T~cR;;YA}bZ2tP(By(XQV{wJQSQ0YC(6d!BZdbDG8EeeZ5g{C>TV!%SO9&j88$
+z4`bJP0`K{Eg?@gN1n^}axDq&X#4m}w@P|+WqW5ESw8;z*kj6f`R(8C%HZ?ZbIc(iz
+zPVDn_Ddl<&3`XVM2JbOB+_^P^nbql?jG4zdU}y6cGrjR7+gpERu<xUO3o$pB{VBue
+z`4_f@amZc7?emZY4)^6`$<?L?s%e(aRSyzWx?{&4qqA%=oo4b~<yzl`WfUe1_0<Ok
+zFI+xSl3P;6s+W$S0ODMx6S91J@e0RXrmyf4-1<3KvNwtD22BANn!R=lP2{2_x}`qm
+zm&V`D*eI}Wo5xA^(o@6L$|&SrV3ddp6eww9X^wL+0T&ECQyR~ZWwZ3#N-WFC%^|fx
+zhyB|8@b1?js=ai!D-bk;)lxlE*djJn#h^2`xR?N}>Uw4Xc9|K;z|ojPFCs|t#d*N!
+zjmE&a`4myt5H0e(ThL(f5c(~8CB2G%mkuBF*^^lCztBR=Oc@n_UPUig<~9;%fo1<R
+zO>z>R`T-q-AFYaVJ@Jx*XpAnRW8skrV>_@`@so$>1*oiMn^j9hc+cgFopc;~j5u>s
+zB)<l6PsC3ipjW0L5<Gi5y#UxHe?2t5xQq@*35aE$@I>yWBQe1Yqo0I%A56bPSI|y6
+z8jD&{87*m8vWMsJEqaOUwm&GBKQ5EMgI<i^oL0g!d{eHhFWbwH)8V|b(<esIE%Rgy
+zc0U~n1nxUy<D+RhrlJ1;KCaVoHLf<w-35$qcF^+~#Vb-52M#al06ib`2tVb?AD{(%
+znB1RBR=I)7RHI`X0Rx`hN5^4=wPtQ^nAoV1D10+U$LJ{DzT{U<)3KRBgq~I-6GM8Q
+z+vrHSK%g|V7K@inyq{hmW2^VV-Mxx2J|kO>4)$3qBYb!u9zZwluyXAjBwFF?yXXjr
+zLio^YoA_D+nF%jm_FkQT^64I?<e7WN;<q(g;3`M3MTde<7Sn6#JQ}4F<oX#=$$YY*
+zR>toxp<^1ZOT@=tr<b8)C2}ZA)zhFOsuP1;)6BQ(Zh(yMc`Y8fffk_w*!W1Pj!Yc<
+zU8ltn$Azo|k&7edYCwMS2lOI62)2`brvf3wpU{i22XF#dufuplU))5YVbELXg@tZM
+znHe8j-nD=)rs=ow1>@h-p%+kZS02V<<p7vZVmjGN&mV?Qco|<Ir!tPIXA2#jOEAHQ
+z_s~MV-bC)26LIo~w1bYot4sp*oG70zq!Z`}b1<HWw0!>bV0sZ)`0D6$Ci+9^Xq;y+
+z2){~4qEdjfv)4gw$)?q#$C=P}(g}JP5(-_R@o`HA;A#JmULsqv45U>rg-0a=?xJHc
+zHe%|YT;%gh=y2RLG%`}z43bq|Tt=tSN?V-tF)(5{wmdpo8Y*M-Y|(h{G`$F1-*~*r
+z`))I&MgfaH1j~I-v>p5nlh8hTQE`!nZ0yn4C~Q)Yl_4Lmrc3ChgDkrFbXn#^4esnz
+z_{WEVEz#i!FS;#|4vrT2^KIbXphQZ>AH;OSPnk=mqfhu~;!j>DpBz?0=tUOxFg;&+
+zBNFTfiC909(@%QcecJfp_1U@0{l78^-Z8h2{3%ajA03Wv$96j%&weKzrsx1aIRr}M
+z4>0p9=vcNk;$lb{@<@6k9Sd?1FY$5!{V7rX80RWF9LHd36-*C@(Cg^;X%lUu<0@l8
+zTD~z1o;aAg=s(i=qOCP&LEiCObh2=M@u?h4N6`{`6CEY?ur$c!#?6?)R$2%xs3xoo
+z^y^p(BY`uqV0q$NIszn@1^4jKq4YdjKrg13;L$?`dgH?*=rz<$uczOmH_$t1m?mhF
+zw$gUGik_#ot#T*t)fM_HUN6xJm1ezGmC1SYnDvbZg=-F?6?7*3nk)v$yr2yYR#v0q
+z@iSL@u@W&p*P@r#eLEe-IHBjYn8HCg@+;{Wtn#ezCJW`Mg@}<YtC&vv2K^?+1Vf7Z
+z9bCY9{ru+$ZuN1lOdfs@y`aE~!x#H#A>JbyT|EAGX<>E~DE|DV&5F0?AlgkIpri0U
+zN6N4RdB@y_^6#hVg*d)txe$PG-ZW@b5(i|g)dV4ju^bQbBoEN@Ech)W9i58@;=`Nh
+zMa7o@;k%m7jV}hyAj0?PMT`Zq9Fnz&^+0I~9gWcmgMy(IN{Xxtx9oO$NmX|eLX!is
+zNTO6nuq@{WAyg)BVaZ+oPZkRJGYb&QVvf{vvQAF;s80NmyW&q~bSJ$K*lLs;qOx|j
+z<CM4Up%aGl@-3X~({zlsz;fX-1-B2=BD}=9-O0Xp8LMgzALj90fy|M{;InuXyb0oC
+zk2uGYWQ`Bf^Hqz0!gL{g<d@O!;vG)u%F(kpUNd~gK-H<>mBVLMYPGV1)_dt#6^c1^
+zv`^5YZ8r}h+p=GfW%wz-c0V1>l$OCC*(MCYT$KCtYC2Xo2eKAZXA4=L-cAcjTY!l`
+z#~AQddcGtiD7j!g^31Pj5%@!QkY9T<y<lQ&aA0ENCf^! undefined ) {
+            that._execEvent('scrollStart');
+        }
+
+        // Execute the scrollEnd event after 400ms the wheel stopped scrolling
+        clearTimeout(this.wheelTimeout);
+        this.wheelTimeout = setTimeout(function () {
+            that._execEvent('scrollEnd');
+            that.wheelTimeout = undefined;
+        }, 400);
+
+        if ( 'deltaX' in e ) {
+            if (e.deltaMode === 1) {
+                wheelDeltaX = -e.deltaX * this.options.mouseWheelSpeed;
+                wheelDeltaY = -e.deltaY * this.options.mouseWheelSpeed;
+            } else {
+                wheelDeltaX = -e.deltaX;
+                wheelDeltaY = -e.deltaY;
+            }
+        } else if ( 'wheelDeltaX' in e ) {
+            wheelDeltaX = e.wheelDeltaX / 120 * this.options.mouseWheelSpeed;
+            wheelDeltaY = e.wheelDeltaY / 120 * this.options.mouseWheelSpeed;
+        } else if ( 'wheelDelta' in e ) {
+            wheelDeltaX = wheelDeltaY = e.wheelDelta / 120 * this.options.mouseWheelSpeed;
+        } else if ( 'detail' in e ) {
+            wheelDeltaX = wheelDeltaY = -e.detail / 3 * this.options.mouseWheelSpeed;
+        } else {
+            return;
+        }
+
+        wheelDeltaX *= this.options.invertWheelDirection;
+        wheelDeltaY *= this.options.invertWheelDirection;
+
+        if ( !this.hasVerticalScroll ) {
+            wheelDeltaX = wheelDeltaY;
+            wheelDeltaY = 0;
+        }
+
+        if ( this.options.snap ) {
+            newX = this.currentPage.pageX;
+            newY = this.currentPage.pageY;
+
+            if ( wheelDeltaX > 0 ) {
+                newX--;
+            } else if ( wheelDeltaX < 0 ) {
+                newX++;
+            }
+
+            if ( wheelDeltaY > 0 ) {
+                newY--;
+            } else if ( wheelDeltaY < 0 ) {
+                newY++;
+            }
+
+            this.goToPage(newX, newY);
+
+            return;
+        }
+
+        newX = this.x + Math.round(this.hasHorizontalScroll ? wheelDeltaX : 0);
+        newY = this.y + Math.round(this.hasVerticalScroll ? wheelDeltaY : 0);
+
+        if ( newX > 0 ) {
+            newX = 0;
+        } else if ( newX < this.maxScrollX ) {
+            newX = this.maxScrollX;
+        }
+
+        if ( newY > 0 ) {
+            newY = 0;
+        } else if ( newY < this.maxScrollY ) {
+            newY = this.maxScrollY;
+        }
+
+        this.scrollTo(newX, newY, 0);
+
+// INSERT POINT: _wheel
+    },
+
+    _initSnap: function () {
+        this.currentPage = {};
+
+        if ( typeof this.options.snap == 'string' ) {
+            this.options.snap = this.scroller.querySelectorAll(this.options.snap);
+        }
+
+        this.on('refresh', function () {
+            var i = 0, l,
+                m = 0, n,
+                cx, cy,
+                x = 0, y,
+                stepX = this.options.snapStepX || this.wrapperWidth,
+                stepY = this.options.snapStepY || this.wrapperHeight,
+                el;
+
+            this.pages = [];
+
+            if ( !this.wrapperWidth || !this.wrapperHeight || !this.scrollerWidth || !this.scrollerHeight ) {
+                return;
+            }
+
+            if ( this.options.snap === true ) {
+                cx = Math.round( stepX / 2 );
+                cy = Math.round( stepY / 2 );
+
+                while ( x > -this.scrollerWidth ) {
+                    this.pages[i] = [];
+                    l = 0;
+                    y = 0;
+
+                    while ( y > -this.scrollerHeight ) {
+                        this.pages[i][l] = {
+                            x: Math.max(x, this.maxScrollX),
+                            y: Math.max(y, this.maxScrollY),
+                            width: stepX,
+                            height: stepY,
+                            cx: x - cx,
+                            cy: y - cy
+                        };
+
+                        y -= stepY;
+                        l++;
+                    }
+
+                    x -= stepX;
+                    i++;
+                }
+            } else {
+                el = this.options.snap;
+                l = el.length;
+                n = -1;
+
+                for ( ; i < l; i++ ) {
+                    if ( i === 0 || el[i].offsetLeft <= el[i-1].offsetLeft ) {
+                        m = 0;
+                        n++;
+                    }
+
+                    if ( !this.pages[m] ) {
+                        this.pages[m] = [];
+                    }
+
+                    x = Math.max(-el[i].offsetLeft, this.maxScrollX);
+                    y = Math.max(-el[i].offsetTop, this.maxScrollY);
+                    cx = x - Math.round(el[i].offsetWidth / 2);
+                    cy = y - Math.round(el[i].offsetHeight / 2);
+
+                    this.pages[m][n] = {
+                        x: x,
+                        y: y,
+                        width: el[i].offsetWidth,
+                        height: el[i].offsetHeight,
+                        cx: cx,
+                        cy: cy
+                    };
+
+                    if ( x > this.maxScrollX ) {
+                        m++;
+                    }
+                }
+            }
+
+            this.goToPage(this.currentPage.pageX || 0, this.currentPage.pageY || 0, 0);
+
+            // Update snap threshold if needed
+            if ( this.options.snapThreshold % 1 === 0 ) {
+                this.snapThresholdX = this.options.snapThreshold;
+                this.snapThresholdY = this.options.snapThreshold;
+            } else {
+                this.snapThresholdX = Math.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].width * this.options.snapThreshold);
+                this.snapThresholdY = Math.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].height * this.options.snapThreshold);
+            }
+        });
+
+        this.on('flick', function () {
+            var time = this.options.snapSpeed || Math.max(
+                    Math.max(
+                        Math.min(Math.abs(this.x - this.startX), 1000),
+                        Math.min(Math.abs(this.y - this.startY), 1000)
+                    ), 300);
+
+            this.goToPage(
+                this.currentPage.pageX + this.directionX,
+                this.currentPage.pageY + this.directionY,
+                time
+            );
+        });
+    },
+
+    _nearestSnap: function (x, y) {
+        if ( !this.pages.length ) {
+            return { x: 0, y: 0, pageX: 0, pageY: 0 };
+        }
+
+        var i = 0,
+            l = this.pages.length,
+            m = 0;
+
+        // Check if we exceeded the snap threshold
+        if ( Math.abs(x - this.absStartX) < this.snapThresholdX &&
+            Math.abs(y - this.absStartY) < this.snapThresholdY ) {
+            return this.currentPage;
+        }
+
+        if ( x > 0 ) {
+            x = 0;
+        } else if ( x < this.maxScrollX ) {
+            x = this.maxScrollX;
+        }
+
+        if ( y > 0 ) {
+            y = 0;
+        } else if ( y < this.maxScrollY ) {
+            y = this.maxScrollY;
+        }
+
+        for ( ; i < l; i++ ) {
+            if ( x >= this.pages[i][0].cx ) {
+                x = this.pages[i][0].x;
+                break;
+            }
+        }
+
+        l = this.pages[i].length;
+
+        for ( ; m < l; m++ ) {
+            if ( y >= this.pages[0][m].cy ) {
+                y = this.pages[0][m].y;
+                break;
+            }
+        }
+
+        if ( i == this.currentPage.pageX ) {
+            i += this.directionX;
+
+            if ( i < 0 ) {
+                i = 0;
+            } else if ( i >= this.pages.length ) {
+                i = this.pages.length - 1;
+            }
+
+            x = this.pages[i][0].x;
+        }
+
+        if ( m == this.currentPage.pageY ) {
+            m += this.directionY;
+
+            if ( m < 0 ) {
+                m = 0;
+            } else if ( m >= this.pages[0].length ) {
+                m = this.pages[0].length - 1;
+            }
+
+            y = this.pages[0][m].y;
+        }
+
+        return {
+            x: x,
+            y: y,
+            pageX: i,
+            pageY: m
+        };
+    },
+
+    goToPage: function (x, y, time, easing) {
+        easing = easing || this.options.bounceEasing;
+
+        if ( x >= this.pages.length ) {
+            x = this.pages.length - 1;
+        } else if ( x < 0 ) {
+            x = 0;
+        }
+
+        if ( y >= this.pages[x].length ) {
+            y = this.pages[x].length - 1;
+        } else if ( y < 0 ) {
+            y = 0;
+        }
+
+        var posX = this.pages[x][y].x,
+            posY = this.pages[x][y].y;
+
+        time = time === undefined ? this.options.snapSpeed || Math.max(
+            Math.max(
+                Math.min(Math.abs(posX - this.x), 1000),
+                Math.min(Math.abs(posY - this.y), 1000)
+            ), 300) : time;
+
+        this.currentPage = {
+            x: posX,
+            y: posY,
+            pageX: x,
+            pageY: y
+        };
+
+        this.scrollTo(posX, posY, time, easing);
+    },
+
+    next: function (time, easing) {
+        var x = this.currentPage.pageX,
+            y = this.currentPage.pageY;
+
+        x++;
+
+        if ( x >= this.pages.length && this.hasVerticalScroll ) {
+            x = 0;
+            y++;
+        }
+
+        this.goToPage(x, y, time, easing);
+    },
+
+    prev: function (time, easing) {
+        var x = this.currentPage.pageX,
+            y = this.currentPage.pageY;
+
+        x--;
+
+        if ( x < 0 && this.hasVerticalScroll ) {
+            x = 0;
+            y--;
+        }
+
+        this.goToPage(x, y, time, easing);
+    },
+
+    _initKeys: function (e) {
+        // default key bindings
+        var keys = {
+            pageUp: 33,
+            pageDown: 34,
+            end: 35,
+            home: 36,
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40
+        };
+        var i;
+
+        // if you give me characters I give you keycode
+        if ( typeof this.options.keyBindings == 'object' ) {
+            for ( i in this.options.keyBindings ) {
+                if ( typeof this.options.keyBindings[i] == 'string' ) {
+                    this.options.keyBindings[i] = this.options.keyBindings[i].toUpperCase().charCodeAt(0);
+                }
+            }
+        } else {
+            this.options.keyBindings = {};
+        }
+
+        for ( i in keys ) {
+            this.options.keyBindings[i] = this.options.keyBindings[i] || keys[i];
+        }
+
+        utils.addEvent(window, 'keydown', this);
+
+        this.on('destroy', function () {
+            utils.removeEvent(window, 'keydown', this);
+        });
+    },
+
+    _key: function (e) {
+        if ( !this.enabled ) {
+            return;
+        }
+
+        var snap = this.options.snap,   // we are using this alot, better to cache it
+            newX = snap ? this.currentPage.pageX : this.x,
+            newY = snap ? this.currentPage.pageY : this.y,
+            now = utils.getTime(),
+            prevTime = this.keyTime || 0,
+            acceleration = 0.250,
+            pos;
+
+        if ( this.options.useTransition && this.isInTransition ) {
+            pos = this.getComputedPosition();
+
+            this._translate(Math.round(pos.x), Math.round(pos.y));
+            this.isInTransition = false;
+        }
+
+        this.keyAcceleration = now - prevTime < 200 ? Math.min(this.keyAcceleration + acceleration, 50) : 0;
+
+        switch ( e.keyCode ) {
+            case this.options.keyBindings.pageUp:
+                if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
+                    newX += snap ? 1 : this.wrapperWidth;
+                } else {
+                    newY += snap ? 1 : this.wrapperHeight;
+                }
+                break;
+            case this.options.keyBindings.pageDown:
+                if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
+                    newX -= snap ? 1 : this.wrapperWidth;
+                } else {
+                    newY -= snap ? 1 : this.wrapperHeight;
+                }
+                break;
+            case this.options.keyBindings.end:
+                newX = snap ? this.pages.length-1 : this.maxScrollX;
+                newY = snap ? this.pages[0].length-1 : this.maxScrollY;
+                break;
+            case this.options.keyBindings.home:
+                newX = 0;
+                newY = 0;
+                break;
+            case this.options.keyBindings.left:
+                newX += snap ? -1 : 5 + this.keyAcceleration>>0;
+                break;
+            case this.options.keyBindings.up:
+                newY += snap ? 1 : 5 + this.keyAcceleration>>0;
+                break;
+            case this.options.keyBindings.right:
+                newX -= snap ? -1 : 5 + this.keyAcceleration>>0;
+                break;
+            case this.options.keyBindings.down:
+                newY -= snap ? 1 : 5 + this.keyAcceleration>>0;
+                break;
+            default:
+                return;
+        }
+
+        if ( snap ) {
+            this.goToPage(newX, newY);
+            return;
+        }
+
+        if ( newX > 0 ) {
+            newX = 0;
+            this.keyAcceleration = 0;
+        } else if ( newX < this.maxScrollX ) {
+            newX = this.maxScrollX;
+            this.keyAcceleration = 0;
+        }
+
+        if ( newY > 0 ) {
+            newY = 0;
+            this.keyAcceleration = 0;
+        } else if ( newY < this.maxScrollY ) {
+            newY = this.maxScrollY;
+            this.keyAcceleration = 0;
+        }
+
+        this.scrollTo(newX, newY, 0);
+
+        this.keyTime = now;
+    },
+
+    _animate: function (destX, destY, duration, easingFn) {
+        var that = this,
+            startX = this.x,
+            startY = this.y,
+            startTime = utils.getTime(),
+            destTime = startTime + duration;
+
+        function step () {
+            var now = utils.getTime(),
+                newX, newY,
+                easing;
+
+            if ( now >= destTime ) {
+                that.isAnimating = false;
+                that._translate(destX, destY);
+
+                if ( !that.resetPosition(that.options.bounceTime) ) {
+                    that._execEvent('scrollEnd');
+                }
+
+                return;
+            }
+
+            now = ( now - startTime ) / duration;
+            easing = easingFn(now);
+            newX = ( destX - startX ) * easing + startX;
+            newY = ( destY - startY ) * easing + startY;
+            that._translate(newX, newY);
+
+            if ( that.isAnimating ) {
+                rAF(step);
+            }
+        }
+
+        this.isAnimating = true;
+        step();
+    },
+    handleEvent: function (e) {
+        switch ( e.type ) {
+            case 'touchstart':
+            case 'pointerdown':
+            case 'MSPointerDown':
+            case 'mousedown':
+                this._start(e);
+                break;
+            case 'touchmove':
+            case 'pointermove':
+            case 'MSPointerMove':
+            case 'mousemove':
+                this._move(e);
+                break;
+            case 'touchend':
+            case 'pointerup':
+            case 'MSPointerUp':
+            case 'mouseup':
+            case 'touchcancel':
+            case 'pointercancel':
+            case 'MSPointerCancel':
+            case 'mousecancel':
+                this._end(e);
+                break;
+            case 'orientationchange':
+            case 'resize':
+                this._resize();
+                break;
+            case 'transitionend':
+            case 'webkitTransitionEnd':
+            case 'oTransitionEnd':
+            case 'MSTransitionEnd':
+                this._transitionEnd(e);
+                break;
+            case 'wheel':
+            case 'DOMMouseScroll':
+            case 'mousewheel':
+                this._wheel(e);
+                break;
+            case 'keydown':
+                this._key(e);
+                break;
+            case 'click':
+                if ( !e._constructed ) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                break;
+        }
+    }
+};
+function createDefaultScrollbar (direction, interactive, type) {
+    var scrollbar = document.createElement('div'),
+        indicator = document.createElement('div');
+
+    if ( type === true ) {
+        scrollbar.style.cssText = 'position:absolute;z-index:9999';
+        indicator.style.cssText = '-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);border-radius:3px';
+    }
+
+    indicator.className = 'iScrollIndicator';
+
+    if ( direction == 'h' ) {
+        if ( type === true ) {
+            scrollbar.style.cssText += ';height:7px;left:2px;right:2px;bottom:0';
+            indicator.style.height = '100%';
+        }
+        scrollbar.className = 'iScrollHorizontalScrollbar';
+    } else {
+        if ( type === true ) {
+            scrollbar.style.cssText += ';width:7px;bottom:2px;top:2px;right:1px';
+            indicator.style.width = '100%';
+        }
+        scrollbar.className = 'iScrollVerticalScrollbar';
+    }
+
+    scrollbar.style.cssText += ';overflow:hidden';
+
+    if ( !interactive ) {
+        scrollbar.style.pointerEvents = 'none';
+    }
+
+    scrollbar.appendChild(indicator);
+
+    return scrollbar;
+}
+
+function Indicator (scroller, options) {
+    this.wrapper = typeof options.el == 'string' ? document.querySelector(options.el) : options.el;
+    this.wrapperStyle = this.wrapper.style;
+    this.indicator = this.wrapper.children[0];
+    this.indicatorStyle = this.indicator.style;
+    this.scroller = scroller;
+
+    this.options = {
+        listenX: true,
+        listenY: true,
+        interactive: false,
+        resize: true,
+        defaultScrollbars: false,
+        shrink: false,
+        fade: false,
+        speedRatioX: 0,
+        speedRatioY: 0
+    };
+
+    for ( var i in options ) {
+        this.options[i] = options[i];
+    }
+
+    this.sizeRatioX = 1;
+    this.sizeRatioY = 1;
+    this.maxPosX = 0;
+    this.maxPosY = 0;
+
+    if ( this.options.interactive ) {
+        if ( !this.options.disableTouch ) {
+            utils.addEvent(this.indicator, 'touchstart', this);
+            utils.addEvent(window, 'touchend', this);
+        }
+        if ( !this.options.disablePointer ) {
+            utils.addEvent(this.indicator, utils.prefixPointerEvent('pointerdown'), this);
+            utils.addEvent(window, utils.prefixPointerEvent('pointerup'), this);
+        }
+        if ( !this.options.disableMouse ) {
+            utils.addEvent(this.indicator, 'mousedown', this);
+            utils.addEvent(window, 'mouseup', this);
+        }
+    }
+
+    if ( this.options.fade ) {
+        this.wrapperStyle[utils.style.transform] = this.scroller.translateZ;
+        this.wrapperStyle[utils.style.transitionDuration] = utils.isBadAndroid ? '0.001s' : '0ms';
+        this.wrapperStyle.opacity = '0';
+    }
+}
+
+Indicator.prototype = {
+    handleEvent: function (e) {
+        switch ( e.type ) {
+            case 'touchstart':
+            case 'pointerdown':
+            case 'MSPointerDown':
+            case 'mousedown':
+                this._start(e);
+                break;
+            case 'touchmove':
+            case 'pointermove':
+            case 'MSPointerMove':
+            case 'mousemove':
+                this._move(e);
+                break;
+            case 'touchend':
+            case 'pointerup':
+            case 'MSPointerUp':
+            case 'mouseup':
+            case 'touchcancel':
+            case 'pointercancel':
+            case 'MSPointerCancel':
+            case 'mousecancel':
+                this._end(e);
+                break;
+        }
+    },
+
+    destroy: function () {
+        if ( this.options.interactive ) {
+            utils.removeEvent(this.indicator, 'touchstart', this);
+            utils.removeEvent(this.indicator, utils.prefixPointerEvent('pointerdown'), this);
+            utils.removeEvent(this.indicator, 'mousedown', this);
+
+            utils.removeEvent(window, 'touchmove', this);
+            utils.removeEvent(window, utils.prefixPointerEvent('pointermove'), this);
+            utils.removeEvent(window, 'mousemove', this);
+
+            utils.removeEvent(window, 'touchend', this);
+            utils.removeEvent(window, utils.prefixPointerEvent('pointerup'), this);
+            utils.removeEvent(window, 'mouseup', this);
+        }
+
+        if ( this.options.defaultScrollbars ) {
+            this.wrapper.parentNode.removeChild(this.wrapper);
+        }
+    },
+
+    _start: function (e) {
+        var point = e.touches ? e.touches[0] : e;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.transitionTime();
+
+        this.initiated = true;
+        this.moved = false;
+        this.lastPointX = point.pageX;
+        this.lastPointY = point.pageY;
+
+        this.startTime  = utils.getTime();
+
+        if ( !this.options.disableTouch ) {
+            utils.addEvent(window, 'touchmove', this);
+        }
+        if ( !this.options.disablePointer ) {
+            utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
+        }
+        if ( !this.options.disableMouse ) {
+            utils.addEvent(window, 'mousemove', this);
+        }
+
+        this.scroller._execEvent('beforeScrollStart');
+    },
+
+    _move: function (e) {
+        var point = e.touches ? e.touches[0] : e,
+            deltaX, deltaY,
+            newX, newY,
+            timestamp = utils.getTime();
+
+        if ( !this.moved ) {
+            this.scroller._execEvent('scrollStart');
+        }
+
+        this.moved = true;
+
+        deltaX = point.pageX - this.lastPointX;
+        this.lastPointX = point.pageX;
+
+        deltaY = point.pageY - this.lastPointY;
+        this.lastPointY = point.pageY;
+
+        newX = this.x + deltaX;
+        newY = this.y + deltaY;
+
+        this._pos(newX, newY);
+
+// INSERT POINT: indicator._move
+
+        e.preventDefault();
+        e.stopPropagation();
+    },
+
+    _end: function (e) {
+        if ( !this.initiated ) {
+            return;
+        }
+
+        this.initiated = false;
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        utils.removeEvent(window, 'touchmove', this);
+        utils.removeEvent(window, utils.prefixPointerEvent('pointermove'), this);
+        utils.removeEvent(window, 'mousemove', this);
+
+        if ( this.scroller.options.snap ) {
+            var snap = this.scroller._nearestSnap(this.scroller.x, this.scroller.y);
+
+            var time = this.options.snapSpeed || Math.max(
+                    Math.max(
+                        Math.min(Math.abs(this.scroller.x - snap.x), 1000),
+                        Math.min(Math.abs(this.scroller.y - snap.y), 1000)
+                    ), 300);
+
+            if ( this.scroller.x != snap.x || this.scroller.y != snap.y ) {
+                this.scroller.directionX = 0;
+                this.scroller.directionY = 0;
+                this.scroller.currentPage = snap;
+                this.scroller.scrollTo(snap.x, snap.y, time, this.scroller.options.bounceEasing);
+            }
+        }
+
+        if ( this.moved ) {
+            this.scroller._execEvent('scrollEnd');
+        }
+    },
+
+    transitionTime: function (time) {
+        time = time || 0;
+        this.indicatorStyle[utils.style.transitionDuration] = time + 'ms';
+
+        if ( !time && utils.isBadAndroid ) {
+            this.indicatorStyle[utils.style.transitionDuration] = '0.001s';
+        }
+    },
+
+    transitionTimingFunction: function (easing) {
+        this.indicatorStyle[utils.style.transitionTimingFunction] = easing;
+    },
+
+    refresh: function () {
+        this.transitionTime();
+
+        if ( this.options.listenX && !this.options.listenY ) {
+            this.indicatorStyle.display = this.scroller.hasHorizontalScroll ? 'block' : 'none';
+        } else if ( this.options.listenY && !this.options.listenX ) {
+            this.indicatorStyle.display = this.scroller.hasVerticalScroll ? 'block' : 'none';
+        } else {
+            this.indicatorStyle.display = this.scroller.hasHorizontalScroll || this.scroller.hasVerticalScroll ? 'block' : 'none';
+        }
+
+        if ( this.scroller.hasHorizontalScroll && this.scroller.hasVerticalScroll ) {
+            utils.addClass(this.wrapper, 'iScrollBothScrollbars');
+            utils.removeClass(this.wrapper, 'iScrollLoneScrollbar');
+
+            if ( this.options.defaultScrollbars && this.options.customStyle ) {
+                if ( this.options.listenX ) {
+                    this.wrapper.style.right = '8px';
+                } else {
+                    this.wrapper.style.bottom = '8px';
+                }
+            }
+        } else {
+            utils.removeClass(this.wrapper, 'iScrollBothScrollbars');
+            utils.addClass(this.wrapper, 'iScrollLoneScrollbar');
+
+            if ( this.options.defaultScrollbars && this.options.customStyle ) {
+                if ( this.options.listenX ) {
+                    this.wrapper.style.right = '2px';
+                } else {
+                    this.wrapper.style.bottom = '2px';
+                }
+            }
+        }
+
+        var r = this.wrapper.offsetHeight;  // force refresh
+
+        if ( this.options.listenX ) {
+            this.wrapperWidth = this.wrapper.clientWidth;
+            if ( this.options.resize ) {
+                this.indicatorWidth = Math.max(Math.round(this.wrapperWidth * this.wrapperWidth / (this.scroller.scrollerWidth || this.wrapperWidth || 1)), 8);
+                this.indicatorStyle.width = this.indicatorWidth + 'px';
+            } else {
+                this.indicatorWidth = this.indicator.clientWidth;
+            }
+
+            this.maxPosX = this.wrapperWidth - this.indicatorWidth;
+
+            if ( this.options.shrink == 'clip' ) {
+                this.minBoundaryX = -this.indicatorWidth + 8;
+                this.maxBoundaryX = this.wrapperWidth - 8;
+            } else {
+                this.minBoundaryX = 0;
+                this.maxBoundaryX = this.maxPosX;
+            }
+
+            this.sizeRatioX = this.options.speedRatioX || (this.scroller.maxScrollX && (this.maxPosX / this.scroller.maxScrollX));  
+        }
+
+        if ( this.options.listenY ) {
+            this.wrapperHeight = this.wrapper.clientHeight;
+            if ( this.options.resize ) {
+                this.indicatorHeight = Math.max(Math.round(this.wrapperHeight * this.wrapperHeight / (this.scroller.scrollerHeight || this.wrapperHeight || 1)), 8);
+                this.indicatorStyle.height = this.indicatorHeight + 'px';
+            } else {
+                this.indicatorHeight = this.indicator.clientHeight;
+            }
+
+            this.maxPosY = this.wrapperHeight - this.indicatorHeight;
+
+            if ( this.options.shrink == 'clip' ) {
+                this.minBoundaryY = -this.indicatorHeight + 8;
+                this.maxBoundaryY = this.wrapperHeight - 8;
+            } else {
+                this.minBoundaryY = 0;
+                this.maxBoundaryY = this.maxPosY;
+            }
+
+            this.maxPosY = this.wrapperHeight - this.indicatorHeight;
+            this.sizeRatioY = this.options.speedRatioY || (this.scroller.maxScrollY && (this.maxPosY / this.scroller.maxScrollY));
+        }
+
+        this.updatePosition();
+    },
+
+    updatePosition: function () {
+        var x = this.options.listenX && Math.round(this.sizeRatioX * this.scroller.x) || 0,
+            y = this.options.listenY && Math.round(this.sizeRatioY * this.scroller.y) || 0;
+
+        if ( !this.options.ignoreBoundaries ) {
+            if ( x < this.minBoundaryX ) {
+                if ( this.options.shrink == 'scale' ) {
+                    this.width = Math.max(this.indicatorWidth + x, 8);
+                    this.indicatorStyle.width = this.width + 'px';
+                }
+                x = this.minBoundaryX;
+            } else if ( x > this.maxBoundaryX ) {
+                if ( this.options.shrink == 'scale' ) {
+                    this.width = Math.max(this.indicatorWidth - (x - this.maxPosX), 8);
+                    this.indicatorStyle.width = this.width + 'px';
+                    x = this.maxPosX + this.indicatorWidth - this.width;
+                } else {
+                    x = this.maxBoundaryX;
+                }
+            } else if ( this.options.shrink == 'scale' && this.width != this.indicatorWidth ) {
+                this.width = this.indicatorWidth;
+                this.indicatorStyle.width = this.width + 'px';
+            }
+
+            if ( y < this.minBoundaryY ) {
+                if ( this.options.shrink == 'scale' ) {
+                    this.height = Math.max(this.indicatorHeight + y * 3, 8);
+                    this.indicatorStyle.height = this.height + 'px';
+                }
+                y = this.minBoundaryY;
+            } else if ( y > this.maxBoundaryY ) {
+                if ( this.options.shrink == 'scale' ) {
+                    this.height = Math.max(this.indicatorHeight - (y - this.maxPosY) * 3, 8);
+                    this.indicatorStyle.height = this.height + 'px';
+                    y = this.maxPosY + this.indicatorHeight - this.height;
+                } else {
+                    y = this.maxBoundaryY;
+                }
+            } else if ( this.options.shrink == 'scale' && this.height != this.indicatorHeight ) {
+                this.height = this.indicatorHeight;
+                this.indicatorStyle.height = this.height + 'px';
+            }
+        }
+
+        this.x = x;
+        this.y = y;
+
+        if ( this.scroller.options.useTransform ) {
+            this.indicatorStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.scroller.translateZ;
+        } else {
+            this.indicatorStyle.left = x + 'px';
+            this.indicatorStyle.top = y + 'px';
+        }
+    },
+
+    _pos: function (x, y) {
+        if ( x < 0 ) {
+            x = 0;
+        } else if ( x > this.maxPosX ) {
+            x = this.maxPosX;
+        }
+
+        if ( y < 0 ) {
+            y = 0;
+        } else if ( y > this.maxPosY ) {
+            y = this.maxPosY;
+        }
+
+        x = this.options.listenX ? Math.round(x / this.sizeRatioX) : this.scroller.x;
+        y = this.options.listenY ? Math.round(y / this.sizeRatioY) : this.scroller.y;
+
+        this.scroller.scrollTo(x, y);
+    },
+
+    fade: function (val, hold) {
+        if ( hold && !this.visible ) {
+            return;
+        }
+
+        clearTimeout(this.fadeTimeout);
+        this.fadeTimeout = null;
+
+        var time = val ? 250 : 500,
+            delay = val ? 0 : 300;
+
+        val = val ? '1' : '0';
+
+        this.wrapperStyle[utils.style.transitionDuration] = time + 'ms';
+
+        this.fadeTimeout = setTimeout((function (val) {
+            this.wrapperStyle.opacity = val;
+            this.visible = +val;
+        }).bind(this, val), delay);
+    }
+};
+
+IScroll.utils = utils;
+
+if ( typeof module != 'undefined' && module.exports ) {
+    module.exports = IScroll;
+} else {
+    window.IScroll = IScroll;
+}
+
+})(window, document, Math);

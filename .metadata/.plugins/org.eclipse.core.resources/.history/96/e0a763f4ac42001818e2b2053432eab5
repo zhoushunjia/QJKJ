@@ -1,0 +1,242 @@
+DateInput = (function($) {
+	function DateInput(el, opts) {
+		if (typeof(opts) != "object") opts = {};
+		$.extend(this, DateInput.DEFAULT_OPTS, opts);
+		this.input = $(el);
+		this.bindMethodsToObj("show", "hide", "hideIfClickOutside", "keydownHandler", "selectDate");
+		this.build();
+		this.selectDate();
+		this.hide()
+	};
+	DateInput.DEFAULT_OPTS = {
+		month_names: ["一月份", "二月份", "三月份", "四月份", "五月份", "六月份", "七月份", "八月份", "九月份", "十月份", "十一月份", "十二月份"],
+		short_month_names: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+		short_day_names: ["日", "一", "二", "三", "四", "五", "六"],
+		start_of_week: 1
+	};
+	DateInput.prototype = {
+		build: function() {
+			var monthNav = $('<p class="month_nav">' + '<span class="button prev" title="[Page-Up]">&#171;</span>' + ' <span class="month_name"></span> ' + '<span class="button next" title="[Page-Down]">&#187;</span>' + '</p>');
+			this.monthNameSpan = $(".month_name", monthNav);
+			$(".prev", monthNav).click(this.bindToObj(function() {
+				this.moveMonthBy( - 1);
+				return false;
+			}));
+			$(".next", monthNav).click(this.bindToObj(function() {
+				this.moveMonthBy(1);
+				return false;
+			}));
+			var yearNav = $('<p class="year_nav">' + '<span class="button prev" title="[Ctrl+Page-Up]">&#171;</span>' + ' <span class="year_name"></span> ' + '<span class="button next" title="[Ctrl+Page-Down]">&#187;</span>' + '</p>');
+			this.yearNameSpan = $(".year_name", yearNav);
+			$(".prev", yearNav).click(this.bindToObj(function() {
+				this.moveMonthBy( - 12);
+				return false;
+			}));
+			$(".next", yearNav).click(this.bindToObj(function() {
+				this.moveMonthBy(12);
+				return false;
+			}));
+			var nav = $('<div class="nav"></div>').append(monthNav, yearNav);
+			var tableShell = "<table><thead><tr>";
+			$(this.adjustDays(this.short_day_names)).each(function() {
+				tableShell += "<th>" + this + "</th>"
+			});
+			tableShell += "</tr></thead><tbody></tbody></table>";
+			this.dateSelector = this.rootLayers = $('<div class="date_selector"></div>').append(nav, tableShell).insertAfter(this.input);
+			if (true/*$.browser.msie && $.browser.version < 7*/) {
+				//this.ieframe = $('<iframe class="date_selector_ieframe" frameborder="0" src="#"></iframe>').insertBefore(this.dateSelector);
+				//this.rootLayers = this.rootLayers.add(this.ieframe);
+				this.rootLayers = this.rootLayers.add(this.dateSelector);
+				$(".button", nav).mouseover(function() {
+					$(this).addClass("hover")
+				});
+				$(".button", nav).mouseout(function() {
+					$(this).removeClass("hover")
+				})
+			};
+			this.tbody = $("tbody", this.dateSelector);
+			this.input.change(this.bindToObj(function() {
+				this.selectDate()
+			}));
+			this.selectDate()
+		},
+		selectMonth: function(date) {
+			var newMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+			if (!this.currentMonth || !(this.currentMonth.getFullYear() == newMonth.getFullYear() && this.currentMonth.getMonth() == newMonth.getMonth())) {
+				this.currentMonth = newMonth;
+				var rangeStart = this.rangeStart(date),
+				rangeEnd = this.rangeEnd(date);
+				var numDays = this.daysBetween(rangeStart, rangeEnd);
+				var dayCells = "";
+				for (var i = 0; i <= numDays; i++) {
+					var currentDay = new Date(rangeStart.getFullYear(), rangeStart.getMonth(), rangeStart.getDate() + i, 12, 00);
+					if (this.isFirstDayOfWeek(currentDay)) dayCells += "<tr>";
+					if (currentDay.getMonth() == date.getMonth()) {
+						dayCells += '<td class="selectable_day" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>'
+					} else {
+						dayCells += '<td class="selectable_day unselected_month" date="' + this.dateToString(currentDay) + '">' + currentDay.getDate() + '</td>'
+					};
+					if (this.isLastDayOfWeek(currentDay)) dayCells += "</tr>"
+				};
+				this.tbody.empty().append(dayCells);
+				this.monthNameSpan.empty().append(this.monthName(date));
+				this.yearNameSpan.empty().append(this.currentMonth.getFullYear());
+				$(".selectable_day", this.tbody).click(this.bindToObj(function(event) {
+					this.changeInput($(event.target).attr("date"))
+				}));
+				$("td[date=" + this.dateToString(new Date()) + "]", this.tbody).addClass("today");
+				$("td.selectable_day", this.tbody).mouseover(function() {
+					$(this).addClass("hover")
+				});
+				$("td.selectable_day", this.tbody).mouseout(function() {
+					$(this).removeClass("hover")
+				})
+			};
+			$('.selected', this.tbody).removeClass("selected");
+			$('td[date=' + this.selectedDateString + ']', this.tbody).addClass("selected")
+		},
+		selectDate: function(date) {
+			if (typeof(date) == "undefined") {
+				date = this.stringToDate(this.input.val())
+			};
+			if (!date) date = new Date();
+			this.selectedDate = date;
+			this.selectedDateString = this.dateToString(this.selectedDate);
+			this.selectMonth(this.selectedDate)
+		},
+		changeInput: function(dateString) {
+			this.input.val(dateString).change();
+			this.hide();
+		},
+		show: function() {
+			var obj=this.rootLayers;
+			$(obj).parents("[data-elementtype=formDate]").css("zIndex",404);
+			$(obj).parents('section.sectionV2').css({'zIndex':6,'overflow':'visible'});
+			this.rootLayers.css("display", "block");
+			$([window, document.body]).click(this.hideIfClickOutside);
+			this.input.unbind("focus", this.show);
+			$(document.body).keydown(this.keydownHandler);
+			this.setPosition()
+		},
+		hide: function() {
+			var obj=this.rootLayers;
+			//$(obj).parents("[data-elementtype=formDate]").css("zIndex",402);
+			$(obj).parents("[data-elementtype=formDate]").css("zIndex",$(obj).parents("[data-elementtype=formDate]").attr("zindexn"));
+			$(obj).parents('section.sectionV2').css({'zIndex':5});
+			this.rootLayers.css("display", "none");
+			$([window, document.body]).unbind("click", this.hideIfClickOutside);
+			this.input.focus(this.show);
+			$(document.body).unbind("keydown", this.keydownHandler)
+		},
+		hideIfClickOutside: function(event) {
+			if (event.target != this.input[0] && !this.insideSelector(event)) {
+				this.hide()
+			}
+		},
+		insideSelector: function(event) {
+			var offset = this.dateSelector.position();
+			offset.right = offset.left + this.dateSelector.outerWidth();
+			offset.bottom = offset.top + this.dateSelector.outerHeight();
+			return event.pageY < offset.bottom && event.pageY > offset.top && event.pageX < offset.right && event.pageX > offset.left
+		},
+		keydownHandler: function(event) {
+			switch (event.keyCode) {
+			case 9:
+			case 27:
+				this.hide();
+				return;
+				break;
+			case 13:
+				this.changeInput(this.selectedDateString);
+				break;
+			case 33:
+				this.moveDateMonthBy(event.ctrlKey ? -12 : -1);
+				break;
+			case 34:
+				this.moveDateMonthBy(event.ctrlKey ? 12 : 1);
+				break;
+			case 38:
+				this.moveDateBy( - 7);
+				break;
+			case 40:
+				this.moveDateBy(7);
+				break;
+			case 37:
+				this.moveDateBy( - 1);
+				break;
+			case 39:
+				this.moveDateBy(1);
+				break;
+			default:
+				return
+			}
+			event.preventDefault()
+		},
+		stringToDate: function(string) {
+			var matches;
+			if (matches = string.match(/^(\d{1,2}) ([^\s]+) (\d{4,4})$/)) {
+				return new Date(matches[3], this.shortMonthNum(matches[2]), matches[1], 12, 00)
+			} else {
+				return null
+			}
+		},
+		dateToString: function(date) {
+			return date.getFullYear()+"-"+this.short_month_names[date.getMonth()]+"-" +date.getDate()
+		},
+		setPosition: function() {
+			var offset = this.input.offset();
+			this.rootLayers.css({
+				top:40,
+				left:0
+			});
+			if (this.ieframe) {
+				this.ieframe.css({
+					width: this.dateSelector.outerWidth(),
+					height: this.dateSelector.outerHeight()
+				})
+			}
+		},
+		moveDateBy: function(amount) {
+			var newDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), this.selectedDate.getDate() + amount);
+			this.selectDate(newDate)
+		},
+		moveDateMonthBy: function(amount) {
+			var newDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + amouGGmdzW@2k^79K-XSAQTnQSW=OO*HJX{)ov2J
+z(C3Hg<EcMjONk_hCM2FO7ufs~_k8<y)L{_?OMC@p_K!6;g^G6V4HUm`!>X-M)X}vD
+zqau{tH=ef$7@vVG3x>m#5L|MaZu(2ri%yE8VD+HF9t|<0g`#YxP;w>|Pm$|*SDojs
+zuv6yk-4oEzV8o=yt#E(tRT#W^Xvz0Z6wc2uYsFs#?y$%dR~W!b5AGW|pT`X^cJIOl
+zFlWXVkVJtLo@yO+0jZBMQjB6bkYjG70Usgn3-8Uv4<5+@5R!k*KLV+-#)KWTsH)as
+zx->e=s9InO`Ihghls?$&{o8ZhbSmAa+iR@&3!VuENI~;UTlvj~3HxuOJ{Iu8ZUd+&
+zkRS~tNn=B%D<e{rm?<2Ks2CJ+ApYK0Da!^#YnHH7L+`=s5%efmen1<)bH1CSpM<n+
+z9X0WlUaCe^{r*JYCPLtASGm0)iz#-3Vv2>{f&U#a%KQl=7_!X!hG-c7^gQ>+7H@5=
+zhJ9)ef|0h5CkN_W-~&c<_>ho``eUW?;QI{1R$dci<!M1DyYa`|F^gowaaL<h6&sns
+zzuONiH`Y?ayeol%Q6B{Q4n_d3#m<_KaZduG9zwbpAHoGE^1CvS;bD@SYNlw7(YFML
+zY~=?oSIP(3#&`63SH4mi`ZIe*dF(B!GztDHln_of#SS8L`cU@=T~vVdWGC-xpBwf7
+z`GY`+aI7<hmg#>|pLs-$XKv~G^(FwusI`JGsrEQ|Vlt`y>AT(Spx_W<RjuwvNt^Vz
+zCUUjhrYsO#+!_L%%EN`Bc*cYi1SUfSh68=lM>)Zq>z!<3%7KK{dZmM_0Re@i0OQ(+
+z8=KzwI<(MBi9%A@R9rGLiBRjvOD&R?qI$hP9}mhmUf{r|$yKMpv0*HD7a;;_E!or?
+z&8L+f+eJp&hIbU&qCF$eWG<a<dV<^6VXk3!ect+IdOVkCq<jyAIs;whq6x|@Kh|n~
+znI$Uy_TS&>9)oq;KehryS$3$(JEwj^lx_w_W~zPe5vDzBR@^Nssz-?y3^Q}UXV!(q
+zQE36|UFGQ={6&&m8C~+%@vJ6hu9Aj*lZIg~ySLTcK}i1@a7lV1aArg01(cWAXw;$2
+zDKQRlk7**c=M>R8LcHnHQCN}kl|MMKu0HlF?%6mrh2kNbP49`3TB$BF)_^VFud&Ba
+ztWDHhW~5|uk%_n`P!rz%N}JUVFUbu<+j<@bH3rcJ%S~0|5`H|5f<MOrB`GoB<ZbgL
+zoij!8{SS5*H@o{944~sDl81;{WuEqoSuH|j!6(v`*JJzXW7MzH_50F`#7_yf;gHbn
+zi!4?W12IppZ|;bO7ny3|T@`WOc~qA8L3|g29e|&!UESF1?9Rk3Vx&qo5kjk$ijswy
+z3I-8ZQ0%)_VJ<-f^W|dVvNm90Vw0#Rt*Ds<tjyT_GsT07@>w|h{+R)g<>R-wz1W%d
+z61-X%Qx0#Ys43!!Ixf5hI=PQ9_p-TBk_5Lxje?s2E|8ya7aAFD^Zjy!Zqs}i#A{;R
+zOQFqUgdu6Jf|Ndrk}@#JSA0Y;3=ZgqM8~}XBU$?7<{HE(Hq?&zhu`Slf!JPFmIi|l
+zK0s>dLA_#(1kj9FMU7<iL(B|*z}+?epx%bYg^ue>>)X+e5F(0gfo7mMG&&@H%0;px
+zu029&P$y%JAQLXt>{3maYSYcl#)=>>0D#G_vm32o2B8gX{)_Z_s2dAPYs+NxH9zSt
+z0K2)U-HqAsNnMx(q5yh6OtbvNYu)~!1)FzC!kFN0!y3plCAeHfBrYcDf)QovJ^ZwX
+zfk%>DXzCxFoksn!^LNgVT{JQ?G6u)N{P@V+$ozr*6NjcJ@b@@F;v|Xj0Lk8CEimg-
+zl_TRNP<+ZF3QX$g6ni87RIU^X2dEP<{6%VJ_zcd<B)WYQbPgC2VO{L0BJU@C%2Y^u
+z3S}4Wb}#kkaVH=I*g`=Bg#@Dn9E!#%&6J?rDZivf)T!40Xy_D@GBL04rB4MHFBpXM
+z1s!`kvo~zG4&9ZUShd?u^C7qsVlHV$gx7Zzo^3hhH8gN1se092zi4ZzGMlDWj1qr9
+z%lF5*eQ8(>xIT03L#RgKlO+}ST>I#Y4c98kBS^RZOZUW1W09!OQbQ1cnwNmdK*uhe
+zoW@Smq6>)%*<W#njE)jIMGC*Z<UWmacxZJ6nK#`ds1#@taas{C!p4&y3<(aDGlZrM
+z5ti$K9Xz5wjN1#^MB1<&0d~m@4J>M<Z_UZ|<S(t1jso)isQX+K-*<Q+Ext*f?l(#X
+z15Wb~k&Pz@y6{pa7Xx_L=a3W28JpUF$;8ZTb!xwnB6qrI^3Zn+{Fje)U!p=6P7LxV
+zsPiU8sT9`7P_m)cQ9lJyhhXCbe{=@UYMzV|cOEkhMwE?M(7|T6mdprqv~LR}wgoj?
+z&8y_=(6(XT9n8BXof5Qc>tEO;La+x+5>)qp$XQQ5>-}ea^sKL(J#%*B>}Q|-GN8k3
+z$i^ZSK$EHMeP41Ysvo_FyVqmy0C%yTCqrz2TQ(Z4*$s(Q?xS5epa6|Y<TEn0Ohztb
+zvlr%GjPt{M#7ynrSWt}Qq8}!%Eq=wzfB#a+ammW!4

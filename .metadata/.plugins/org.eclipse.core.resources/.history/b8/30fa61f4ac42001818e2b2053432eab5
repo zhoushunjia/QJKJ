@@ -1,0 +1,255 @@
+$(function() {
+	var container = {};
+	container.init = function(){
+		$("#HTMLDATA").length ? this.insideEvent() : this.outsideEvent();
+	};
+	//编辑器内的事件绑定
+	container.insideEvent = function(){
+		//模式一：拖动容器一同时改变容器二
+		$(document).on("element.change",".groupContainerOne, .groupContainerTwo",function(e){
+			var	that = $(this),
+				thisMark = that.attr("wqdmark") || "wqdNomark",
+				menuObj = that.siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]"),
+				cssObj = {};
+			cssObj.left = that.position().left;
+			cssObj.top = that.position().top;
+			cssObj.height = that.height();
+			cssObj.width = that.width();
+			menuObj.css(cssObj);
+		});
+		//模式二：容器一点击效果
+		$(document).on("click.wqdContainer",".freeContainerOne",function(){
+			//手风琴样式在这里先禁止掉
+			if($(this).hasClass("accordion_one"))return;
+			var that = $(this),
+				thisMark = that.attr("wqdmark") || "wqdNomark",
+				groupmark = that.attr("groupmark") || "",
+				menuObj = that.siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]");
+			if(menuObj.is(":visible")){
+				that.find(".containerWarp").children(".wqdelementEdit").find(".wqdelementEditBox").removeClass("active");
+				menuObj.hide();
+			}else{
+				that.find(".containerWarp").children(".wqdelementEdit").find(".wqdelementEditBox").addClass("active");
+				if(groupmark){
+					that.siblings(".wqdelementEdit"+"[groupmark="+groupmark+"]").each(function(){
+						$(this).find(".containerWarp").children(".wqdelementEdit").find(".wqdelementEditBox").removeClass("active");
+						var otherMark = $(this).attr("wqdmark") || "wqdNomark";
+						$(this).siblings(".wqdelementEdit"+"[wqdmark="+otherMark+"]").hide();
+					});
+				}
+				menuObj.show();
+			}
+			$(document).trigger("appSetCatch");
+		});
+		//删除容器
+		$(document).on("element.remove",".groupContainerOne, .groupContainerTwo, .freeContainerOne, .freeContainerTwo",function(e){
+			if(!$(e.target).find(".containerWarp").length) return;
+			var	that = $(this),
+				thisMark = that.attr("wqdmark") || "wqdNomark",
+				menuObj = that.siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]"),
+				elemId = menuObj.attr("id") || "";
+			that.find(".containerWarp").children(".wqdelementEdit").each(function(){
+				var childId = $(this).attr("id") || "";
+				childId && $("style."+childId).remove();
+			});
+			menuObj.find(".containerWarp").children(".wqdelementEdit").each(function(){
+				var childId = $(this).attr("id") || "";
+				childId && $("style."+childId).remove();
+			});
+			elemId && $("style."+elemId).remove();
+			menuObj.remove();	
+		});
+		//添加一组关联容器
+		$(document).on("addFreeContainer",".freeContainerOne, .groupContainerOne, .groupContainerTwo",function(){
+			!$(this).attr("groupmark") && $(this).hasClass("freeContainerOne") && $(this).attr("groupmark","groupmark" + new Date().getTime());
+			var	that = $(this),
+				thisMark = that.attr("wqdmark") || "wqdNomark",
+				menuObj = that.siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]"),
+				thatClone = container.cloneElement(that,that.clone()),
+				menuobjClone = container.cloneElement(that,menuObj.clone(),"s"),
+				newMark = "mark" + new Date().getTime();
+			thatClone.find(".containerWarp").children(".wqdelementEdit").each(function(i){container.cloneElement(that,$(this),i+1);});
+			menuobjClone.find(".containerWarp").children(".wqdelementEdit").each(function(i){container.cloneElement(that,$(this),i+1001);});
+			thatClone.attr("wqdmark",newMark).css({"left":that.position().left+10,"top":that.position().top+10}).appendTo(that.parents(".sectionV2"));
+			if(!that.hasClass("freeContainerOne")) menuobjClone.css({"left":that.position().left+10,"top":that.position().top+10});
+			else menuobjClone.hide();
+			menuobjClone.attr("wqdmark",newMark).appendTo(that.parents(".sectionV2"));
+			$(document).trigger("appSetCatch");
+		});
+	};
+	//发布后的事件绑定
+	container.outsideEvent = function(){
+		//模式一：触发二级容器
+		$(".groupContainerOne").each(function(){
+			var wqdtarget = $(this).attr("wqdtarget") || "click";
+			$(this).on(wqdtarget,function(e){
+				if($(this).attr("isanimahide")|| $(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formInput"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formButton"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formTextarea") return;
+				thisMark = $(this).attr("wqdmark") || "wqdNomark",
+				menuObj = $(this).siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]");
+				menuObj.show();
+				// if(menuObj.attr("wqdfadein")){
+				// 	menuObj.attr("isanimashow","true");
+				// 	setTimeout(function(){menuObj.removeAttr("isanimashow");},500);
+				// }
+			});
+		});
+		//模式一：隐藏二级容器
+		$(".groupContainerTwo").each(function(){
+			var wqdtarget = $(this).attr("wqdtargethide") || "click";
+			if(wqdtarget == "click"){
+				$(this).on("click",function(e){
+					if($(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formInput"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formButton"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formTextarea"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formSelect"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formSelect"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formCheckbox"||$(e.target).closest(".wqdelementEdit").attr("data-elementtype")=="formRadio"){return}
+					container.containerHide($(this));
+				});
+			}else if(wqdtarget == "mouse"){
+				$(this).on("mouseleave",function(){
+					if(!$(this).is(":visible")) return;
+					container.containerHide($(this));
+				});
+			}else if(wqdtarget == "clickOther"){
+				var that = $(this);
+				$(document).on("click touchstart",function(event){
+					if($(event.target).closest(".groupContainerOne").attr("wqdmark") != that.attr("wqdmark") && $(event.target).closest(".groupContainerTwo").attr("wqdmark") != that.attr("wqdmark")){
+						container.containerHide(that);
+					}
+				});
+			}
+		});
+		//模式二：触发二级容器
+		$(".freeContainerOne").not(".tabContainer").each(function(){
+			var wqdtarget = $(this).attr("wqdtarget") || "click";
+			$(this).on(wqdtarget,function(){
+				var thisMark = $(this).attr("wqdmark") || "wqdNomark",
+					groupmark = $(this).attr("groupmark") || "",
+					wqdfadein = $(this).attr("wqdfadein") || "",
+					menuObj = $(this).siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]");
+				if(menuObj.is(":visible")) return;
+				//手风琴样式在这里先禁止掉
+				if($(this).hasClass("accordion_one"))return;
+				$(this).find(".containerWarp").children(".wqdelementEdit").find(".wqdelementEditBox").addClass("active");
+				if(groupmark){
+					$(this).siblings(".wqdelementEdit"+"[groupmark="+groupmark+"]").each(function(){
+						$(this).find(".containerWarp").children(".wqdelementEdit").find(".wqdelementEditBox").removeClass("active");
+						var otherMark = $(this).attr("wqdmark") || "wqdNomark";
+						$(this).siblings(".wqdelementEdit"+"[wqdmark="+otherMark+"]").removeAttr("wqdfadein").hide();
+					});
+				}
+				menuObj.show().attr("wqdfadein",wqdfadein);
+			});
+		});
+
+		//模式三 :触发二级容器
+		$(".tabContainer").each(function (i, _) {
+			var thisMark = $(this).attr("wqdmark") || "wqdNomark",
+				menuObj = $(this).siblings(".wqdelementEdit"+"[wqdmark="+thisMark+"]"),//得到mark
+				wqdtarget = $(this).attr("wqdtarget") || "click",//得到一级触发方式
+				wqdfadein = $(this).attr("wqdfadein") || "",//得到一级触发方动画
+				wqdelementhide=menuObj.attr("wqdelementhide")||"",//得到二级隐藏触发源
+				wqdtargethide=menuObj.attr("wqdtargethide")||"click",//得到二级隐藏方式
+				wqdfadeout=menuObj.attr("wqdfadeout")||"",//得到二级隐藏动画
+				flag;
+
+			var that=$(this);
+			if(wqdelementhide=="tabcontainer"){//由一级触发隐藏动画  几种情况
+
+				if(wqdtarget=="click" && wqdtargethide=="click"){//由一级点击 出现隐藏
+					$(this).off(5-54-16q-50 0-75.5 30t-25.5 75q0 92 122 157.5t291 65.5q73 0 140-18.5t122.5-53.5 88.5-93.5 33-131.5zm363 217q0 159-112.5 271.5t-271.5 112.5q-130 0-234-80-77 16-150 16-143 0-273.5-55.5t-225-150-150-225-55.5-273.5q0-73 16-150-80-104-80-234 0-159 112.5-271.5t271.5-112.5q130 0 234 80 77-16 150-16 143 0 273.5 55.5t225 150 150 225 55.5 273.5q0 73-16 150 80 104 80 234z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#31343b" wqdhref="0" data-zindex="8"
++													style="width: 100px; height: 100px; left: 108.817px; top: 39.5px; z-index: 8;"
++													id="elementId1451469441947"
++													elementid="elementId1451469441947" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1112 446q0-159-237-159h-70q-32 0-59.5 21.5t-34.5 52.5l-63 276q-2 5-2 16 0 24 17 39.5t41 15.5h53q69 0 128.5-13t112.5-41 83.5-81.5 30.5-126.5zm604 152q0 265-220 428-219 161-612 161h-61q-32 0-59 21.5t-34 52.5l-73 316q-8 36-40.5 61.5t-69.5 25.5h-213q-31 0-53-20t-22-51q0-10 13-65h151q34 0 64-23.5t38-56.5l73-316q8-33 37.5-57t63.5-24h61q390 0 607-160t217-421q0-129-51-207 183 92 183 335zm-183-185q0 264-221 428-218 161-612 161h-60q-32 0-59.5 22t-34.5 53l-73 315q-8 36-40 61.5t-69 25.5h-214q-31 0-52.5-19.5t-21.5-51.5q0-8 2-20l300-1301q8-36 40.5-61.5t69.5-25.5h444q68 0 125 4t120.5 15 113.5 30 96.5 50.5 77.5 74 49.5 103.5 18.5 136z"></path></svg>
++													</div>
++												</div>
++											</div>
++										</div>
++
++
++										<div class="item">
++											<div bg="0"
++												url="url(&quot;http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg&quot;)"
++												data-maxzindex="8" class="bannerContainer" style="">
++												<div wqdhovercolor="#f6f7f9"
++													wqdpath_width="1.9811320754716981" wqdpathstrok="#dddddd"
++													wqdpathfill="#f6f7f9" wqdhref="0" data-zindex="1"
++													style="width: 300px; height: 179px; left: 2px; top: 0px; z-index: 1;"
++													id="elementId1451469286623"
++													elementid="elementId1451469286623" class="wqdelementEdit"
++													data-elementtype="freeRect" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<div class="wqd-freeRect"
++															style="width: 100%; height: 100%; background: rgb(61, 194, 136) none repeat scroll 0% 0%; border-width: 1.98113px; border-style: solid; border-color: rgb(255, 255, 255);"></div>
++													</div>
++												</div>
++												<div wqdhovercolor="#f6f7f9" wqdpathfill="#f6f7f9"
++													wqdpath_width="1.9811320754716981" wqdpathstrok="#dddddd"
++													wqdhref="0" data-zindex="2"
++													style="width: 300px; height: 179px; left: 300px; top: 0px; z-index: 2;"
++													id="elementId1451469319117"
++													elementid="elementId1451469319117" class="wqdelementEdit"
++													data-elementtype="freeRect" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<div class="wqd-freeRect"
++															style="width: 100%; height: 100%; background: rgb(61, 194, 136) none repeat scroll 0% 0%; border-width: 1.98113px; border-style: solid; border-color: rgb(255, 255, 255);"></div>
++													</div>
++												</div>
++												<div wqdhovercolor="#f6f7f9" wqdpathfill="#f6f7f9"
++													wqdpath_width="2.0754716981132075" wqdpathstrok="#dddddd"
++													wqdhref="0" data-zindex="3"
++													style="width: 300px; height: 179px; left: 599px; top: 0px; z-index: 3;"
++													id="elementId1451469340711"
++													elementid="elementId1451469340711" class="wqdelementEdit"
++													data-elementtype="freeRect" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<div class="wqd-freeRect"
++															style="width: 100%; height: 100%; background: rgb(61, 194, 136) none repeat scroll 0% 0%; border-width: 2.07547px; border-style: solid; border-color: rgb(255, 255, 255);"></div>
++													</div>
++												</div>
++												<div wqdhovercolor="#f6f7f9" wqdpathfill="#f6f7f9"
++													wqdpath_width="1.7924528301886793" wqdpathstrok="#dddddd"
++													wqdhref="0" data-zindex="4"
++													style="width: 300px; height: 179px; left: 898px; top: 0px; z-index: 4;"
++													id="elementId1451469359260"
++													elementid="elementId1451469359260" class="wqdelementEdit"
++													data-elementtype="freeRect" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<div class="wqd-freeRect"
++															style="width: 100%; height: 100%; background: rgb(61, 194, 136) none repeat scroll 0% 0%; border-width: 1.79245px; border-style: solid; border-color: rgb(255, 255, 255);"></div>
++													</div>
++												</div>
++												<div wqdpathfill="#31343b" wqdhref="0" data-zindex="5"
++													style="width: 100px; height: 100px; left: 102px; top: 39.5px; z-index: 5;"
++													id="elementId1451469628927"
++													elementid="elementId1451469628927" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1745 773l-164 763h-334l178-832q13-56-15-88-27-33-83-33h-169l-204 953h-334l204-953h-286l-204 953h-334l204-953-153-327h1276q101 0 189.5 40.5t147.5 113.5q60 73 81 168.5t0 194.5z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#31343b" wqdhref="0" data-zindex="6"
++													style="width: 100px; height: 100px; left: 400px; top: 39.5px; z-index: 6;"
++													id="elementId1451469660300"
++													elementid="elementId1451469660300" class="wqdelementEdit"
++													data-elementtype="icon" data-elemandgroup="true">
++													<div class="wqdelementEditBox">
++														<svg class="wqd-svgicon" viewBox="-250 -250 2392 2392"
++															xmlns="http://www.w3.org/2000/svg">
++															<path fill="#999"
++																d="M1322 597l16-175h-884l47 534h612l-22 228-197 53-196-53-13-140h-175l22 278 362 100h4v-1l359-99 50-544h-644l-15-181h674zm-1130-469h1408l-128 1438-578 162-574-162z"></path></svg>
++													</div>
++												</div>
++												<div wqdpathfill="#31343b" wqdhref="0" data-zindex="7"
++													style="width: 100px; height: 100px; left: 699px; top: 39.5px; z-index: 7;"
++													id="elementId1451469680080"
++													elementid="elementId1451469680080" class="wqdelementEdit"
++													data-elem

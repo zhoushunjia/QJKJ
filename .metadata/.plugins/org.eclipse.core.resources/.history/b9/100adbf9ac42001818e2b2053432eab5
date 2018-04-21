@@ -1,0 +1,504 @@
+// 此文件设计器中已无使用，发布后是否有使用待验证
+$(function(){
+	$.fn.colorSetting = function(boole,element,category) {
+		$(".wqdBkEditos").each(function(){
+			var hover_color = $(this).attr("wqdHoverColoros") || "",
+				HoverTextcoloros =  $(this).attr("wqdhovertextcoloros") || "";
+			if(hover_color || HoverTextcoloros){
+				$(this).find(".wqdElHoveros").off("mouseenter").off("mouseleave");
+				$(this).find(".wqdElHoveros").on("mouseenter",function(){
+					var that = $(this);
+					if(hover_color){
+						if(that.hasClass("wqdChangeBgcoloros")) that.css("background-color",hover_color);
+						if(that.hasClass("wqdChangeColoros")) that.css("color",hover_color);
+						if(that.find(".wqdChildBgcoloros").length!=0) that.find(".wqdChildBgcoloros").css("background-color",hover_color);
+						if(that.find(".wqdChildColoros").length!=0) that.find(".wqdChildColoros").css("color",hover_color);
+					}
+					if(HoverTextcoloros){
+						if(that.hasClass("wqdChangeTextcoloros")) that.css("color",HoverTextcoloros);
+					}
+
+				}).on("mouseleave",function(){
+					var that = $(this);
+					if(hover_color){
+						if(that.hasClass("wqdChangeBgcoloros")) that.css("background-color",that.attr("wqdBeforeBgcoloros"));
+						if(that.hasClass("wqdChangeColoros")) that.css("color",that.attr("wqdBeforeColoros"));
+						if(that.find(".wqdChildBgcoloros").length!=0) that.find(".wqdChildBgcoloros").css("background-color",that.find(".wqdChildBgcoloros").attr("wqdChildBgcoloros"));
+						if(that.find(".wqdChildColoros").length!=0) that.find(".wqdChildColoros").css("color",that.find(".wqdChildColoros").attr("wqdChildColoros"));
+					}
+					if(HoverTextcoloros){
+						if(that.hasClass("wqdChangeTextcoloros")) that.css("color",that.attr("wqdBeforeTextcoloros"));
+					}
+
+				});
+			}
+		});
+		return this;
+	};
+	$(document).on("domInit",function(){
+		$.fn.colorSetting(false);
+	});
+	$.fn.colorSetting(false);
+	//定义出现在可是区域的函数
+	$.fn.unveil = function(callback1,callback2) {
+        var $w = $(window), elements = this;
+        elements.one("unveil", function(e,boole) {
+            if (typeof callback1 === "function") {
+                callback1.call(this);
+            }
+            /*
+            else if(typeof callback2 === "function" && $(this).attr("status")=="on" && !boole){
+            	callback2.call(this);
+            }*/
+        });
+        function unveil() {
+            var inview = elements.filter(function() {
+                var $e = $(this), wt = $w.scrollTop(), wb = wt + $w.height(), et = $e.offset().top, eb = et + $e.height();
+                return eb >= wt && et <= wb
+            });
+            inview.trigger("unveil",true);
+            //var outview = elements.not(inview);
+        	//outview.trigger("unveil",false);
+        }
+        $w.bind("scroll", function() {
+            unveil();
+        });
+        $w.bind("resize", function() {
+            unveil();
+        });
+        $(document).ready(function(){
+        	 unveil();
+        });
+        return this;
+    };
+});
+
+$(function(){
+
+	//设置cookie
+	function setCookie(keyOfCookie, value, expireDays){
+		var date=new Date();
+		if (!expireDays) {
+			//expireDays = 24*60*60*1000;
+			expireDays = 5*60*1000;
+			//expireDays = 5*1000;
+		}
+		date.setTime(date.getTime()+expireDays);
+		document.cookie = keyOfCookie + "=" + escape(value)+";expires="+date.toGMTString()+";path=/";
+	}
+
+	//获取cookie
+	function getCookie(name){
+		var strCookie=document.cookie;
+		var arrCookie=strCookie.split("; ");
+		for(var i=0;i<arrCookie.length;i++){
+			var arr=arrCookie[i].split("=");
+			if(arr[0]==name) {
+				return arr[1];
+			}
+		}
+		return "";
+	}
+
+
+
+	if( !$('HTMLDATA').length ){
+
+		//预览发布以后 表单内的 select切换
+		$('.wqdDropDownMenuos li').click(function(){
+			var node = $(this).parents('div.dropdown').find('button').find('span').eq(0);
+			var beforevalue = node.text();
+			node.attr('beforevalue',beforevalue).text( $(this).find('a').text() );
+		});
+
+
+		// 非编辑模式下的表单提交
+		$('.wqdFromSubmitos').click(function(){
+			var that = $(this);
+			if( window.location.host.match(/p.wqdian/gi) ){
+				return false;
+			}
+			if($(this).find('span').text()=='提交成功'){
+				return false;
+			}
+
+			$(this).parents('.yzmoveContent').find('.checkbox_radio[from_submited]').removeAttr('from_submited');
+
+			$(this).parent().find('div.wqdfromnullos').remove();
+
+			var obj = $(this).parents('div.yzmoveContent').find('.wqdFormAreaos');
+			var name =  $(this).parents('div.yzmoveContent').find('.wqdFromTitleos').text().substr(0,32) || '表单';
+			var sectionId = $(this).parents('div.yzmoveContent').find('div').eq(0).attr('partid');
+
+			var a = name.split('') ,b=0;
+			for(var i=0;i<a.length;i++){
+			  (a[i].charCodeAt() > 255) ? (b = b+2) : ++b;
+			}
+
+
+		var bigMap = {} ,notnull = [];
+
+			obj.find('.wqdAppFromos').each(function(index){
+				var map = {};
+				if($(this).get(0).tagName.toLowerCase()=='input' || $(this).get(0).tagName.toLowerCase()=='textarea'){
+					var key =  $(this).attr('placeholder').replace(/\*\s+/g,'');
+					var val = $(this).val() || '';
+
+					if(val=='' && $(this).attr('fsubmit')=='need'){
+						notnull.push($(this));
+					}
+
+						map[key] = val.replace(/\n/g,'<br/>');
+						bigMap['form'+index] = map;
+				}
+
+				if( $(this).attr('type')=='select' ){
+					var selectnode = $(this).find('button.dropdown-toggle').find('span:not(.caret)');
+					var key = selectnode.attr('beforevalue') || selectnode.text();
+					var val = selectnode.text() || '';
+					key = key.replace(/\*\s+/g,'');
+
+					if($(this).attr('fsubmit')=='need'){
+						if(key == val.replace(/\*\s+/g,'') ){
+							notnull.push($(this));
+						}
+					}
+
+					if(key==val){
+						val = '';
+					}
+					map[key] = val.replace(/\n/g,'<br/>');
+					bigMap['form'+index] = map;
+				}
+
+
+				if( $(this).find('div.checkbox').length || $(this).find('div.radio').length ){
+					var cr = $(this).parents('.checkbox_radio');
+
+					if( cr.attr('from_submited')== void 0 ){
+						cr.attr('from_submited','from_submited');
+						var key = cr.find('div.wqdCheckboxRadioDetailos').text();
+						var val = [];
+						cr.find('input:checked').each(function(){
+							val.push( ($(this).next('span').text() || '').replace(/\n/g,'<br/>') );
+						});
+
+						if(!val.length && $(this).parents('.checkbox_radio').attr('fsubmit')=='need'){
+							notnull.push($(this));
+						}
+
+						map[key] = val;
+						bigMap['form'+index] = map;
+					}
+				}
+
+			})
+
+			var parames =  JSON.stringify(bigMap);
+
+			if(notnull.length){
+				$(this).after($('<div class="wqdfromnullos">请确认填写完整后提交</div>'));
+				return false;
+			}
+
+			if(getCookie(sectionId) == 'yes'){
+				$(this).after($('<div class="wqdfromnullos">您的操作太频繁了，请5分钟之后再提交</div>'));
+				return false;
+			}
+
+			$('.checkbox_radio').removeAttr('from_submited');
+
+			$.ajax({
+				url: '/pcdesign/fixed/form/submitForm',
+				dateType:'json',
+				type:'post',
+				data : {'name':name,'sectionId':sectionId,'value':parames},
+				success:function(data, status) {
+					if(data.status==200){
+						var text = that.text();
+						that.text('提交成功');
+						setCookie(sectionId,'yes');
+						setTimeout(function(){   that.text(text)  },1000);
+					}
+					bigMap = {};
+				},
+				error : function(){
+					bigMap = {};
+				}
+			});
+		})
+	}
+});
+
+$(function(){
+	if(!$('#HTMLDATA').length){
+		$('.wqdtableTouchos').each(function(){
+			$(this).width($(window).width());
+		});
+	}
+
+	//导航编辑手机适配
+	var devicesWidth = $(".wqdIphoneView").length ? true : false;
+	if(devicesWidth){
+		if($('#HTMLDATA').length){
+			$(document).on("domInit",function(){
+				navAutoFit();
+			});
+		}else{
+			navAutoFit();
+		}
+	}
+	function navAutoFit(){
+		$(".wqdLogoBoxos").each(function(){
+			var obj = $(this).parents(".wqdBkEditos");
+			if(obj.find(".wqdLogoLeftos").length) return true;
+			obj.find(".navbar").removeClass("wqdNavCenteros wqdNavBottomos").addClass("wqdNavRightos").parent().prepend('<div class="wqdLogoLeftos"></div>');
+			obj.find(".wqdLogoLeftos").append($(this).clone());
+			obj.find(".navbar-nav li.wqdLogoCenteros").addClass("hide").html("");
+			obj.find(".wqdLogoTopos").remove();
+		});
+	}
+	//屏幕选择刷新
+	$(window).on("orientationchange",function() {
+		location.reload();
+	});
+});
+
+//在线客服代码 begin
+$(function(){
+	var url="";
+	var isEditPage = $('#HTMLDATA').length>0;/* 判断是否为编辑环境  */
+	if(isEditPage){
+		url = URLPATH+'pcdesign/design/cs/read?siteId='+USERSITEID;
+	}else{
+		url="/pcdesign/fixed/design/cs/read";
+	}
+	$.ajax({ //读取客服代码。 get/post 无参数
+		type: "GET",
+		url: url,
+		dataType: "json",
+		success:function(data){
+			if(data.activeStatus == "on"){//使用客服
+				if(isEditPage){//生产环境下
+					dataShow(data,true);//展现数据
+					//在手机端
+					if($("#wqdIphoneContainer").length) {
+						changeQQPos();
+					}
+				}
+				if(!isEditPage){//发布后
+					serverChange(data);
+				}
+			}
+			if(data.activeStatus == "off" && isEditPage){
+				dataShow(data,false);//展现数据
+			}
+		},
+		error:function(e) {
+		}
+	});
+	function dataShow(data,boole){
+		//生产环境下 1.改变颜色，2.选中，3.展示代码
+		var colorArr=[];
+		var code1= data.code.split(";");
+		var conten1=data.remark.replace(/<br>/g,'\n');
+		colorArr.push(data.defaultBg);
+		colorArr.push(data.defaultIcon);
+		colorArr.push(data.openBg);
+		colorArr.push(data.openIcon);
+		colorArr.push(data.openTitle);
+		colorArr.push(data.openContent);
+		colorChange(data);
+		//记录上次改变的颜色值
+		colorSetChange(data);
+		if(boole){
+			$("#wqdpServerD .ser-select span").addClass('on');
+			$('#wqdpServerD textarea').attr("disabled",false).css({"background":"#fff"});//可编辑
+			$('#wqdpServerD input.promptTitle').attr("disabled",false).css({"background":"#fff"});//可编辑
+			// $("#wqdShowQQD .serQQ").animate({'right':"0px"},350);
+			$("#wqdpServerD .ul-select").removeClass("close");//颜色编辑可用
+			$("#wqdpServerD .select-box").removeClass("bee");//为了上下小箭头，可优化
+		}else{
+		}
+		if (data.code.match(/uin=[\d]*/g) != null) {
+			$("#wqdpServerD textarea.edit[name='code']").val(data.code.match(/uin=[\d]*/g).join(";").replace(/uin=/g, ""));
+			$("#wqdpServerD input[name='qqTitle']").val(data.code.match(/alt="[^"]*/)[0].substr(5));
+		};
+
+		$("#wqdpServerD textarea.edit[name='detail']").val(conten1);
+		$("#wqdpServerD .ul-select input").each(function(index){
+			$(this).attr("value", colorArr[index]);
+		})
+		$("#serverNumber").empty();
+		for(i in code1){
+			var str='';
+			var str='<li>'+code1[i]+'</li>';
+			$("#serverNumber").append(str);
+		}
+		$("#wqdShowQQD .shuoming").html(data.remark);
+	}
+	function serverChange(data){//渲染页面
+
+		var html = "";
+		var code1= data.code.split(";");
+		var str='';
+		var conten=data.remark.replace(/\\\\n/g,"<br>");
+		for(i in code1){
+			str +='<li>'+code1[i]+'</li>';
+		}
+		//判别生成环境，测试环境，发布环境
+		var yxdd = getURLStr("model");
+		var sss = "right:0px;";
+		if(yxdd == "pad") {
+			sss = "right:97px";
+		} else if(yxdd == "phone") {
+			sss = "right:27px";
+		}
+		html += '<div id="wqdShowQQD"><div class="serQQ color1" style="'+sss+'" name="defBg">';
+		html += '<div class="fa fa-phone color1" name="defIcon"></div>';
+		html += '</div>';
+		html += '<div class="serShow color1" name="openBg">';
+		html += '<div class="header">';
+		html += '<div class="fa fa-phone color1" name="openIcon"></div>';
+		html += '<span class="color1" name="openTitle">客户服务</span>';
+		html += '</div>';
+		html += '<div class="down">';
+		html += '<ul id="serverNumber">';
+		html += str;
+		html += '</ul>';
+		html += '<div class="shuoming color1" name="openContent">';
+		html += conten;
+		html += '</div>';
+		html += '</div>';
+		html += '</div></div>';
+		$('body').prepend(html);
+		colorChange(data);
+		$("#wqdShowQQD .serQQ").hover(function(){
+			$("s~67$#qJdRu`nx>kK-xE>st;i_j(Nl63vL
+zdyIBtiP2@OGcGhPGG1rA)uc43p`^?So)kPexGcClxFUE-@a4f*1z#V0Tk!3{cLv`T
+ze0T7&;0J>r3Vt;BvEZkIp9x+b{8I4OW{vqJ^V+cZupLoxQOQv`QTfrwV&=tM5OYz?
+z6)|r>r4<*O6q}6B`@OOE#Xc7MMC^;PZ^o{R-5C3O?2+*W<0r;F7WaJIHk!;kp&~Ib
+z(VRFPPt(lAEAT8`o%m+r+llWazMJ@7;+DjZlO`pVq7hM*RG%~rOyl0<h~)TWTXJ*q
+z>B;veKL=Z{Ey*7zf1bP>_Fk%#;FKvT7o{vqc_8H}+eBNDtt9p7^jR4TGcL<ml5thW
+z)fv}hT$>q`c~|DWeo-)&1ZS_yQRmFHzwFq6OyhgUF2^C{8@UAq1;+|Y3d_M7co&R;
+zGo8PcomX~A*=3%r@^{Pk!217NugiO-_YUvf-g~?+dsld0@vii)@~-y2>ix=lqUzb|
+z=<2JhU#orteAJ!9K&?5g<^`r%)IC7_7!;_m)KZ}qhQ;T}lRpDm=xq^*3<XhXvlU*U
+zUI-Cd8f!cr*l+RSFk7!9sTe7pyBATL1Itl~&d)jHzZt(P4%Rv&gD_B}hHIlB5l{zl
+z>xazRh0GLMJFL}4v1EPoc7MB{X+R30u#D&BV-uR0U?+;&6F>y<eSx;os!#m5TF%12
+zD1wQmi|}$Btc*ev{1JIfSJ~#-=Gzw77TOls&ShHcYJH=f#JubCkg|@Thl#!}(wJv3
+znG71ZiV<iB0DK#{Uw*6K(M}OEY*`TYXxMVpH4-YIOuaVmih|<>Ckr9M<ZY_~)VkuS
+zltfQ-no+Y0KLN|Fzs(OG4EY$-ejb~|Gn2<$5_1LgfJU_L$WOMLC>s*OBG0$y7vvX$
+zDoLj0^aTpFU%)z|gFEGd%svbvVx_-ZC728>*o$dC&U`U>2;Nd)2_XJo!t?;a5|FqN
+zhee`l2V50%2wOLxZ{8^%Q}P5lVe<yr7;T*RO+lbA-mJYtd#Cmu?Y-Ki+6T1{c@B7f
+z_x!<hZ4#=+Q+WVsm{B}HS|Kd5m5pFI4z|v(fL3G<A-tzdo!{o9tQ#W^iEfQGVq}57
+zF;=xxvF&dxWI8xDV1_F0Fmb<O(f%RRdTP9wnodeNoR=bI7H8G~Rz;C0nmp~mOgDp+
+zKPbNE6A~RyW){#Qni`t9&aRBl8I>sAOaHc?OP+p#V6N1`Yf@U~D&Cua%<`n=Wy=Z{
+z?;|MGc6W43cp<Mu1T~g^E>2JxkQ<N}kRNbMz(=6*`0@du6I55>$I)-7x})mOsufk3
+zln3V(ak_X}RXMM6QRTAA$0{GMTshWuk{g0kex@quE$Ay4Dp&;E0@Ij@W`Vzr3{@(G
+zFeF+}M*s6WF*^loo{BR$>#kT>0UWcDo<vF+@r}-*+ysfk!L57E^{y(AP9*1M_|~BN
+zjPJ_gFNnVil(oDv;`TuJ;~yw4Dll-S=~I|0zJaBjs!zrT=8<l7aEP2rX*v5|pl=xa
+zjKhEuJzjx8NvAJh#)umtAnql@9}g}6ANRpszQH@)TjQzlV7@K3)dnX`+4#Jb>9Jaf
+z;SGCIGJyji9?T*shnox2O|Ed@L8G%{v`|!+M3zh_NiIn*$tbm!p2a5)*U?Z0K4YCv
+z9Ok}rb2_k`cNv+6#85<N!ty-KY*cw62|%qh40UrWrds0n{o^$$dS%_0wT$VATR`ar
+zMaXu#ArZ%rq5}|u%9p@$&bOkq{sYbiYnl=cFS-2j2pBOO^&Sf%Pa=%d9TdO_EKm)&
+zAA$o2Yzl)6A%g`RLp*7I&mBt&XBD<!-YcJhg*qLl|Jpg=s}A*h23zS4Bt4sirdK;m
+zwiob@M(iW8k4pdMSOx#LPOQzGmK+~^W4*?@oay-ZiiT#W(cqy?N7G(Yei>6s**RVa
+z2tO8nJp4q2JVFtnjL_O&v46_cl;hyH;caV}64TDe>+>>LL|h(rW7th$H;3IFc2C$+
+z$N7#69hZR`zQeH})bJ^s91h>64v7K?a*FY9Vkf&;H)&JTrm<jO>jAd__etVMD5AcH
+zXU@-2zxk$h5mW@s_5ij22R&FjuoA|3>C#kb5ot+j$!RHRwzO29C}yOUL3Q>y)3v}E
+zxu36lROINv!|k-mSuO08IE)ku8Gx_!I7OiXKq;8(%jrRGX>KZS$#Do$XqGiAJS!T0
+z(zF@048TFI0lV{8cvz|MqvnF3zBXb9#QDk74y7GSJ0b4V!oS_Og`@XPi}*>yoVXwJ
+zS0`DN)IaraPrj=}={t_A2-$BbwLEKi5j!7H6MCpavW{2YQ@H~E8|1z5OXaVXe^ef+
+z{HyYWmw7c_vp2#U<4wfCCCtO(2LI%|;yWt7F2fx>#LS|GLUzw78$J@22HyMkz<GaS
+z{;vEzaLj*@Se|&U5M4OSg}!f`Y`g$Y50XpjSm;*=q^1X0&3ic?<ZRCQDEB+4zcx5F
+zmj6%=IXpK};TsddUmkKbA?SsUh#>}#Bj(`3(*6P=C`UIq{G-a=k(-&@TF_eX1Tel(
+z35xTZtO-Pdj-jdn?=wW4rL>$Az(~i&jCU0UMFo=zCKpVBcA&LqU=CIoOk#p4iE2Qn
+z55s0?1Cy0)fpK;iCT;U++g^-tr1@2~k~n}qL9?~taO2}Q@~#G6SD_hjpe(a2t737*
+zEi7CrQG6GjZY78O`LZBy9oQgqW>)QN+H~a6+0n((lbCV<5`BUVRLC)3a;|Xhca3u`
+zq)yfl_rbvS&o^#<n83M#Jy?ts?TDShRhRr<bU-}S+wffLpiFIPtaZW=2ty1YUl|Y6
+zr)ETc@sJ%buz(IcZnQv<?X8%}l>D{`>1*wDrl#Uh;9hF@i@oJ}yZi~sJ1|I+@A>GK
+zD$Ao5+Kr#Ftg-;4MPAbdq8vC7v+IEuuLiz548X64dq*KLSpX_N>E|gUBuAoe`<SjC
+zgW*TocyEVxm*4s^>9uceALy;z=a0^rew*YXs6eKKKJYi~MA!mZAK5SdAkp;br13#n
+z#WNMpVwe&Z8-@e7caCz&3(E`ZSe$PG`?~0(ZXJC2@Ftm>$GnRu<`q<f^&Z@T;aKeg
+zSHZ;=5aFTAkP-N0Z?q&t)T`*MfO&NvxgT&S9OtC8oNKw(a<gTb<zX^^;JK9G<x&8q
+zp4u81KlQe7$cw-M`W?ZmgV$oCMHShFU0u4WzNqgy>^dSDDfymdq^z_|=z5KAuClyg
+zcx<SNJci(l!>Ujr{)q}vVGXpJnGp<I80A9}2u&{$z(5`Of$8d+v2?&^oesSo!r$`q
+zaobQ5BefaA=jh}jT#*W9p{ZPyzf?g)%8O>->7f@0!^al1^TGEhYeH)IQ$9FZ63fzq
+zosygZvFdo{LkGmb!A(r#>-~zQIL!qLTN7kcd@iu>h5_P)_Q01F%L=m#9V~R1=N9zD
+zO?UWXDi-&vzpw~EVpxyT-NoPb18sa`o>Vt!8Z`SMy+{UnxQWf!?{CS3cWJY$29soJ
+zJ+&^LgULfaEqt~Z1|qy*pi!*SgnQfpK{(`#S&HQHd_%r5-waJ72Ykej`MZ@fJ=)5!
+zX)thZ3Y!TN=Qw_7-&BqUDc1n|5>M9XbdJ24d9(7bVi6n+m7I8`p_P&!FJ0M;of+R#
+z3QCSy2u%x+nlI0V`7^HPFc$695r7x%oUtUw%*Qu%>&c0l-_3sB5mH2Mh<v}OsA!Te
+z%t~Qybdd$J9@fkHSU*=>&tvo1LUsYW5R(gF`+*ix-)w*Gt4>{%dRgj?FvNW^bz3UT
+zu;@mjyV8%d0Hodp-Z?%FVHYOAiWjFs-VAhw9&JlnKw4m$F3pf;N()X4NefN0riG=2
+zBSFYZD^ByKO-uVQZCl!&w1eq(3<~r0si+M}6Rt(_OIO6$gIqU=3IGX}q{}ZaeX;bV
+z(iPx_Anej`3-E67vLg1zq>0cxpT*KB%;HM%s7yN*UxJY8P?Yxno1Rntpvj8%75xgp
+zrxnx=SOW12ilVy{>;Ul^ok{eG=#xxGdQ3kOhcfsYSVhB>W*RARC?swJ8JLfG^2xfc
+zQw}LFP+q9KNO`gH66K}J%aqqDA5lK3d`kJW@-5{$<$C42%FW6x${iqMCaJutKGkB?
+zC0q&?9n%nVXUtu(@>p+dUu=KuK<qiOgRw)|TeFX6pFqFn`kdQx?#g*0XFF)R=G^4m
+z6p)?n%)K}Fq1-2Ox8{DDyFK@t+@pCD^GfpmlXq5LN8bFrMR|+!&da+n@1nd*^DfI<
+ziea<w<!#K{gn_f$^S;jeF>iO?-n@Nzhe4H6=j-yr^JDV!@*Vk;VBA{*o=9W<S^2FP
+zOglS&2%!9u{9E&H&%Y!8k^Cp~pUVHl9t=X2)86J#IKmw+N3CPf@nAtvfd!4A#|pL=
+zx+gzVl2(!l+Egj&4y$^qtE*41Mv+Y$8@Oi>^yIsQ6<5iBT-XCia?BNebYCMk7fmTD
+zEAsd_E&>K5>_rM<>Y)8Poi0ijt&7pc>c%q*rTU}yadfwk6`WHr$c$CanJ(mqenJcV
+z5lfHdoWh$5Z(|YjxTh8{S7IKCg+3~sTFz8Z10b=a@9^&O253VtJrD3FkXW8HewokW
+zL<p%xD8@ms{SN{`76kz<X0%5554#}p!pMsvFJ^&gp-a>sM8e}cS(4yY`oti<8V|pu
+ztDCg8NHnCNB{T0de-Bi`k45vf2y+b(G({Q5l_LvaS0qUGdfQpHYizgJ9<@DYd))Sf
+z?Md5H89(J-U-Fx0OC{zS2nY#Jl*lT=!aj&JMFvM&BEO9MD)NWOA0u~1{uKF3<le|%
+zBlk!C7I`4@VC1pL<B=yKPe#e2f}%hb5<gaCulSWJ-8QSqY7Q%$*gtUyp3Df))c~$;
+zXMvr4*j{0ZiL`^R2HJ0S44o-r>EZ}u7->L+c-Z-GWVML&7?9PBoX*9+Mr{*5COn?$
+z`?=paIYiRVk3T&^v#sjNtKCR@Ca{cCYi}<$JlbA|xMH)ziSR;HNZ-piQJJv;{$P<f
+zNyNYZ9?O5rfS<}xJ6e!}0Rip9T`=13?U8~qj-(HH7|hKtL-vF&K`D1{*n^RmgE#<-
+z(!!SuSHN%=u8%%h{^3Dp^INX`f40gF^wfB`?gitG@%Q8*ABKD!@~N<!1L9802#+4c
+zU+grCS&meMlFV2P-fTjQq!AC2RIGl~?0Xa`bgXr(gD#?lLVsf?MPj+2O<?3{jd!Z6
+z-q}zF(T;OEF~Pvz@YErt=U$X+K4(D$vvHOX(qv?~7>+zvS>qNy5?GEtO9`I;3XDLR
+z+>zXw+?6~#8Rm76NMQyq-C>-7GX915<?aATq`H`n_)#>2h39X0QxpAT^zP`N#(Tz>
+zgZX*p6fmRF8<cW6yRHx5`$FA|x|eh>>sIOBK(_Oi?rq&V-6qUL*sA-CPef4aReFs+
+zQJ=2Q&^z=VkOP)tg4$>L@ANzMzZmW|+>faTn+-<{C&;Ij<U7F~!JQatvnllF&?BLL
+zh0O|U4_kmilzklo{ixj#i;#^Y1BNH+OH!@Rv)dN-G5ef-!A`J~;Ld2q1z_fH{J5NP
+zd6+tzDch#LNi(Dw)-2MTuen5XDQy3q(5%qBqIm;q+l`tZG(T#7(d^e8(EOn}s5z=R
+zp*a~K4+sb_1egNM0U-fa?KJ&D{bKV9^K0h)Aq^poma8mRhusl&XY{n_hRnXqq0EuY
+z8#0$>-k14A=JL!HnX5D3&-@_sqs)&pKgryh`Dx~7nLDyyE6T$B-;v^{iq{suUHnz?
+z*OTHWB~D77lrkl8N>b%l5b}_GOxn>~dk|81B1e?qSR=DI>+0)HtF3QtY!PW}Jz@js
+z4&RT*Ln+9RoGQ}c%O?>>Vc3Q{h2cNVXpK=xL2DH^Rp$8Iu>%wpxZe4@L`q$oAunuV
+z^yL#DX9)ztiCPp7F4o%Yg`?#}$5@49dqD?AjXGN<&ct|W59FRT5R1{8idmg?an@z!
+z8)2?xmDc6h*+vqCDNCLUmoy`sHU<aU>A^v;#%ThXxSr{dVIeJSB@-c1?*6t9I`;u6
+zC9wuXCQ|--`PzTt9ULc;OL&I`C^lcreQ-+Qrcrb$_$Aom*pGoA;>!7xDp303nTph-
+zq<%WEhX-gxE{yaY6a~C2SvE}`r6^Q1D3-GE_3p;02{6u+rj<}CH3CByz~JIP=~8&V
+z^?v95(YxDw1b%Rof%S}rgPdLr$qR!-*jFKV`sQ`RQI7I1QFb~1<7~koK0o6_x^jxR
+z%($$$?6@3eY$tNCx2&eAA5tIOFSPYm!C=$bRO!M0aZ0|kW@@Fgt{LzE68^?9{Cu+{
+zUifF#HpZ|SKf)@!__%w`ej$Srg{z>Lq`#d0UiyagPhjc{|K@aPv&V4SBxp=7dr!7O
+z_7R3KL0!<$(okRPtizGz1veMmQYeS&rqYAi+U^=>Giep;YOuDqqsqYo<x&uz)`z6@
+z0&>Hb6%kj7i4v@Yz!$0!6L{bsLG?DqR}88{+(ZPn{yu#7zgh=f2J4^@EIVHkJf=PH
+ztrH*zHzNi&7k^n+@D%8L#!-Qk9}&@1@2dW>dUy4n>YuCkR_}unI|6G~py#}SPj?WQ
+z1>d9TH-HAW+wzlT519h}edsk``(w6Kxy{0@Rt>)OB5|i+X0{I+4nb;~I#%za$vU1b
+z%a&K(UU@f%*<OKvD6ulplc!t<-J_xQ!EPFC%Qp+0kY4qcidcXjs6OH>z%Nw4fdTkC
+z=l=z;Ob)^|d!?8&l<>EI`&bbe<Rk4bid<W6YHnI?I#bP&8cO5P<Z7P7GJK70+E0A&
+z5`Px4fsMX0N{Upc-kN%U>cgpzq&}MZR4QgmcjR?6EfBnODyTpPtYDS@YblHop#E<=
+zsjIOjg540%Q}}?{B9(Qbgp%pI^cW^viCuIM+xc96U(sWu(&ht@-y6W=u5SVA)+9VW
+z;a&Y~&hzA6Z9f4{!@sl|sa{jqMtGm`TxRi&`xb|2Y4(al;OGISL8jzu9myjm+0M2N
+zGd*Wli#7-HTXZ4o;0umhj3!#c3?#~ROx@6l-X{;9fv|EP0abNj#iELH0rQ<#ael=G
+z75B3s7+Ul!L;yrt3C+&IpICJJXhMTjoCk9}O#UqYgXdUqFBkA}M#E_8Adnsvsp`pJ
+z=)ghp5CzCY5`2P6_yENrUlJ1ia`YM!IYn<~<}NI*&OvItg1H8pGh|-K(N|*-OOtad
+zW@(l+gZ@dpYEC}E$LnjQ0NFoS+1Z2pK~E?KFM&l4RX+-4QqAHh+*=aw$+^$6_7txL
+z|C5Anp0B}&-w6+14ju)GD@&)#Hv(mRd3<a9Nc<fI4>6;VD+=s50k{zTdD9ltC!kH>
+z@ghz!@)jvq#(P>_l+k0XF*X~|G~Q^u%eV|=gcn&bbxP*}Ge%6NpDfT+8By9<{us|^
+z3UCQ96HM@Dnh6wQDWgQN1nLah2+T;iz)Tf0KW0Hr2nI>b%U#F<z|xpazz$@#JAMP_
+z6^baR+oelPC+%A4T1EZN0a#aYDIxT@AQsZn9&`RJ?001h=LUbvdBF;8TaaD<oc?)(
+z+Mq$oBsVpg7IXCUeai=y4=o>Awpc#4d}7&Z*=G6Fvfc7ILf+SwZ!O<hzPIeM{D|<k
+z$MUmfuVtTQzvVZ}@0LF-hhhrJ&n!7AIVm|gIR(Usw&eEY!Q`Rj^O7%5z9RXy6a{Dz
+z>J&}N;*|4Jo&YUkl5MhWimfE;TgaO_i`t6Xi(MtUlEWoO%CbDR${KI2cZ2t<Dp}QB
+zqMpt}9u2xZ%<4vXy@L)-foNh6c6PN3p$%fmTBae^D5^7pv4glv>q_S~=XU2WfU;#S
+zIXqbhT=M}eaXx~C)G8w1itj4QDVhaBc@3J-Q?V1b)K6`yZ=?mgbvw(zU~Q@}al3la
+zYZHYhN7eg$yB!bFKC@^nNTVOT8-2e1j^@U9HTOXt4%&eK!yK?9LBbH)6ZoyjqR@4i
+z*@)ePG@i5p(DAsE5Wi4k2r^g=VTJ_5L_@K`Wq`pQj9tpfY4>m7;+0V6Jj%>1{n*z~
+zr4be-Jz|&|pAMuQM-?@(tf0K08hr{_bMfawVes%dXq#BT+|Gq!<RctFwg|XL*k-!v
+znS1dE_+E6h((FR2?4?Gz9Nen2ZT)agb&haN9e=JVQC8~~=$9ITaqw=#*@n3+km3iJ
+zW0L+?X1vmPEsNuAH5%#JAs~<bL5x`-m-`lJ@)jW7FX0F`(o4w%RiAWhS;++@7qS3a
+zHtnMSyJ`=*ko9izRl@s9-Fn?8#+QsMjc;L-<4+D=4K-d9Gb>IV_Xj4fJYD)}>Hg9~
+z&JaGvL=qr?WPN-29q=1ikEGQ^6IlqYXotL&GZ}FRdHL7n-<1E#!m4V~^Gl%r6B)g4
+zv!RpAxhdxsrfeakm;M>FEa(9=5nEbBE#HF6jFfOM@_pW<AyZ%aSY>Xdg9Sn!>>KEa
+z7u8@A&etx`F48X6UZA~*nFczcZx!~-Ev<tv+r@|E)-$cYyVs(>Gw7st@5)fX`8X)u
+zp~~Um0V#6OC(#MYjn0Gn_e@FeDTA5UJy1HK4xx|FXoO1F&&1Y+FAl#j{Ne~h<O`82
+zB3DOgqL)QKB+*C>I19-FW~c?;-PoGmW`S_a9GEU#yzu9g<8sF>8}|T4!9Rjhfh$%)
+zdjUrDVLl6h%uQJB;e)b-r^_FLY6@vS?Ftg6BBy>?`6Vm_v6TCRA>x6x2#}rY

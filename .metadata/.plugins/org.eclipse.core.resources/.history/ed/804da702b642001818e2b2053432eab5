@@ -1,0 +1,345 @@
+wqd-button wqdComponentBtn1 on" wqdbtnborder="false"
++												ondragstart="return false;"><em>图片分类02</em></a>
++										</div>
++									</div>
++								</div>
++							</div>
++						</div>
++						<div wqdbgcolor="rgba(190,161,167,0)" data-zindex="4"
++							style="width: 609px; height: 500px; left: 0px; top: 250px; z-index: 4; display: none;"
++							id="elementId1454153950001s" elementid="elementId1454153950001s"
++							class="wqdelementEdit elementsContainer freeContainerTwo"
++							data-elementtype="groupContainer" wqdmark="mark1454153950002"
++							data-elemandgroup="true" data-unused="set,copy,dele">
++							<div class="wqdelementEditBox">
++								<div data-maxzindex="4" class="containerWarp elemContBox">
++									<div data-zindex="1" id="elementId1454153951008"
++										elementid="elementId1454153951008" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 0px; top: 0px; z-index: 1;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnwuAJ4WwAAAyQCrtuVo796.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="2" id="elementId1454153951010"
++										elementid="elementId1454153951010" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 300px; top: 0px; z-index: 2;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXFaDoA6AUrpdAABgGov9rok722.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="3" id="elementId1454153951014"
++										elementid="elementId1454153951014" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 0px; top: 250px; z-index: 3;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnw6AMVPwAABiGPZdFeo392.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="4" id="elementId1454153951016"
++										elementid="elementId1454153951016" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 300px; top: 250px; z-index: 4;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KX1aDnwCAas_5AABgteQTW4s955.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++								</div>
++							</div>
++						</div>
++						<div wqdbgcolor="rgba(207,228,228,0)"
++							groupmark="groupmark1454153949998" data-zindex="3"
++							style="width: 121px; height: 38px; left: 929px; top: 71.7333px; z-index: 3;"
++							id="elementId1454153954286" elementid="elementId1454153954286"
++							class="wqdelementEdit elementsContainer freeContainerOne"
++							data-elementtype="groupContainer" wqdmark="mark1454153954288"
++							data-elemandgroup="true">
++							<div class="wqdelementEditBox">
++								<div data-maxzindex="1" class="containerWarp elemContBox">
++									<div hoverborcol="rgba(212,136,76,0)" hovercol="#ffffff"
++										hoverbaccol="#6c6c6c" wqdborder_width="3" wqdon="true"
++										wqdbordercolor="#626262" wqdbgcolor="rgba(255,255,255,0)"
++										wqdcolor="#505050" wqdborderradius="0" wqdheight="38"
++										wqdhref="0" data-zindex="1"
++										style="width: 121px; height: 38px; left: 0px; top: 0px; z-index: 1;"
++										id="elementId1454153954289" elementid="elementId1454153954289"
++										class="wqdelementEdit" data-elementtype="button"
++										data-elemandgroup="true">
++										<div class="wqdelementEditBox">
++											<a style="border-width: 2px; border-style: solid;"
++												class="wqd-button wqdComponentBtn1 on" wqdbtnborder="false"
++												ondragstart="return false;"><em>图片分类03</em></a>
++										</div>
++									</div>
++								</div>
++							</div>
++						</div>
++						<div wqdbgcolor="rgba(190,161,167,0)" data-zindex="4"
++							style="width: 1200px; height: 500px; left: 0px; top: 250px; z-index: 4; display: none;"
++							id="elementId1454153954288s" elementid="elementId1454153954288s"
++							class="wqdelementEdit elementsContainer freeContainerTwo"
++							data-elementtype="groupContainer" wqdmark="mark1454153954288"
++							data-elemandgroup="true" data-unused="set,copy,dele">
++							<div class="wqdelementEditBox">
++								<div data-maxzindex="6" class="containerWarp elemContBox">
++									<div data-zindex="1" id="elementId1454153955296"
++										elementid="elementId1454153955296" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 0px; top: 0px; z-index: 1;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnwyAbiE3AABGp59567M955.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="2" id="elementId1454153955298"
++										elementid="elementId1454153955298" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 300px; top: 0px; z-index: 2;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnw6AMVPwAABiGPZdFeo392.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="3" id="elementId1454153955299"
++										elementid="elementId1454153955299" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 600px; top: 0px; z-index: 3;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnw6AMVPwAABiGPZdFeo392.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="4" id="elementId1454153955301"
++										elementid="elementId1454153955301" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 900px; top: 0px; z-index: 4;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KX1aDnwCAas_5AABgteQTW4s955.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="5" id="elementId1454153955302"
++										elementid="elementId1454153955302" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 0px; top: 250px; z-index: 5;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KX1aDnwGAcyOdAABeEFw7Bl0404.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++									<div data-zindex="6" id="elementId1454153955304"
++										elementid="elementId1454153955304" class="wqdelementEdit"
++										data-elementtype="img" data-elemandgroup="true"
++										style="width: 300px; height: 250px; left: 300px; top: 250px; z-index: 6;">
++										<div class="wqdelementEditBox">
++											<img class="wqd-img"
++												src="${ctxPath}/static/modular/system/home/yq0KXVaDnxSAXCC5AAA9tur8bpE820.jpg"
++												ondragstart="return false;">
++										</div>
++									</div>
++								</div>
++							</div>
++						</div>
++						<div wqdbgcolor="rgba(207,228,228,0)"
++							groupmark="groupmark1454153949998" data-zindex="3"
++							style="width: 121px; height: 38px; left: 1061px; top: 71.7333px; z-index: 3;"
++							id="elementId1454153957102" elementid="elementId                title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title,
+                    summary: d.summary,
+                    pics: d.pic,
+                    flash: '',
+                    site: document.domain,
+                    style: '201',
+                    width: 32,
+                    height: 32
+                };
+                var s = [];
+                for (var i in p) {
+                    s.push(i + '=' + encodeURIComponent(p[i] || ''));
+                }
+
+                window.open("http://connect.qq.com/widget/shareqq/index.html?" + s.join('&'), "newwindow", "width=721,height=572, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(721, 567).iTop + ",left=" + that.setwin(721, 567).iLeft);
+                return;
+            }
+            this.open(query);
+        },
+
+        /**
+         * 设置分享内容
+         * @param  {String} type 分享到的社交媒体，如tsina,qqzone，以data-type的形式存储在 .btn-share 标签上
+         * @param  {Object} data 需要分享的hash表，以data-***的形式存储在 .share-list 标签上
+         * @return {String} queryString  序列化的分享内容url字符串;
+         *
+         */
+        set: function(type, data) {
+            var query = {};
+            query.click = 1;
+            query.url = (data.url || "");
+            query.uid = this.uid;
+            query.to = type;
+            query.type = "text";
+            query.relateUid = data.wbuid || "";
+            query.pic = (data.pic || "");
+            query.title =/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):this._formatTitle(data.text);
+            query.key = "";
+            query.sign = "on";
+            query.desc = (data.desc || "");
+            query.summary = (data.summary || "");
+            query.comment = encodeURIComponent(data.comment || "");
+            query.searchPic = 0;
+            query.l = this.time();
+            query.linkid = this.string();
+            query.sloc = "";
+            query.apiType = 0;
+            query.buttonType = 0;
+            query.site = "bshare";
+
+            this.options.text = query.url;
+            return '?' + $.param(query);
+        },
+
+        load: function(query) {
+            var img = new Image();
+            img.onload = function() {
+                img = img.onload = null;
+            };
+            img.src = this.url + "commit" + query + "&t=" + Math.random();
+        },
+
+        open: function(query) {
+            var that = this;
+            window.open(that.url + query, "_blank", "width=721,height=572, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no" + ",top=" + that.setwin(721, 567).iTop + ",left=" + that.setwin(721, 567).iLeft);
+        },
+
+        time: function() {
+            var t = +new Date,
+                e = t + 1000,
+                n = t + 3000;
+            return t.toString(32) + e.toString(32) + n.toString(32)
+        },
+
+        string: function() {
+            var t = (new Date).toString(36),
+                e = Math.random().toString(36).substr(3);
+
+            return t + e
+        },
+        _formatTitle: function(text) {
+            return text ? (text.substr(0, 120)) : this.title;
+        },
+
+        renderQrCode: function(self) {
+            var that = this;
+            var followtop = $(window).height() * 0.5;
+            $('#J_qr_code_share').empty().append('<span style="position: absolute;top: 6px;left: 12px;">扫码查看</span><i class=" fa fa-remove" style="position: absolute;top: 10px;right: 26px;cursor:pointer"></i>').qrcode({
+                text: window.location.href,
+                width: 210,
+                height: 210,
+
+            }).css({
+                top: followtop,
+                left: self.offset().left - that.options.width / 2 + 30
+            }).show(200);
+        },
+        _randomString: function(str, e) {
+            var n = str.length,
+                o = "",
+                i = 1;
+            while (i < n) {
+                var a = Math.floor(n * Math.random());
+                o += str.charAt(a);
+                i++;
+            }
+
+            return o
+        }
+    };
+
+    window.Share = function() {
+        return Share();
+    }
+
+}(window.jQuery));
+
+//微信分享
+var wxShare = function() {
+    //引入
+    $("body").append("<script src='http:\/\/res.wx.qq.com/open/js/jweixin-1.0.0.js'><\/script>");
+    var js = document.createElement('script');
+    js.setAttribute('type', 'text/javascript');
+    js.setAttribute('src', 'http:\/\/res.wx.qq.com/open/js/jweixin-1.0.0.js');
+    $("head").append(js);
+    js.onload=function(){
+        var ramId=new Date().getTime();
+        //配置
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: 'gh_fc019f690550', // 必填，公众号的唯一标识
+            timestamp: ramId, // 必填，生成签名的时间戳
+            nonceStr: '"'+ramId+'"', // 必填，生成签名的随机串
+            signature: '', // 必填，签名，见附录1
+            jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+        wx.ready(function() {
+
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+        });
+        //朋友圈
+        wx.onMenuShareTimeline({
+            title: /\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            link: '', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg', // 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        //朋友
+        wx.onMenuShareAppMessage({
+            title:/\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            desc: 'desc111111111', // 分享描述
+            link: 'link222222', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //到QQ
+        wx.onMenuShareQQ({
+            title: /\/template/g.test(location.href)==true?document.title.replace(/微企点/g,"本公司"):document.title, // 分享标题
+            desc: 'desc1111111111', // 分享描述
+            link: 'link22222222', // 分享链接
+            imgUrl: 'http://img.wqdian.com/group2/M00/4E/B4/yq0KEVVpqI2AffAxAAd2m9DDums282.jpg',// 分享图标
+            success: function() {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function() {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    };
+    
+  
+
+}();

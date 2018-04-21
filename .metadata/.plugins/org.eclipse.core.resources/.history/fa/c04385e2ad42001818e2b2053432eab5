@@ -1,0 +1,266 @@
+}/static/modular/system/home/navTemplate1.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commodityList.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commodityDetail.js"></script>
++	<!-- 商品搜索结果页 PC -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/commoditySearchResult.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdWechatlogin.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/jquery.nanoscroller.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/editShopping.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/edit-curve.js"></script>
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdManageInfo.js"></script>
++	<!-- 新闻plugin 功能 -->
++	<script type="text/javascript" src="${ctxPath}/static/modular/system/home/wqdArtPlugin.js"></script>
++
++	<!--  -->
++	<script type="text/javascript">
++$(function(){
++	if ('' == 'false') {
++		$('.formDate.wqdControlFormEl6 input').date_input();
++	}
++})
++</script>
++	<div style="display: none"></div>
++
++
++	<div id="J_qr_code_share"
++		style="top: 361px !important; box-shadow: 1px 1px 39px 1px; box-shadow: 1px 1px 39px 1px; padding-top: 35px; display: none; z-index: 999; position: fixed; margin-top: -130px; margin-left: -130px; text-align: center; background: #FFF; border-radius: 8px"></div>
++	<script src="${ctxPath}/static/modular/system/team/qzopensl.js" charset="utf-8"> </script>
++	<script src="${ctxPath}/static/modular/system/team/loader.js"
++		widget="IFRAME_SHARE_QQ" charset="utf-8"></script>
++	<div
++		style="width: 240px; height: 270px; position: fixed; display: none; top: 361px; left: 50%; box-shadow: 1px 1px 21px 2px; z-index: 99; border-radius: 8px; margin-top: -135px; margin-left: -120px;"
++		class="follow_box">
++		<span class="follow_txt" style="float: left; margin: 10px 0 0 10px"></span><span
++			class="follow_close" style="float: right; margin: 10px 10px 0 0"><i
++			class="fa fa-remove" style="font-size: 22px; cursor: pointer"></i></span>
++		<p
++			style="width: 100%; height: 200px; margin-top: 39px; width: 90%; margin: 39px auto 0; background-size: 100% 100%;"></p>
++	</div>
++	<div id="cboxOverlay" style="display: none;"></div>
++	<div id="colorbox" class="" role="dialog" tabindex="-1"
++		style="display: none;">
++		<div id="cboxWrapper">
++			<div>
++				<div id="cboxTopLeft" style="float: left;"></div>
++				<div id="cboxTopCenter" style="float: left;"></div>
++				<div id="cboxTopRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxMiddleLeft" style="float: left;"></div>
++				<div id="cboxContent" style="float: left;">
++					<div id="cboxTitle" style="float: left;"></div>
++					<div id="cboxCurrent" style="float: left;"></div>
++					<button type="button" id="cboxPrevious"></button>
++					<button type="button" id="cboxNext"></button>
++					<button id="cboxSlideshow"></button>
++					<div id="cboxLoadingOverlay" style="float: left;"></div>
++					<div id="cboxLoadingGraphic" style="float: left;"></div>
++				</div>
++				<div id="cboxMiddleRight" style="float: left;"></div>
++			</div>
++			<div style="clear: left;">
++				<div id="cboxBottomLeft" style="float: left;"></div>
++				<div id="cboxBottomCenter" style="float: left;"></div>
++				<div id="cboxBottomRight" style="float: left;"></div>
++			</div>
++		</div>
++		<div
++			style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
++	</div>
++	<div class="mtucebg"
++		style="display: none; background-color: #000; position: fixed; top: 0; width: 100%; z-index: 999">
++		<div id="mWrapper" style="height: 722px">
++			<div id="mScrollerShow">
++				<ul style="white-space: nowrap"></ul>
++			</div>
++		</div>
++	</div>
++	<script src="${ctxPath}/static/modular/system/team/getscript"></script>
++</body>
++<script type="text/javascript"
++	src="${ctxPath}/static/modular/system/team/jquery.colorbox-min.js"></script>
++</html>
+\ No newline at end of file
+diff --git a/.metadata/.plugins/org.eclipse.core.resources/.history/2d/704616972d3e00181cc28965c0d051a7 b/.metadata/.plugins/org.eclipse.core.resources/.history/2d/704616972d3e00181cc28965c0d051a7
+new file mode 100644
+index 0000000000000000000000000000000000000000..f839c0e0023862ccd215b7a53febda5e0246c855
+--- /dev/null
++++ b/.metadata/.plugins/org.eclipse.core.resources/.history/2d/704616972d3e00181cc28965c0d051a7
+@@ -0,0 +1,5540 @@
++<!DOCTYPE html>
++<!-- saved from url=(0041)http://template_10998.wqdian.cn/home.html -->
++<html xmlns="http://www.w3.org/1999/xhtml">
++<head>
++<!--meta文件 消息头-->
++	@include("/common/_meta.html"){}
++<!--css文件-->
++    @include("/common/_css.html"){}
++    
++<title>启匠科技有限公司</title>
++
++<!--头部js文件-->
++    @include("/common/_head_js.html"){}   
++    
++</head>
++<body class="" style="position: relative;">
++<!--body头部文件-->
++    @include("/common/_body_head.html"){}   
++    
++					<div class="wqdView wqdCenterView">
++						<div class="wqdAreaView">
++							<div class="yzmoveContent">
++								<div wqdback_position="1"
++									style="background-attachment: scroll; background-image: url(&quot;http://img.wqdian.com/group3/M00/AF/82/yq0KZFaDf8CAScVcAAKbAtqI0Ug839.jpg&quot;); background-size: cover; background-position: center center; background-repeat: no-repeat;"
++									class="wqdSectiondiv" data-type="wqdSectiondiv" sortid="1"
++									partid="wqd1451458832740serial" commonpartid="10542"
++									id="wqd1451458832740serial" sectionname="空白栏目-PC/手机均可"
++									partcategoryid="2">
++									<style sectionwidth="1200" type="text/css"
++										class="elementId1451461577627">
++					#elementId1451461577627 a {
++						background-color: rgba(255, 255, 255, 0);
++						border-color: #545454;
++					}
++					
++					#elementId1451461577627 a em {
++						color: #373737;
++					}
++					</style>
++									<style sectionwidth="1200" type="text/css"
++										class="elementId1451460844385">
++					#elementId1451460844385 a {
++						background-color: rgba(255, 255, 255, 0);
++						border-color: #303030;
++					}
++					
++					#elementId1451460844385 a em {
++						color: #282828;
++					}
++					</style>
++									<style sectionwidth="1200" type="text/css"
++										class="elementId1451460479995">
++					#elementId1451460479995 a {
++						background-color: rgba(255, 255, 255, 0);
++						border-color: #545454;
++					}
++					
++					#elementId1451460479995 a em {
++						color: #2d2d2d;
++					}
++					</style>
++									<style sectionwidth="1200" type="text/css"
++										class="elementId1451460187786">
++					#elementId1451460187786 .carousel-control {
++						background-color: rgba(90, 90, 90, 0.5);
++					}
++					
++					#elementId1451460187786 .carousel-control:hover {
++						background-color: #cdcdcd !important;
++					}
++					
++					#elementId1451460187786 .carousel-control:hover polygon {
++						fill: #555555;
++					}
++					
++					#elementId1451460187786 .carousel-control:hover path {
++						fill: #555555;
++					}
++					</style>    
++    
++					<section wqdwidthlimit="1" wqdbgattachment="0" bac_position="5"
++						wqdheight="632" sectionwidth="1200"
++						class="wqd1445504393013css wqdBkEditos sectionV2 moveMainArea elementsContainer fullscreen"
++						style="height: 632px; margin: 0px auto; position: relative; z-index: 5;"
++						wqdimgurlos="http://img.wqdian.com/group3/M00/AF/82/yq0KZFaDf8CAScVcAAKbAtqI0Ug839.jpg"
++						wqdbgcoloros="#eee" data-maxzindex="1">
++						<div num="3" svghover="#555555" controlbghover="#cdcdcd"
++							controlbg="rgba(90,90,90,0.5)" btnshape="0" data-zindex="1"
++							id="elementId1451460187786" elementid="elementId1451460187786"
++							class="wqdelementEdit elementsContainer"
++							data-elementtype="carouse" data-elemandgroup="true"
++							style="width: 1520px; height: 100%; left: 0px; top: 0px; z-index: 1; opacity: 1;">
++							<div class="wqdelementEditBox">
++								<div class="wqdCarousel slide" data-pause="false">
++								
+
+        return exports;
+    };
+
+    /* 元素 */
+    var target = document.getElementsByClassName("personal-car")[0];
+    //var target = document.getElementsByClassName("basket-car")[0];
+
+    // 抛物线元素的的位置标记
+    var $shoppingCartBtn=$(".shoppingCartBtn");
+    var parabola = funParabola($shoppingCartBtn[0], target).mark();
+    parabola.flag=false;
+    // 抛物线运动的触发 配合剑剑触发
+    $(document).on("addShoppingCart", function (e,data) {
+        if($("#mini").length||!$(".goods-pay").length) return;
+        var obj=$.parseJSON(data.cartItem);
+        data.count=obj.count;
+        var srcPath=obj.picPath;
+        $("<div class='mini' id='mini'> </div>").appendTo($("body"));
+        $.ajax({
+            url: "/shoppingcart/updateCart",
+            type: "post",
+            data: data,
+            dataType: "json",
+            success: function (json) {
+                if(json.status==200){
+                    $(".mini").css({
+                        "left":($shoppingCartBtn.offset().left - $(window).scrollLeft())+60+"px",
+                        "top":($shoppingCartBtn.offset().top - $(window).scrollTop())+"px",
+                        "background-image": "url(" + srcPath + ")",
+                        "background-size": "100% 100%"
+                    });
+                    setTimeout(function () {
+                        $("#mini").show();
+                        parabola.init(document.getElementById("mini"));
+                    },400);
+                    //对比数据开始
+                    var arr=obj.specificationId.split("");
+                    var str=obj.id;
+                    for(var i=0;i<arr.length;i++){ str+=arr[i] };
+                    var $liList=$(".wqd-buyCar .detail-list li");
+                    $liList.length?parabola.exist(obj,$liList,str):parabola.joinData(obj);
+                }else {
+                    $("#mini").remove();
+                }
+            },
+            error:function(){
+                $("#mini").remove();
+            }
+        })
+
+
+    });
+    parabola.exist = function (obj, $liList, str) {
+        var flag = true;
+        $liList.each(function (i, _) {
+            var _str = $(this).attr("id");
+            _str+=$(this).find(".detail-describe").attr("sizeid");
+            if (str == _str) {
+                var $same = $(this).find(".number");
+                $same.text(parseFloat($same.text()) + parseFloat(obj.count));
+                flag = false;
+                return false;
+            }
+        });
+        flag && parabola.joinData(obj);
+    };
+    parabola.joinData = function (data) {
+        var $li = $("<li id=" + data.id + "><span class='edit-radio active'></span> <dl class='clearfix'> <dt><a href="+data.itemLink+"><img src=" + data.picPath + " alt=''/></a></dt> <dd class='detail-title' title=" + data.name + "><a href="+data.itemLink+">" + data.name + "</a></dd> <dd class='detail-describe' sizeid="+data.specificationId+"> </dd> <dd class='detail-model'> <i class='num-reduse'></i> <span class='number'>" + data.count + "</span> <i class='num-add'></i> <span class='price'>￥<b class='unit-price'>" + data.price + "</b></span> <em class='delete'></em> </dd> </dl> </li>");
+        $li.appendTo($(".detail-list"));
+        var $lastLi = $(".detail-list li:last");
+        if ($(".detail-list li").length == 1){$lastLi.addClass("list-first");}
+        var arr = data.specificationValue.split("_"), $span;
+        for (var i = 0; i < arr.length; i++) {
+            $span = i == 0 ? $("<span class='describe-first'>" + arr[i] + "</span>") : $("<span>" + arr[i] + "</span>");
+            $span.appendTo($lastLi.find(".detail-describe"));
+        }
+        //判断是不是新数据
+        parabola.flag=true;
+    };
+
+})($);

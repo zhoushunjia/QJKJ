@@ -1,0 +1,31 @@
+wqdelementEdit aniTriOther" data-elementtype="text"
++							data-elemandgroup="true">
++							<div style="visibility: visible;"
++								data-emptytexttemplate="
++								&lt;p class=&quot;wqd-text-article1 wqdCkEmptyTextos&quot;&gt;正文文本1&lt;/p&gt;
++							"
++								class="wqdelementEditBox">
++								<h4 class="wqd-text-title4">
++									<span style="font-size: 14px;"><span
++										style="color: rgb(255, 255, 255);">高端创意本公司<br>
++											0123-456-789<br> support@baidu.com<br> 智能好用的H5建站平台
++									</span></span>
++								</h4>
++							</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animation-delay="0"
++							data-animation-duration="1" data-animate="zoomIn"
++							data-zindex="12" id="elementid14514718576380"
++							elementid="elementid14514718576380"
++							class="wqdelementEdit aniTriOther" data-elementtype="img"
++							data-elemandgroup="true"
++							style="width: 93px; height: 91px; left: 1008px; top: 136.883px; z-index: 12;">
++							<div style="" class="wqdelementEditBox wqdAnimatedos">
++								<img class="wqd-img"
++									src="./设计专用-网站模板-联系我们_files/yq0KZFaDsm-AWq-AAADlVgNaWig030.jpg"
++									ondragstart="return false;">
++							</div>
++						</div>
++						<div triggertype="mouseenter.wqdAnimate"
++							data-animation-iteration-count="1" data-animatio
